@@ -427,7 +427,12 @@ class Searchbar extends SearchDelegate<Item> {
       IconButton(
         icon: Icon(Icons.clear),
         onPressed: () {
-          query = "";
+          if (query.isEmpty) {
+            close(context, null);
+          } else {
+            query = '';
+            showSuggestions(context);
+          }
         },
       )
     ];
@@ -519,14 +524,40 @@ class Searchbar extends SearchDelegate<Item> {
         : mylist.where((p) => p.title.startsWith(query)).toList();
 
     return mylist.isEmpty
-        ? Text("No Results Found ...")
+        ? Center(
+            child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                "...لا يوجد المنتج ",
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 28,
+                ),
+              ),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                    textStyle: const TextStyle(fontSize: 20)),
+                onPressed: () {
+                  Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (context) => NewItem()));
+                },
+                child: const Text('اضف جديد'),
+              ),
+            ],
+          ))
         : ListView.builder(
             itemCount: mylist.length,
             itemBuilder: (context, index) {
               return ListTile(
                   onTap: () {
+                    query = mylist[index].title;
                     return showResults(context);
                   },
+                  leading: CircleAvatar(
+                    backgroundImage: AssetImage(mylist[index].itemIcon),
+                  ),
                   title: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [

@@ -11,6 +11,7 @@ import '../data/meatfish.dart';
 import '../data/spices.dart';
 import '../models/cart.dart';
 import 'drawer.dart';
+import 'homepage.dart';
 
 class NewItem extends StatefulWidget {
   @override
@@ -38,11 +39,25 @@ class _NewItemState extends State<NewItem> {
         child: Scaffold(
           appBar: AppBar(
             title: Text('اضف جديد'),
+            actions: [
+              IconButton(
+                icon: Icon(Icons.arrow_forward),
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => HomePage()));
+                },
+              ),
+            ],
           ),
           drawer: MyDrawer(),
           body: Padding(
             padding: const EdgeInsets.all(16),
             child: Column(children: [
+              Text(
+                'اضف جديد',
+                textAlign: TextAlign.center,
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
+              ),
               TextField(
                   controller: titleController,
                   decoration: InputDecoration(hintText: 'الاسم')),

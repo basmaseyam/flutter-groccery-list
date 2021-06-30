@@ -45,7 +45,10 @@ class _CheckoutPageState extends State<CheckoutPage> {
             ),
             drawer: MyDrawer(),
             body: cart.basketItems.length == 0
-                ? Text('لا يوجد مشتريات ')
+                ? Center(
+                    child: Text('لا يوجد مشتريات ',
+                        style: TextStyle(
+                            fontSize: 28, fontWeight: FontWeight.bold)))
                 : ListView.builder(
                     itemCount: cart.basketItems.length,
                     itemBuilder: (context, index) {
