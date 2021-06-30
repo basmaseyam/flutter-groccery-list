@@ -10,6 +10,7 @@ import '../data/grains.dart';
 import '../data/meatfish.dart';
 import '../data/spices.dart';
 import '../models/cart.dart';
+import 'drawer.dart';
 
 class NewItem extends StatefulWidget {
   @override
@@ -38,6 +39,7 @@ class _NewItemState extends State<NewItem> {
           appBar: AppBar(
             title: Text('اضف جديد'),
           ),
+          drawer: MyDrawer(),
           body: Padding(
             padding: const EdgeInsets.all(16),
             child: Column(children: [

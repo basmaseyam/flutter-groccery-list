@@ -27,8 +27,9 @@ class Item extends ChangeNotifier {
   void decrementCounter() {
     if (amount != 0) {
       amount--;
-      notifyListeners();
     }
+
+    notifyListeners();
   }
 
   Item({this.title, this.itemIcon, this.category, this.amount, this.quantity});

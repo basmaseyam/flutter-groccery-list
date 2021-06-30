@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:moshtryate_new/constants.dart';
 
+import 'homepage.dart';
+
 class LoginScreen extends StatefulWidget {
   static String id = 'LoginScreen';
 
@@ -23,6 +25,7 @@ class _LoginScreenState extends State<LoginScreen> {
         backgroundColor: kMainColor,
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Image(
               image: AssetImage('images/icons/moshtryate.png'),
@@ -30,9 +33,12 @@ class _LoginScreenState extends State<LoginScreen> {
             Text(
               'مشترياتي',
               style: TextStyle(
-                fontFamily: "Pacifico",
+                fontFamily: 'Pacifico',
                 fontSize: 25,
               ),
+            ),
+            SizedBox(
+              width: double.infinity,
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 30),
@@ -46,19 +52,6 @@ class _LoginScreenState extends State<LoginScreen> {
                 child: Text(
                   'Login with Google ',
                   style: TextStyle(color: Colors.white),
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 30),
-              child: ElevatedButton(
-                style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(Colors.white),
-                ),
-                onPressed: () {},
-                child: Text(
-                  'Login with Facebook ',
-                  style: TextStyle(color: Colors.black),
                 ),
               ),
             ),
@@ -79,5 +72,9 @@ class _LoginScreenState extends State<LoginScreen> {
     UserCredential userCredential =
         await _auth.signInWithCredential(authCredential);
     User user = userCredential.user;
+    if (user != null) {
+      Navigator.of(context)
+          .push(MaterialPageRoute(builder: (context) => HomePage()));
+    }
   }
 }
