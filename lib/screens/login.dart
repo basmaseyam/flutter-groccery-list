@@ -1,6 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_signin_button/button_list.dart';
+import 'package:flutter_signin_button/button_view.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:moshtryate_new/constants.dart';
 
@@ -15,7 +17,6 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   final FirebaseAuth _auth = FirebaseAuth.instance;
-
   final GoogleSignIn _googleSignIn = GoogleSignIn();
 
   @override
@@ -33,8 +34,10 @@ class _LoginScreenState extends State<LoginScreen> {
             Text(
               'مشترياتي',
               style: TextStyle(
-                fontFamily: 'Pacifico',
-                fontSize: 25,
+                fontFamily: 'Vibes',
+                fontSize: 52,
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
               ),
             ),
             SizedBox(
@@ -42,17 +45,18 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 30),
-              child: ElevatedButton(
-                style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(Colors.red),
-                ),
+              child: SignInButton(
+                Buttons.Google,
                 onPressed: () async {
                   await signInWithGoogle();
                 },
-                child: Text(
-                  'Login with Google ',
-                  style: TextStyle(color: Colors.white),
-                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 30),
+              child: SignInButton(
+                Buttons.Facebook,
+                onPressed: () {},
               ),
             ),
           ],
@@ -62,19 +66,29 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   Future<void> signInWithGoogle() async {
-    GoogleSignInAccount googleSignInAccount = await _googleSignIn.signIn();
-    GoogleSignInAuthentication googleSignInAuthentication =
-        await googleSignInAccount.authentication;
-    AuthCredential authCredential = GoogleAuthProvider.credential(
-        idToken: googleSignInAuthentication.idToken,
-        accessToken: googleSignInAuthentication.accessToken);
+    try {
+      GoogleSignInAccount googleSignInAccount = await _googleSignIn.signIn();
+      GoogleSignInAuthentication googleSignInAuthentication =
+          await googleSignInAccount.authentication;
+      AuthCredential authCredential = GoogleAuthProvider.credential(
+          idToken: googleSignInAuthentication.idToken,
+          accessToken: googleSignInAuthentication.accessToken);
 
-    UserCredential userCredential =
-        await _auth.signInWithCredential(authCredential);
-    User user = userCredential.user;
-    if (user != null) {
-      Navigator.of(context)
-          .push(MaterialPageRoute(builder: (context) => HomePage()));
+      final userCredential = await signInWithCredential(authCredential);
+      User user = userCredential.user;
+      if (user != null) {
+        Navigator.of(context)
+            .push(MaterialPageRoute(builder: (context) => HomePage()));
+      }
+    } catch (error) {
+      print(error);
     }
   }
+
+  Future<UserCredential> signInWithCredential(AuthCredential credential) =>
+      _auth.signInWithCredential(credential);
+
+  Future<void> logout() => _auth.signOut();
+
+  Stream<User> get currentUser => _auth.authStateChanges();
 }

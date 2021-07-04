@@ -27,6 +27,19 @@ class _NewItemState extends State<NewItem> {
   final List<Item> itemsbaking = baking;
   final List<Item> itemsspices = spices;
   final List<Item> itemsextra = [];
+  final List<String> categories = [
+    'الخضروات و الفواكهة',
+    'اللحوم',
+    'الحبوب',
+    'المشروبات',
+    'الالبان',
+    'المخبوزات',
+    'التوابل',
+    'اخرى'
+  ];
+
+  List<DropdownMenuItem> _categories = [];
+
   Item newitem;
   final titleController = TextEditingController();
   final categoryController = TextEditingController();

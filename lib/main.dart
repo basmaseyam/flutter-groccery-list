@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:moshtryate_new/screens/homepage.dart';
 import 'package:provider/provider.dart';
 
 import 'package:moshtryate_new/screens/login.dart';
@@ -24,8 +25,11 @@ class MyApp extends StatelessWidget {
         textDirection: TextDirection.rtl,
         child: MaterialApp(
           debugShowCheckedModeBanner: false,
-          initialRoute: LoginScreen.id,
-          routes: {LoginScreen.id: (context) => LoginScreen()},
+          initialRoute: HomePage.id,
+          routes: {
+            LoginScreen.id: (context) => LoginScreen(),
+            HomePage.id: (context) => HomePage(),
+          },
         ));
   }
 }

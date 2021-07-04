@@ -15,6 +15,8 @@ import 'checkout.dart';
 import 'drawer.dart';
 
 class HomePage extends StatefulWidget {
+  static String id = 'HomePage';
+
   @override
   _HomePageState createState() => _HomePageState();
 }
@@ -44,6 +46,10 @@ class _HomePageState extends State<HomePage> {
                     title: Text(
                       "مشترياتي",
                       textDirection: TextDirection.rtl,
+                      style: TextStyle(
+                        fontFamily: 'Vibes',
+                        fontSize: 25,
+                      ),
                     ),
                     actions: [
                       Row(children: [
@@ -76,9 +82,14 @@ class _HomePageState extends State<HomePage> {
                       child: Padding(
                         padding: const EdgeInsets.all(8.00),
                         child: TextField(
+                          autofocus: false,
                           decoration: InputDecoration(
+                            filled: true,
                             border: OutlineInputBorder(),
-                            icon: Icon(Icons.search),
+                            icon: Icon(
+                              Icons.search,
+                              color: Colors.white,
+                            ),
                             hintText: 'بحث',
                             fillColor: Colors.white,
                             focusColor: Colors.white,

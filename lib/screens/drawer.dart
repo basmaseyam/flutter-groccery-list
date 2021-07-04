@@ -17,7 +17,13 @@ class MyDrawer extends StatelessWidget {
           currentAccountPicture: CircleAvatar(
             backgroundImage: AssetImage('images/icons/moshtryate.png'),
           ),
-          accountName: Text('مشترياتي'),
+          accountName: Text(
+            'مشترياتي',
+            style: TextStyle(
+              fontFamily: 'Vibes',
+              fontSize: 25,
+            ),
+          ),
         ),
         InkWell(
           child: // to make the menu clickable and action happens
