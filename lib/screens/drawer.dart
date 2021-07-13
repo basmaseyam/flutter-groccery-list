@@ -7,6 +7,10 @@ import 'homepage.dart';
 import 'login.dart';
 
 class MyDrawer extends StatelessWidget {
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  final GoogleSignIn _googleSignIn = GoogleSignIn();
+  User user = FirebaseAuth.instance.currentUser;
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -15,12 +19,12 @@ class MyDrawer extends StatelessWidget {
       children: [
         UserAccountsDrawerHeader(
           currentAccountPicture: CircleAvatar(
-            backgroundImage: AssetImage('images/icons/moshtryate.png'),
+            backgroundImage: NetworkImage(user.photoURL),
           ),
           accountName: Text(
-            'مشترياتي',
+            user.displayName,
             style: TextStyle(
-              fontFamily: 'Vibes',
+              fontFamily: 'Pacifico',
               fontSize: 25,
             ),
           ),
@@ -63,5 +67,10 @@ class MyDrawer extends StatelessWidget {
         ),
       ],
     ));
+  }
+
+  Future<void> signOutFromGoogle() async {
+    await _googleSignIn.signOut();
+    await _auth.signOut();
   }
 }

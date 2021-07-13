@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:flutter_signin_button/button_list.dart';
 import 'package:flutter_signin_button/button_view.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -56,7 +57,9 @@ class _LoginScreenState extends State<LoginScreen> {
               padding: const EdgeInsets.symmetric(horizontal: 30),
               child: SignInButton(
                 Buttons.Facebook,
-                onPressed: () {},
+                onPressed: () async {
+                  await signInWithFacebook();
+                },
               ),
             ),
           ],
@@ -85,10 +88,41 @@ class _LoginScreenState extends State<LoginScreen> {
     }
   }
 
+  Future<Resource> signInWithFacebook() async {
+    try {
+      final LoginResult result = await FacebookAuth.instance.login();
+      switch (result.status) {
+        case LoginStatus.success:
+          final AuthCredential facebookCredential =
+              FacebookAuthProvider.credential(result.accessToken.token);
+          final userCredential =
+              await _auth.signInWithCredential(facebookCredential);
+          return Navigator.of(context)
+              .push(MaterialPageRoute(builder: (context) => HomePage()));
+        case LoginStatus.cancelled:
+          return Resource(status: Status.Cancelled);
+        case LoginStatus.failed:
+          return Resource(status: Status.Error);
+        default:
+          return null;
+      }
+    } on FirebaseAuthException catch (e) {
+      throw e;
+    }
+  }
+
   Future<UserCredential> signInWithCredential(AuthCredential credential) =>
       _auth.signInWithCredential(credential);
 
-  Future<void> logout() => _auth.signOut();
-
-  Stream<User> get currentUser => _auth.authStateChanges();
+  Future<void> signOutFromGoogle() async {
+    await _googleSignIn.signOut();
+    await _auth.signOut();
+  }
 }
+
+class Resource {
+  final Status status;
+  Resource({this.status});
+}
+
+enum Status { Success, Error, Cancelled }
