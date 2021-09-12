@@ -1,8 +1,19 @@
-class Category {
-  String title;
-  String itemIcon;
-  String category;
-  int amount;
+import 'package:flutter/widgets.dart';
 
-  Category({this.title, this.itemIcon, this.category, this.amount});
+class Category extends ChangeNotifier {
+  String category;
+
+  List<Category> _categorys = [];
+
+  void add(Category category) {
+    _categorys.add(category);
+    notifyListeners();
+  }
+
+  void remove(Category category) {
+    _categorys.remove(category);
+    notifyListeners();
+  }
+
+  Category({this.category});
 }

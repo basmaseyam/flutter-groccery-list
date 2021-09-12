@@ -65,6 +65,24 @@ class MyDrawer extends StatelessWidget {
             },
           ),
         ),
+        InkWell(
+          child: // to make the menu clickable and action happens
+              ListTile(
+            title: Text(
+              'خروج',
+            ),
+            leading: Icon(Icons.exit_to_app),
+            onTap: () {
+              if (GoogleSignInAccount != null) {
+                signOutFromGoogle();
+              } else {
+                FirebaseAuth.instance.signOut();
+              }
+              Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (context) => LoginScreen()));
+            },
+          ),
+        ),
       ],
     ));
   }

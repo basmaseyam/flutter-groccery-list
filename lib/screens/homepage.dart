@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:moshtryate_new/data/baking.dart';
+import 'package:moshtryate_new/data/category.dart';
 import 'package:moshtryate_new/data/dairies.dart';
 import 'package:moshtryate_new/data/drinkies.dart';
 import 'package:moshtryate_new/data/fruitsveggies.dart';
@@ -29,404 +30,142 @@ class _HomePageState extends State<HomePage> {
   final List<Item> itemsdairies = dairies;
   final List<Item> itemsbaking = baking;
   final List<Item> itemsspices = spices;
+  final List<Item> itemsothers = [];
+
   int amount = 0;
 
   @override
   Widget build(BuildContext context) {
     return Consumer<Cart>(builder: (context, cart, child) {
       return Directionality(
-          textDirection: TextDirection.rtl,
-          child: MaterialApp(
-              debugShowCheckedModeBanner: false,
-              title: "مشترياتي",
-              home: Directionality(
-                textDirection: TextDirection.rtl,
-                child: Scaffold(
-                  appBar: AppBar(
-                    title: Text(
-                      "مشترياتي",
-                      textDirection: TextDirection.rtl,
-                      style: TextStyle(
-                        fontFamily: 'Vibes',
-                        fontSize: 25,
-                      ),
-                    ),
-                    actions: [
-                      Row(children: [
-                        Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 16),
-                          child: Row(
-                            children: [
-                              IconButton(
-                                icon: Icon(Icons.shopping_cart),
-                                onPressed: () {
-                                  Navigator.of(context).push(MaterialPageRoute(
-                                      builder: (context) => CheckoutPage()));
-                                },
-                              ),
-                              Text(
-                                cart.count.toString(),
-                              ),
-                            ],
-                          ),
-                        ),
-                        IconButton(
-                            icon: Icon(Icons.add),
+        textDirection: TextDirection.rtl,
+        child: MaterialApp(
+          debugShowCheckedModeBanner: false,
+          title: "مشترياتي",
+          home: Directionality(
+            textDirection: TextDirection.rtl,
+            child: Scaffold(
+              appBar: AppBar(
+                title: Text(
+                  "مشترياتي",
+                  textDirection: TextDirection.rtl,
+                  style: TextStyle(
+                    fontFamily: 'Vibes',
+                    fontSize: 25,
+                  ),
+                ),
+                actions: [
+                  Row(children: [
+                    IconButton(
+                        icon: Icon(Icons.add),
+                        onPressed: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => NewItem()));
+                        }),
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 16),
+                      child: Row(
+                        children: [
+                          IconButton(
+                            icon: Image(
+                                image: AssetImage('images/icons/basket1.png')),
                             onPressed: () {
                               Navigator.of(context).push(MaterialPageRoute(
-                                  builder: (context) => NewItem()));
-                            }),
-                      ])
-                    ],
-                    bottom: PreferredSize(
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.00),
-                        child: TextField(
-                          autofocus: false,
-                          decoration: InputDecoration(
-                            filled: true,
-                            border: OutlineInputBorder(),
-                            icon: Icon(
-                              Icons.search,
-                              color: Colors.white,
-                            ),
-                            hintText: 'بحث',
-                            fillColor: Colors.white,
-                            focusColor: Colors.white,
+                                  builder: (context) => CheckoutPage()));
+                            },
                           ),
-                          onTap: () {
-                            showSearch(
-                              context: context,
-                              delegate: Searchbar(),
-                              query: '',
-                            );
-                          },
-                        ),
+                          Text(
+                            cart.count.toString(),
+                          ),
+                        ],
                       ),
-                      preferredSize: Size(0.0, 70.0),
+                    ),
+                  ])
+                ],
+                bottom: PreferredSize(
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.00),
+                    child: TextField(
+                      autofocus: false,
+                      decoration: InputDecoration(
+                        filled: true,
+                        border: OutlineInputBorder(),
+                        icon: Icon(
+                          Icons.search,
+                          color: Colors.white,
+                        ),
+                        hintText: 'بحث',
+                        fillColor: Colors.white,
+                        focusColor: Colors.white,
+                      ),
+                      onTap: () {
+                        showSearch(
+                          context: context,
+                          delegate: Searchbar(),
+                          query: '',
+                        );
+                      },
                     ),
                   ),
-                  drawer: MyDrawer(),
-                  body: ListView(children: <Widget>[
-                    ExpansionTile(title: Text('الخضروات و الفواكهة'),
-                        //    trailing: Icon(Icons.keyboard_arrow_left),
-                        children: [
-                          ListView.builder(
-                            shrinkWrap: true,
-                            physics: NeverScrollableScrollPhysics(),
-                            scrollDirection: Axis.vertical,
-                            itemCount: itemsFruits.length,
-                            itemBuilder: (context, index) {
-                              return Card(
-                                  child: ListTile(
-                                title: Text(itemsFruits[index].title),
-                                leading: CircleAvatar(
-                                    backgroundImage: AssetImage(
-                                        itemsFruits[index].itemIcon)),
-                                trailing: Row(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    IconButton(
-                                        icon: Icon(Icons.add),
-                                        color: Colors.blue,
-                                        onPressed: () {
-                                          itemsFruits[index].incrementCounter();
-
-                                          return cart.add(itemsFruits[index]);
-                                        }),
-                                    Text('${itemsFruits[index].amount}'),
-                                    IconButton(
-                                        icon: Icon(Icons.remove),
-                                        color: Colors.blue,
-                                        onPressed: () {
-                                          itemsFruits[index].decrementCounter();
-
-                                          return cart
-                                              .remove(itemsFruits[index]);
-                                        }),
-                                  ],
-                                ),
-                                onTap: () {},
-                              ));
-                            },
-                          ),
-                        ]),
-                    ExpansionTile(title: Text('اللحوم'),
-                        //    trailing: Icon(Icons.keyboard_arrow_left),
-                        children: [
-                          ListView.builder(
-                            shrinkWrap: true,
-                            physics: NeverScrollableScrollPhysics(),
-                            scrollDirection: Axis.vertical,
-                            itemCount: itemsmeat.length,
-                            itemBuilder: (context, index) {
-                              return Card(
-                                  child: ListTile(
-                                title: Text(itemsmeat[index].title),
-                                leading: CircleAvatar(
-                                    backgroundImage:
-                                        AssetImage(itemsmeat[index].itemIcon)),
-                                trailing: Row(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    IconButton(
-                                        icon: Icon(Icons.add),
-                                        color: Colors.blue,
-                                        onPressed: () {
-                                          itemsmeat[index].incrementCounter();
-
-                                          return cart.add(itemsmeat[index]);
-                                        }),
-                                    Text('${itemsmeat[index].amount}'),
-                                    IconButton(
-                                        icon: Icon(Icons.remove),
-                                        color: Colors.blue,
-                                        onPressed: () {
-                                          itemsmeat[index].decrementCounter();
-
-                                          return cart.remove(itemsmeat[index]);
-                                        }),
-                                  ],
-                                ),
-                                onTap: () {
-                                  print('clicked');
-                                },
-                              ));
-                            },
-                          ),
-                        ]),
-                    ExpansionTile(title: Text('الحبوب'),
-                        //    trailing: Icon(Icons.keyboard_arrow_left),
-                        children: [
-                          ListView.builder(
-                            shrinkWrap: true,
-                            physics: NeverScrollableScrollPhysics(),
-                            scrollDirection: Axis.vertical,
-                            itemCount: itemsgrains.length,
-                            itemBuilder: (context, index) {
-                              return Card(
-                                  child: ListTile(
-                                title: Text(itemsgrains[index].title),
-                                leading: CircleAvatar(
-                                    backgroundImage: AssetImage(
-                                        itemsgrains[index].itemIcon)),
-                                trailing: Row(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    IconButton(
-                                        icon: Icon(Icons.add),
-                                        color: Colors.blue,
-                                        onPressed: () {
-                                          itemsgrains[index].incrementCounter();
-
-                                          return cart.add(itemsgrains[index]);
-                                        }),
-                                    Text('${itemsgrains[index].amount}'),
-                                    IconButton(
-                                        icon: Icon(Icons.remove),
-                                        color: Colors.blue,
-                                        onPressed: () {
-                                          itemsgrains[index].decrementCounter();
-
-                                          return cart
-                                              .remove(itemsgrains[index]);
-                                        }),
-                                  ],
-                                ),
-                                onTap: () {
-                                  print('clicked');
-                                },
-                              ));
-                            },
-                          ),
-                        ]),
-                    ExpansionTile(title: Text('المشروبات'),
-                        //    trailing: Icon(Icons.keyboard_arrow_left),
-                        children: [
-                          ListView.builder(
-                            shrinkWrap: true,
-                            physics: NeverScrollableScrollPhysics(),
-                            scrollDirection: Axis.vertical,
-                            itemCount: itemsdrinkies.length,
-                            itemBuilder: (context, index) {
-                              return Card(
-                                  child: ListTile(
-                                title: Text(itemsdrinkies[index].title),
-                                leading: CircleAvatar(
-                                    backgroundImage: AssetImage(
-                                        itemsdrinkies[index].itemIcon)),
-                                trailing: Row(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    IconButton(
-                                        icon: Icon(Icons.add),
-                                        color: Colors.blue,
-                                        onPressed: () {
-                                          itemsdrinkies[index]
-                                              .incrementCounter();
-
-                                          return cart.add(itemsdrinkies[index]);
-                                        }),
-                                    Text('${itemsdrinkies[index].amount}'),
-                                    IconButton(
-                                        icon: Icon(Icons.remove),
-                                        color: Colors.blue,
-                                        onPressed: () {
-                                          itemsdrinkies[index]
-                                              .decrementCounter();
-
-                                          return cart
-                                              .remove(itemsdrinkies[index]);
-                                        }),
-                                  ],
-                                ),
-                                onTap: () {
-                                  print('clicked');
-                                },
-                              ));
-                            },
-                          ),
-                        ]),
-                    ExpansionTile(title: Text('الالبان'),
-                        //    trailing: Icon(Icons.keyboard_arrow_left),
-                        children: [
-                          ListView.builder(
-                            shrinkWrap: true,
-                            physics: NeverScrollableScrollPhysics(),
-                            scrollDirection: Axis.vertical,
-                            itemCount: itemsdairies.length,
-                            itemBuilder: (context, index) {
-                              return Card(
-                                  child: ListTile(
-                                title: Text(itemsdairies[index].title),
-                                leading: CircleAvatar(
-                                    backgroundImage: AssetImage(
-                                        itemsdairies[index].itemIcon)),
-                                trailing: Row(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    IconButton(
-                                        icon: Icon(Icons.add),
-                                        color: Colors.blue,
-                                        onPressed: () {
-                                          itemsdairies[index]
-                                              .incrementCounter();
-
-                                          return cart.add(itemsdairies[index]);
-                                        }),
-                                    Text('${itemsdairies[index].amount}'),
-                                    IconButton(
-                                        icon: Icon(Icons.remove),
-                                        color: Colors.blue,
-                                        onPressed: () {
-                                          itemsdairies[index]
-                                              .decrementCounter();
-
-                                          return cart
-                                              .remove(itemsdairies[index]);
-                                        }),
-                                  ],
-                                ),
-                                onTap: () {
-                                  print('clicked');
-                                },
-                              ));
-                            },
-                          ),
-                        ]),
-                    ExpansionTile(title: Text('المخبوزات'),
-                        //    trailing: Icon(Icons.keyboard_arrow_left),
-                        children: [
-                          ListView.builder(
-                            shrinkWrap: true,
-                            physics: NeverScrollableScrollPhysics(),
-                            scrollDirection: Axis.vertical,
-                            itemCount: itemsbaking.length,
-                            itemBuilder: (context, index) {
-                              return Card(
-                                  child: ListTile(
-                                title: Text(itemsbaking[index].title),
-                                leading: CircleAvatar(
-                                    backgroundImage: AssetImage(
-                                        itemsbaking[index].itemIcon)),
-                                trailing: Row(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    IconButton(
-                                        icon: Icon(Icons.add),
-                                        color: Colors.blue,
-                                        onPressed: () {
-                                          itemsbaking[index].incrementCounter();
-
-                                          return cart.add(itemsbaking[index]);
-                                        }),
-                                    Text('${itemsbaking[index].amount}'),
-                                    IconButton(
-                                        icon: Icon(Icons.remove),
-                                        color: Colors.blue,
-                                        onPressed: () {
-                                          itemsbaking[index].decrementCounter();
-
-                                          return cart
-                                              .remove(itemsbaking[index]);
-                                        }),
-                                  ],
-                                ),
-                                onTap: () {
-                                  print('clicked');
-                                },
-                              ));
-                            },
-                          ),
-                        ]),
-                    ExpansionTile(title: Text('التوابل'),
-                        //    trailing: Icon(Icons.keyboard_arrow_left),
-                        children: [
-                          ListView.builder(
-                            shrinkWrap: true,
-                            physics: NeverScrollableScrollPhysics(),
-                            scrollDirection: Axis.vertical,
-                            itemCount: itemsspices.length,
-                            itemBuilder: (context, index) {
-                              return Card(
-                                  child: ListTile(
-                                title: Text(itemsspices[index].title),
-                                leading: CircleAvatar(
-                                    backgroundImage: AssetImage(
-                                        itemsspices[index].itemIcon)),
-                                trailing: Row(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    IconButton(
-                                        icon: Icon(Icons.add),
-                                        color: Colors.blue,
-                                        onPressed: () {
-                                          itemsspices[index].incrementCounter();
-
-                                          return cart.add(itemsspices[index]);
-                                        }),
-                                    Text('${itemsspices[index].amount}'),
-                                    IconButton(
-                                        icon: Icon(Icons.remove),
-                                        color: Colors.blue,
-                                        onPressed: () {
-                                          itemsspices[index].decrementCounter();
-
-                                          return cart
-                                              .remove(itemsspices[index]);
-                                        }),
-                                  ],
-                                ),
-                                onTap: () {
-                                  print('clicked');
-                                },
-                              ));
-                            },
-                          ),
-                        ]),
-                  ]),
+                  preferredSize: Size(0.0, 70.0),
                 ),
-              )));
+              ),
+              drawer: MyDrawer(),
+              body: ListView.builder(
+                itemCount: categories.length,
+                itemBuilder: (context, index) {
+                  return ExpansionTile(title: Text(categories[index].category),
+                      //    trailing: Icon(Icons.keyboard_arrow_left),
+                      children: [
+                        ListView.builder(
+                          shrinkWrap: true,
+                          physics: NeverScrollableScrollPhysics(),
+                          scrollDirection: Axis.vertical,
+                          itemCount: itemsFruits.length,
+                          itemBuilder: (context, index) {
+                            return Card(
+                                child: ListTile(
+                              title: Text(itemsFruits[index].title),
+                              leading: CircleAvatar(
+                                  backgroundColor: Colors.transparent,
+                                  backgroundImage:
+                                      AssetImage(itemsFruits[index].itemIcon)),
+                              trailing: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  IconButton(
+                                      icon: Icon(Icons.add_box),
+                                      iconSize: 32,
+                                      color: Colors.blue,
+                                      onPressed: () {
+                                        itemsFruits[index].incrementCounter();
+
+                                        return cart.add(itemsFruits[index]);
+                                      }),
+                                  Text('${itemsFruits[index].amount}'),
+                                  IconButton(
+                                      icon: Image(
+                                          image: AssetImage(
+                                              'images/icons/minus.png')),
+                                      onPressed: () {
+                                        itemsFruits[index].decrementCounter();
+
+                                        return cart.remove(itemsFruits[index]);
+                                      }),
+                                  Text('${itemsFruits[index].quantity}'),
+                                ],
+                              ),
+                              onTap: () {},
+                            ));
+                          },
+                        ),
+                      ]);
+                },
+              ),
+            ),
+          ),
+        ),
+      );
     });
   }
 }

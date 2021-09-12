@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:moshtryate_new/data/category.dart';
+import 'package:moshtryate_new/models/category.dart';
 import 'package:provider/provider.dart';
 import 'package:moshtryate_new/models/item.dart';
 import 'package:moshtryate_new/models/cart.dart';
@@ -10,6 +12,7 @@ import '../data/grains.dart';
 import '../data/meatfish.dart';
 import '../data/spices.dart';
 import '../models/cart.dart';
+import '../models/category.dart';
 import 'drawer.dart';
 import 'homepage.dart';
 
@@ -27,18 +30,9 @@ class _NewItemState extends State<NewItem> {
   final List<Item> itemsbaking = baking;
   final List<Item> itemsspices = spices;
   final List<Item> itemsextra = [];
-  final List<String> categories = [
-    'الخضروات و الفواكهة',
-    'اللحوم',
-    'الحبوب',
-    'المشروبات',
-    'الالبان',
-    'المخبوزات',
-    'التوابل',
-    'اخرى'
-  ];
 
-  List<DropdownMenuItem> _categories = [];
+  final List<Category> _categories = categories;
+  Category chooseItem;
 
   Item newitem;
   final titleController = TextEditingController();
@@ -74,9 +68,28 @@ class _NewItemState extends State<NewItem> {
               TextField(
                   controller: titleController,
                   decoration: InputDecoration(hintText: 'الاسم')),
-              TextField(
-                  controller: categoryController,
-                  decoration: InputDecoration(hintText: 'القسم')),
+              SizedBox(
+                width: double.infinity,
+              ),
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: DropdownButtonFormField(
+                  decoration:
+                      InputDecoration(filled: true, icon: Icon(Icons.category)),
+                  hint: Text('اختر القسم'),
+                  isExpanded: true,
+                  value: chooseItem,
+                  onChanged: (newValue) {
+                    setState(() {
+                      chooseItem = newValue;
+                    });
+                  },
+                  items: _categories.map((valueItem) {
+                    return DropdownMenuItem(
+                        value: valueItem, child: Text(valueItem.category));
+                  }).toList(),
+                ),
+              ),
             ]),
           ),
           floatingActionButton: FloatingActionButton(

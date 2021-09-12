@@ -113,11 +113,6 @@ class _LoginScreenState extends State<LoginScreen> {
 
   Future<UserCredential> signInWithCredential(AuthCredential credential) =>
       _auth.signInWithCredential(credential);
-
-  Future<void> signOutFromGoogle() async {
-    await _googleSignIn.signOut();
-    await _auth.signOut();
-  }
 }
 
 class Resource {

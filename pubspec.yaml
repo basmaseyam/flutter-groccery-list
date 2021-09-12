@@ -111,6 +111,10 @@ flutter:
     - images/icons/Spices/icons8-salt-shaker-48.png
     - images/icons/Spices/icons8-spice-50.png 
     - images/icons/moshtryate.png   
+    - images/icons/basket2.png  
+    - images/icons/basket1.png
+    - images/icons/add.png
+    - images/icons/minus.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
