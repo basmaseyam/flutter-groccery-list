@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "471897622441",
+    "project_id": "moshtryate-dd6c2",
+    "storage_bucket": "moshtryate-dd6c2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:471897622441:android:9140a9cddf568443f426b8",
+        "android_client_info": {
+          "package_name": "com.example.moshtryate_new"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "471897622441-3vv932r167b5fbgsjn8m4dd0ncmfuefq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.moshtryate_new",
+            "certificate_hash": "0057417d95d1a2d76d56eab7b761328549ff7f43"
+          }
+        },
+        {
+          "client_id": "471897622441-edfpii6icug6lup4tvtqo87i6hm0s84t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB9vVrLV76Plah8RsYCTPbOHKcVn1s8C9w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "471897622441-edfpii6icug6lup4tvtqo87i6hm0s84t.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
