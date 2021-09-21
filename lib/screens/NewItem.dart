@@ -1,16 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:moshtryate_new/data/category.dart';
 import 'package:moshtryate_new/models/category.dart';
 import 'package:provider/provider.dart';
 import 'package:moshtryate_new/models/item.dart';
 import 'package:moshtryate_new/models/cart.dart';
-import '../data/baking.dart';
-import '../data/dairies.dart';
-import '../data/drinkies.dart';
-import '../data/fruitsveggies.dart';
-import '../data/grains.dart';
-import '../data/meatfish.dart';
-import '../data/spices.dart';
+import '../data/itemscat.dart';
 import '../models/cart.dart';
 import '../models/category.dart';
 import 'drawer.dart';
@@ -22,21 +17,17 @@ class NewItem extends StatefulWidget {
 }
 
 class _NewItemState extends State<NewItem> {
-  final List<Item> itemsFruits = itemFruitsVeggies;
-  final List<Item> itemsgrains = grains;
-  final List<Item> itemsmeat = meatfish;
-  final List<Item> itemsdrinkies = drinkies;
-  final List<Item> itemsdairies = dairies;
-  final List<Item> itemsbaking = baking;
-  final List<Item> itemsspices = spices;
+  final List<Item> itemsCats = items;
+
   final List<Item> itemsextra = [];
 
   final List<Category> _categories = categories;
+  final List<String> _quantities = ['لتر', 'كيلو', 'جرام', 'وحده'];
   Category chooseItem;
 
   Item newitem;
-  final titleController = TextEditingController();
-  final categoryController = TextEditingController();
+
+  final _formKey = GlobalKey<FormBuilderState>();
 
   @override
   Widget build(BuildContext context) {
@@ -59,70 +50,73 @@ class _NewItemState extends State<NewItem> {
           drawer: MyDrawer(),
           body: Padding(
             padding: const EdgeInsets.all(16),
-            child: Column(children: [
-              Text(
-                'اضف جديد',
-                textAlign: TextAlign.center,
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
-              ),
-              TextField(
-                  controller: titleController,
-                  decoration: InputDecoration(hintText: 'الاسم')),
-              SizedBox(
-                width: double.infinity,
-              ),
-              Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: DropdownButtonFormField(
-                  decoration:
-                      InputDecoration(filled: true, icon: Icon(Icons.category)),
-                  hint: Text('اختر القسم'),
-                  isExpanded: true,
-                  value: chooseItem,
-                  onChanged: (newValue) {
-                    setState(() {
-                      chooseItem = newValue;
-                    });
-                  },
-                  items: _categories.map((valueItem) {
-                    return DropdownMenuItem(
-                        value: valueItem, child: Text(valueItem.category));
-                  }).toList(),
+            child: FormBuilder(
+              key: _formKey,
+              child: Column(children: [
+                Text(
+                  'اضف جديد',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
                 ),
-              ),
-            ]),
+                FormBuilderTextField(
+                  name: 'title',
+                  decoration: InputDecoration(hintText: 'الاسم'),
+                  enabled: true,
+                ),
+                SizedBox(
+                  width: double.infinity,
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: FormBuilderDropdown(
+                    name: 'category',
+                    decoration: InputDecoration(
+                        filled: true, icon: Icon(Icons.category)),
+                    hint: Text('اختر القسم'),
+                    isExpanded: true,
+                    allowClear: true,
+                    items: _categories.map((valueItem) {
+                      return DropdownMenuItem(
+                          value: valueItem.category,
+                          child: Text(valueItem.category));
+                    }).toList(),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: FormBuilderDropdown(
+                    name: 'quantity',
+                    decoration: InputDecoration(
+                        filled: true, icon: Icon(Icons.ac_unit)),
+                    hint: Text('اختر الوحده'),
+                    allowClear: true,
+                    items: _quantities.map((valueItem) {
+                      return DropdownMenuItem(
+                          value: valueItem, child: Text(valueItem));
+                    }).toList(),
+                  ),
+                ),
+              ]),
+            ),
           ),
           floatingActionButton: FloatingActionButton(
             // When the user presses the button, show an alert dialog containing
             // the text that the user has entered into the text field.
             onPressed: () {
-              if (newitem != []) {
-                newitem.title = titleController.text;
-                newitem.category = categoryController.text;
-                newitem.itemIcon =
-                    'images/icons/Bread&Bakeing/icons8-bread-48.png';
+              _formKey.currentState.save();
+              if (_formKey.currentState.validate()) {
+                print(_formKey.currentState.value);
+                newitem.title =
+                    _formKey.currentState.fields['title'].toString();
+                newitem.category =
+                    _formKey.currentState.fields['category'].toString();
+                newitem.itemIcon = 'images\icons\groceries.png';
                 newitem.amount = 1;
-                if (newitem.category == 'فواكه و خضراوت')
-                  itemsFruits.add(newitem);
-                else if (newitem.category == 'مخبوزات')
-                  itemsbaking.add(newitem);
-                else if (newitem.category == 'منتجات البان')
-                  itemsdairies.add(newitem);
-                else if (newitem.category == 'حبوب')
-                  itemsgrains.add(newitem);
-                else if (newitem.category == 'لحوم و اسماك')
-                  itemsmeat.add(newitem);
-                else if (newitem.category == 'توابل')
-                  itemsspices.add(newitem);
-                else if (newitem.category == 'مشروبات')
-                  itemsdrinkies.add(newitem);
-                else {
-                  itemsextra.add(newitem);
-                }
-
-                return Text('تم اضافه المنتج الي القائمه');
+                newitem.quantity =
+                    _formKey.currentState.fields['quantity'].toString();
+                itemsCats.add(newitem);
               } else {
-                return Text('حاول مره اخري');
+                print('validation failed');
               }
             },
             tooltip: 'اضف الى القائمه',

@@ -1,6 +1,6 @@
 import 'package:moshtryate_new/models/item.dart';
 
-List<Item> itemFruitsVeggies = [
+List<Item> items = [
   Item(
       title: 'تفاح',
       category: 'فواكه و خضراوت',
@@ -150,5 +150,95 @@ List<Item> itemFruitsVeggies = [
       category: 'فواكه و خضراوت',
       quantity: 'كيلو',
       itemIcon: 'images/icons/FruitsVegeies/icons8-zucchini-48.png',
+      amount: 0),
+  Item(
+      title: 'عيش',
+      category: 'المخبوزات',
+      quantity: 'وحده',
+      itemIcon: 'images/icons/Bread&Bakeing/icons8-bread-48.png',
+      amount: 0),
+  Item(
+      title: 'جبن',
+      category: 'الالبان',
+      quantity: 'كيلو',
+      itemIcon: 'images/icons/DiarayEggs/icons8-cheese-100.png',
+      amount: 0),
+  Item(
+      title: 'بيض',
+      category: 'الالبان',
+      quantity: 'وحده',
+      itemIcon: 'images/icons/DiarayEggs/icons8-egg-carton-64.png',
+      amount: 0),
+  Item(
+      title: 'لبن',
+      category: 'الالبان',
+      quantity: 'لتر',
+      itemIcon: 'images/icons/DiarayEggs/icons8-milk-carton-64.png',
+      amount: 0),
+  Item(
+      title: 'قهوه',
+      category: 'المشروبات',
+      quantity: 'كيلو',
+      itemIcon: 'images/icons/Drinkes/icons8-coffee-beans-50.png',
+      amount: 0),
+  Item(
+      title: 'شاي',
+      category: 'المشروبات',
+      quantity: 'وحده',
+      itemIcon: 'images/icons/Drinkes/icons8-tea-64.png',
+      amount: 0),
+  Item(
+      title: 'دقيق',
+      category: 'الحبوب',
+      quantity: 'كيلو',
+      itemIcon: 'images/icons/Grains/icons8-flour-in-paper-packaging-48.png',
+      amount: 0),
+  Item(
+      title: 'شوفان',
+      category: 'الحبوب',
+      quantity: 'كيلو',
+      itemIcon: 'images/icons/Grains/icons8-rolled-oats-48.png',
+      amount: 0),
+  Item(
+      title: 'سمك',
+      category: 'اللحوم',
+      quantity: 'كيلو',
+      itemIcon: 'images/icons/MeatFish/icons8-fish-food-48.png',
+      amount: 0),
+  Item(
+      title: 'لحمه',
+      category: 'اللحوم',
+      quantity: 'كيلو',
+      itemIcon: 'images/icons/MeatFish/icons8-meat-64.png',
+      amount: 0),
+  Item(
+      title: 'دجاج',
+      category: 'اللحوم',
+      quantity: 'كيلو',
+      itemIcon: 'images/icons/MeatFish/icons8-poultry-leg-48.png',
+      amount: 0),
+  Item(
+      title: 'ديك رومي',
+      category: 'اللحوم',
+      quantity: 'كيلو',
+      itemIcon: 'images/icons/MeatFish/icons8-thanksgiving-turkey-64.png',
+      amount: 0),
+  Item(
+      title: 'جمبري',
+      category: 'اللحوم',
+      quantity: 'كيلو',
+      itemIcon: 'images/icons/MeatFish/icons8-prawn-48.png',
+      amount: 0),
+  Item(
+      title: 'ملح',
+      category: 'التوابل',
+      quantity: 'جرام',
+      itemIcon: 'images/icons/Spices/icons8-salt-shaker-48.png',
+      amount: 0),
+  Item(
+      title: 'فلفل',
+      category: 'التوابل',
+      quantity: 'جرام',
+      itemIcon: 'images/icons/Spices/icons8-spice-50.png',
       amount: 0),
 ];

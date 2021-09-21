@@ -1,13 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:moshtryate_new/data/baking.dart';
 import 'package:moshtryate_new/data/category.dart';
-import 'package:moshtryate_new/data/dairies.dart';
-import 'package:moshtryate_new/data/drinkies.dart';
-import 'package:moshtryate_new/data/fruitsveggies.dart';
-import 'package:moshtryate_new/data/grains.dart';
-import 'package:moshtryate_new/data/meatfish.dart';
-import 'package:moshtryate_new/data/spices.dart';
+import 'package:moshtryate_new/data/itemscat.dart';
 import 'package:moshtryate_new/models/cart.dart';
+import 'package:moshtryate_new/models/category.dart';
 import 'package:moshtryate_new/models/item.dart';
 import 'package:provider/provider.dart';
 
@@ -23,13 +18,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final List<Item> itemsFruits = itemFruitsVeggies;
-  final List<Item> itemsgrains = grains;
-  final List<Item> itemsmeat = meatfish;
-  final List<Item> itemsdrinkies = drinkies;
-  final List<Item> itemsdairies = dairies;
-  final List<Item> itemsbaking = baking;
-  final List<Item> itemsspices = spices;
+  final List<Item> itemsCats = items;
+
   final List<Item> itemsothers = [];
 
   int amount = 0;
@@ -84,7 +74,7 @@ class _HomePageState extends State<HomePage> {
                 ],
                 bottom: PreferredSize(
                   child: Padding(
-                    padding: const EdgeInsets.all(8.00),
+                    padding: const EdgeInsets.all(16.0),
                     child: TextField(
                       autofocus: false,
                       decoration: InputDecoration(
@@ -107,29 +97,32 @@ class _HomePageState extends State<HomePage> {
                       },
                     ),
                   ),
-                  preferredSize: Size(0.0, 70.0),
+                  preferredSize: Size(0.0, 90.0),
                 ),
               ),
               drawer: MyDrawer(),
               body: ListView.builder(
                 itemCount: categories.length,
                 itemBuilder: (context, index) {
-                  return ExpansionTile(title: Text(categories[index].category),
+                  String cat = categories[index].category;
+                  List<Item> selectedItems =
+                      itemsCats.where((p) => p.category.contains(cat)).toList();
+                  return ExpansionTile(title: Text(cat),
                       //    trailing: Icon(Icons.keyboard_arrow_left),
                       children: [
                         ListView.builder(
                           shrinkWrap: true,
                           physics: NeverScrollableScrollPhysics(),
                           scrollDirection: Axis.vertical,
-                          itemCount: itemsFruits.length,
+                          itemCount: selectedItems.length,
                           itemBuilder: (context, index) {
                             return Card(
                                 child: ListTile(
-                              title: Text(itemsFruits[index].title),
+                              title: Text(selectedItems[index].title),
                               leading: CircleAvatar(
                                   backgroundColor: Colors.transparent,
-                                  backgroundImage:
-                                      AssetImage(itemsFruits[index].itemIcon)),
+                                  backgroundImage: AssetImage(
+                                      selectedItems[index].itemIcon)),
                               trailing: Row(
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
@@ -138,21 +131,22 @@ class _HomePageState extends State<HomePage> {
                                       iconSize: 32,
                                       color: Colors.blue,
                                       onPressed: () {
-                                        itemsFruits[index].incrementCounter();
+                                        selectedItems[index].incrementCounter();
 
-                                        return cart.add(itemsFruits[index]);
+                                        return cart.add(selectedItems[index]);
                                       }),
-                                  Text('${itemsFruits[index].amount}'),
+                                  Text('${selectedItems[index].amount}'),
                                   IconButton(
                                       icon: Image(
                                           image: AssetImage(
                                               'images/icons/minus.png')),
                                       onPressed: () {
-                                        itemsFruits[index].decrementCounter();
+                                        selectedItems[index].decrementCounter();
 
-                                        return cart.remove(itemsFruits[index]);
+                                        return cart
+                                            .remove(selectedItems[index]);
                                       }),
-                                  Text('${itemsFruits[index].quantity}'),
+                                  Text('${selectedItems[index].quantity}'),
                                 ],
                               ),
                               onTap: () {},
@@ -200,13 +194,7 @@ class Searchbar extends SearchDelegate<Item> {
 
   @override
   Widget buildResults(BuildContext context) {
-    List<Item> mylist = itemFruitsVeggies +
-        grains +
-        meatfish +
-        spices +
-        baking +
-        dairies +
-        drinkies;
+    List<Item> mylist = items;
     final Item result = mylist.where((p) => p.title.contains(query)).first;
     final _formKey = GlobalKey<FormState>();
     return Consumer<Cart>(builder: (context, cart, child) {
@@ -261,13 +249,7 @@ class Searchbar extends SearchDelegate<Item> {
 
   @override
   Widget buildSuggestions(BuildContext context) {
-    List<Item> mylist = itemFruitsVeggies +
-        grains +
-        meatfish +
-        spices +
-        baking +
-        dairies +
-        drinkies;
+    List<Item> mylist = items;
 
     mylist = query.isEmpty
         ? mylist
