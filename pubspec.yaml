@@ -36,6 +36,7 @@ dependencies:
   google_sign_in: ^5.0.4
   share_plus: ^2.1.4
   flutter_form_builder: ^6.1.0+1
+  path_provider: ^2.0.4
   
 
 dev_dependencies:
@@ -116,6 +117,10 @@ flutter:
     - images/icons/basket1.png
     - images/icons/add.png
     - images/icons/minus.png
+    - images/icons/minus1.png
+    - images/icons/2-.png
+    - images/icons/3-.png
+    - images/icons/groceries.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

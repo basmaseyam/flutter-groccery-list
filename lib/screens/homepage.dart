@@ -53,7 +53,7 @@ class _HomePageState extends State<HomePage> {
                               builder: (context) => NewItem()));
                         }),
                     Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 16),
+                      padding: EdgeInsets.only(left: 32),
                       child: Row(
                         children: [
                           IconButton(
@@ -139,14 +139,19 @@ class _HomePageState extends State<HomePage> {
                                   IconButton(
                                       icon: Image(
                                           image: AssetImage(
-                                              'images/icons/minus.png')),
+                                              'images/icons/2-.png')),
                                       onPressed: () {
                                         selectedItems[index].decrementCounter();
 
                                         return cart
                                             .remove(selectedItems[index]);
                                       }),
-                                  Text('${selectedItems[index].quantity}'),
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 8.0),
+                                    child: Text(
+                                        '${selectedItems[index].quantity}'),
+                                  ),
                                 ],
                               ),
                               onTap: () {},
@@ -261,7 +266,7 @@ class Searchbar extends SearchDelegate<Item> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                "...لا يوجد المنتج ",
+                "هذا المنتج غير موجود",
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
@@ -275,7 +280,7 @@ class Searchbar extends SearchDelegate<Item> {
                   Navigator.of(context)
                       .push(MaterialPageRoute(builder: (context) => NewItem()));
                 },
-                child: const Text('اضف جديد'),
+                child: const Text('اضف منتج جديد'),
               ),
             ],
           ))

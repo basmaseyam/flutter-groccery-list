@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:moshtryate_new/data/category.dart';
 import 'package:moshtryate_new/models/category.dart';
 import 'package:provider/provider.dart';
@@ -22,7 +23,7 @@ class _NewItemState extends State<NewItem> {
   final List<Item> itemsextra = [];
 
   final List<Category> _categories = categories;
-  final List<String> _quantities = ['لتر', 'كيلو', 'جرام', 'وحده'];
+  final List<String> _quantities = ['لتر   ', 'كيلو ', 'عبوه', 'وحده'];
   Category chooseItem;
 
   Item newitem;
@@ -61,7 +62,6 @@ class _NewItemState extends State<NewItem> {
                 FormBuilderTextField(
                   name: 'title',
                   decoration: InputDecoration(hintText: 'الاسم'),
-                  enabled: true,
                 ),
                 SizedBox(
                   width: double.infinity,
@@ -87,7 +87,7 @@ class _NewItemState extends State<NewItem> {
                   child: FormBuilderDropdown(
                     name: 'quantity',
                     decoration: InputDecoration(
-                        filled: true, icon: Icon(Icons.ac_unit)),
+                        filled: true, icon: Icon(Icons.ad_units)),
                     hint: Text('اختر الوحده'),
                     allowClear: true,
                     items: _quantities.map((valueItem) {
