@@ -1,5 +1,9 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:flat_icons_flutter/flat_icons_flutter.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:moshtryate_new/data/category.dart';
 import 'package:moshtryate_new/models/category.dart';
@@ -13,6 +17,9 @@ import 'drawer.dart';
 import 'homepage.dart';
 
 class NewItem extends StatefulWidget {
+  final itemStorage storage;
+
+  const NewItem({Key key, this.storage}) : super(key: key);
   @override
   _NewItemState createState() => _NewItemState();
 }
@@ -96,6 +103,53 @@ class _NewItemState extends State<NewItem> {
                     }).toList(),
                   ),
                 ),
+                Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: FormBuilderChoiceChip(
+                    name: 'image',
+                    decoration: InputDecoration(
+                      labelText: 'اختر الصوره',
+                    ),
+                    options: [
+                      FormBuilderFieldOption(
+                        value: 'images/png/groceries.png',
+                        child: CircleAvatar(
+                            backgroundImage:
+                                AssetImage('images/png/groceries.png')),
+                      ),
+                      FormBuilderFieldOption(
+                        value: 'images/png/light-bulb.png',
+                        child: CircleAvatar(
+                            backgroundImage:
+                                AssetImage('images/png/light-bulb.png')),
+                      ),
+                      FormBuilderFieldOption(
+                        value: 'images/png/gingerbread.png',
+                        child: CircleAvatar(
+                            backgroundImage:
+                                AssetImage('images/png/gingerbread.png')),
+                      ),
+                      FormBuilderFieldOption(
+                        value: 'images/png/hazelnut.png',
+                        child: CircleAvatar(
+                            backgroundImage:
+                                AssetImage('images/png/hazelnut.png')),
+                      ),
+                      FormBuilderFieldOption(
+                        value: 'images/png/pasta.pn',
+                        child: CircleAvatar(
+                            backgroundImage:
+                                AssetImage('images/png/pasta.png')),
+                      ),
+                      FormBuilderFieldOption(
+                        value: 'images/png/pasta.pn',
+                        child: CircleAvatar(
+                            backgroundImage:
+                                AssetImage('images/png/glass-3.png')),
+                      ),
+                    ],
+                  ),
+                ),
               ]),
             ),
           ),
@@ -110,11 +164,14 @@ class _NewItemState extends State<NewItem> {
                     _formKey.currentState.fields['title'].toString();
                 newitem.category =
                     _formKey.currentState.fields['category'].toString();
-                newitem.itemIcon = 'images\icons\groceries.png';
+                newitem.itemIcon =
+                    _formKey.currentState.fields['image'].toString();
+
                 newitem.amount = 1;
                 newitem.quantity =
                     _formKey.currentState.fields['quantity'].toString();
-                itemsCats.add(newitem);
+
+                widget.storage.writeCounter(newitem);
               } else {
                 print('validation failed');
               }
@@ -125,5 +182,25 @@ class _NewItemState extends State<NewItem> {
         ),
       );
     });
+  }
+}
+
+class itemStorage {
+  Future<String> get _localPath async {
+    final directory = await getApplicationDocumentsDirectory();
+
+    return directory.path;
+  }
+
+  Future<File> get _localFile async {
+    final path = await _localPath;
+    return File('$path/data/itemscat.dart');
+  }
+
+  Future<File> writeCounter(Item newItem) async {
+    final file = await _localFile;
+
+    // Write the file
+    return file.writeAsString('$newItem');
   }
 }

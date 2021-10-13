@@ -37,6 +37,8 @@ dependencies:
   share_plus: ^2.1.4
   flutter_form_builder: ^6.1.0+1
   path_provider: ^2.0.4
+  font_awesome_flutter: ^9.1.0
+  flat_icons_flutter: ^1.0.2
   
 
 dev_dependencies:
@@ -56,72 +58,8 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - images/icons/icons8-almond-butter-48.png
-    - images/icons/icons8-butter-16.png
-    - images/icons/icons8-happy-64.png
-    - images/icons/icons8-honey-48.png
-    - images/icons/icons8-olive-oil-48.png
-    - images/icons/icons8-olive-oil-100.png
-    - images/icons/icons8-pizza-48.png
-    - images/icons/icons8-spice-16.png
-    - images/icons/icons8-teapot-50.png
-    - images/icons/Bread&Bakeing/icons8-bread-48.png
-    - images/icons/Bread&Bakeing/icons8-bread-64.png
-    - images/icons/DiarayEggs/icons8-cheese-100.png
-    - images/icons/DiarayEggs/icons8-egg-carton-48.png
-    - images/icons/DiarayEggs/icons8-egg-carton-64.png
-    - images/icons/DiarayEggs/icons8-milk-48.png
-    - images/icons/DiarayEggs/icons8-milk-carton-64.png
-    - images/icons/Drinkes/icons8-coffee-beans-50.png
-    - images/icons/Drinkes/icons8-tea-64.png
-    - images/icons/Drinkes/icons8-tea-100.png
-    - images/icons/FruitsVegeies/icons8-apple-48.png
-    - images/icons/FruitsVegeies/icons8-avocado-48.png
-    - images/icons/FruitsVegeies/icons8-banana-48.png
-    - images/icons/FruitsVegeies/icons8-cabbage-48.png
-    - images/icons/FruitsVegeies/icons8-carrot-48 (1).png
-    - images/icons/FruitsVegeies/icons8-cauliflower-48.png
-    - images/icons/FruitsVegeies/icons8-chili-pepper-64.png
-    - images/icons/FruitsVegeies/icons8-citrus-48.png
-    - images/icons/FruitsVegeies/icons8-cucumber-48.png
-    - images/icons/FruitsVegeies/icons8-eggplant-48.png
-    - images/icons/FruitsVegeies/icons8-garlic-48.png
-    - images/icons/FruitsVegeies/icons8-garlic-64.png
-    - images/icons/FruitsVegeies/icons8-half-orange-48.png
-    - images/icons/FruitsVegeies/icons8-lettuce-48.png
-    - images/icons/FruitsVegeies/icons8-mango-48.png
-    - images/icons/FruitsVegeies/icons8-onion-48.png
-    - images/icons/FruitsVegeies/icons8-paprika-48.png
-    - images/icons/FruitsVegeies/icons8-pear-48.png
-    - images/icons/FruitsVegeies/icons8-peas-48.png
-    - images/icons/FruitsVegeies/icons8-pineapple-48.png
-    - images/icons/FruitsVegeies/icons8-pomegranate-48.png
-    - images/icons/FruitsVegeies/icons8-potato-48.png
-    - images/icons/FruitsVegeies/icons8-sweet-potato-48.png
-    - images/icons/FruitsVegeies/icons8-tomato-48.png
-    - images/icons/FruitsVegeies/icons8-watermelon-48.png
-    - images/icons/FruitsVegeies/icons8-whole-apple-48.png
-    - images/icons/FruitsVegeies/icons8-zucchini-48.png
-    - images/icons/Grains/icons8-flour-in-paper-packaging-48.png
-    - images/icons/Grains/icons8-rolled-oats-48.png
-    - images/icons/MeatFish/icons8-crab-48.png
-    - images/icons/MeatFish/icons8-fish-food-48.png
-    - images/icons/MeatFish/icons8-meat-64.png
-    - images/icons/MeatFish/icons8-poultry-leg-48.png
-    - images/icons/MeatFish/icons8-prawn-48.png
-    - images/icons/MeatFish/icons8-thanksgiving-turkey-64.png
-    - images/icons/Spices/icons8-salt-shaker-48.png
-    - images/icons/Spices/icons8-spice-50.png 
-    - images/icons/moshtryate.png   
-    - images/icons/basket2.png  
-    - images/icons/basket1.png
-    - images/icons/add.png
-    - images/icons/minus.png
-    - images/icons/minus1.png
-    - images/icons/2-.png
-    - images/icons/3-.png
-    - images/icons/groceries.png
-
+    - images/icons/
+    - images/png/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
 
@@ -140,6 +78,9 @@ flutter:
     - family: Pacifico
       fonts:
         - asset: fonts/Pacifico-Regular.ttf
+    - family: Flaticon
+      fonts:
+        - asset: fonts/Flaticon.ttf    
         
   #
   # For details regarding fonts from package dependencies,
