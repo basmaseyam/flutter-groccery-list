@@ -1,10 +1,13 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
 import 'package:moshtryate_new/data/category.dart';
 import 'package:moshtryate_new/data/itemscat.dart';
 import 'package:moshtryate_new/models/cart.dart';
 import 'package:moshtryate_new/models/category.dart';
 import 'package:moshtryate_new/models/item.dart';
 import 'package:provider/provider.dart';
+//import 'package:moshtryate_new/screens/About.dart';
 
 import 'NewItem.dart';
 import 'checkout.dart';
@@ -36,18 +39,24 @@ class _HomePageState extends State<HomePage> {
             textDirection: TextDirection.rtl,
             child: Scaffold(
               appBar: AppBar(
+                titleSpacing: 0, // updated by aya
                 title: Text(
                   "مشترياتي",
                   textDirection: TextDirection.rtl,
                   style: TextStyle(
                     fontFamily: 'Vibes',
-                    fontSize: 25,
+                    fontSize: 35,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
                 actions: [
                   Row(children: [
+                    // a row for + and cart icon at appbar
                     IconButton(
-                        icon: Icon(Icons.add),
+                        icon: Icon(
+                          Icons.add,
+                          size: 30,
+                        ), // updated by aya
                         onPressed: () {
                           Navigator.of(context).push(MaterialPageRoute(
                               builder: (context) => NewItem()));
@@ -58,7 +67,9 @@ class _HomePageState extends State<HomePage> {
                         children: [
                           IconButton(
                             icon: Image(
-                                image: AssetImage('images/icons/basket1.png')),
+                              image: AssetImage('images/icons/basket1.png'),
+                            ),
+                            iconSize: 35, // by aya
                             onPressed: () {
                               Navigator.of(context).push(MaterialPageRoute(
                                   builder: (context) => CheckoutPage()));
@@ -74,17 +85,23 @@ class _HomePageState extends State<HomePage> {
                 ],
                 bottom: PreferredSize(
                   child: Padding(
-                    padding: const EdgeInsets.all(16.0),
+                    padding: const EdgeInsets.fromLTRB(12, 0, 12, 11),
                     child: TextField(
                       autofocus: false,
                       decoration: InputDecoration(
+                        contentPadding: const EdgeInsets.symmetric(
+                            vertical: 12.0, horizontal: 10), //updated by aya
+                        //  prefixIcon: Icon(Icons.search),    // to add search icon before text
                         filled: true,
                         border: OutlineInputBorder(),
-                        icon: Icon(
+                        /*                    icon: Icon(     //searcg icon
                           Icons.search,
+
                           color: Colors.white,
                         ),
-                        hintText: 'بحث',
+
+     */ //updated by aya
+                        hintText: 'البحث عن منتج',
                         fillColor: Colors.white,
                         focusColor: Colors.white,
                       ),
@@ -97,7 +114,7 @@ class _HomePageState extends State<HomePage> {
                       },
                     ),
                   ),
-                  preferredSize: Size(0.0, 90.0),
+                  preferredSize: Size(0, 70.0),
                 ),
               ),
               drawer: MyDrawer(),
@@ -138,8 +155,9 @@ class _HomePageState extends State<HomePage> {
                                   Text('${selectedItems[index].amount}'),
                                   IconButton(
                                       icon: Image(
-                                          image: AssetImage(
-                                              'images/icons/2-.png')),
+                                        image:
+                                            AssetImage('images/icons/2-.png'),
+                                      ),
                                       onPressed: () {
                                         selectedItems[index].decrementCounter();
 

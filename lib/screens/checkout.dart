@@ -20,7 +20,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
         textDirection: TextDirection.rtl,
         child: Scaffold(
             appBar: AppBar(
-              title: Text('قائمه التسوق'),
+              title: Text('قائمة التسوق'),
               actions: [
                 IconButton(
                   icon: Icon(Icons.share),
@@ -46,7 +46,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
             drawer: MyDrawer(),
             body: cart.basketItems.length == 0
                 ? Center(
-                    child: Text('لا يوجد مشتريات ',
+                    child: Text('لا توجد مشتريات',
                         style: TextStyle(
                             fontSize: 28, fontWeight: FontWeight.bold)))
                 : ListView.builder(
@@ -71,19 +71,19 @@ class _CheckoutPageState extends State<CheckoutPage> {
                             mainAxisSize: MainAxisSize.min,
                             children: [
                               IconButton(
-                                  icon: Icon(Icons.add),
+                                  icon: Icon(Icons.delete),
                                   color: Colors.blue,
                                   onPressed: () {
-                                    cart.basketItems[index].incrementCounter();
+                                    // cart.basketItems[index].incrementCounter();
 
-                                    return cart.add(cart.basketItems[index]);
-                                  }),
-                              Text('${cart.basketItems[index].amount}'),
-                              IconButton(
-                                  icon: Icon(Icons.remove),
-                                  color: Colors.blue,
-                                  onPressed: () {
-                                    cart.basketItems[index].decrementCounter();
+                                    // return cart.add(cart.basketItems[index]);
+                                    // }),
+                                    // Text('${cart.basketItems[index].amount}'),
+                                    // IconButton(
+                                    // icon: Icon(Icons.remove),
+                                    //  color: Colors.blue,
+                                    //  onPressed: () {
+                                    //    cart.basketItems[index].decrementCounter();
 
                                     return cart.remove(cart.basketItems[index]);
                                   }),

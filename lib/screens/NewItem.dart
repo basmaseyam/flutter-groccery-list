@@ -17,9 +17,7 @@ import 'drawer.dart';
 import 'homepage.dart';
 
 class NewItem extends StatefulWidget {
-  final itemStorage storage;
-
-  const NewItem({Key key, this.storage}) : super(key: key);
+  const NewItem({Key key}) : super(key: key);
   @override
   _NewItemState createState() => _NewItemState();
 }
@@ -30,16 +28,16 @@ class _NewItemState extends State<NewItem> {
   final List<Item> itemsextra = [];
 
   final List<Category> _categories = categories;
-  final List<String> _quantities = ['لتر   ', 'كيلو ', 'عبوه', 'وحده'];
+  final List<String> _quantities = ['لتر', 'كيلو', 'عبوة', 'وحدة'];
   Category chooseItem;
 
-  Item newitem;
+  var newitem = Item();
 
   final _formKey = GlobalKey<FormBuilderState>();
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<Cart>(builder: (context, item, child) {
+    return Consumer<Cart>(builder: (context, cart, child) {
       return Directionality(
         textDirection: TextDirection.rtl,
         child: Scaffold(
@@ -60,15 +58,15 @@ class _NewItemState extends State<NewItem> {
             padding: const EdgeInsets.all(16),
             child: FormBuilder(
               key: _formKey,
-              child: Column(children: [
+              child: ListView(children: [
                 Text(
-                  'اضف جديد',
+                  'اضف منتج جديد',
                   textAlign: TextAlign.center,
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
                 ),
                 FormBuilderTextField(
                   name: 'title',
-                  decoration: InputDecoration(hintText: 'الاسم'),
+                  decoration: InputDecoration(hintText: 'اسم المنتج '),
                 ),
                 SizedBox(
                   width: double.infinity,
@@ -78,8 +76,9 @@ class _NewItemState extends State<NewItem> {
                   child: FormBuilderDropdown(
                     name: 'category',
                     decoration: InputDecoration(
-                        filled: true, icon: Icon(Icons.category)),
-                    hint: Text('اختر القسم'),
+                      filled: true, /* icon: Icon(Icons.category)*/
+                    ), //Updated by aya , removed un necessary search icon
+                    hint: Text('اختر القسم المناسب'),
                     isExpanded: true,
                     allowClear: true,
                     items: _categories.map((valueItem) {
@@ -94,8 +93,9 @@ class _NewItemState extends State<NewItem> {
                   child: FormBuilderDropdown(
                     name: 'quantity',
                     decoration: InputDecoration(
-                        filled: true, icon: Icon(Icons.ad_units)),
-                    hint: Text('اختر الوحده'),
+                      filled: true, /*icon: Icon(Icons.ad_units)*/
+                    ), //Updated by aya , removed un necessary icon
+                    hint: Text('اختر الوحدة المناسبة'),
                     allowClear: true,
                     items: _quantities.map((valueItem) {
                       return DropdownMenuItem(
@@ -106,9 +106,11 @@ class _NewItemState extends State<NewItem> {
                 Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: FormBuilderChoiceChip(
+                    spacing: 8,
+                    runSpacing: 8,
                     name: 'image',
                     decoration: InputDecoration(
-                      labelText: 'اختر الصوره',
+                      labelText: 'اختر الصورة',
                     ),
                     options: [
                       FormBuilderFieldOption(
@@ -142,7 +144,8 @@ class _NewItemState extends State<NewItem> {
                                 AssetImage('images/png/pasta.png')),
                       ),
                       FormBuilderFieldOption(
-                        value: 'images/png/pasta.pn',
+                        value:
+                            'images/png/glass-3.png', //Updated by aya, wrong VALUE WAS GIVEN AS PASTA
                         child: CircleAvatar(
                             backgroundImage:
                                 AssetImage('images/png/glass-3.png')),
@@ -160,18 +163,21 @@ class _NewItemState extends State<NewItem> {
               _formKey.currentState.save();
               if (_formKey.currentState.validate()) {
                 print(_formKey.currentState.value);
-                newitem.title =
-                    _formKey.currentState.fields['title'].toString();
+
+                newitem.title = _formKey.currentState.value['title'].toString();
+
                 newitem.category =
-                    _formKey.currentState.fields['category'].toString();
+                    _formKey.currentState.value['category'].toString();
                 newitem.itemIcon =
-                    _formKey.currentState.fields['image'].toString();
+                    _formKey.currentState.value['image'].toString();
 
                 newitem.amount = 1;
                 newitem.quantity =
-                    _formKey.currentState.fields['quantity'].toString();
-
-                widget.storage.writeCounter(newitem);
+                    _formKey.currentState.value['quantity'].toString();
+                print(newitem.title);
+                cart.add(newitem);
+                items.add(newitem);
+                print(items.length);
               } else {
                 print('validation failed');
               }
@@ -185,22 +191,21 @@ class _NewItemState extends State<NewItem> {
   }
 }
 
-class itemStorage {
-  Future<String> get _localPath async {
-    final directory = await getApplicationDocumentsDirectory();
+Future<String> get _localPath async {
+  final directory = await getApplicationDocumentsDirectory();
 
-    return directory.path;
-  }
+  return directory.path;
+}
 
-  Future<File> get _localFile async {
-    final path = await _localPath;
-    return File('$path/data/itemscat.dart');
-  }
+Future<File> get _localFile async {
+  final path = await _localPath;
+  print(path);
+  return File('$path/lib/data/itemscat.dart');
+}
 
-  Future<File> writeCounter(Item newItem) async {
-    final file = await _localFile;
+Future<File> writeCounter(String addedItem) async {
+  final file = await _localFile;
 
-    // Write the file
-    return file.writeAsString('$newItem');
-  }
+  // Write the file
+  return file.writeAsString('$addedItem');
 }

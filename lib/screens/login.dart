@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:flutter_signin_button/button_list.dart';
@@ -45,21 +46,30 @@ class _LoginScreenState extends State<LoginScreen> {
               width: double.infinity,
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 30),
-              child: SignInButton(
-                Buttons.Google,
-                onPressed: () async {
-                  await signInWithGoogle();
-                },
+              padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 0),
+              child: Container(
+                height: 48,
+                width: 250,
+                child: SignInButton(
+                  Buttons.Google,
+                  shape: BeveledRectangleBorder(),
+                  onPressed: () async {
+                    await signInWithGoogle();
+                  },
+                ),
               ),
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 30),
-              child: SignInButton(
-                Buttons.Facebook,
-                onPressed: () async {
-                  await signInWithFacebook();
-                },
+              padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
+              child: Container(
+                height: 48,
+                width: 250,
+                child: SignInButton(
+                  Buttons.Facebook,
+                  onPressed: () async {
+                    await signInWithFacebook();
+                  },
+                ),
               ),
             ),
           ],
@@ -84,7 +94,22 @@ class _LoginScreenState extends State<LoginScreen> {
             .push(MaterialPageRoute(builder: (context) => HomePage()));
       }
     } catch (error) {
-      print(error);
+      print('No internet connection');
+      return showDialog(
+        context: context,
+        builder: (BuildContext context) => AlertDialog(
+            title: const Text('No internet connection'),
+            actions: <Widget>[
+              TextButton(
+                onPressed: () => Navigator.pop(context, 'Cancel'),
+                child: const Text('Cancel'),
+              ),
+              TextButton(
+                onPressed: () => Navigator.pop(context, 'OK'),
+                child: const Text('OK'),
+              ),
+            ]),
+      );
     }
   }
 
