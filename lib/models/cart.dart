@@ -19,6 +19,7 @@ class Cart extends ChangeNotifier {
 
   void delete(Item selectedItem) {
     _items.removeWhere((item) => selectedItem.title == item.title);
+    selectedItem.amount = 0;
     notifyListeners();
   }
 

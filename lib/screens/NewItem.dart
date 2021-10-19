@@ -67,6 +67,8 @@ class _NewItemState extends State<NewItem> {
                 FormBuilderTextField(
                   name: 'title',
                   decoration: InputDecoration(hintText: 'اسم المنتج '),
+                  validator: FormBuilderValidators.compose(
+                      [FormBuilderValidators.required(context)]),
                 ),
                 SizedBox(
                   width: double.infinity,
@@ -74,6 +76,8 @@ class _NewItemState extends State<NewItem> {
                 Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: FormBuilderDropdown(
+                    validator: FormBuilderValidators.compose(
+                        [FormBuilderValidators.required(context)]),
                     name: 'category',
                     decoration: InputDecoration(
                       filled: true, /* icon: Icon(Icons.category)*/
@@ -91,6 +95,8 @@ class _NewItemState extends State<NewItem> {
                 Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: FormBuilderDropdown(
+                    validator: FormBuilderValidators.compose(
+                        [FormBuilderValidators.required(context)]),
                     name: 'quantity',
                     decoration: InputDecoration(
                       filled: true, /*icon: Icon(Icons.ad_units)*/
@@ -106,6 +112,8 @@ class _NewItemState extends State<NewItem> {
                 Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: FormBuilderChoiceChip(
+                    validator: FormBuilderValidators.compose(
+                        [FormBuilderValidators.required(context)]),
                     spacing: 8,
                     runSpacing: 8,
                     name: 'image',
@@ -187,7 +195,11 @@ class _NewItemState extends State<NewItem> {
                           child: const Text('Cancel'),
                         ),
                         TextButton(
-                          onPressed: () => Navigator.pop(context, 'OK'),
+                          onPressed: () {
+                            Navigator.pop(context, 'OK');
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => HomePage()));
+                          },
                           child: const Text('OK'),
                         ),
                       ]),
