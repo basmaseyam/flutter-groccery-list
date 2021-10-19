@@ -4,6 +4,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:moshtryate_new/screens/NewItem.dart';
 import 'package:moshtryate_new/screens/checkout.dart';
 import 'homepage.dart';
+import 'about.dart';
 import 'login.dart';
 
 class MyDrawer extends StatelessWidget {
@@ -49,6 +50,19 @@ class MyDrawer extends StatelessWidget {
             onTap: () {
               Navigator.of(context).push(
                   MaterialPageRoute(builder: (context) => CheckoutPage()));
+            },
+          ),
+        ),
+        InkWell(
+          child: // to make the menu clickable and action happens
+              ListTile(
+            title: Text(
+              'المواقع',
+            ),
+            leading: Icon(Icons.link),
+            onTap: () {
+              Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (context) => About()));
             },
           ),
         ),

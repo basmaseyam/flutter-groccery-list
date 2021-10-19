@@ -138,7 +138,7 @@ class _NewItemState extends State<NewItem> {
                                 AssetImage('images/png/hazelnut.png')),
                       ),
                       FormBuilderFieldOption(
-                        value: 'images/png/pasta.pn',
+                        value: 'images/png/pasta.png',
                         child: CircleAvatar(
                             backgroundImage:
                                 AssetImage('images/png/pasta.png')),
