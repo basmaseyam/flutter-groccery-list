@@ -39,6 +39,8 @@ dependencies:
   path_provider: ^2.0.4
   font_awesome_flutter: ^9.1.0
   flat_icons_flutter: ^1.0.2
+  url_launcher: ^6.0.10
+  connectivity: ^3.0.6
   
 
 dev_dependencies:
@@ -60,6 +62,13 @@ flutter:
   assets:
     - images/icons/
     - images/png/
+    - images/icons/Bread&Bakeing/
+    - images/icons/DiarayEggs/
+    - images/icons/Drinkes/
+    - images/icons/FruitsVegeies/
+    - images/icons/Grains/
+    - images/icons/MeatFish/
+    - images/icons/Spices/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
 

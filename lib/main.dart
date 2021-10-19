@@ -3,11 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:moshtryate_new/screens/homepage.dart';
 import 'package:provider/provider.dart';
 import 'package:moshtryate_new/screens/login.dart';
-
+import 'package:connectivity/connectivity.dart';
 import 'models/cart.dart';
 
 main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
   await Firebase.initializeApp();
   runApp(
     ChangeNotifierProvider(

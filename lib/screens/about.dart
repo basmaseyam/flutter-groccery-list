@@ -1,5 +1,5 @@
 import 'dart:ui';
-
+import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
@@ -122,23 +122,35 @@ class _AboutState extends State<About> {
               drawer: MyDrawer(),
               body: Column(
                 children: [
-                  Card(
+                  InkWell(
                     child: Padding(
                       padding: const EdgeInsets.all(16.0),
                       child: Text(
                         "Icons8: https://icons8.com/license",
                         textDirection: TextDirection.rtl,
+                        style: TextStyle(
+                            decoration: TextDecoration.underline,
+                            color: Colors.blue),
                       ),
                     ),
+                    onTap: () {
+                      launch('https://icons8.com/');
+                    },
                   ),
-                  Card(
+                  InkWell(
                     child: Padding(
                       padding: const EdgeInsets.all(16.0),
                       child: Text(
                         "Font Awesome by Dave Gandy - http://fontawesome.io",
                         textDirection: TextDirection.rtl,
+                        style: TextStyle(
+                            decoration: TextDecoration.underline,
+                            color: Colors.blue),
                       ),
                     ),
+                    onTap: () {
+                      launch('https://icons8.com/');
+                    },
                   ),
                 ],
               ),

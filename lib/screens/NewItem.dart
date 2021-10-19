@@ -177,7 +177,21 @@ class _NewItemState extends State<NewItem> {
                 print(newitem.title);
                 cart.add(newitem);
                 items.add(newitem);
-                print(items.length);
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) => AlertDialog(
+                      title: const Text('لقد تم اضافة المنتج بنجاح'),
+                      actions: <Widget>[
+                        TextButton(
+                          onPressed: () => Navigator.pop(context, 'Cancel'),
+                          child: const Text('Cancel'),
+                        ),
+                        TextButton(
+                          onPressed: () => Navigator.pop(context, 'OK'),
+                          child: const Text('OK'),
+                        ),
+                      ]),
+                );
               } else {
                 print('validation failed');
               }
