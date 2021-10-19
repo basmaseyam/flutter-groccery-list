@@ -39,7 +39,7 @@ class _HomePageState extends State<HomePage> {
             textDirection: TextDirection.rtl,
             child: Scaffold(
               appBar: AppBar(
-                titleSpacing: 0, // updated by aya
+                titleSpacing: 0,
                 title: Text(
                   "مشترياتي",
                   textDirection: TextDirection.rtl,
@@ -56,7 +56,7 @@ class _HomePageState extends State<HomePage> {
                         icon: Icon(
                           Icons.add,
                           size: 30,
-                        ), // updated by aya
+                        ),
                         onPressed: () {
                           Navigator.of(context).push(MaterialPageRoute(
                               builder: (context) => NewItem()));
@@ -69,7 +69,7 @@ class _HomePageState extends State<HomePage> {
                             icon: Image(
                               image: AssetImage('images/icons/basket1.png'),
                             ),
-                            iconSize: 35, // by aya
+                            iconSize: 35,
                             onPressed: () {
                               Navigator.of(context).push(MaterialPageRoute(
                                   builder: (context) => CheckoutPage()));
@@ -90,7 +90,7 @@ class _HomePageState extends State<HomePage> {
                       autofocus: false,
                       decoration: InputDecoration(
                         contentPadding: const EdgeInsets.symmetric(
-                            vertical: 12.0, horizontal: 10), //updated by aya
+                            vertical: 12.0, horizontal: 10),
                         //  prefixIcon: Icon(Icons.search),    // to add search icon before text
                         filled: true,
                         border: OutlineInputBorder(),
@@ -100,7 +100,7 @@ class _HomePageState extends State<HomePage> {
                           color: Colors.white,
                         ),
 
-     */ //updated by aya
+     */ //updated
                         hintText: 'البحث عن منتج',
                         fillColor: Colors.white,
                         focusColor: Colors.white,

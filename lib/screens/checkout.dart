@@ -85,7 +85,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
                                     //  onPressed: () {
                                     //    cart.basketItems[index].decrementCounter();
 
-                                    return cart.remove(cart.basketItems[index]);
+                                    return cart.delete(cart.basketItems[index]);
                                   }),
                             ],
                           ),

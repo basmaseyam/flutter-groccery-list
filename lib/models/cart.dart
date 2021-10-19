@@ -3,6 +3,9 @@ import 'package:moshtryate_new/models/item.dart';
 
 class Cart extends ChangeNotifier {
   List<Item> _items = [];
+  List<Item> _organizedItems = [];
+  int counter = 0;
+  List<Item> distinctIds = [];
 
   void add(Item item) {
     _items.add(item);
@@ -14,11 +17,19 @@ class Cart extends ChangeNotifier {
     notifyListeners();
   }
 
+  void delete(Item selectedItem) {
+    _items.removeWhere((item) => selectedItem.title == item.title);
+    notifyListeners();
+  }
+
   int get count {
-    return _items.length;
+    distinctIds = _items.toSet().toList();
+    return distinctIds.length;
   }
 
   List<Item> get basketItems {
-    return _items.toSet().toList();
+    _organizedItems = _items.toSet().toList();
+    _organizedItems.sort((a, b) => b.category.compareTo(a.category));
+    return _organizedItems;
   }
 }
