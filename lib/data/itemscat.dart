@@ -154,7 +154,7 @@ List<Item> items = [
   Item(
       title: 'عيش',
       category: 'المخبوزات',
-      quantity: 'وحده',
+      quantity: 'وحدة',
       itemIcon: 'images/icons/Bread&Bakeing/icons8-bread-48.png',
       amount: 0),
   Item(
@@ -166,7 +166,7 @@ List<Item> items = [
   Item(
       title: 'بيض',
       category: 'الالبان',
-      quantity: 'وحده',
+      quantity: 'وحدة',
       itemIcon: 'images/icons/DiarayEggs/icons8-egg-carton-64.png',
       amount: 0),
   Item(
@@ -184,7 +184,7 @@ List<Item> items = [
   Item(
       title: 'شاي',
       category: 'المشروبات',
-      quantity: 'وحده',
+      quantity: 'وحدة',
       itemIcon: 'images/icons/Drinkes/icons8-tea-64.png',
       amount: 0),
   Item(
@@ -232,13 +232,13 @@ List<Item> items = [
   Item(
       title: 'ملح',
       category: 'التوابل',
-      quantity: 'جرام',
+      quantity: 'عبوة',
       itemIcon: 'images/icons/Spices/icons8-salt-shaker-48.png',
       amount: 0),
   Item(
       title: 'فلفل',
       category: 'التوابل',
-      quantity: 'جرام',
+      quantity: 'عبوة',
       itemIcon: 'images/icons/Spices/icons8-spice-50.png',
       amount: 0),
 ];

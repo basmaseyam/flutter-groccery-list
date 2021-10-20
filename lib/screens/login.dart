@@ -1,5 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:flutter_signin_button/button_list.dart';
@@ -45,21 +47,30 @@ class _LoginScreenState extends State<LoginScreen> {
               width: double.infinity,
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 30),
-              child: SignInButton(
-                Buttons.Google,
-                onPressed: () async {
-                  await signInWithGoogle();
-                },
+              padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 0),
+              child: Container(
+                height: 48,
+                width: 250,
+                child: SignInButton(
+                  Buttons.Google,
+                  shape: BeveledRectangleBorder(),
+                  onPressed: () async {
+                    await signInWithGoogle();
+                  },
+                ),
               ),
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 30),
-              child: SignInButton(
-                Buttons.Facebook,
-                onPressed: () async {
-                  await signInWithFacebook();
-                },
+              padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
+              child: Container(
+                height: 48,
+                width: 250,
+                child: SignInButton(
+                  Buttons.Facebook,
+                  onPressed: () async {
+                    await signInWithFacebook();
+                  },
+                ),
               ),
             ),
           ],
@@ -79,12 +90,14 @@ class _LoginScreenState extends State<LoginScreen> {
 
       final userCredential = await signInWithCredential(authCredential);
       User user = userCredential.user;
+      SharedPreferences preferences = await SharedPreferences.getInstance();
+      preferences.setString('email', user.email);
       if (user != null) {
         Navigator.of(context)
             .push(MaterialPageRoute(builder: (context) => HomePage()));
       }
     } catch (error) {
-      print(error);
+      print('No internet connection');
     }
   }
 

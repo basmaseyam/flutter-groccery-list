@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:moshtryate_new/models/item.dart';
 import 'package:moshtryate_new/models/cart.dart';
+import 'package:moshtryate_new/data/itemscat.dart';
 
 import 'drawer.dart';
 
@@ -13,6 +14,7 @@ class CheckoutPage extends StatefulWidget {
 }
 
 class _CheckoutPageState extends State<CheckoutPage> {
+  bool firstvalue = false;
   @override
   Widget build(BuildContext context) {
     return Consumer<Cart>(builder: (context, cart, child) {
@@ -20,7 +22,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
         textDirection: TextDirection.rtl,
         child: Scaffold(
             appBar: AppBar(
-              title: Text('قائمه التسوق'),
+              title: Text('قائمة التسوق'),
               actions: [
                 IconButton(
                   icon: Icon(Icons.share),
@@ -46,7 +48,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
             drawer: MyDrawer(),
             body: cart.basketItems.length == 0
                 ? Center(
-                    child: Text('لا يوجد مشتريات ',
+                    child: Text('لا توجد مشتريات',
                         style: TextStyle(
                             fontSize: 28, fontWeight: FontWeight.bold)))
                 : ListView.builder(
@@ -54,6 +56,16 @@ class _CheckoutPageState extends State<CheckoutPage> {
                     itemBuilder: (context, index) {
                       return Card(
                         child: ListTile(
+                          leading: IconButton(
+                            icon: Icon(
+                              Icons.check_box,
+                              size: 32,
+                            ),
+                            color: Colors.blue,
+                            onPressed: () {
+                              cart.delete(cart.basketItems[index]);
+                            },
+                          ),
                           title: Row(
                             children: [
                               CircleAvatar(
@@ -65,28 +77,6 @@ class _CheckoutPageState extends State<CheckoutPage> {
                               Text('${cart.basketItems[index].amount}'
                                   '   '
                                   '${cart.basketItems[index].quantity}'),
-                            ],
-                          ),
-                          trailing: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              IconButton(
-                                  icon: Icon(Icons.add),
-                                  color: Colors.blue,
-                                  onPressed: () {
-                                    cart.basketItems[index].incrementCounter();
-
-                                    return cart.add(cart.basketItems[index]);
-                                  }),
-                              Text('${cart.basketItems[index].amount}'),
-                              IconButton(
-                                  icon: Icon(Icons.remove),
-                                  color: Colors.blue,
-                                  onPressed: () {
-                                    cart.basketItems[index].decrementCounter();
-
-                                    return cart.remove(cart.basketItems[index]);
-                                  }),
                             ],
                           ),
                         ),

@@ -24,6 +24,11 @@ class Item extends ChangeNotifier {
     notifyListeners();
   }
 
+  void delete(Item selectedItem) {
+    _items.removeWhere((item) => selectedItem.title == item.title);
+    notifyListeners();
+  }
+
   void decrementCounter() {
     if (amount != 0) {
       amount--;
@@ -32,5 +37,15 @@ class Item extends ChangeNotifier {
     notifyListeners();
   }
 
-  Item({this.title, this.itemIcon, this.category, this.amount, this.quantity});
+  bool get check {
+    return false;
+  }
+
+  Item({
+    this.title,
+    this.itemIcon,
+    this.category,
+    this.amount,
+    this.quantity,
+  });
 }
