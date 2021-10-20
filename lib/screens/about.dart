@@ -120,39 +120,53 @@ class _AboutState extends State<About> {
                 ),
               ),
               drawer: MyDrawer(),
-              body: Column(
-                children: [
-                  InkWell(
-                    child: Padding(
-                      padding: const EdgeInsets.all(16.0),
-                      child: Text(
-                        "Icons8: https://icons8.com/license",
-                        textDirection: TextDirection.rtl,
+              body: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 16.0),
+                child: Container(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'المواقع',
+                        textAlign: TextAlign.center,
                         style: TextStyle(
-                            decoration: TextDecoration.underline,
-                            color: Colors.blue),
+                          fontSize: 32,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
-                    ),
-                    onTap: () {
-                      launch('https://icons8.com/');
-                    },
-                  ),
-                  InkWell(
-                    child: Padding(
-                      padding: const EdgeInsets.all(16.0),
-                      child: Text(
-                        "Font Awesome by Dave Gandy - http://fontawesome.io",
-                        textDirection: TextDirection.rtl,
-                        style: TextStyle(
-                            decoration: TextDecoration.underline,
-                            color: Colors.blue),
+                      InkWell(
+                        child: Padding(
+                          padding: const EdgeInsets.all(16.0),
+                          child: Text(
+                            " Icons8: https://icons8.com/license",
+                            textDirection: TextDirection.rtl,
+                            style: TextStyle(
+                                decoration: TextDecoration.underline,
+                                color: Colors.blue),
+                          ),
+                        ),
+                        onTap: () {
+                          launch('https://icons8.com/');
+                        },
                       ),
-                    ),
-                    onTap: () {
-                      launch('https://icons8.com/');
-                    },
+                      InkWell(
+                        child: Padding(
+                          padding: const EdgeInsets.all(16.0),
+                          child: Text(
+                            " Font Awesome by Dave Gandy - http://fontawesome.io",
+                            textDirection: TextDirection.rtl,
+                            style: TextStyle(
+                                decoration: TextDecoration.underline,
+                                color: Colors.blue),
+                          ),
+                        ),
+                        onTap: () {
+                          launch('https://icons8.com/');
+                        },
+                      ),
+                    ],
                   ),
-                ],
+                ),
               ),
             ),
           ),
