@@ -57,7 +57,10 @@ class _CheckoutPageState extends State<CheckoutPage> {
                       return Card(
                         child: ListTile(
                           leading: IconButton(
-                            icon: Icon(Icons.check_box),
+                            icon: Icon(
+                              Icons.check_box,
+                              size: 32,
+                            ),
                             color: Colors.blue,
                             onPressed: () {
                               cart.delete(cart.basketItems[index]);

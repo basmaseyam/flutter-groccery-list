@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
@@ -89,27 +90,14 @@ class _LoginScreenState extends State<LoginScreen> {
 
       final userCredential = await signInWithCredential(authCredential);
       User user = userCredential.user;
+      SharedPreferences preferences = await SharedPreferences.getInstance();
+      preferences.setString('email', user.email);
       if (user != null) {
         Navigator.of(context)
             .push(MaterialPageRoute(builder: (context) => HomePage()));
       }
     } catch (error) {
       print('No internet connection');
-      return showDialog(
-        context: context,
-        builder: (BuildContext context) => AlertDialog(
-            title: const Text('No internet connection'),
-            actions: <Widget>[
-              TextButton(
-                onPressed: () => Navigator.pop(context, 'Cancel'),
-                child: const Text('Cancel'),
-              ),
-              TextButton(
-                onPressed: () => Navigator.pop(context, 'OK'),
-                child: const Text('OK'),
-              ),
-            ]),
-      );
     }
   }
 

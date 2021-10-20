@@ -41,6 +41,7 @@ dependencies:
   flat_icons_flutter: ^1.0.2
   url_launcher: ^6.0.10
   connectivity: ^3.0.6
+  shared_preferences: ^2.0.7
   
 
 dev_dependencies:

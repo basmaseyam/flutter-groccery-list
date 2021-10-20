@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:moshtryate_new/screens/NewItem.dart';
 import 'package:moshtryate_new/screens/checkout.dart';
@@ -20,15 +21,25 @@ class MyDrawer extends StatelessWidget {
       children: [
         UserAccountsDrawerHeader(
           currentAccountPicture: CircleAvatar(
-            backgroundImage: NetworkImage(user.photoURL),
+            backgroundImage: user != null
+                ? NetworkImage(user.photoURL)
+                : AssetImage('images/icons/icons8-happy-64.png'),
           ),
-          accountName: Text(
-            user.displayName,
-            style: TextStyle(
-              fontFamily: 'Pacifico',
-              fontSize: 25,
-            ),
-          ),
+          accountName: user != null
+              ? Text(
+                  user.displayName,
+                  style: TextStyle(
+                    fontFamily: 'Pacifico',
+                    fontSize: 25,
+                  ),
+                )
+              : Text(
+                  'لا يوجد اتصال بالانترنت',
+                  style: TextStyle(
+                    fontFamily: 'Pacifico',
+                    fontSize: 25,
+                  ),
+                ),
         ),
         InkWell(
           child: // to make the menu clickable and action happens
