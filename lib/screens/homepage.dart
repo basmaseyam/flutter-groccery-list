@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
@@ -133,47 +135,85 @@ class _HomePageState extends State<HomePage> {
                           scrollDirection: Axis.vertical,
                           itemCount: selectedItems.length,
                           itemBuilder: (context, index) {
-                            return Card(
-                                child: ListTile(
-                              title: Text(selectedItems[index].title),
-                              leading: CircleAvatar(
-                                  backgroundColor: Colors.transparent,
-                                  backgroundImage: AssetImage(
-                                      selectedItems[index].itemIcon)),
-                              trailing: Row(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  IconButton(
-                                      icon: Icon(Icons.add_box),
-                                      iconSize: 32,
-                                      color: Colors.blue,
-                                      onPressed: () {
-                                        selectedItems[index].incrementCounter();
-
-                                        return cart.add(selectedItems[index]);
-                                      }),
-                                  Text('${selectedItems[index].amount}'),
-                                  IconButton(
-                                      icon: Image(
-                                        image:
-                                            AssetImage('images/icons/2-.png'),
-                                      ),
-                                      onPressed: () {
-                                        selectedItems[index].decrementCounter();
-
-                                        return cart
-                                            .remove(selectedItems[index]);
-                                      }),
-                                  Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 8.0),
-                                    child: Text(
-                                        '${selectedItems[index].quantity}'),
-                                  ),
-                                ],
+                            return Dismissible(
+                              background: Container(
+                                color: Colors.red,
+                                child: Icon(Icons.remove),
                               ),
-                              onTap: () {},
-                            ));
+                              key: ValueKey<Item>(selectedItems[index]),
+                              onDismissed: (DismissDirection direction) {
+                                return showDialog(
+                                  context: context,
+                                  builder: (BuildContext context) =>
+                                      AlertDialog(
+                                          title: const Text(
+                                              'هل تريد حذف المنتج ؟'),
+                                          actions: <Widget>[
+                                        TextButton(
+                                          onPressed: () =>
+                                              Navigator.pop(context, 'Cancel'),
+                                          child: const Text('Cancel'),
+                                        ),
+                                        TextButton(
+                                          onPressed: () {
+                                            Navigator.pop(context, 'OK');
+                                            setState(() {
+                                              items
+                                                  .remove(selectedItems[index]);
+                                            });
+                                          },
+                                          child: const Text('OK'),
+                                        ),
+                                      ]),
+                                );
+                              },
+                              child: ListTile(
+                                title: Text(selectedItems[index].title),
+                                leading: CircleAvatar(
+                                    backgroundColor: Colors.transparent,
+                                    backgroundImage: AssetImage(
+                                        selectedItems[index].itemIcon)),
+                                trailing: Flex(
+                                  direction: Axis.horizontal,
+                                  mainAxisSize: MainAxisSize.min,
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: [
+                                    IconButton(
+                                        icon: Icon(Icons.add_box),
+                                        iconSize: 32,
+                                        color: Colors.blue,
+                                        onPressed: () {
+                                          selectedItems[index]
+                                              .incrementCounter();
+
+                                          return cart.add(selectedItems[index]);
+                                        }),
+                                    Text('${selectedItems[index].amount}'),
+                                    IconButton(
+                                        icon: Image(
+                                          image:
+                                              AssetImage('images/icons/2-.png'),
+                                        ),
+                                        onPressed: () {
+                                          selectedItems[index]
+                                              .decrementCounter();
+
+                                          return cart
+                                              .remove(selectedItems[index]);
+                                        }),
+                                    Container(
+                                      alignment: Alignment.center,
+                                      constraints: BoxConstraints.tight(
+                                          Size.fromWidth(32)),
+                                      child: Text(
+                                        '${selectedItems[index].quantity}',
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                onLongPress: () {},
+                              ),
+                            );
                           },
                         ),
                       ]);
