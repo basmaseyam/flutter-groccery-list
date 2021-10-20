@@ -113,8 +113,57 @@ class _NewItemState extends State<NewItem> {
                 newitem.itemIcon = 'images\icons\groceries.png';
                 newitem.amount = 1;
                 newitem.quantity =
+<<<<<<< Updated upstream
                     _formKey.currentState.fields['quantity'].toString();
                 itemsCats.add(newitem);
+=======
+                    _formKey.currentState.value['quantity'].toString();
+                print(newitem.title);
+                cart.add(newitem);
+                items.add(newitem);
+                showDialog(
+                    context: context,
+                    builder: (context) {
+                      Future.delayed(
+                          Duration(seconds: 3), () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => HomePage()));
+                      });
+                      return AlertDialog(
+                        title: Text('تمت إضافة المنتح',textAlign: TextAlign.center,),
+                      );
+
+                    }
+                      /* =>AlertDialog(
+                      title: const Text('تمت إضافة المنتح للقائمة', textAlign: TextAlign.center,),
+                      content: Row(
+                          children: <Widget>[
+                          Expanded(
+
+                            child: TextButton(
+
+                            onPressed: () => Navigator.pop(context, 'Cancel'),
+                              child: const Text('إلغاء', textAlign: TextAlign.center,),
+
+
+                        ),
+                      ),
+
+                       Expanded(
+                         child: TextButton(
+                                    onPressed: () {
+                                      Navigator.pop(context, 'Ok');
+                                      Navigator.of(context).push(MaterialPageRoute(
+                                          builder: (context) => HomePage()));
+                                    },
+                                    child: const Text('موافقة', textAlign: TextAlign.center,),
+                                  ),
+                          ),
+                            ]  ),),
+*/
+
+                );
+>>>>>>> Stashed changes
               } else {
                 print('validation failed');
               }

@@ -45,6 +45,7 @@ class _LoginScreenState extends State<LoginScreen> {
               width: double.infinity,
             ),
             Padding(
+<<<<<<< Updated upstream
               padding: const EdgeInsets.symmetric(horizontal: 30),
               child: SignInButton(
                 Buttons.Google,
@@ -60,6 +61,32 @@ class _LoginScreenState extends State<LoginScreen> {
                 onPressed: () async {
                   await signInWithFacebook();
                 },
+=======
+              padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 0),
+              child: Container(
+                height: 50,
+                width: 230,
+                child: SignInButton(
+                  Buttons.Google,
+                  shape: BeveledRectangleBorder(),
+                  onPressed: () async {
+                    await signInWithGoogle();
+                  },
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
+              child: Container(
+                height: 50,
+                width: 230,
+                child: SignInButton(
+                  Buttons.Facebook,
+                  onPressed: () async {
+                    await signInWithFacebook();
+                  },
+                ),
+>>>>>>> Stashed changes
               ),
             ),
           ],
@@ -84,7 +111,29 @@ class _LoginScreenState extends State<LoginScreen> {
             .push(MaterialPageRoute(builder: (context) => HomePage()));
       }
     } catch (error) {
+<<<<<<< Updated upstream
       print(error);
+=======
+      print('No internet connection');
+      return showDialog(
+        context: context,
+        builder: (BuildContext context) => AlertDialog(
+            title: const Text('الرجاء تفقد الاتصال بالانترنت', textAlign: TextAlign.center,),    //updated by aya change error message to be in arabic instead of english
+            actions: <Widget>[
+
+               TextButton(
+                  onPressed: () => Navigator.pop(context, 'Cancel'),
+                  child: const Text('إلغاء'),
+                ),
+
+              TextButton(
+
+                onPressed: () => Navigator.pop(context, 'OK'),
+                child: const Text('موافق'),
+              ),
+            ]),
+      );
+>>>>>>> Stashed changes
     }
   }
 
