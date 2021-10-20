@@ -186,24 +186,19 @@ class _NewItemState extends State<NewItem> {
                 cart.add(newitem);
                 items.add(newitem);
                 showDialog(
-                  context: context,
-                  builder: (BuildContext context) => AlertDialog(
-                      title: const Text('لقد تم اضافة المنتج بنجاح'),
-                      actions: <Widget>[
-                        TextButton(
-                          onPressed: () => Navigator.pop(context, 'Cancel'),
-                          child: const Text('Cancel'),
+                    context: context,
+                    builder: (context) {
+                      Future.delayed(Duration(seconds: 3), () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => HomePage()));
+                      });
+                      return AlertDialog(
+                        title: Text(
+                          'تمت إضافة المنتح',
+                          textAlign: TextAlign.center,
                         ),
-                        TextButton(
-                          onPressed: () {
-                            Navigator.pop(context, 'OK');
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => HomePage()));
-                          },
-                          child: const Text('OK'),
-                        ),
-                      ]),
-                );
+                      );
+                    });
               } else {
                 print('validation failed');
               }

@@ -49,8 +49,8 @@ class _LoginScreenState extends State<LoginScreen> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 0),
               child: Container(
-                height: 48,
-                width: 250,
+                height: 50,
+                width: 230,
                 child: SignInButton(
                   Buttons.Google,
                   shape: BeveledRectangleBorder(),
@@ -61,10 +61,10 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
+              padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
               child: Container(
-                height: 48,
-                width: 250,
+                height: 50,
+                width: 230,
                 child: SignInButton(
                   Buttons.Facebook,
                   onPressed: () async {

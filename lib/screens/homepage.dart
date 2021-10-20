@@ -138,7 +138,7 @@ class _HomePageState extends State<HomePage> {
                             return Dismissible(
                               background: Container(
                                 color: Colors.red,
-                                child: Icon(Icons.remove),
+                                child: Icon(Icons.delete),
                               ),
                               key: ValueKey<Item>(selectedItems[index]),
                               onDismissed: (DismissDirection direction) {
@@ -211,7 +211,7 @@ class _HomePageState extends State<HomePage> {
                                     ),
                                   ],
                                 ),
-                                onLongPress: () {},
+                                onTap: () {},
                               ),
                             );
                           },
