@@ -23,14 +23,13 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final List<Item> itemsCats = items;
-
   final List<Item> itemsothers = [];
 
   int amount = 0;
 
   @override
   Widget build(BuildContext context) {
+    List<Item> itemsCats = items;
     return Consumer<Cart>(builder: (context, cart, child) {
       return Directionality(
         textDirection: TextDirection.rtl,
@@ -136,6 +135,7 @@ class _HomePageState extends State<HomePage> {
                           itemCount: selectedItems.length,
                           itemBuilder: (context, index) {
                             return Slidable(
+                              direction: Axis.horizontal,
                               actionPane: SlidableScrollActionPane(),
                               child: ListTile(
                                 title: Text(selectedItems[index].title),
@@ -183,7 +183,7 @@ class _HomePageState extends State<HomePage> {
                                 ),
                                 onTap: () {},
                               ),
-                              actions: [
+                              secondaryActions: [
                                 IconSlideAction(
                                   caption: 'حذف',
                                   color: Colors.redAccent,

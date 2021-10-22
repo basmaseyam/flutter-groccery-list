@@ -45,17 +45,19 @@ class FileManager {
   }
 
   Future<Map<String, dynamic>> readJsonFile() async {
-    String fileContent = 'لا يوجد مشتريات';
+    String fileContent = 'items list';
     File file = await _jsonFile;
 
     if (await file.exists()) {
       try {
         fileContent = await file.readAsString();
+        return json.decode(fileContent);
       } catch (e) {
         print(e);
       }
     }
-    return json.decode(fileContent);
+
+    return null;
   }
 
   Future<String> writeTextFile() async {
@@ -70,8 +72,9 @@ class FileManager {
   Future<List> writeJsonFile() async {
     final List<Item> itemslist = items;
     File file = await _jsonFile;
+    var json = jsonEncode(itemslist.map((e) => e.toJson()).toList());
 
-    await file.writeAsString(json.encode(itemslist));
+    await file.writeAsString(json);
 
     return itemslist;
   }

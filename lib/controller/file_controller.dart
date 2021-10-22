@@ -19,15 +19,25 @@ class FileController extends ChangeNotifier {
     notifyListeners();
   }
 
-  readUser() async {
-    _itemslist = Item.fromJson(await FileManager().readJsonFile());
+  readCart() async {
+    final result = await FileManager().readJsonFile();
+
+    if (result != null) {
+      _itemslist = Item.fromJson(await FileManager().readJsonFile());
+    }
+
     notifyListeners();
   }
 
+<<<<<<< Updated upstream
 
   // hashed by aya
 /*  writeUser() async {
     _itemslist = await FileManager().writeJsonFile();
+=======
+  writeCart() async {
+    _itemslist = (await FileManager().writeJsonFile()) as Item;
+>>>>>>> Stashed changes
     notifyListeners();
   }*/
 }
