@@ -24,8 +24,10 @@ class FileController extends ChangeNotifier {
     notifyListeners();
   }
 
-  writeUser() async {
+
+  // hashed by aya
+/*  writeUser() async {
     _itemslist = await FileManager().writeJsonFile();
     notifyListeners();
-  }
+  }*/
 }

@@ -22,7 +22,14 @@ class _CheckoutPageState extends State<CheckoutPage> {
         textDirection: TextDirection.rtl,
         child: Scaffold(
             appBar: AppBar(
-              title: Text('قائمة التسوق'),
+              title: Text('قائمة التسوق',
+                textDirection: TextDirection.rtl,
+                style: TextStyle(
+                //  fontFamily: 'Vibes',
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
               actions: [
                 IconButton(
                   icon: Icon(Icons.share),

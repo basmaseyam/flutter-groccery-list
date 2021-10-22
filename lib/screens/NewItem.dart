@@ -43,6 +43,7 @@ class _NewItemState extends State<NewItem> {
         textDirection: TextDirection.rtl,
         child: Scaffold(
           appBar: AppBar(
+            titleSpacing: 0,
             title: Text('اضف جديد'),
             actions: [
               IconButton(
@@ -53,6 +54,7 @@ class _NewItemState extends State<NewItem> {
                 },
               ),
             ],
+
           ),
           drawer: MyDrawer(),
           body: Padding(

@@ -64,9 +64,23 @@ class MyDrawer extends StatelessWidget {
             },
           ),
         ),
+
         InkWell(
           child: // to make the menu clickable and action happens
               ListTile(
+            title: Text(
+              'بحث و إضافه منتج',
+            ),
+            leading: Icon(Icons.add_shopping_cart_outlined),
+            onTap: () {
+              Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (context) => NewItem()));
+            },
+          ),
+        ),
+        InkWell(          // aya , changed order
+          child: // to make the menu clickable and action happens
+          ListTile(
             title: Text(
               'المواقع',
             ),
@@ -77,19 +91,7 @@ class MyDrawer extends StatelessWidget {
             },
           ),
         ),
-        InkWell(
-          child: // to make the menu clickable and action happens
-              ListTile(
-            title: Text(
-              'بحث او إضافه منتج',
-            ),
-            leading: Icon(Icons.add_shopping_cart_outlined),
-            onTap: () {
-              Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (context) => NewItem()));
-            },
-          ),
-        ),
+
         InkWell(
           child: // to make the menu clickable and action happens
               ListTile(

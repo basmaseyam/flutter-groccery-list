@@ -71,8 +71,13 @@ flutter:
     - images/icons/Drinkes/
     - images/icons/FruitsVegeies/
     - images/icons/Grains/
+    - images/icons/Ingredients/
     - images/icons/MeatFish/
     - images/icons/Spices/
+    - images/icons/Clean&PersonalCare/
+    - images/icons/Frozen/
+
+
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
 

@@ -69,7 +69,7 @@ class _HomePageState extends State<HomePage> {
                         children: [
                           IconButton(
                             icon: Image(
-                              image: AssetImage('images/icons/basket1.png'),
+                              image: AssetImage('images/icons/icons8-shopping-cart-60.png'),
                             ),
                             iconSize: 35,
                             onPressed: () {
@@ -192,18 +192,18 @@ class _HomePageState extends State<HomePage> {
                                     showDialog(
                                       context: context,
                                       builder: (BuildContext context) =>
-                                          AlertDialog(
+                                          AlertDialog(                 // aya , translated buttons text
                                               title: const Text(
                                                   'هل تريد حذف المنتج ؟'),
                                               actions: <Widget>[
                                             TextButton(
                                               onPressed: () => Navigator.pop(
                                                   context, 'Cancel'),
-                                              child: const Text('Cancel'),
+                                              child: const Text('لا'),
                                             ),
                                             TextButton(
                                               onPressed: () {
-                                                Navigator.pop(context, 'OK');
+                                                Navigator.pop(context, 'نعم');
                                                 setState(() {
                                                   items.remove(
                                                       selectedItems[index]);

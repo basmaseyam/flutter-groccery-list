@@ -69,7 +69,7 @@ class _AboutState extends State<About> {
                         children: [
                           IconButton(
                             icon: Image(
-                              image: AssetImage('images/icons/basket1.png'),
+                              image: AssetImage('images/icons/icons8-shopping-cart-60.png'),
                             ),
                             iconSize: 35,
                             onPressed: () {
