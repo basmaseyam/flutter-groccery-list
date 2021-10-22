@@ -1,5 +1,5 @@
-import 'dart:ffi';
-
+import 'dart:io';
+import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
@@ -135,38 +135,8 @@ class _HomePageState extends State<HomePage> {
                           scrollDirection: Axis.vertical,
                           itemCount: selectedItems.length,
                           itemBuilder: (context, index) {
-                            return Dismissible(
-                              background: Container(
-                                color: Colors.red,
-                                child: Icon(Icons.delete),
-                              ),
-                              key: ValueKey<Item>(selectedItems[index]),
-                              onDismissed: (DismissDirection direction) {
-                                return showDialog(
-                                  context: context,
-                                  builder: (BuildContext context) =>
-                                      AlertDialog(
-                                          title: const Text(
-                                              'هل تريد حذف المنتج ؟'),
-                                          actions: <Widget>[
-                                        TextButton(
-                                          onPressed: () =>
-                                              Navigator.pop(context, 'Cancel'),
-                                          child: const Text('Cancel'),
-                                        ),
-                                        TextButton(
-                                          onPressed: () {
-                                            Navigator.pop(context, 'OK');
-                                            setState(() {
-                                              items
-                                                  .remove(selectedItems[index]);
-                                            });
-                                          },
-                                          child: const Text('OK'),
-                                        ),
-                                      ]),
-                                );
-                              },
+                            return Slidable(
+                              actionPane: SlidableScrollActionPane(),
                               child: ListTile(
                                 title: Text(selectedItems[index].title),
                                 leading: CircleAvatar(
@@ -213,6 +183,41 @@ class _HomePageState extends State<HomePage> {
                                 ),
                                 onTap: () {},
                               ),
+                              actions: [
+                                IconSlideAction(
+                                  caption: 'حذف',
+                                  color: Colors.red,
+                                  icon: Icons.delete,
+                                  onTap: () {
+                                    showDialog(
+                                      context: context,
+                                      builder: (BuildContext context) =>
+                                          AlertDialog(
+                                              title: const Text(
+                                                  'هل تريد حذف المنتج ؟'),
+                                              actions: <Widget>[
+                                            TextButton(
+                                              onPressed: () => Navigator.pop(
+                                                  context, 'Cancel'),
+                                              child: const Text('Cancel'),
+                                            ),
+                                            TextButton(
+                                              onPressed: () {
+                                                Navigator.pop(context, 'OK');
+                                                setState(() {
+                                                  items.remove(
+                                                      selectedItems[index]);
+                                                  cart.delete(
+                                                      selectedItems[index]);
+                                                });
+                                              },
+                                              child: const Text('OK'),
+                                            ),
+                                          ]),
+                                    );
+                                  },
+                                )
+                              ],
                             );
                           },
                         ),

@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flat_icons_flutter/flat_icons_flutter.dart';
@@ -185,6 +186,9 @@ class _NewItemState extends State<NewItem> {
                 print(newitem.title);
                 cart.add(newitem);
                 items.add(newitem);
+                setState(() {
+                  _formKey.currentState.reset();
+                });
                 showDialog(
                     context: context,
                     builder: (context) {
@@ -192,6 +196,7 @@ class _NewItemState extends State<NewItem> {
                         Navigator.of(context).push(MaterialPageRoute(
                             builder: (context) => HomePage()));
                       });
+
                       return AlertDialog(
                         title: Text(
                           'تمت إضافة المنتح',
@@ -210,23 +215,4 @@ class _NewItemState extends State<NewItem> {
       );
     });
   }
-}
-
-Future<String> get _localPath async {
-  final directory = await getApplicationDocumentsDirectory();
-
-  return directory.path;
-}
-
-Future<File> get _localFile async {
-  final path = await _localPath;
-  print(path);
-  return File('$path/lib/data/itemscat.dart');
-}
-
-Future<File> writeCounter(String addedItem) async {
-  final file = await _localFile;
-
-  // Write the file
-  return file.writeAsString('$addedItem');
 }

@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:moshtryate_new/constants.dart';
+import 'package:moshtryate_new/controller/file_controller.dart';
 import 'package:moshtryate_new/screens/homepage.dart';
 import 'package:provider/provider.dart';
 import 'package:moshtryate_new/screens/login.dart';
@@ -21,8 +22,15 @@ main() async {
   isconnected = connectivity == null ? false : true;
   isloggedin = email == null ? false : true;
   runApp(
-    ChangeNotifierProvider(
-      create: (context) => Cart(),
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (context) => Cart(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => FileController(),
+        ),
+      ],
       child: MyApp(),
     ),
   );
@@ -31,6 +39,7 @@ main() async {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    context.read<FileController>().readText();
     return Directionality(
         textDirection: TextDirection.rtl,
         child: MaterialApp(
