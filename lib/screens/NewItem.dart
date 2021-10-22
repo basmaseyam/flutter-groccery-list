@@ -194,17 +194,31 @@ class _NewItemState extends State<NewItem> {
                 showDialog(
                     context: context,
                     builder: (context) {
-                      Future.delayed(Duration(seconds: 3), () {
+                      Future.delayed(Duration(seconds: 2), () {
                         Navigator.of(context).push(MaterialPageRoute(
                             builder: (context) => HomePage()));
                       });
 
-                      return AlertDialog(
-                        title: Text(
-                          'تمت إضافة المنتح',
-                          textAlign: TextAlign.center,
-                        ),
-                      );
+                      return  AlertDialog(             // aya , added icon to alertdialog
+                          title: Row(
+                            children: [
+                          Padding(
+                          padding: const EdgeInsets.all(20.0),
+                          ),
+                              Text(
+                                'تمت إضافة المنتح',
+                               // textAlign: TextAlign.center,
+
+                              ),
+                              Icon(Icons.check, color: Colors.blueAccent ),
+
+                        ],
+                          ),
+                          );
+
+
+
+
                     });
               } else {
                 print('validation failed');

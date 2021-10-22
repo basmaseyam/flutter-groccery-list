@@ -186,7 +186,7 @@ class _HomePageState extends State<HomePage> {
                               actions: [
                                 IconSlideAction(
                                   caption: 'حذف',
-                                  color: Colors.red,
+                                  color: Colors.redAccent,
                                   icon: Icons.delete,
                                   onTap: () {
                                     showDialog(
@@ -203,7 +203,7 @@ class _HomePageState extends State<HomePage> {
                                             ),
                                             TextButton(
                                               onPressed: () {
-                                                Navigator.pop(context, 'نعم');
+                                                Navigator.pop(context, 'Ok');
                                                 setState(() {
                                                   items.remove(
                                                       selectedItems[index]);
@@ -211,7 +211,7 @@ class _HomePageState extends State<HomePage> {
                                                       selectedItems[index]);
                                                 });
                                               },
-                                              child: const Text('OK'),
+                                              child: const Text('نعم'),
                                             ),
                                           ]),
                                     );
