@@ -201,14 +201,20 @@ class _HomePageState extends State<HomePage> {
                                             AlertDialog(
                                                 // aya , translated buttons text
                                                 title: const Text(
-                                                    'هل تريد حذف المنتج ؟'),
+                                                    'هل تريد حذف المنتج ؟', textAlign: TextAlign.center,),
                                                 actions: <Widget>[
-                                              TextButton(
+
+                                                  Row(
+                                                    children: [
+                                                      Expanded(child:
+                                                      TextButton(
                                                 onPressed: () => Navigator.pop(
-                                                    context, 'Cancel'),
+                                                        context, 'Cancel'),
                                                 child: const Text('لا'),
                                               ),
-                                              TextButton(
+                                              ),
+
+                                              Expanded(child:TextButton(
                                                 onPressed: () {
                                                   Navigator.pop(context, 'Ok');
                                                   setState(() {
@@ -220,7 +226,13 @@ class _HomePageState extends State<HomePage> {
                                                 },
                                                 child: const Text('نعم'),
                                               ),
-                                            ]),
+                                              ),
+                                                    ],
+                                                  ),
+                                            ]
+
+
+                                      ),
                                       );
                                     },
                                   )
