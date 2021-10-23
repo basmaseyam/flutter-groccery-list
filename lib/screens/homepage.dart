@@ -3,6 +3,7 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
+import 'package:moshtryate_new/controller/file_controller.dart';
 import 'package:moshtryate_new/data/category.dart';
 import 'package:moshtryate_new/data/itemscat.dart';
 import 'package:moshtryate_new/models/cart.dart';
@@ -30,6 +31,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     List<Item> itemsCats = items;
+
     return Consumer<Cart>(builder: (context, cart, child) {
       return Directionality(
         textDirection: TextDirection.rtl,
@@ -68,7 +70,8 @@ class _HomePageState extends State<HomePage> {
                         children: [
                           IconButton(
                             icon: Image(
-                              image: AssetImage('images/icons/icons8-shopping-cart-60.png'),
+                              image: AssetImage(
+                                  'images/icons/icons8-shopping-cart-60.png'),
                             ),
                             iconSize: 35,
                             onPressed: () {
@@ -192,7 +195,8 @@ class _HomePageState extends State<HomePage> {
                                     showDialog(
                                       context: context,
                                       builder: (BuildContext context) =>
-                                          AlertDialog(                 // aya , translated buttons text
+                                          AlertDialog(
+                                              // aya , translated buttons text
                                               title: const Text(
                                                   'هل تريد حذف المنتج ؟'),
                                               actions: <Widget>[

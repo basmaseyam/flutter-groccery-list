@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:moshtryate_new/controller/file_controller.dart';
 import 'package:moshtryate_new/screens/homepage.dart';
 import 'package:provider/provider.dart';
 import 'package:share_plus/share_plus.dart';
@@ -15,17 +16,20 @@ class CheckoutPage extends StatefulWidget {
 
 class _CheckoutPageState extends State<CheckoutPage> {
   bool firstvalue = false;
+
   @override
   Widget build(BuildContext context) {
     return Consumer<Cart>(builder: (context, cart, child) {
+      context.read<FileController>().writeCart();
       return Directionality(
         textDirection: TextDirection.rtl,
         child: Scaffold(
             appBar: AppBar(
-              title: Text('قائمة التسوق',
+              title: Text(
+                'قائمة التسوق',
                 textDirection: TextDirection.rtl,
                 style: TextStyle(
-                //  fontFamily: 'Vibes',
+                  //  fontFamily: 'Vibes',
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
                 ),

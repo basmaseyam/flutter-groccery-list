@@ -1,8 +1,6 @@
 import 'package:moshtryate_new/models/item.dart';
-import 'package:flutter/widgets.dart';
 
 // aya , added more items
-
 
 List<Item> items = [
   Item(
@@ -160,7 +158,6 @@ List<Item> items = [
       itemIcon: 'images/icons/Bread&Bakeing/icons8-bread-48.png',
       amount: 0),
 
-
 //  ---- البيض و الأجبان ------
   Item(
       title: 'جبن',
@@ -187,7 +184,6 @@ List<Item> items = [
       quantity: 'عبوة',
       itemIcon: 'images/icons/DiarayEggs/icons8-butter-100.png',
       amount: 0),
-
 
   //  ---- المشروبات ------
 
@@ -233,7 +229,6 @@ List<Item> items = [
       itemIcon: 'images/icons/Grains/icons8-rolled-oats-48.png',
       amount: 0),
 
-
   //  ---- الزيوت و المعلبات ------
 
   Item(
@@ -249,10 +244,6 @@ List<Item> items = [
       quantity: 'لتر',
       itemIcon: 'images/icons/Ingredients/icons8-olive-oil-100.png',
       amount: 0),
-
-
-
-
 
   //  ---- اللحوم و الاسماك ------
 

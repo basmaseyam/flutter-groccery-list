@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flat_icons_flutter/flat_icons_flutter.dart';
+import 'package:moshtryate_new/controller/file_controller.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:moshtryate_new/data/category.dart';
 import 'package:moshtryate_new/models/category.dart';
@@ -54,7 +55,6 @@ class _NewItemState extends State<NewItem> {
                 },
               ),
             ],
-
           ),
           drawer: MyDrawer(),
           body: Padding(
@@ -188,6 +188,7 @@ class _NewItemState extends State<NewItem> {
                 print(newitem.title);
                 cart.add(newitem);
                 items.add(newitem);
+                context.read<FileController>().writeCart();
                 setState(() {
                   _formKey.currentState.reset();
                 });
@@ -199,26 +200,21 @@ class _NewItemState extends State<NewItem> {
                             builder: (context) => HomePage()));
                       });
 
-                      return  AlertDialog(             // aya , added icon to alertdialog
-                          title: Row(
-                            children: [
-                          Padding(
-                          padding: const EdgeInsets.all(20.0),
-                          ),
-                              Text(
-                                'تمت إضافة المنتح',
-                               // textAlign: TextAlign.center,
-
-                              ),
-                              Icon(Icons.check, color: Colors.blueAccent ),
-
-                        ],
-                          ),
-                          );
-
-
-
-
+                      return AlertDialog(
+                        // aya , added icon to alertdialog
+                        title: Row(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.all(20.0),
+                            ),
+                            Text(
+                              'تمت إضافة المنتج',
+                              // textAlign: TextAlign.center,
+                            ),
+                            Icon(Icons.check, color: Colors.blueAccent),
+                          ],
+                        ),
+                      );
                     });
               } else {
                 print('validation failed');

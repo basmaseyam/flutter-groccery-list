@@ -63,4 +63,6 @@ class Item extends ChangeNotifier {
         amount.toString(): 'amount',
         quantity: 'quantity'
       };
+
+  fromJson(Map<String, dynamic> result) {}
 }

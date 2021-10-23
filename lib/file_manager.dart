@@ -44,20 +44,24 @@ class FileManager {
     return fileContent;
   }
 
-  Future<Map<String, dynamic>> readJsonFile() async {
-    String fileContent = 'items list';
+  Future<List> readJsonFile() async {
+    String fileContent;
+    List<Item> _readItems = [];
     File file = await _jsonFile;
 
     if (await file.exists()) {
       try {
         fileContent = await file.readAsString();
-        return json.decode(fileContent);
+        _readItems = _readItems
+            .map<Item>((e) => e.fromJson(json.decode(fileContent)))
+            .toList();
+        return _readItems;
       } catch (e) {
         print(e);
       }
     }
 
-    return null;
+    return items;
   }
 
   Future<String> writeTextFile() async {
