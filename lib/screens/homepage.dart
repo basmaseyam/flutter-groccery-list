@@ -137,91 +137,95 @@ class _HomePageState extends State<HomePage> {
                           scrollDirection: Axis.vertical,
                           itemCount: selectedItems.length,
                           itemBuilder: (context, index) {
-                            return Slidable(
-                              direction: Axis.horizontal,
-                              actionPane: SlidableScrollActionPane(),
-                              child: ListTile(
-                                title: Text(selectedItems[index].title),
-                                leading: CircleAvatar(
-                                    backgroundColor: Colors.transparent,
-                                    backgroundImage: AssetImage(
-                                        selectedItems[index].itemIcon)),
-                                trailing: Flex(
-                                  direction: Axis.horizontal,
-                                  mainAxisSize: MainAxisSize.min,
-                                  mainAxisAlignment: MainAxisAlignment.end,
-                                  children: [
-                                    IconButton(
-                                        icon: Icon(Icons.add_box),
-                                        iconSize: 32,
-                                        color: Colors.blue,
-                                        onPressed: () {
-                                          selectedItems[index]
-                                              .incrementCounter();
+                            return Card(
+                              color: Colors.grey[100],
+                              child: Slidable(
+                                direction: Axis.horizontal,
+                                actionPane: SlidableScrollActionPane(),
+                                child: ListTile(
+                                  title: Text(selectedItems[index].title),
+                                  leading: CircleAvatar(
+                                      backgroundColor: Colors.transparent,
+                                      backgroundImage: AssetImage(
+                                          selectedItems[index].itemIcon)),
+                                  trailing: Flex(
+                                    direction: Axis.horizontal,
+                                    mainAxisSize: MainAxisSize.min,
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    children: [
+                                      IconButton(
+                                          icon: Icon(Icons.add_box),
+                                          iconSize: 32,
+                                          color: Colors.blue,
+                                          onPressed: () {
+                                            selectedItems[index]
+                                                .incrementCounter();
 
-                                          return cart.add(selectedItems[index]);
-                                        }),
-                                    Text('${selectedItems[index].amount}'),
-                                    IconButton(
-                                        icon: Image(
-                                          image:
-                                              AssetImage('images/icons/2-.png'),
+                                            return cart
+                                                .add(selectedItems[index]);
+                                          }),
+                                      Text('${selectedItems[index].amount}'),
+                                      IconButton(
+                                          icon: Image(
+                                            image: AssetImage(
+                                                'images/icons/2-.png'),
+                                          ),
+                                          onPressed: () {
+                                            selectedItems[index]
+                                                .decrementCounter();
+
+                                            return cart
+                                                .remove(selectedItems[index]);
+                                          }),
+                                      Container(
+                                        alignment: Alignment.center,
+                                        constraints: BoxConstraints.tight(
+                                            Size.fromWidth(32)),
+                                        child: Text(
+                                          '${selectedItems[index].quantity}',
                                         ),
-                                        onPressed: () {
-                                          selectedItems[index]
-                                              .decrementCounter();
-
-                                          return cart
-                                              .remove(selectedItems[index]);
-                                        }),
-                                    Container(
-                                      alignment: Alignment.center,
-                                      constraints: BoxConstraints.tight(
-                                          Size.fromWidth(32)),
-                                      child: Text(
-                                        '${selectedItems[index].quantity}',
                                       ),
-                                    ),
-                                  ],
+                                    ],
+                                  ),
+                                  onTap: () {},
                                 ),
-                                onTap: () {},
+                                secondaryActions: [
+                                  IconSlideAction(
+                                    caption: 'حذف',
+                                    color: Colors.redAccent,
+                                    icon: Icons.delete,
+                                    onTap: () {
+                                      showDialog(
+                                        context: context,
+                                        builder: (BuildContext context) =>
+                                            AlertDialog(
+                                                // aya , translated buttons text
+                                                title: const Text(
+                                                    'هل تريد حذف المنتج ؟'),
+                                                actions: <Widget>[
+                                              TextButton(
+                                                onPressed: () => Navigator.pop(
+                                                    context, 'Cancel'),
+                                                child: const Text('لا'),
+                                              ),
+                                              TextButton(
+                                                onPressed: () {
+                                                  Navigator.pop(context, 'Ok');
+                                                  setState(() {
+                                                    items.remove(
+                                                        selectedItems[index]);
+                                                    cart.delete(
+                                                        selectedItems[index]);
+                                                  });
+                                                },
+                                                child: const Text('نعم'),
+                                              ),
+                                            ]),
+                                      );
+                                    },
+                                  )
+                                ],
                               ),
-                              secondaryActions: [
-                                IconSlideAction(
-                                  caption: 'حذف',
-                                  color: Colors.redAccent,
-                                  icon: Icons.delete,
-                                  onTap: () {
-                                    showDialog(
-                                      context: context,
-                                      builder: (BuildContext context) =>
-                                          AlertDialog(
-                                              // aya , translated buttons text
-                                              title: const Text(
-                                                  'هل تريد حذف المنتج ؟'),
-                                              actions: <Widget>[
-                                            TextButton(
-                                              onPressed: () => Navigator.pop(
-                                                  context, 'Cancel'),
-                                              child: const Text('لا'),
-                                            ),
-                                            TextButton(
-                                              onPressed: () {
-                                                Navigator.pop(context, 'Ok');
-                                                setState(() {
-                                                  items.remove(
-                                                      selectedItems[index]);
-                                                  cart.delete(
-                                                      selectedItems[index]);
-                                                });
-                                              },
-                                              child: const Text('نعم'),
-                                            ),
-                                          ]),
-                                    );
-                                  },
-                                )
-                              ],
                             );
                           },
                         ),
