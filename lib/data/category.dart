@@ -32,7 +32,7 @@ List<Category> categories = [
   ),
 
   Category(
-    category: ' العنايه الشخصيه و المنظفات',
+    category: 'العنايه الشخصيه و المنظفات',
   ),
 
   Category(

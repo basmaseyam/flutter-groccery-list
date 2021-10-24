@@ -232,18 +232,33 @@ List<Item> items = [
   //  ---- الزيوت و المعلبات ------
 
   Item(
-      title: 'زيت دوار الشمس',
+      title: 'زيت',
       category: 'مستلزمات الطبخ',
       quantity: 'لتر',
-      itemIcon: 'images/icons/Ingredients/icons8-sunflower-oil-48.png',
+      itemIcon: 'images/icons/Ingredients/oil.png',
       amount: 0),
 
   Item(
       title: 'زيت زيتون',
       category: 'مستلزمات الطبخ',
       quantity: 'لتر',
-      itemIcon: 'images/icons/Ingredients/icons8-olive-oil-100.png',
+      itemIcon: 'images/icons/Ingredients/icons8-olive-oil-64.png',
       amount: 0),
+
+  Item(
+      title: 'خل',
+      category: 'مستلزمات الطبخ',
+      quantity: 'لتر',
+      itemIcon: 'images/icons/Ingredients/plastic-bottle.png',
+      amount: 0),
+
+  Item(
+      title: 'صلصة طماطم',
+      category: 'مستلزمات الطبخ',
+      quantity: 'لتر',
+      itemIcon: 'images/icons/Ingredients/tomato-sauce.png',
+      amount: 0),
+
 
   //  ---- اللحوم و الاسماك ------
 
@@ -291,4 +306,77 @@ List<Item> items = [
       quantity: 'عبوة',
       itemIcon: 'images/icons/Spices/icons8-spice-50.png',
       amount: 0),
+
+//  ---- العناية الشخصية ------
+  Item(
+      title: 'صابون',
+      category: 'العنايه الشخصيه و المنظفات',
+      quantity: 'عبوة',
+      itemIcon: 'images/icons/Clean&PersonalCare/washing-hand.png',
+      amount: 0),
+  /*Item(
+      title: 'صابون غسيل',
+      category: 'العنايه الشخصيه و المنظفات',
+      quantity: 'عبوة',
+      itemIcon: 'images/icons/Clean&PersonalCare/laundry-detergent (1).png',
+      amount: 0),*/
+
+Item(
+      title: 'صابون غسيل',
+      category: 'العنايه الشخصيه و المنظفات',
+      quantity: 'عبوة',
+      itemIcon: 'images/icons/Clean&PersonalCare/laundry-detergent.png',
+      amount: 0),
+
+  Item(
+      title: 'صابون أطباق',
+      category: 'العنايه الشخصيه و المنظفات',
+      quantity: 'عبوة',
+      itemIcon: 'images/icons/Clean&PersonalCare/dish-soap.png',
+      amount: 0),
+
+  Item(
+      title: 'مناديل حمام',
+      category: 'العنايه الشخصيه و المنظفات',
+      quantity: 'عبوة',
+      itemIcon: 'images/icons/Clean&PersonalCare/toilet-paper (1).png',
+      amount: 0),
+
+
+  Item(
+      title: 'شامبو',
+      category: 'العنايه الشخصيه و المنظفات',
+      quantity: 'عبوة',
+      itemIcon: 'images/icons/Clean&PersonalCare/shampoo.png',
+      amount: 0),
+
+  Item(
+      title: 'بلسم',
+      category: 'العنايه الشخصيه و المنظفات',
+      quantity: 'عبوة',
+      itemIcon: 'images/icons/Clean&PersonalCare/conditioner.png',
+      amount: 0),
+  Item(
+      title: 'معجون أسنان',
+      category: 'العنايه الشخصيه و المنظفات',
+      quantity: 'عبوة',
+      itemIcon: 'images/icons/Clean&PersonalCare/icons8-toothbrush-48.png',
+      amount: 0),
+
+  Item(
+      title: 'شفرات حلاقة',
+      category: 'العنايه الشخصيه و المنظفات',
+      quantity: 'عبوة',
+      itemIcon: 'images/icons/Clean&PersonalCare/icons8-razor-50.png',
+      amount: 0),
+
+  Item(
+      title: 'فوط صحية',
+      category: 'العنايه الشخصيه و المنظفات',
+      quantity: 'عبوة',
+      itemIcon: 'images/icons/Clean&PersonalCare/icons8-pad-48.png',
+      amount: 0),
+
 ];
+
+

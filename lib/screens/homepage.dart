@@ -144,10 +144,15 @@ class _HomePageState extends State<HomePage> {
                                 actionPane: SlidableScrollActionPane(),
                                 child: ListTile(
                                   title: Text(selectedItems[index].title),
-                                  leading: CircleAvatar(
-                                      backgroundColor: Colors.transparent,
-                                      backgroundImage: AssetImage(
-                                          selectedItems[index].itemIcon)),
+                                  leading: ClipRect(
+                                   //   backgroundColor: Colors.transparent,
+
+                                      child: Container(
+                                        width: 40,
+                                        height: 40,
+                                        child: Image.asset(
+                                            selectedItems[index].itemIcon),
+                                      ) ),
                                   trailing: Flex(
                                     direction: Axis.horizontal,
                                     mainAxisSize: MainAxisSize.min,
