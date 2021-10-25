@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:flat_icons_flutter/flat_icons_flutter.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -238,29 +239,43 @@ class _HomePageState extends State<HomePage> {
                                       showDialog(
                                         context: context,
                                         builder: (BuildContext context) =>
-                                            AlertDialog(
-                                                // aya , translated buttons text
-                                                title: const Text(
-                                                    'هل تريد حذف المنتج ؟'),
-                                                actions: <Widget>[
-                                              TextButton(
-                                                onPressed: () => Navigator.pop(
-                                                    context, 'Cancel'),
-                                                child: const Text('لا'),
-                                              ),
-                                              TextButton(
-                                                onPressed: () {
-                                                  Navigator.pop(context, 'Ok');
-                                                  setState(() {
-                                                    items.remove(
-                                                        selectedItems[index]);
-                                                    cart.delete(
-                                                        selectedItems[index]);
-                                                  });
-                                                },
-                                                child: const Text('نعم'),
-                                              ),
-                                            ]),
+                                            Padding(
+                                              padding:  const EdgeInsets.fromLTRB(3,0,3,0),
+                                              child: AlertDialog(
+                                                  // aya , translated buttons text
+                                                  title: const Text(
+                                                      'هل تريد حذف المنتج ؟', textAlign: TextAlign.center,),
+                                                  actions: <Widget>[
+                                                Padding(
+                                                  padding: const EdgeInsets.fromLTRB(3,0,3,0),
+                                                  child: Row(
+                                                    children: [
+                                                      Expanded(child:TextButton(
+                                                        onPressed: () => Navigator.pop(
+                                                            context, 'Cancel'),
+                                                        child: const Text('لا'),
+                                                      ),
+                                                      ),
+
+                                                      Expanded(child: TextButton(
+                                                        onPressed: () {
+                                                          Navigator.pop(context, 'Ok');
+                                                          setState(() {
+                                                            items.remove(
+                                                                selectedItems[index]);
+                                                            cart.delete(
+                                                                selectedItems[index]);
+                                                          });
+                                                        },
+                                                        child: const Text('نعم'),
+                                                      ),
+                                                    ),
+                                                    ],
+                                                  ),
+                                                ),
+
+                                              ]),
+                                            ),
                                       );
                                     },
                                   )
