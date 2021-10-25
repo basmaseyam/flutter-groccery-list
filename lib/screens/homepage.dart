@@ -79,12 +79,14 @@ class _HomePageState extends State<HomePage> {
                             value: value,
                             child: value == 'item'
                                 ? Text(
-                                    'منتج',
+                                    'إضافة منتج',
                                     style: TextStyle(color: kMainColor),
+                                    textAlign: TextAlign.center,
                                   )
                                 : Text(
-                                    'قسم',
+                                    'إضافة قسم',
                                     style: TextStyle(color: kMainColor),
+                                    textAlign: TextAlign.center,
                                   ),
                             onTap: () {
                               value == 'item'

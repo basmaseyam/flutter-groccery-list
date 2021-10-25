@@ -255,7 +255,7 @@ List<Item> items = [
   Item(
       title: 'صلصة طماطم',
       category: 'مستلزمات الطبخ',
-      quantity: 'لتر',
+      quantity: 'عبوة',
       itemIcon: 'images/icons/Ingredients/tomato-sauce.png',
       amount: 0),
 
