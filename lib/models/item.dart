@@ -49,20 +49,19 @@ class Item extends ChangeNotifier {
     this.quantity,
   });
 
-  Item.fromJson(Map<String, dynamic> json)
-      : title = json['title'],
-        itemIcon = json['itemIcon'],
-        category = json['category'],
-        amount = json['amount'],
-        quantity = json['quantity'];
-
+  factory Item.fromJson(Map<String, dynamic> json) {
+    return Item(
+        title: json["title"],
+        category: json["category"],
+        quantity: json["quantity"],
+        itemIcon: json["itemIcon"],
+        amount: json["amount"]);
+  }
   Map<String, dynamic> toJson() => {
-        title: 'title',
-        itemIcon: 'itemIcon',
-        category: 'category',
-        amount.toString(): 'amount',
-        quantity: 'quantity'
+        title: "title",
+        category: "category",
+        quantity: "quantity",
+        itemIcon: "itemIcon",
+        amount.toString(): "amount"
       };
-
-  fromJson(Map<String, dynamic> result) {}
 }

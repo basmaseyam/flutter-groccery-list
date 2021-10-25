@@ -16,11 +16,15 @@ class CheckoutPage extends StatefulWidget {
 
 class _CheckoutPageState extends State<CheckoutPage> {
   bool firstvalue = false;
+  @override
+  void initState() {
+    // TODO: implement initState
+    context.read<FileController>().writeCart();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Consumer<Cart>(builder: (context, cart, child) {
-      context.read<FileController>().writeCart();
       return Directionality(
         textDirection: TextDirection.rtl,
         child: Scaffold(

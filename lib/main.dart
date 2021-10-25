@@ -40,7 +40,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     context.read<FileController>().readCart();
-
     return Directionality(
         textDirection: TextDirection.rtl,
         child: MaterialApp(

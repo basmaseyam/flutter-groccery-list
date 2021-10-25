@@ -45,23 +45,21 @@ class FileManager {
   }
 
   Future<List> readJsonFile() async {
-    String fileContent;
-    List<Item> _readItems = [];
+    String fileContent = 'Cart List';
+    var finallist = [];
     File file = await _jsonFile;
-
     if (await file.exists()) {
       try {
         fileContent = await file.readAsString();
-        _readItems = _readItems
-            .map<Item>((e) => e.fromJson(json.decode(fileContent)))
-            .toList();
-        return _readItems;
+        var jsonlist = jsonDecode(fileContent);
+        print(jsonlist.length);
+        finallist = jsonlist.map((e) => Item.fromJson(e)).toList();
+        return finallist;
       } catch (e) {
         print(e);
       }
     }
-
-    return items;
+    return null;
   }
 
   Future<String> writeTextFile() async {
@@ -74,7 +72,7 @@ class FileManager {
   }
 
   Future<List> writeJsonFile() async {
-    final List<Item> itemslist = items;
+    final List<Item> itemslist = items.where((p) => p.amount > 0).toList();
     File file = await _jsonFile;
     var json = jsonEncode(itemslist.map((e) => e.toJson()).toList());
 

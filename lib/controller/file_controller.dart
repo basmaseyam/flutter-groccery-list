@@ -4,7 +4,7 @@ import 'package:moshtryate_new/models/item.dart';
 
 class FileController extends ChangeNotifier {
   String _text;
-  List<Item> _itemslist;
+  List<dynamic> _itemslist;
 
   String get text => _text;
   List<Item> get cartitems => _itemslist;
@@ -20,12 +20,17 @@ class FileController extends ChangeNotifier {
   }
 
   readCart() async {
-    _itemslist = await FileManager().readJsonFile();
+    final result = await FileManager().readJsonFile();
+
+    if (result != null) {
+      _itemslist = await FileManager().readJsonFile();
+    }
     notifyListeners();
   }
 
   writeCart() async {
     _itemslist = await FileManager().writeJsonFile();
+
     notifyListeners();
   }
 }

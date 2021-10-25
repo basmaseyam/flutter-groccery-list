@@ -6,6 +6,7 @@ import 'package:flutter/painting.dart';
 import 'package:moshtryate_new/controller/file_controller.dart';
 import 'package:moshtryate_new/data/category.dart';
 import 'package:moshtryate_new/data/itemscat.dart';
+import 'package:moshtryate_new/file_manager.dart';
 import 'package:moshtryate_new/models/cart.dart';
 import 'package:moshtryate_new/models/category.dart';
 import 'package:moshtryate_new/models/item.dart';
@@ -206,20 +207,14 @@ class _HomePageState extends State<HomePage> {
                                             AlertDialog(
                                                 // aya , translated buttons text
                                                 title: const Text(
-                                                    'هل تريد حذف المنتج ؟', textAlign: TextAlign.center,),
+                                                    'هل تريد حذف المنتج ؟'),
                                                 actions: <Widget>[
-
-                                                  Row(
-                                                    children: [
-                                                      Expanded(child:
-                                                      TextButton(
+                                              TextButton(
                                                 onPressed: () => Navigator.pop(
-                                                        context, 'Cancel'),
+                                                    context, 'Cancel'),
                                                 child: const Text('لا'),
                                               ),
-                                              ),
-
-                                              Expanded(child:TextButton(
+                                              TextButton(
                                                 onPressed: () {
                                                   Navigator.pop(context, 'Ok');
                                                   setState(() {
@@ -231,13 +226,7 @@ class _HomePageState extends State<HomePage> {
                                                 },
                                                 child: const Text('نعم'),
                                               ),
-                                              ),
-                                                    ],
-                                                  ),
-                                            ]
-
-
-                                      ),
+                                            ]),
                                       );
                                     },
                                   )

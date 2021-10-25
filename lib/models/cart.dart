@@ -33,6 +33,7 @@ class Cart extends ChangeNotifier {
   List<Item> get basketItems {
     _organizedItems = _items.toSet().toList();
     _organizedItems.sort((a, b) => b.category.compareTo(a.category));
+
     return _organizedItems;
   }
 }
