@@ -188,7 +188,7 @@ class _NewItemState extends State<NewItem> {
                 print(newitem.title);
                 cart.add(newitem);
                 items.add(newitem);
-                context.read<FileController>().writeCart();
+
                 setState(() {
                   _formKey.currentState.reset();
                 });

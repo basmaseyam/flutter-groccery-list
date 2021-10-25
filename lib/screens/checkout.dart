@@ -16,11 +16,6 @@ class CheckoutPage extends StatefulWidget {
 
 class _CheckoutPageState extends State<CheckoutPage> {
   bool firstvalue = false;
-  @override
-  void initState() {
-    // TODO: implement initState
-    context.read<FileController>().writeCart();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -79,6 +74,9 @@ class _CheckoutPageState extends State<CheckoutPage> {
                             color: Colors.blue,
                             onPressed: () {
                               cart.delete(cart.basketItems[index]);
+                              setState(() {
+                                context.read<FileController>().writeCart();
+                              });
                             },
                           ),
                           title: Row(

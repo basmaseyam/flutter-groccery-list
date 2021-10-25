@@ -34,9 +34,13 @@ class _HomePageState extends State<HomePage> {
 
   int amount = 0;
   var dropdownvalue = 'item';
+
   @override
   Widget build(BuildContext context) {
-    List<Item> itemsCats = items;
+    List itemsCats = context.select(
+      (FileController controller) =>
+          controller.cartitems != null ? controller.cartitems : [],
+    );
 
     return Consumer<Cart>(builder: (context, cart, child) {
       return Directionality(
@@ -62,6 +66,7 @@ class _HomePageState extends State<HomePage> {
                   Row(children: [
                     // a row for + and cart icon at appbar
                     DropdownButton(
+                      underline: Container(color: Colors.transparent),
                       icon: Icon(
                         Icons.add,
                         size: 32,
@@ -162,7 +167,7 @@ class _HomePageState extends State<HomePage> {
                 itemCount: categories.length,
                 itemBuilder: (context, index) {
                   String cat = categories[index].category;
-                  List<Item> selectedItems =
+                  List selectedItems =
                       itemsCats.where((p) => p.category.contains(cat)).toList();
                   return ExpansionTile(title: Text(cat),
                       //    trailing: Icon(Icons.keyboard_arrow_left),
@@ -201,7 +206,9 @@ class _HomePageState extends State<HomePage> {
                                           onPressed: () {
                                             selectedItems[index]
                                                 .incrementCounter();
-
+                                            setState(() {
+                                              FileController().writeCart();
+                                            });
                                             return cart
                                                 .add(selectedItems[index]);
                                           }),
@@ -214,7 +221,9 @@ class _HomePageState extends State<HomePage> {
                                           onPressed: () {
                                             selectedItems[index]
                                                 .decrementCounter();
-
+                                            setState(() {
+                                              FileController().writeCart();
+                                            });
                                             return cart
                                                 .remove(selectedItems[index]);
                                           }),
@@ -240,42 +249,54 @@ class _HomePageState extends State<HomePage> {
                                         context: context,
                                         builder: (BuildContext context) =>
                                             Padding(
-                                              padding:  const EdgeInsets.fromLTRB(3,0,3,0),
-                                              child: AlertDialog(
-                                                  // aya , translated buttons text
-                                                  title: const Text(
-                                                      'هل تريد حذف المنتج ؟', textAlign: TextAlign.center,),
-                                                  actions: <Widget>[
+                                          padding: const EdgeInsets.fromLTRB(
+                                              3, 0, 3, 0),
+                                          child: AlertDialog(
+                                              // aya , translated buttons text
+                                              title: const Text(
+                                                'هل تريد حذف المنتج ؟',
+                                                textAlign: TextAlign.center,
+                                              ),
+                                              actions: <Widget>[
                                                 Padding(
-                                                  padding: const EdgeInsets.fromLTRB(3,0,3,0),
+                                                  padding:
+                                                      const EdgeInsets.fromLTRB(
+                                                          3, 0, 3, 0),
                                                   child: Row(
                                                     children: [
-                                                      Expanded(child:TextButton(
-                                                        onPressed: () => Navigator.pop(
-                                                            context, 'Cancel'),
-                                                        child: const Text('لا'),
+                                                      Expanded(
+                                                        child: TextButton(
+                                                          onPressed: () =>
+                                                              Navigator.pop(
+                                                                  context,
+                                                                  'Cancel'),
+                                                          child:
+                                                              const Text('لا'),
+                                                        ),
                                                       ),
+                                                      Expanded(
+                                                        child: TextButton(
+                                                          onPressed: () {
+                                                            Navigator.pop(
+                                                                context, 'Ok');
+                                                            setState(() {
+                                                              items.remove(
+                                                                  selectedItems[
+                                                                      index]);
+                                                              cart.delete(
+                                                                  selectedItems[
+                                                                      index]);
+                                                            });
+                                                          },
+                                                          child:
+                                                              const Text('نعم'),
+                                                        ),
                                                       ),
-
-                                                      Expanded(child: TextButton(
-                                                        onPressed: () {
-                                                          Navigator.pop(context, 'Ok');
-                                                          setState(() {
-                                                            items.remove(
-                                                                selectedItems[index]);
-                                                            cart.delete(
-                                                                selectedItems[index]);
-                                                          });
-                                                        },
-                                                        child: const Text('نعم'),
-                                                      ),
-                                                    ),
                                                     ],
                                                   ),
                                                 ),
-
                                               ]),
-                                            ),
+                                        ),
                                       );
                                     },
                                   )

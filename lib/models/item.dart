@@ -1,4 +1,5 @@
 import 'package:flutter/widgets.dart';
+import 'package:moshtryate_new/controller/file_controller.dart';
 
 class Item extends ChangeNotifier {
   String title;
@@ -58,10 +59,10 @@ class Item extends ChangeNotifier {
         amount: json["amount"]);
   }
   Map<String, dynamic> toJson() => {
-        title: "title",
-        category: "category",
-        quantity: "quantity",
-        itemIcon: "itemIcon",
-        amount.toString(): "amount"
+        "title": title,
+        "category": category,
+        "quantity": quantity,
+        "itemIcon": itemIcon,
+        "amount": amount
       };
 }
