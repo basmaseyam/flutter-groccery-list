@@ -1,8 +1,11 @@
 import 'dart:io';
+import 'package:flat_icons_flutter/flat_icons_flutter.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:moshtryate_new/constants.dart';
 import 'package:moshtryate_new/controller/file_controller.dart';
 import 'package:moshtryate_new/data/category.dart';
 import 'package:moshtryate_new/data/itemscat.dart';
@@ -10,6 +13,7 @@ import 'package:moshtryate_new/file_manager.dart';
 import 'package:moshtryate_new/models/cart.dart';
 import 'package:moshtryate_new/models/category.dart';
 import 'package:moshtryate_new/models/item.dart';
+import 'package:moshtryate_new/screens/NewCategory.dart';
 import 'package:provider/provider.dart';
 //import 'package:moshtryate_new/screens/About.dart';
 
@@ -28,7 +32,7 @@ class _HomePageState extends State<HomePage> {
   final List<Item> itemsothers = [];
 
   int amount = 0;
-
+  var dropdownvalue = 'item';
   @override
   Widget build(BuildContext context) {
     List<Item> itemsCats = items;
@@ -56,15 +60,43 @@ class _HomePageState extends State<HomePage> {
                 actions: [
                   Row(children: [
                     // a row for + and cart icon at appbar
-                    IconButton(
-                        icon: Icon(
-                          Icons.add,
-                          size: 30,
-                        ),
-                        onPressed: () {
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => NewItem()));
-                        }),
+                    DropdownButton(
+                      icon: Icon(
+                        Icons.add,
+                        size: 32,
+                      ),
+                      iconEnabledColor: Colors.white,
+                      iconSize: 32,
+                      value: 'item',
+                      onChanged: (String newValue) {
+                        setState(() {
+                          dropdownvalue = newValue;
+                        });
+                      },
+                      items: <String>['item', 'category']
+                          .map<DropdownMenuItem<String>>((String value) {
+                        return DropdownMenuItem<String>(
+                            value: value,
+                            child: value == 'item'
+                                ? Text(
+                                    'منتج',
+                                    style: TextStyle(color: kMainColor),
+                                  )
+                                : Text(
+                                    'قسم',
+                                    style: TextStyle(color: kMainColor),
+                                  ),
+                            onTap: () {
+                              value == 'item'
+                                  ? Navigator.of(context).push(
+                                      MaterialPageRoute(
+                                          builder: (context) => NewItem()))
+                                  : Navigator.of(context).push(
+                                      MaterialPageRoute(
+                                          builder: (context) => NewCategory()));
+                            });
+                      }).toList(),
+                    ),
                     Padding(
                       padding: EdgeInsets.only(left: 32),
                       child: Row(
@@ -146,14 +178,14 @@ class _HomePageState extends State<HomePage> {
                                 child: ListTile(
                                   title: Text(selectedItems[index].title),
                                   leading: ClipRect(
-                                   //   backgroundColor: Colors.transparent,
+                                      //   backgroundColor: Colors.transparent,
 
                                       child: Container(
-                                        width: 40,
-                                        height: 40,
-                                        child: Image.asset(
-                                            selectedItems[index].itemIcon),
-                                      ) ),
+                                    width: 40,
+                                    height: 40,
+                                    child: Image.asset(
+                                        selectedItems[index].itemIcon),
+                                  )),
                                   trailing: Flex(
                                     direction: Axis.horizontal,
                                     mainAxisSize: MainAxisSize.min,
