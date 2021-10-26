@@ -34,6 +34,11 @@ class _HomePageState extends State<HomePage> {
 
   int amount = 0;
   var dropdownvalue = 'item';
+  @override
+  void initState() {
+    context.read<FileController>().writeCart();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
