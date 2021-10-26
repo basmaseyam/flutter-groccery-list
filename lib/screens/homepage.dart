@@ -39,7 +39,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     items = context.select(
       (FileController controller) =>
-          controller.cartitems != null ? controller.cartitems : [],
+          controller.cartitems != null ? controller.cartitems : items,
     );
 
     List itemsCats = items;
