@@ -37,10 +37,12 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    List itemsCats = context.select(
+    items = context.select(
       (FileController controller) =>
           controller.cartitems != null ? controller.cartitems : [],
     );
+
+    List itemsCats = items;
 
     return Consumer<Cart>(builder: (context, cart, child) {
       return Directionality(
@@ -206,9 +208,7 @@ class _HomePageState extends State<HomePage> {
                                           onPressed: () {
                                             selectedItems[index]
                                                 .incrementCounter();
-                                            setState(() {
-                                              FileController().writeCart();
-                                            });
+
                                             return cart
                                                 .add(selectedItems[index]);
                                           }),
@@ -221,9 +221,7 @@ class _HomePageState extends State<HomePage> {
                                           onPressed: () {
                                             selectedItems[index]
                                                 .decrementCounter();
-                                            setState(() {
-                                              FileController().writeCart();
-                                            });
+
                                             return cart
                                                 .remove(selectedItems[index]);
                                           }),

@@ -74,9 +74,6 @@ class _CheckoutPageState extends State<CheckoutPage> {
                             color: Colors.blue,
                             onPressed: () {
                               cart.delete(cart.basketItems[index]);
-                              setState(() {
-                                context.read<FileController>().writeCart();
-                              });
                             },
                           ),
                           title: Row(

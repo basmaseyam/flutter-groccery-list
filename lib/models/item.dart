@@ -12,6 +12,7 @@ class Item extends ChangeNotifier {
 
   void add(Item item) {
     _items.add(item);
+
     notifyListeners();
   }
 
@@ -22,17 +23,21 @@ class Item extends ChangeNotifier {
 
   void incrementCounter() {
     amount++;
+    FileController().writeCart();
     notifyListeners();
   }
 
   void delete(Item selectedItem) {
     _items.removeWhere((item) => selectedItem.title == item.title);
+    FileController().writeCart();
+
     notifyListeners();
   }
 
   void decrementCounter() {
     if (amount != 0) {
       amount--;
+      FileController().writeCart();
     }
 
     notifyListeners();
