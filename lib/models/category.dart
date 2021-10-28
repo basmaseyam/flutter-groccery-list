@@ -1,4 +1,5 @@
 import 'package:flutter/widgets.dart';
+import 'package:moshtryate_new/controller/file_controller.dart';
 
 class Category extends ChangeNotifier {
   String category;
@@ -7,11 +8,13 @@ class Category extends ChangeNotifier {
 
   void add(Category category) {
     _categorys.add(category);
+    FileController().writeCart();
     notifyListeners();
   }
 
   void remove(Category category) {
     _categorys.remove(category);
+    FileController().writeCart();
     notifyListeners();
   }
 

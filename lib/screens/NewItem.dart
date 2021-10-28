@@ -85,7 +85,7 @@ class _NewItemState extends State<NewItem> {
                     decoration: InputDecoration(
                       filled: true, /* icon: Icon(Icons.category)*/
                     ), //Updated by aya , removed un necessary search icon
-                    hint: Text('اختر القسم المناسب'),
+                    hint: Text('اختر القائمه المناسبه'),
                     isExpanded: true,
                     allowClear: true,
                     items: _categories.map((valueItem) {

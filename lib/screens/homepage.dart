@@ -136,7 +136,7 @@ class _HomePageState extends State<HomePage> {
                                     textAlign: TextAlign.center,
                                   )
                                 : Text(
-                                    'إضافة قسم',
+                                    'إضافة قائمه',
                                     style: TextStyle(color: kMainColor),
                                     textAlign: TextAlign.center,
                                   ),

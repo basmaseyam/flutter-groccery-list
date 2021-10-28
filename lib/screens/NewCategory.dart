@@ -57,13 +57,13 @@ class _NewCategoryState extends State<NewCategory> {
               key: _formKey,
               child: ListView(children: [
                 Text(
-                  'اضف قسم جديد',
+                  'اضف قائمه جديد',
                   textAlign: TextAlign.center,
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
                 ),
                 FormBuilderTextField(
                   name: 'category',
-                  decoration: InputDecoration(hintText: 'اسم القسم '),
+                  decoration: InputDecoration(hintText: 'اسم القائمه '),
                   validator: FormBuilderValidators.compose(
                       [FormBuilderValidators.required(context)]),
                 ),
@@ -102,7 +102,7 @@ class _NewCategoryState extends State<NewCategory> {
                               padding: const EdgeInsets.all(20.0),
                             ),
                             Text(
-                              'تمت إضافة القسم',
+                              'تمت إضافة القائمه',
                               // textAlign: TextAlign.center,
                             ),
                             Icon(Icons.check, color: Colors.blueAccent),

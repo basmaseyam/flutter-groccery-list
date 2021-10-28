@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:moshtryate_new/screens/NewCategory.dart';
 import 'package:moshtryate_new/screens/NewItem.dart';
 import 'package:moshtryate_new/screens/checkout.dart';
 import 'homepage.dart';
@@ -64,7 +65,6 @@ class MyDrawer extends StatelessWidget {
             },
           ),
         ),
-
         InkWell(
           child: // to make the menu clickable and action happens
               ListTile(
@@ -78,9 +78,23 @@ class MyDrawer extends StatelessWidget {
             },
           ),
         ),
-        InkWell(          // aya , changed order
+        InkWell(
           child: // to make the menu clickable and action happens
-          ListTile(
+              ListTile(
+            title: Text(
+              'اضافه قائمه',
+            ),
+            leading: Icon(Icons.add_shopping_cart_outlined),
+            onTap: () {
+              Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (context) => NewCategory()));
+            },
+          ),
+        ),
+        InkWell(
+          // aya , changed order
+          child: // to make the menu clickable and action happens
+              ListTile(
             title: Text(
               'المواقع',
             ),
@@ -91,13 +105,10 @@ class MyDrawer extends StatelessWidget {
             },
           ),
         ),
-
         InkWell(
           child: // to make the menu clickable and action happens
               ListTile(
-            title: Text(
-              'خروج',
-            ),
+            title: user != null ? Text('خروج') : Text('تسجيل دخول'),
             leading: Icon(Icons.exit_to_app),
             onTap: () {
               if (GoogleSignInAccount != null) {
