@@ -79,6 +79,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
                           title: Row(
                             children: [
                               CircleAvatar(
+                                backgroundColor: Colors.transparent,
                                   backgroundImage: AssetImage(
                                       cart.basketItems[index].itemIcon)),
                               SizedBox(width: 8),
