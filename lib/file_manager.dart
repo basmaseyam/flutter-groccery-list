@@ -41,7 +41,7 @@ class FileManager {
         print(e);
       }
     }
-    return fileContent;
+    return null;
   }
 
   Future<List> readJsonFile() async {

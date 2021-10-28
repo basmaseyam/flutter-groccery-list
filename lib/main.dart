@@ -7,6 +7,7 @@ import 'package:provider/provider.dart';
 import 'package:moshtryate_new/screens/login.dart';
 import 'package:connectivity/connectivity.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'models/cart.dart';
 import 'screens/login.dart';
 

@@ -3,11 +3,12 @@ import 'dart:convert';
 import 'package:flutter/widgets.dart';
 import 'package:moshtryate_new/models/item.dart';
 import 'package:moshtryate_new/controller/file_controller.dart';
+import 'package:moshtryate_new/data/itemscat.dart';
 
 class Cart extends ChangeNotifier {
   List<Item> _items = FileController().cartitems != null
       ? FileController().cartitems.where((p) => p.amount > 0).toList()
-      : [];
+      : items.where((p) => p.amount > 0).toList();
   List<Item> _organizedItems = [];
   int counter = 0;
   List<Item> distinctIds = [];
@@ -16,6 +17,10 @@ class Cart extends ChangeNotifier {
     _items.add(item);
     FileController().writeCart();
     notifyListeners();
+  }
+
+  void addAll(List<Item> itemsbasket) {
+    _items.addAll(itemsbasket);
   }
 
   void remove(Item item) {
