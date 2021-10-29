@@ -85,10 +85,12 @@ class _HomePageState extends State<HomePage> {
     List itemsCats = items;
 
     return Consumer<Cart>(builder: (context, cart, child) {
-      cart.addAll(context
-          .select((FileController controller) =>
-              itemsCats.where((p) => p.amount > 0))
-          .toList());
+      if (cart.basketItems.length == 0)
+        cart.addAll(context
+            .select(
+                (FileController controller) => items.where((p) => p.amount > 0))
+            .toList());
+
       return Directionality(
         textDirection: TextDirection.rtl,
         child: MaterialApp(

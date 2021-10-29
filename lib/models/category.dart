@@ -8,15 +8,20 @@ class Category extends ChangeNotifier {
 
   void add(Category category) {
     _categorys.add(category);
-    FileController().writeCart();
     notifyListeners();
   }
 
   void remove(Category category) {
     _categorys.remove(category);
-    FileController().writeCart();
     notifyListeners();
   }
 
   Category({this.category});
+
+  factory Category.fromJson(Map<String, dynamic> json) {
+    return Category(category: json["category"]);
+  }
+  Map<String, dynamic> toJson() => {
+        "category": category,
+      };
 }
