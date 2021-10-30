@@ -148,6 +148,12 @@ List<Item> items = [
       quantity: 'كيلو',
       itemIcon: 'images/icons/FruitsVegeies/icons8-zucchini-48.png',
       amount: 0),
+  Item(
+      title: 'ماشروم',
+      category: 'الفواكه و الخضار',
+      quantity: 'كيلو',
+      itemIcon: 'images/icons/FruitsVegeies/mushroom.png',
+      amount: 0),
 
 //  ---- المخبوزات ------
 
@@ -175,9 +181,22 @@ List<Item> items = [
       title: 'لبن',
       category: 'البيض و منتجات الألبان',
       quantity: 'لتر',
-      itemIcon: 'images/icons/DiarayEggs/icons8-milk-carton-64.png',
+      itemIcon: 'images/icons/DiarayEggs/milk.png',
       amount: 0),
 
+  Item(
+      title: 'زبادي',
+      category: 'البيض و منتجات الألبان',
+      quantity: 'عبوة',
+      itemIcon: 'images/icons/DiarayEggs/joghurt.png',
+      amount: 0),
+
+  Item(
+      title: 'كريمة طبخ',
+      category: 'البيض و منتجات الألبان',
+      quantity: 'عبوة',
+      itemIcon: 'images/icons/DiarayEggs/cream.png',
+      amount: 0),
   Item(
       title: 'زبدة',
       category: 'البيض و منتجات الألبان',
@@ -229,7 +248,7 @@ List<Item> items = [
       itemIcon: 'images/icons/Grains/icons8-rolled-oats-48.png',
       amount: 0),
 
-  //  ---- الزيوت و المعلبات ------
+  //  ---- مستلزمات الطبخ ------
 
   Item(
       title: 'زيت',
@@ -250,6 +269,13 @@ List<Item> items = [
       category: 'مستلزمات الطبخ',
       quantity: 'لتر',
       itemIcon: 'images/icons/Ingredients/plastic-bottle.png',
+      amount: 0),
+
+  Item(
+      title: 'سكر',
+      category: 'مستلزمات الطبخ',
+      quantity: 'لتر',
+      itemIcon: 'images/icons/Ingredients/sugar.png',
       amount: 0),
 
   Item(

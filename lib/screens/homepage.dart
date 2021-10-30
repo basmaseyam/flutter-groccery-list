@@ -115,11 +115,13 @@ class _HomePageState extends State<HomePage> {
                     // a row for + and cart icon at appbar
                     DropdownButton(
                       underline: Container(color: Colors.transparent),
+
                       icon: Icon(
                         Icons.add,
                         size: 32,
                       ),
                       iconEnabledColor: Colors.white,
+
                       iconSize: 32,
                       value: 'item',
                       onChanged: (String newValue) {
@@ -135,12 +137,13 @@ class _HomePageState extends State<HomePage> {
                                 ? Text(
                                     'إضافة منتج',
                                     style: TextStyle(color: kMainColor),
-                                    textAlign: TextAlign.center,
+                               textAlign: TextAlign.center,
+
                                   )
                                 : Text(
-                                    'إضافة قائمه',
+                                    'إضافة قائمة',
                                     style: TextStyle(color: kMainColor),
-                                    textAlign: TextAlign.center,
+                              textAlign: TextAlign.center,
                                   ),
                             onTap: () {
                               value == 'item'
@@ -153,6 +156,7 @@ class _HomePageState extends State<HomePage> {
                             });
                       }).toList(),
                     ),
+
                     Padding(
                       padding: EdgeInsets.only(left: 32),
                       child: Row(
@@ -396,7 +400,7 @@ class Searchbar extends SearchDelegate<Item> {
   @override
   List<Widget> buildActions(BuildContext context) {
     return [
-      IconButton(
+IconButton(
         icon: Icon(Icons.clear),
         onPressed: () {
           if (query.isEmpty) {
