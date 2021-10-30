@@ -1,4 +1,5 @@
 import 'package:flutter/widgets.dart';
+import 'package:moshtryate_new/controller/file_controller.dart';
 
 class Category extends ChangeNotifier {
   String category;
@@ -16,4 +17,11 @@ class Category extends ChangeNotifier {
   }
 
   Category({this.category});
+
+  factory Category.fromJson(Map<String, dynamic> json) {
+    return Category(category: json["category"]);
+  }
+  Map<String, dynamic> toJson() => {
+        "category": category,
+      };
 }

@@ -97,7 +97,31 @@ class _LoginScreenState extends State<LoginScreen> {
             .push(MaterialPageRoute(builder: (context) => HomePage()));
       }
     } catch (error) {
-      print('No internet connection');
+      return showDialog(
+          context: context,
+          builder: (context) {
+            Future.delayed(Duration(seconds: 2), () {
+              Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (context) => HomePage()));
+            });
+
+            return AlertDialog(
+              // aya , added icon to alertdialog
+              title: Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(20.0),
+                  ),
+                  Text(
+                    'لا يوجد اتصال بالانترنت',
+                    // textAlign: TextAlign.center,
+                  ),
+                  Icon(Icons.offline_bolt, color: Colors.blueAccent),
+                ],
+              ),
+            );
+          });
+      ;
     }
   }
 

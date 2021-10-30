@@ -6,9 +6,7 @@ import 'package:moshtryate_new/controller/file_controller.dart';
 import 'package:moshtryate_new/data/itemscat.dart';
 
 class Cart extends ChangeNotifier {
-  List<Item> _items = FileController().cartitems != null
-      ? FileController().cartitems.where((p) => p.amount > 0).toList()
-      : items.where((p) => p.amount > 0).toList();
+  List<Item> _items = [];
   List<Item> _organizedItems = [];
   int counter = 0;
   List<Item> distinctIds = [];
