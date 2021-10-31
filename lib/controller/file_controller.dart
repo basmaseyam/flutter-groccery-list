@@ -1,16 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:moshtryate_new/file_manager.dart';
-import 'package:moshtryate_new/models/category.dart';
 import 'package:moshtryate_new/models/item.dart';
 
 class FileController extends ChangeNotifier {
   String _text;
   List _itemslist;
-  List _categories;
 
   String get text => _text;
   List get cartitems => _itemslist;
-  List get categories => _categories;
+
+  readText() async {
+    _text = await FileManager().readTextFile();
+    notifyListeners();
+  }
+
+  writeText() async {
+    _text = await FileManager().writeTextFile();
+    notifyListeners();
+  }
 
   readCart() async {
     final result = await FileManager().readJsonFile();
@@ -22,7 +29,7 @@ class FileController extends ChangeNotifier {
   }
 
   writeCart() async {
-    await FileManager().writeJsonFile();
+    _itemslist = await FileManager().writeJsonFile();
 
     notifyListeners();
   }
