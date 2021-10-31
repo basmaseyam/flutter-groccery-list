@@ -12,6 +12,7 @@ List<Category> categories = [
   Category(
     category: 'البيض و منتجات الألبان',
   ),
+
   Category(
     category: 'اللحوم و الأسماك',
   ),
