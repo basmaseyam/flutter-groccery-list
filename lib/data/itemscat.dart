@@ -155,7 +155,7 @@ List<Item> items = [
       itemIcon: 'images/icons/FruitsVegeies/mushroom.png',
       amount: 0),
 
-//  ---- المخبوزات ------
+//  ---- المخبوزات ومستلزماتها ------
 
   Item(
       title: 'عيش',
@@ -163,6 +163,27 @@ List<Item> items = [
       quantity: 'وحدة',
       itemIcon: 'images/icons/Bread&Bakeing/icons8-bread-48.png',
       amount: 0),
+
+  /*Item(
+      title: 'باكينج باودر',
+      category: 'المخبوزات و مستلزماتها',
+      quantity: 'عبوة',
+      itemIcon: 'images/icons/Bread&Bakeing/baking-powder.png',
+      amount: 0),
+
+  Item(
+      title: 'خميرة',
+      category: 'المخبوزات و مستلزماتها',
+      quantity: 'عبوة',
+      itemIcon: 'images/icons/Bread&Bakeing/yeast.png',
+      amount: 0),
+
+  Item(
+      title: 'فانيليا',
+      category: 'المخبوزات و مستلزماتها',
+      quantity: 'عبوة',
+      itemIcon: 'images/icons/Bread&Bakeing/icons8-vanilla-64.png',
+      amount: 0),*/
 
 //  ---- البيض و الأجبان ------
   Item(

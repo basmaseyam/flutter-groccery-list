@@ -6,11 +6,9 @@ List<Category> categories = [
   Category(
     category: 'الفواكه و الخضار',
   ),
-
   Category(
     category: 'المخبوزات',
   ),
-
   Category(
     category: 'البيض و منتجات الألبان',
   ),
@@ -23,7 +21,6 @@ List<Category> categories = [
   Category(       //not used yet
     category: 'مستلزمات الطبخ',
   ),
-
   Category(
     category: 'المشروبات',
   ),

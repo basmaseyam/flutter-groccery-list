@@ -45,7 +45,7 @@ class MyDrawer extends StatelessWidget {
         InkWell(
           child: // to make the menu clickable and action happens
               ListTile(
-            title: Text('الصفحة الرئيسية'),
+            title: Text('الصفحة الرئيسية', style: TextStyle(fontSize: 18),),
             subtitle: Text('جميع المنتجات'),
             leading: Icon(Icons.home),
             onTap: () {
@@ -55,10 +55,12 @@ class MyDrawer extends StatelessWidget {
           ),
         ),
         InkWell(
+
+          
           child: // to make the menu clickable and action happens
               ListTile(
-            leading: Icon(Icons.shopping_cart),
-            title: Text('قائمة التسوق'),
+                leading: Icon(Icons.shopping_cart),
+                 title: Text('قائمة التسوق', style: TextStyle(fontSize: 18),),
             onTap: () {
               Navigator.of(context).push(
                   MaterialPageRoute(builder: (context) => CheckoutPage()));
@@ -70,6 +72,8 @@ class MyDrawer extends StatelessWidget {
               ListTile(
             title: Text(
               'بحث و إضافه منتج',
+
+              style: TextStyle(fontSize: 18),
             ),
             leading: Icon(Icons.add_shopping_cart_outlined),
             onTap: () {
@@ -83,6 +87,7 @@ class MyDrawer extends StatelessWidget {
               ListTile(
             title: Text(
               'اضافه قائمه',
+   style: TextStyle(fontSize: 18),
             ),
             leading: Icon(Icons.add_shopping_cart_outlined),
             onTap: () {
@@ -97,6 +102,7 @@ class MyDrawer extends StatelessWidget {
               ListTile(
             title: Text(
               'المواقع',
+     style: TextStyle(fontSize: 18),
             ),
             leading: Icon(Icons.link),
             onTap: () {
@@ -108,7 +114,7 @@ class MyDrawer extends StatelessWidget {
         InkWell(
           child: // to make the menu clickable and action happens
               ListTile(
-            title: user != null ? Text('خروج') : Text('تسجيل دخول'),
+            title: user != null ? Text('خروج', style: TextStyle(fontSize: 18),) : Text('تسجيل دخول', style: TextStyle(fontSize: 18),),
             leading: Icon(Icons.exit_to_app),
             onTap: () {
               if (GoogleSignInAccount != null) {
