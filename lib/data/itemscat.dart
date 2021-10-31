@@ -156,39 +156,33 @@ List<Item> items = [
       amount: 0),
 
 //  ---- المخبوزات ومستلزماتها ------
-
   Item(
       title: 'عيش',
-      category: 'المخبوزات',
+      category: 'المخبوزات و مستلزماتها',
       quantity: 'وحدة',
       itemIcon: 'images/icons/Bread&Bakeing/icons8-bread-48.png',
       amount: 0),
   Item(
       title: 'باكينج باودر',
-      category: 'المخبوزات',
+      category: 'المخبوزات و مستلزماتها',
       quantity: 'عبوة',
       itemIcon: 'images/icons/Bread&Bakeing/baking-powder.png',
       amount: 0),
   Item(
       title: 'خميرة',
-      category: 'المخبوزات',
+      category: 'المخبوزات و مستلزماتها',
       quantity: 'عبوة',
       itemIcon: 'images/icons/Bread&Bakeing/yeast.png',
       amount: 0),
   Item(
       title: 'فانيليا',
-      category: 'المخبوزات',
+      category: 'المخبوزات و مستلزماتها',
       quantity: 'عبوة',
       itemIcon: 'images/icons/Bread&Bakeing/icons8-vanilla-64.png',
       amount: 0),
 
 //  ---- البيض و الأجبان ------
-  Item(
-      title: 'جبن',
-      category: 'البيض و منتجات الألبان',
-      quantity: 'كيلو',
-      itemIcon: 'images/icons/DiarayEggs/icons8-cheese-100.png',
-      amount: 0),
+
   Item(
       title: 'بيض',
       category: 'البيض و منتجات الألبان',
@@ -221,6 +215,31 @@ List<Item> items = [
       quantity: 'عبوة',
       itemIcon: 'images/icons/DiarayEggs/icons8-butter-100.png',
       amount: 0),
+  Item(
+      title: 'جبنة بيضاء',
+      category: 'البيض و منتجات الألبان',
+      quantity: 'كيلو',
+      itemIcon: 'images/icons/DiarayEggs/feta.png',
+      amount: 0),
+  Item(
+      title: 'جبنة رومي',
+      category: 'البيض و منتجات الألبان',
+      quantity: 'كيلو',
+      itemIcon: 'images/icons/DiarayEggs/Romy.png',
+      amount: 0),
+  Item(
+      title: 'جبنة شرائح',
+      category: 'البيض و منتجات الألبان',
+      quantity: 'كيلو',
+      itemIcon: 'images/icons/DiarayEggs/Cheese-slices.png',
+      amount: 0),
+  Item(
+      title: 'جبنة موتزاريلا',
+      category: 'البيض و منتجات الألبان',
+      quantity: 'كيلو',
+      itemIcon: 'images/icons/DiarayEggs/mozzarella.png',
+      amount: 0),
+
 
 
   //  ---- المشروبات ------
