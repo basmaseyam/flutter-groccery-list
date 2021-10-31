@@ -159,25 +159,25 @@ List<Item> items = [
 
   Item(
       title: 'عيش',
-      category: 'المخبوزات و مستلزماتها',
+      category: 'المخبوزات',
       quantity: 'وحدة',
       itemIcon: 'images/icons/Bread&Bakeing/icons8-bread-48.png',
       amount: 0),
   Item(
       title: 'باكينج باودر',
-      category: 'المخبوزات و مستلزماتها',
+      category: 'المخبوزات',
       quantity: 'عبوة',
       itemIcon: 'images/icons/Bread&Bakeing/baking-powder.png',
       amount: 0),
   Item(
       title: 'خميرة',
-      category: 'المخبوزات و مستلزماتها',
+      category: 'المخبوزات',
       quantity: 'عبوة',
       itemIcon: 'images/icons/Bread&Bakeing/yeast.png',
       amount: 0),
   Item(
       title: 'فانيليا',
-      category: 'المخبوزات و مستلزماتها',
+      category: 'المخبوزات',
       quantity: 'عبوة',
       itemIcon: 'images/icons/Bread&Bakeing/icons8-vanilla-64.png',
       amount: 0),

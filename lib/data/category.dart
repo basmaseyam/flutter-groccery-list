@@ -7,7 +7,7 @@ List<Category> categories = [
     category: 'الفواكه و الخضار',
   ),
   Category(
-    category: 'المخبوزات و مستلزماتها',
+    category: 'المخبوزات',
   ),
   Category(
     category: 'البيض و منتجات الألبان',
