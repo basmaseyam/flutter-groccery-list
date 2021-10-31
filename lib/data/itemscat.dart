@@ -159,31 +159,28 @@ List<Item> items = [
 
   Item(
       title: 'عيش',
-      category: 'المخبوزات',
+      category: 'المخبوزات و مستلزماتها',
       quantity: 'وحدة',
       itemIcon: 'images/icons/Bread&Bakeing/icons8-bread-48.png',
       amount: 0),
-
-  /*Item(
+  Item(
       title: 'باكينج باودر',
       category: 'المخبوزات و مستلزماتها',
       quantity: 'عبوة',
       itemIcon: 'images/icons/Bread&Bakeing/baking-powder.png',
       amount: 0),
-
   Item(
       title: 'خميرة',
       category: 'المخبوزات و مستلزماتها',
       quantity: 'عبوة',
       itemIcon: 'images/icons/Bread&Bakeing/yeast.png',
       amount: 0),
-
   Item(
       title: 'فانيليا',
       category: 'المخبوزات و مستلزماتها',
       quantity: 'عبوة',
       itemIcon: 'images/icons/Bread&Bakeing/icons8-vanilla-64.png',
-      amount: 0),*/
+      amount: 0),
 
 //  ---- البيض و الأجبان ------
   Item(
