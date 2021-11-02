@@ -219,7 +219,7 @@ List<Item> items = [
       title: 'جبنة بيضاء',
       category: 'البيض و منتجات الألبان',
       quantity: 'كيلو',
-      itemIcon: 'images/icons/DiarayEggs/feta.png',
+      itemIcon: 'images/icons/DiarayEggs/white-cheese.png',
       amount: 0),
   Item(
       title: 'جبنة رومي',
@@ -231,7 +231,7 @@ List<Item> items = [
       title: 'جبنة شرائح',
       category: 'البيض و منتجات الألبان',
       quantity: 'كيلو',
-      itemIcon: 'images/icons/DiarayEggs/Cheese-slices.png',
+      itemIcon: 'images/icons/DiarayEggs/slices.png',
       amount: 0),
   Item(
       title: 'جبنة موتزاريلا',
@@ -374,34 +374,34 @@ List<Item> items = [
 //  ---- العناية الشخصية ------
   Item(
       title: 'صابون',
-      category: 'العنايه الشخصيه و المنظفات',
+      category: 'العناية الشخصيه و المنظفات',
       quantity: 'عبوة',
       itemIcon: 'images/icons/Clean&PersonalCare/washing-hand.png',
       amount: 0),
-  /*Item(
+  Item(
       title: 'صابون غسيل',
-      category: 'العنايه الشخصيه و المنظفات',
+      category: 'العناية الشخصيه و المنظفات',
       quantity: 'عبوة',
-      itemIcon: 'images/icons/Clean&PersonalCare/laundry-detergent (1).png',
-      amount: 0),*/
+      itemIcon: 'images/icons/Clean&PersonalCare/soap.png',
+      amount: 0),
 
 Item(
       title: 'صابون غسيل',
-      category: 'العنايه الشخصيه و المنظفات',
+      category: 'العناية الشخصية و المنظفات',
       quantity: 'عبوة',
       itemIcon: 'images/icons/Clean&PersonalCare/laundry-detergent.png',
       amount: 0),
 
   Item(
       title: 'صابون أطباق',
-      category: 'العنايه الشخصيه و المنظفات',
+      category: 'العناية الشخصية و المنظفات',
       quantity: 'عبوة',
       itemIcon: 'images/icons/Clean&PersonalCare/dish-soap.png',
       amount: 0),
 
   Item(
       title: 'مناديل حمام',
-      category: 'العنايه الشخصيه و المنظفات',
+      category: 'العناية الشخصية و المنظفات',
       quantity: 'عبوة',
       itemIcon: 'images/icons/Clean&PersonalCare/toilet-paper (1).png',
       amount: 0),
@@ -409,34 +409,34 @@ Item(
 
   Item(
       title: 'شامبو',
-      category: 'العنايه الشخصيه و المنظفات',
+      category: 'العناية الشخصية و المنظفات',
       quantity: 'عبوة',
       itemIcon: 'images/icons/Clean&PersonalCare/shampoo.png',
       amount: 0),
 
   Item(
       title: 'بلسم',
-      category: 'العنايه الشخصيه و المنظفات',
+      category: 'العناية الشخصية و المنظفات',
       quantity: 'عبوة',
       itemIcon: 'images/icons/Clean&PersonalCare/conditioner.png',
       amount: 0),
   Item(
       title: 'معجون أسنان',
-      category: 'العنايه الشخصيه و المنظفات',
+      category: 'العناية الشخصية و المنظفات',
       quantity: 'عبوة',
       itemIcon: 'images/icons/Clean&PersonalCare/icons8-toothbrush-48.png',
       amount: 0),
 
   Item(
       title: 'شفرات حلاقة',
-      category: 'العنايه الشخصيه و المنظفات',
+      category: 'العناية الشخصية و المنظفات',
       quantity: 'عبوة',
       itemIcon: 'images/icons/Clean&PersonalCare/icons8-razor-50.png',
       amount: 0),
 
   Item(
       title: 'فوط صحية',
-      category: 'العنايه الشخصيه و المنظفات',
+      category: 'العناية الشخصية و المنظفات',
       quantity: 'عبوة',
       itemIcon: 'images/icons/Clean&PersonalCare/icons8-pad-48.png',
       amount: 0),

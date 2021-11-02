@@ -12,7 +12,6 @@ List<Category> categories = [
   Category(
     category: 'البيض و منتجات الألبان',
   ),
-
   Category(
     category: 'اللحوم و الأسماك',
   ),
@@ -28,11 +27,9 @@ List<Category> categories = [
   Category(
     category: 'التوابل',
   ),
-
   Category(
-    category: 'العنايه الشخصيه و المنظفات',
+    category: 'العناية الشخصية و المنظفات',
   ),
-
   Category(
     category: 'اخرى',
   ),
