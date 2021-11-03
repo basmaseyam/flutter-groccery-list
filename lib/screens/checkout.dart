@@ -110,7 +110,10 @@ class _CheckoutPageState extends State<CheckoutPage> {
                                             CircleAvatar(
                                                 backgroundImage: AssetImage(
                                                     selectedItems[index]
-                                                        .itemIcon)),
+                                                        .itemIcon),
+                                              backgroundColor: Colors.transparent,
+                                            ),
+
                                             SizedBox(width: 8),
                                             Text(selectedItems[index].title),
                                             SizedBox(width: 16),
