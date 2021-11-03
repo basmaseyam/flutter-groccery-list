@@ -370,17 +370,17 @@ List<Item> items = [
 
 //  ---- العناية الشخصية ------
   Item(
-      title: 'صابون ',
-      category: 'العناية الشخصيه و المنظفات',
+      title: 'صابون',
+      category: 'العناية الشخصية و المنظفات',
       quantity: 'عبوة',
       itemIcon: 'images/icons/Clean&PersonalCare/washing-hand.png',
       amount: 0),
-  Item(
-      title: 'صابون غسيل',
-      category: 'العناية الشخصيه و المنظفات',
+  /*Item(
+      title: 'صابون',
+      category: 'العناية الشخصية و المنظفات',
       quantity: 'عبوة',
       itemIcon: 'images/icons/Clean&PersonalCare/soap.png',
-      amount: 0),
+      amount: 0),*/
 
   Item(
       title: 'صابون غسيل',
@@ -401,6 +401,12 @@ List<Item> items = [
       category: 'العناية الشخصية و المنظفات',
       quantity: 'عبوة',
       itemIcon: 'images/icons/Clean&PersonalCare/toilet-paper (1).png',
+      amount: 0),
+  Item(
+      title: 'معقم',
+      category: 'العناية الشخصية و المنظفات',
+      quantity: 'عبوة',
+      itemIcon: 'images/icons/Clean&PersonalCare/icons8-hand-sanitizer-64.png',
       amount: 0),
 
   Item(
