@@ -130,17 +130,18 @@ class _HomePageState extends State<HomePage> {
                       items: <String>['item', 'category']
                           .map<DropdownMenuItem<String>>((String value) {
                         return DropdownMenuItem<String>(
+                            alignment: AlignmentDirectional.centerEnd,
                             value: value,
                             child: value == 'item'
                                 ? Text(
                                     'إضافة منتج',
                                     style: TextStyle(color: kMainColor),
-                                    textAlign: TextAlign.center,
+                                    textAlign: TextAlign.right,
                                   )
                                 : Text(
                                     'إضافة قائمة',
                                     style: TextStyle(color: kMainColor),
-                                    textAlign: TextAlign.center,
+                                    textAlign: TextAlign.right,
                                   ),
                             onTap: () {
                               value == 'item'
@@ -188,13 +189,6 @@ class _HomePageState extends State<HomePage> {
                         //  prefixIcon: Icon(Icons.search),    // to add search icon before text
                         filled: true,
                         border: OutlineInputBorder(),
-                        /*                    icon: Icon(     //searcg icon
-                          Icons.search,
-
-                          color: Colors.white,
-                        ),
-
-     */ //updated
                         hintText: 'البحث عن منتج',
                         fillColor: Colors.white,
                         focusColor: Colors.white,
@@ -217,15 +211,6 @@ class _HomePageState extends State<HomePage> {
                   builder:
                       (BuildContext context, AsyncSnapshot<void> snapshot) {
                     return Stack(children: [
-                      if (_isBannerAdReady)
-                        Align(
-                          alignment: Alignment.bottomCenter,
-                          child: Container(
-                            width: _bannerAd.size.width.toDouble(),
-                            height: _bannerAd.size.height.toDouble(),
-                            child: AdWidget(ad: _bannerAd),
-                          ),
-                        ),
                       ListView.builder(
                         itemCount: categories.length,
                         itemBuilder: (context, index) {
@@ -383,6 +368,15 @@ class _HomePageState extends State<HomePage> {
                               ]);
                         },
                       ),
+                      if (_isBannerAdReady)
+                        Align(
+                          alignment: Alignment.bottomCenter,
+                          child: Container(
+                            width: _bannerAd.size.width.toDouble(),
+                            height: _bannerAd.size.height.toDouble(),
+                            child: AdWidget(ad: _bannerAd),
+                          ),
+                        ),
                     ]);
                   }),
             ),
@@ -430,6 +424,7 @@ class Searchbar extends SearchDelegate<Item> {
       return Directionality(
           textDirection: TextDirection.rtl,
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Card(
                   child: ListTile(

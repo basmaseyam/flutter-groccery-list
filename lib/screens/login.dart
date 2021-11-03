@@ -100,24 +100,25 @@ class _LoginScreenState extends State<LoginScreen> {
       return showDialog(
           context: context,
           builder: (context) {
-            Future.delayed(Duration(seconds: 2), () {
+            Future.delayed(Duration(seconds: 3), () {
               Navigator.of(context)
                   .push(MaterialPageRoute(builder: (context) => HomePage()));
             });
 
             return AlertDialog(
               // aya , added icon to alertdialog
-              title: Row(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(20.0),
-                  ),
-                  Text(
-                    'لا يوجد اتصال بالانترنت',
-                    // textAlign: TextAlign.center,
-                  ),
-                  Icon(Icons.offline_bolt, color: Colors.blueAccent),
-                ],
+              title: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'لا يوجد اتصال بالانترنت',
+                      // textAlign: TextAlign.center,
+                    ),
+                    Icon(Icons.offline_bolt, color: Colors.blueAccent),
+                  ],
+                ),
               ),
             );
           });

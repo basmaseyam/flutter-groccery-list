@@ -23,77 +23,78 @@ class _CheckoutPageState extends State<CheckoutPage> {
       return Directionality(
         textDirection: TextDirection.rtl,
         child: Scaffold(
-            appBar: AppBar(
-              title: Text(
-                'قائمة التسوق',
-                textDirection: TextDirection.rtl,
-                style: TextStyle(
-                  //  fontFamily: 'Vibes',
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
+          appBar: AppBar(
+            title: Text(
+              'قائمة التسوق',
+              textDirection: TextDirection.rtl,
+              style: TextStyle(
+                //  fontFamily: 'Vibes',
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
               ),
-              actions: [
-                IconButton(
-                  icon: Icon(Icons.share),
-                  onPressed: () {
-                    String list = '';
-                    cart.basketItems.forEach((item) {
-                      list += item.title;
-                      list += ': ${item.amount} ${item.quantity}';
-                      list += '\n';
-                    });
-                    Share.share(list, subject: "Grocery List");
-                  },
-                ),
-                IconButton(
-                  icon: Icon(Icons.arrow_forward),
-                  onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => HomePage()));
-                  },
-                ),
-              ],
             ),
-            drawer: MyDrawer(),
-            body: cart.basketItems.length == 0
-                ? Center(
-                    child: Text('لا توجد مشتريات',
-                        style: TextStyle(
-                            fontSize: 28, fontWeight: FontWeight.bold)))
-                : ListView.builder(
-                    itemCount: cart.basketItems.length,
-                    itemBuilder: (context, index) {
-                      return Card(
-                        child: ListTile(
-                          leading: IconButton(
-                            icon: Icon(
-                              Icons.check_box,
-                              size: 32,
-                            ),
-                            color: Colors.blue,
-                            onPressed: () {
-                              cart.delete(cart.basketItems[index]);
-                            },
+            actions: [
+              IconButton(
+                icon: Icon(Icons.share),
+                onPressed: () {
+                  String list = '';
+                  cart.basketItems.forEach((item) {
+                    list += item.title;
+                    list += ': ${item.amount} ${item.quantity}';
+                    list += '\n';
+                  });
+                  Share.share(list, subject: "Grocery List");
+                },
+              ),
+              IconButton(
+                icon: Icon(Icons.arrow_forward),
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => HomePage()));
+                },
+              ),
+            ],
+          ),
+          drawer: MyDrawer(),
+          body: cart.basketItems.length == 0
+              ? Center(
+                  child: Text('لا توجد مشتريات',
+                      style:
+                          TextStyle(fontSize: 28, fontWeight: FontWeight.bold)))
+              : ListView.builder(
+                  itemCount: cart.basketItems.length,
+                  itemBuilder: (context, index) {
+                    return Card(
+                      child: ListTile(
+                        leading: IconButton(
+                          icon: Icon(
+                            Icons.check_box,
+                            size: 32,
                           ),
-                          title: Row(
-                            children: [
-                              CircleAvatar(
-                                  backgroundColor: Colors.transparent,
-                                  backgroundImage: AssetImage(
-                                      cart.basketItems[index].itemIcon)),
-                              SizedBox(width: 8),
-                              Text(cart.basketItems[index].title),
-                              SizedBox(width: 16),
-                              Text('${cart.basketItems[index].amount}'
-                                  '   '
-                                  '${cart.basketItems[index].quantity}'),
-                            ],
-                          ),
+                          color: Colors.blue,
+                          onPressed: () {
+                            cart.delete(cart.basketItems[index]);
+                          },
                         ),
-                      );
-                    },
-                  )),
+                        title: Row(
+                          children: [
+                            CircleAvatar(
+                                backgroundColor: Colors.transparent,
+                                backgroundImage: AssetImage(
+                                    cart.basketItems[index].itemIcon)),
+                            SizedBox(width: 8),
+                            Text(cart.basketItems[index].title),
+                            SizedBox(width: 16),
+                            Text('${cart.basketItems[index].amount}'
+                                '   '
+                                '${cart.basketItems[index].quantity}'),
+                          ],
+                        ),
+                      ),
+                    );
+                  },
+                ),
+        ),
       );
     });
   }
