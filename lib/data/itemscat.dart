@@ -368,6 +368,34 @@ List<Item> items = [
       itemIcon: 'images/icons/Spices/icons8-spice-50.png',
       amount: 0),
 
+
+  //  ---- التسالي و الحلويات ------
+
+  Item(
+      title: 'شيبسي',
+      category: 'التسالي و الحلويات',
+      quantity: 'عبوة',
+      itemIcon: 'images/icons/Snacks/icons8-potato-chips-50.png',
+      amount: 0),
+  Item(
+      title: 'دوريتوس',
+      category: 'التسالي و الحلويات',
+      quantity: 'عبوة',
+      itemIcon: 'images/icons/Snacks/icons8-nachos-80.png',
+      amount: 0),
+  Item(
+      title: 'بسكوت',
+      category: 'التسالي و الحلويات',
+      quantity: 'عبوة',
+      itemIcon: 'images/icons/Snacks/icons8-biscuit-60.png',
+      amount: 0),
+  Item(
+      title: 'شكولاته',
+      category: 'التسالي و الحلويات',
+      quantity: 'عبوة',
+      itemIcon: 'images/icons/Snacks/icons8-chocolate-64.png',
+      amount: 0),
+
 //  ---- العناية الشخصية ------
   Item(
       title: 'صابون',
@@ -430,10 +458,23 @@ List<Item> items = [
       amount: 0),
 
   Item(
+      title: 'حفاضات أطفال',
+      category: 'العناية الشخصية و المنظفات',
+      quantity: 'عبوة',
+      itemIcon: 'images/icons/Clean&PersonalCare/diaper.png',
+      amount: 0),
+
+  Item(
       title: 'شفرات حلاقة',
       category: 'العناية الشخصية و المنظفات',
       quantity: 'عبوة',
       itemIcon: 'images/icons/Clean&PersonalCare/icons8-razor-50.png',
+      amount: 0),
+  Item(
+      title: 'جوانتيات',
+      category: 'العناية الشخصية و المنظفات',
+      quantity: 'عبوة',
+      itemIcon: 'images/icons/Clean&PersonalCare/gloves.png',
       amount: 0),
 
   Item(
@@ -442,4 +483,5 @@ List<Item> items = [
       quantity: 'عبوة',
       itemIcon: 'images/icons/Clean&PersonalCare/icons8-pad-48.png',
       amount: 0),
+
 ];

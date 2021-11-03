@@ -28,6 +28,9 @@ List<Category> categories = [
     category: 'التوابل',
   ),
   Category(
+    category: 'التسالي و الحلويات',
+  ),
+  Category(
     category: 'العناية الشخصية و المنظفات',
   ),
   Category(
