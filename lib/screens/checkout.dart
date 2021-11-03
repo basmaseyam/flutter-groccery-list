@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:moshtryate_new/controller/file_controller.dart';
+import 'package:moshtryate_new/data/category.dart';
 import 'package:moshtryate_new/screens/homepage.dart';
 import 'package:provider/provider.dart';
 import 'package:share_plus/share_plus.dart';
@@ -62,36 +63,71 @@ class _CheckoutPageState extends State<CheckoutPage> {
                       style:
                           TextStyle(fontSize: 28, fontWeight: FontWeight.bold)))
               : ListView.builder(
-                  itemCount: cart.basketItems.length,
+                  itemCount: categories.length,
                   itemBuilder: (context, index) {
-                    return Card(
-                      child: ListTile(
-                        leading: IconButton(
-                          icon: Icon(
-                            Icons.check_box,
-                            size: 32,
-                          ),
-                          color: Colors.blue,
-                          onPressed: () {
-                            cart.delete(cart.basketItems[index]);
-                          },
-                        ),
-                        title: Row(
-                          children: [
-                            CircleAvatar(
-                                backgroundColor: Colors.transparent,
-                                backgroundImage: AssetImage(
-                                    cart.basketItems[index].itemIcon)),
-                            SizedBox(width: 8),
-                            Text(cart.basketItems[index].title),
-                            SizedBox(width: 16),
-                            Text('${cart.basketItems[index].amount}'
-                                '   '
-                                '${cart.basketItems[index].quantity}'),
-                          ],
-                        ),
-                      ),
-                    );
+                    String cat = categories[index].category;
+                    List selectedItems = cart.basketItems
+                        .where((p) => p.category.contains(cat))
+                        .toList();
+                    return selectedItems.length != 0
+                        ? ExpansionTile(
+                            trailing: IconButton(
+                              onPressed: () {},
+                              icon: Icon(
+                                Icons.arrow_drop_down,
+                                color: Colors.transparent,
+                              ),
+                            ),
+                            title: Text(
+                              cat,
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                            initiallyExpanded: true,
+                            children: [
+                                ListView.builder(
+                                  shrinkWrap: true,
+                                  physics: NeverScrollableScrollPhysics(),
+                                  scrollDirection: Axis.vertical,
+                                  itemCount: selectedItems.length,
+                                  itemBuilder: (context, index) {
+                                    return Card(
+                                      color: Colors.grey[100],
+                                      child: ListTile(
+                                        leading: IconButton(
+                                          icon: Icon(
+                                            Icons.check_box,
+                                            size: 32,
+                                          ),
+                                          color: Colors.blue,
+                                          onPressed: () {
+                                            cart.delete(selectedItems[index]);
+                                          },
+                                        ),
+                                        title: Row(
+                                          children: [
+                                            CircleAvatar(
+                                                backgroundImage: AssetImage(
+                                                    selectedItems[index]
+                                                        .itemIcon)),
+                                            SizedBox(width: 8),
+                                            Text(selectedItems[index].title),
+                                            SizedBox(width: 16),
+                                            Text(
+                                                '${selectedItems[index].amount}'
+                                                '   '
+                                                '${selectedItems[index].quantity}'),
+                                          ],
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                ),
+                              ])
+                        : SizedBox(
+                            width: 12,
+                          );
                   },
                 ),
         ),

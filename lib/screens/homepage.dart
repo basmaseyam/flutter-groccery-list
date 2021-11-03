@@ -428,8 +428,10 @@ class Searchbar extends SearchDelegate<Item> {
               Card(
                   child: ListTile(
                 title: Text(result.title),
-                leading:
-                    CircleAvatar(backgroundImage: AssetImage(result.itemIcon)),
+                leading: CircleAvatar(
+                  backgroundImage: AssetImage(result.itemIcon),
+                  backgroundColor: Colors.transparent,
+                ),
                 trailing: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
@@ -520,6 +522,7 @@ class Searchbar extends SearchDelegate<Item> {
                       return showResults(context);
                     },
                     leading: CircleAvatar(
+                      backgroundColor: Colors.transparent,
                       backgroundImage: AssetImage(mylist[index].itemIcon),
                     ),
                     title: Column(

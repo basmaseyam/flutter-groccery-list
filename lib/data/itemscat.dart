@@ -240,8 +240,6 @@ List<Item> items = [
       itemIcon: 'images/icons/DiarayEggs/mozzarella.png',
       amount: 0),
 
-
-
   //  ---- المشروبات ------
 
   Item(
@@ -323,7 +321,6 @@ List<Item> items = [
       itemIcon: 'images/icons/Ingredients/tomato-sauce.png',
       amount: 0),
 
-
   //  ---- اللحوم و الاسماك ------
 
   Item(
@@ -373,7 +370,7 @@ List<Item> items = [
 
 //  ---- العناية الشخصية ------
   Item(
-      title: 'صابون',
+      title: 'صابون ',
       category: 'العناية الشخصيه و المنظفات',
       quantity: 'عبوة',
       itemIcon: 'images/icons/Clean&PersonalCare/washing-hand.png',
@@ -385,7 +382,7 @@ List<Item> items = [
       itemIcon: 'images/icons/Clean&PersonalCare/soap.png',
       amount: 0),
 
-Item(
+  Item(
       title: 'صابون غسيل',
       category: 'العناية الشخصية و المنظفات',
       quantity: 'عبوة',
@@ -405,7 +402,6 @@ Item(
       quantity: 'عبوة',
       itemIcon: 'images/icons/Clean&PersonalCare/toilet-paper (1).png',
       amount: 0),
-
 
   Item(
       title: 'شامبو',
@@ -440,7 +436,4 @@ Item(
       quantity: 'عبوة',
       itemIcon: 'images/icons/Clean&PersonalCare/icons8-pad-48.png',
       amount: 0),
-
 ];
-
-
