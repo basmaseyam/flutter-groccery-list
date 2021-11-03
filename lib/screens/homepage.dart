@@ -424,7 +424,6 @@ class Searchbar extends SearchDelegate<Item> {
       return Directionality(
           textDirection: TextDirection.rtl,
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Card(
                   child: ListTile(
@@ -451,6 +450,13 @@ class Searchbar extends SearchDelegate<Item> {
 
                           return cart.remove(result);
                         }),
+                    Container(
+                      alignment: Alignment.center,
+                      constraints: BoxConstraints.tight(Size.fromWidth(32)),
+                      child: Text(
+                        '${result.quantity}',
+                      ),
+                    ),
                   ],
                 ),
                 onTap: () {
@@ -503,25 +509,29 @@ class Searchbar extends SearchDelegate<Item> {
               ),
             ],
           ))
-        : ListView.builder(
-            itemCount: mylist.length,
-            itemBuilder: (context, index) {
-              return ListTile(
-                  onTap: () {
-                    query = mylist[index].title;
-                    return showResults(context);
-                  },
-                  leading: CircleAvatar(
-                    backgroundImage: AssetImage(mylist[index].itemIcon),
-                  ),
-                  title: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(mylist[index].title),
-                        Text(mylist[index].category,
-                            style: TextStyle(fontSize: 12, color: Colors.grey)),
-                      ]));
-            },
+        : Directionality(
+            textDirection: TextDirection.rtl,
+            child: ListView.builder(
+              itemCount: mylist.length,
+              itemBuilder: (context, index) {
+                return ListTile(
+                    onTap: () {
+                      query = mylist[index].title;
+                      return showResults(context);
+                    },
+                    leading: CircleAvatar(
+                      backgroundImage: AssetImage(mylist[index].itemIcon),
+                    ),
+                    title: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(mylist[index].title),
+                          Text(mylist[index].category,
+                              style:
+                                  TextStyle(fontSize: 12, color: Colors.grey)),
+                        ]));
+              },
+            ),
           );
   }
 }
