@@ -398,6 +398,7 @@ List<Item> items = [
 
 //  ---- العناية الشخصية ------
   Item(
+
       title: 'صابون',
       category: 'العناية الشخصية و المنظفات',
       quantity: 'عبوة',
@@ -436,7 +437,6 @@ List<Item> items = [
       quantity: 'عبوة',
       itemIcon: 'images/icons/Clean&PersonalCare/icons8-hand-sanitizer-64.png',
       amount: 0),
-
   Item(
       title: 'شامبو',
       category: 'العناية الشخصية و المنظفات',
@@ -483,5 +483,4 @@ List<Item> items = [
       quantity: 'عبوة',
       itemIcon: 'images/icons/Clean&PersonalCare/icons8-pad-48.png',
       amount: 0),
-
 ];
