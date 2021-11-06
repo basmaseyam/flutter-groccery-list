@@ -2,7 +2,9 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:http/http.dart';
 import 'package:intl/intl.dart';
+import 'package:moshtryate_new/data/category.dart';
 import 'package:moshtryate_new/data/itemscat.dart';
+import 'package:moshtryate_new/models/category.dart';
 import 'package:moshtryate_new/models/item.dart';
 import 'package:path_provider/path_provider.dart';
 
@@ -28,6 +30,11 @@ class FileManager {
   Future<File> get _jsonFile async {
     final path = await _directoryPath;
     return File('$path/shoppinglist.json');
+  }
+
+  Future<File> get _catFile async {
+    final path = await _directoryPath;
+    return File('$path/categories.json');
   }
 
   Future<String> readTextFile() async {
@@ -61,6 +68,23 @@ class FileManager {
     return null;
   }
 
+  Future<List> readCategoryFile() async {
+    String fileContent = 'Category List';
+    var categoryList = [];
+    File file = await _catFile;
+    if (await file.exists()) {
+      try {
+        fileContent = await file.readAsString();
+        categoryList = json.decode(fileContent);
+        print(categoryList);
+        return categoryList;
+      } catch (e) {
+        print(e);
+      }
+    }
+    return null;
+  }
+
   Future<String> writeTextFile() async {
     String text = DateFormat('h:mm:ss').format(DateTime.now());
     File file = await _file;
@@ -78,5 +102,15 @@ class FileManager {
     await file.writeAsString(json);
 
     return itemslist;
+  }
+
+  Future<List> writeCategoryFile() async {
+    final List<Category> catList = categories;
+    File file = await _catFile;
+    var json = jsonEncode(catList.map((e) => e.toJson()).toList());
+
+    await file.writeAsString(json);
+
+    return catList;
   }
 }

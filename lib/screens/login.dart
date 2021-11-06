@@ -108,9 +108,10 @@ class _LoginScreenState extends State<LoginScreen> {
             return AlertDialog(
               // aya , added icon to alertdialog
               title: Padding(
-                padding: const EdgeInsets.all(16.0),
+                padding: const EdgeInsets.all(8.0),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Text(
                       'لا يوجد اتصال بالانترنت',
