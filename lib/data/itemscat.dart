@@ -288,7 +288,7 @@ List<Item> items = [
       title: 'شوفان',
       category: 'الحبوب و البقول',
       quantity: 'كيلو',
-      itemIcon: 'images/icons/Grains/icons8-rolled-oats-48.png',
+      itemIcon: 'images/icons/Grains/icons8-rolled-oats-481.png',
       amount: 0),
 
   Item(
@@ -322,10 +322,17 @@ List<Item> items = [
       itemIcon: 'images/icons/Grains/chickpeas.png',
       amount: 0),
   Item(
+      title: 'فريك',
+      category: 'الحبوب و البقول',
+      quantity: 'كيلو',
+      itemIcon: 'images/icons/Grains/oat.png',
+      amount: 0),
+
+  Item(
       title: 'برغل',
       category: 'الحبوب و البقول',
       quantity: 'كيلو',
-      itemIcon: 'images/icons/Grains/icons8-grain-64.png',
+      itemIcon: 'images/icons/Grains/icons8-rolled-oats-48.png',
       amount: 0),
 
   //  ---- مستلزمات الطبخ ------
@@ -350,12 +357,24 @@ List<Item> items = [
       quantity: 'لتر',
       itemIcon: 'images/icons/Ingredients/plastic-bottle.png',
       amount: 0),
+  Item(
+      title: 'ملح',
+      category: 'مستلزمات الطبخ',
+      quantity: 'عبوة',
+      itemIcon: 'images/icons/Ingredients/salt.png',
+      amount: 0),
+  Item(
+      title: 'فلفل',
+      category: 'مستلزمات الطبخ',
+      quantity: 'عبوة',
+      itemIcon: 'images/icons/Ingredients/salt (1).png',
+      amount: 0),
 
   Item(
       title: 'سكر',
       category: 'مستلزمات الطبخ',
       quantity: 'لتر',
-      itemIcon: 'images/icons/Ingredients/sugar.png',
+      itemIcon: 'images/icons/Ingredients/icons8-sugar-cubes-40.png',
       amount: 0),
 
   Item(
@@ -364,6 +383,46 @@ List<Item> items = [
       quantity: 'عبوة',
       itemIcon: 'images/icons/Ingredients/tomato-sauce.png',
       amount: 0),
+
+  Item(
+      title: 'حبهان',
+      category: 'مستلزمات الطبخ',
+      quantity: 'عبوة',
+      itemIcon: 'images/icons/Ingredients/cardamom.png',
+      amount: 0),
+  Item(
+      title: 'ورق لورى',
+      category: 'مستلزمات الطبخ',
+      quantity: 'عبوة',
+      itemIcon: 'images/icons/Ingredients/bay.png',
+      amount: 0),
+  Item(
+      title: 'قرنفل',
+      category: 'مستلزمات الطبخ',
+      quantity: 'عبوة',
+      itemIcon: 'images/icons/Ingredients/clove.png',
+      amount: 0),
+  Item(
+      title: 'قرفة',
+      category: 'مستلزمات الطبخ',
+      quantity: 'عبوة',
+      itemIcon: 'images/icons/Ingredients/icons8-cinnamon-sticks-48.png',
+      amount: 0),
+  Item(
+      title: 'كزبرة',
+      category: 'مستلزمات الطبخ',
+      quantity: 'عبوة',
+      itemIcon: 'images/icons/Ingredients/coriander.png',
+      amount: 0),
+  Item(
+      title: 'كمون',
+      category: 'مستلزمات الطبخ',
+      quantity: 'عبوة',
+      itemIcon: 'images/icons/Ingredients/cumin.png',
+      amount: 0),
+
+
+
 
   //  ---- اللحوم و الاسماك ------
 
@@ -398,20 +457,82 @@ List<Item> items = [
       itemIcon: 'images/icons/MeatFish/icons8-prawn-48.png',
       amount: 0),
 
-  //  ---- توابل ------
+  //  ----'التوابل و المعلبات', ------
+
+
+
   Item(
-      title: 'ملح',
-      category: 'التوابل',
+      title: 'عسل',
+      category: 'المعلبات',
       quantity: 'عبوة',
-      itemIcon: 'images/icons/Spices/icons8-salt-shaker-48.png',
+      itemIcon: 'images/icons/Canned/honey.png',
       amount: 0),
   Item(
-      title: 'فلفل',
-      category: 'التوابل',
+      title: 'مربى',
+      category: 'المعلبات',
       quantity: 'عبوة',
-      itemIcon: 'images/icons/Spices/icons8-spice-50.png',
+      itemIcon: 'images/icons/Canned/icons8-jam-64.png',
+      amount: 0),
+  Item(
+      title: 'نوتيلا',
+      category: 'المعلبات',
+      quantity: 'عبوة',
+      itemIcon: 'images/icons/Canned/chocolate (4).png',
+      amount: 0),
+  Item(
+      title: 'زبدة فول سوداني',
+      category: 'المعلبات',
+      quantity: 'عبوة',
+      itemIcon: 'images/icons/Canned/icons8-peanut-butter-64 (1).png',
+      amount: 0),
+  Item(
+      title: 'فول',
+      category: 'المعلبات',
+      quantity: 'عبوة',
+      itemIcon: 'images/icons/Canned/beans.png',
       amount: 0),
 
+
+  Item(
+      title: 'كاتشب',
+      category: 'المعلبات',
+      quantity: 'عبوة',
+      itemIcon: 'images/icons/Canned/ketchup.png',
+      amount: 0),
+
+  Item(
+      title: 'مايونيز',
+      category: 'المعلبات',
+      quantity: 'عبوة',
+      itemIcon: 'images/icons/Canned/mayonnaise (3).png',
+      amount: 0),
+
+  Item(
+      title: 'مسطردة',
+      category: 'المعلبات',
+      quantity: 'عبوة',
+      itemIcon: 'images/icons/Canned/mustard.png',
+      amount: 0),
+
+  Item(
+      title: 'باربيكيو',
+      category: 'المعلبات',
+      quantity: 'عبوة',
+      itemIcon: 'images/icons/Canned/bbq-sauce.png',
+      amount: 0),
+  Item(
+      title: 'صلصة حارة',
+      category: 'المعلبات',
+      quantity: 'عبوة',
+      itemIcon: 'images/icons/Canned/icons8-sauce-256.png',
+      amount: 0),
+
+  Item(
+      title: 'صويا',
+      category: 'المعلبات',
+      quantity: 'عبوة',
+      itemIcon: 'images/icons/Canned/soy-sauce (1).png',
+      amount: 0),
 
   //  ---- التسالي و الحلويات ------
 

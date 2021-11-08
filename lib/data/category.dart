@@ -25,7 +25,7 @@ List<Category> categories = [
     category: 'المشروبات',
   ),
   Category(
-    category: 'التوابل',
+    category: 'المعلبات',
   ),
   Category(
     category: 'التسالي و الحلويات',
@@ -34,6 +34,6 @@ List<Category> categories = [
     category: 'العناية الشخصية و المنظفات',
   ),
   Category(
-    category: 'اخرى',
+    category: 'أخرى',
   ),
 ];

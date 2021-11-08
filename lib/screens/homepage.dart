@@ -309,7 +309,7 @@ class _HomePageState extends State<HomePage> {
                                               secondaryActions: [
                                                 IconSlideAction(
                                                   caption: 'حذف',
-                                                  color: Colors.redAccent,
+                                                  color: Colors.black45,
                                                   icon: Icons.delete,
                                                   onTap: () {
                                                     showDialog(
@@ -382,7 +382,7 @@ class _HomePageState extends State<HomePage> {
                                 secondaryActions: [
                                   IconSlideAction(
                                     caption: 'حذف',
-                                    color: Colors.redAccent,
+                                    color: Colors.black45,
                                     icon: Icons.delete,
                                     onTap: () {
                                       showDialog(
