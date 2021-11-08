@@ -15,9 +15,11 @@ import 'package:moshtryate_new/models/cart.dart';
 import 'package:moshtryate_new/models/category.dart';
 import 'package:moshtryate_new/models/item.dart';
 import 'package:moshtryate_new/screens/NewCategory.dart';
+import 'package:moshtryate_new/widgets/searchbar.dart';
 import 'package:provider/provider.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:moshtryate_new/ad_helper.dart';
+
 //import 'package:moshtryate_new/screens/About.dart';
 
 import 'NewItem.dart';
@@ -85,10 +87,9 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     items = context.select((FileController controller) =>
         controller.cartitems != null ? controller.cartitems : items);
-    List categoriesList = context.select((FileController controller) =>
+    categories = context.select((FileController controller) =>
         controller.categorylist != null ? controller.categorylist : categories);
     List itemsCats = items;
-    categories = categoriesList;
 
     return Consumer<Cart>(builder: (context, cart, child) {
       if (cart.count == 0)
@@ -393,7 +394,7 @@ class _HomePageState extends State<HomePage> {
                                           child: AlertDialog(
                                             // aya , translated buttons text
                                             title: const Text(
-                                              'هل تريد حذف المنتج ؟',
+                                              'هل تريد حذف القائمه ؟',
                                               textAlign: TextAlign.center,
                                             ),
                                             actions: <Widget>[
@@ -422,6 +423,8 @@ class _HomePageState extends State<HomePage> {
                                                             categories.remove(
                                                                 categories[
                                                                     index]);
+                                                            FileController()
+                                                                .writeCategory();
                                                           });
                                                         } else {
                                                           return showDialog(
@@ -474,16 +477,13 @@ class _HomePageState extends State<HomePage> {
                                 ]);
                           }),
                       if (_isBannerAdReady)
-                        Container(
-                          color: Colors.white,
-                          child: Align(
-                            alignment: Alignment.bottomCenter,
-                            child: Container(
-                              color: Colors.white,
-                              width: _bannerAd.size.width.toDouble(),
-                              height: _bannerAd.size.height.toDouble(),
-                              child: AdWidget(ad: _bannerAd),
-                            ),
+                        Align(
+                          alignment: Alignment.bottomCenter,
+                          child: Container(
+                            color: Colors.white,
+                            width: _bannerAd.size.width.toDouble(),
+                            height: _bannerAd.size.height.toDouble(),
+                            child: AdWidget(ad: _bannerAd),
                           ),
                         ),
                     ]);
@@ -493,157 +493,5 @@ class _HomePageState extends State<HomePage> {
         ),
       );
     });
-  }
-}
-
-class Searchbar extends SearchDelegate<Item> {
-  @override
-  List<Widget> buildActions(BuildContext context) {
-    return [
-      IconButton(
-        icon: Icon(Icons.clear),
-        onPressed: () {
-          if (query.isEmpty) {
-            close(context, null);
-          } else {
-            query = '';
-            showSuggestions(context);
-          }
-        },
-      )
-    ];
-  }
-
-  @override
-  Widget buildLeading(BuildContext context) {
-    IconButton(
-      icon: Icon(Icons.arrow_back),
-      onPressed: () {
-        close(context, null);
-      },
-    );
-  }
-
-  @override
-  Widget buildResults(BuildContext context) {
-    List<Item> mylist = items;
-    final Item result = mylist.where((p) => p.title.contains(query)).first;
-    final _formKey = GlobalKey<FormState>();
-    return Consumer<Cart>(builder: (context, cart, child) {
-      return Directionality(
-          textDirection: TextDirection.rtl,
-          child: Column(
-            children: [
-              Card(
-                  child: ListTile(
-                title: Text(result.title),
-                leading: CircleAvatar(
-                  backgroundImage: AssetImage(result.itemIcon),
-                  backgroundColor: Colors.transparent,
-                ),
-                trailing: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    IconButton(
-                        icon: Icon(Icons.add),
-                        color: Colors.blue,
-                        onPressed: () {
-                          result.incrementCounter();
-
-                          return cart.add(result);
-                        }),
-                    Text('${result.amount}'),
-                    IconButton(
-                        icon: Icon(Icons.remove),
-                        color: Colors.blue,
-                        onPressed: () {
-                          result.decrementCounter();
-
-                          return cart.remove(result);
-                        }),
-                    Container(
-                      alignment: Alignment.center,
-                      constraints: BoxConstraints.tight(Size.fromWidth(32)),
-                      child: Text(
-                        '${result.quantity}',
-                      ),
-                    ),
-                  ],
-                ),
-                onTap: () {
-                  print('clicked');
-                },
-              )),
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                    textStyle: const TextStyle(fontSize: 20)),
-                onPressed: () {
-                  Navigator.of(context)
-                      .push(MaterialPageRoute(builder: (context) => NewItem()));
-                },
-                child: const Text('اضف جديد'),
-              ),
-            ],
-          ));
-    });
-  }
-
-  @override
-  Widget buildSuggestions(BuildContext context) {
-    List<Item> mylist = items;
-
-    mylist = query.isEmpty
-        ? mylist
-        : mylist.where((p) => p.title.startsWith(query)).toList();
-
-    return mylist.isEmpty
-        ? Center(
-            child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                "هذا المنتج غير موجود",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 28,
-                ),
-              ),
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                    textStyle: const TextStyle(fontSize: 20)),
-                onPressed: () {
-                  Navigator.of(context)
-                      .push(MaterialPageRoute(builder: (context) => NewItem()));
-                },
-                child: const Text('اضف منتج جديد'),
-              ),
-            ],
-          ))
-        : Directionality(
-            textDirection: TextDirection.rtl,
-            child: ListView.builder(
-              itemCount: mylist.length,
-              itemBuilder: (context, index) {
-                return ListTile(
-                    onTap: () {
-                      query = mylist[index].title;
-                      return showResults(context);
-                    },
-                    leading: CircleAvatar(
-                      backgroundColor: Colors.transparent,
-                      backgroundImage: AssetImage(mylist[index].itemIcon),
-                    ),
-                    title: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(mylist[index].title),
-                          Text(mylist[index].category,
-                              style:
-                                  TextStyle(fontSize: 12, color: Colors.grey)),
-                        ]));
-              },
-            ),
-          );
   }
 }

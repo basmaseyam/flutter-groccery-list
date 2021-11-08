@@ -83,7 +83,7 @@ class _NewCategoryState extends State<NewCategory> {
                     _formKey.currentState.value['category'].toString();
 
                 categories.add(newcat);
-
+                FileController().writeCategory();
                 setState(() {
                   _formKey.currentState.reset();
                 });
