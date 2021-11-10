@@ -219,7 +219,7 @@ List<Item> items = [
       title: 'جبنة بيضاء',
       category: 'البيض و منتجات الألبان',
       quantity: 'كيلو',
-      itemIcon: 'images/icons/DiarayEggs/white-cheese.png',
+      itemIcon: 'images/icons/DiarayEggs/icons8-silken-tofu-100.png',
       amount: 0),
   Item(
       title: 'جبنة رومي',
@@ -420,9 +420,44 @@ List<Item> items = [
       quantity: 'عبوة',
       itemIcon: 'images/icons/Ingredients/cumin.png',
       amount: 0),
+  Item(
+      title: 'بابريكا',
+      category: 'مستلزمات الطبخ',
+      quantity: 'عبوة',
+      itemIcon: 'images/icons/Ingredients/icons8-smoked-paprika-48 (1).png',
+      amount: 0),
+  Item(
+      title: 'ثوم بودرة',
+      category: 'مستلزمات الطبخ',
+      quantity: 'عبوة',
+      itemIcon: 'images/icons/Ingredients/icons8-spice-100 (1).png',
+      amount: 0),
 
+  Item(
+      title: 'بصل بودرة',
+      category: 'مستلزمات الطبخ',
+      quantity: 'عبوة',
+      itemIcon: 'images/icons/Ingredients/icons8-spice-100 (1).png',
+      amount: 0),
+  Item(
+      title: '7 بهارات',
+      category: 'مستلزمات الطبخ',
+      quantity: 'عبوة',
+      itemIcon: 'images/icons/Ingredients/spicy-food (1).png',
+      amount: 0),
 
-
+  Item(
+      title: 'جنزبيل',
+      category: 'مستلزمات الطبخ',
+      quantity: 'عبوة',
+      itemIcon: 'images/icons/Ingredients/spices (1).png',
+      amount: 0),
+  Item(
+      title: 'كركم',
+      category: 'مستلزمات الطبخ',
+      quantity: 'عبوة',
+      itemIcon: 'images/icons/Ingredients/icons8-turmeric-48.png',
+      amount: 0),
 
   //  ---- اللحوم و الاسماك ------
 
