@@ -7,9 +7,11 @@ class FileController extends ChangeNotifier {
   String _text;
   List _itemslist;
   List _catList;
+  List _searchlist;
 
   String get text => _text;
   List get cartitems => _itemslist;
+  List get searchlist => _searchlist;
   List get categorylist => _catList;
 
   readText() async {
@@ -31,6 +33,15 @@ class FileController extends ChangeNotifier {
     notifyListeners();
   }
 
+  readSearch() async {
+    final result = await FileManager().readSearchFile();
+
+    if (result != null) {
+      _searchlist = result.map((e) => Item.fromJson(e)).toList();
+    }
+    notifyListeners();
+  }
+
   readCategory() async {
     final result = await FileManager().readCategoryFile();
 
@@ -42,6 +53,12 @@ class FileController extends ChangeNotifier {
 
   writeCart() async {
     _itemslist = await FileManager().writeJsonFile();
+
+    notifyListeners();
+  }
+
+  writeSearch() async {
+    _searchlist = await FileManager().writeSearchFile();
 
     notifyListeners();
   }

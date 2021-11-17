@@ -12,12 +12,14 @@ class Item extends ChangeNotifier {
 
   void add(Item item) {
     _items.add(item);
-
+    FileController().writeCart();
+    FileController().writeSearch();
     notifyListeners();
   }
 
   void remove(Item item) {
     _items.remove(item);
+    FileController().writeCart();
     notifyListeners();
   }
 

@@ -219,6 +219,8 @@ class _HomePageState extends State<HomePage> {
                       (BuildContext context, AsyncSnapshot<void> snapshot) {
                     return Stack(children: [
                       ListView.builder(
+                          padding:
+                              EdgeInsets.only(top: _isBannerAdReady ? 75 : 0),
                           itemCount: categories.length,
                           itemBuilder: (context, index) {
                             String cat = categories[index].category;
@@ -478,10 +480,9 @@ class _HomePageState extends State<HomePage> {
                           }),
                       if (_isBannerAdReady)
                         Align(
-                          alignment: Alignment.bottomCenter,
+                          alignment: Alignment.topCenter,
                           child: Container(
                             color: Colors.white,
-                            width: _bannerAd.size.width.toDouble(),
                             height: _bannerAd.size.height.toDouble(),
                             child: AdWidget(ad: _bannerAd),
                           ),

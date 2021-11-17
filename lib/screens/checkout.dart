@@ -108,12 +108,12 @@ class _CheckoutPageState extends State<CheckoutPage> {
                                         title: Row(
                                           children: [
                                             CircleAvatar(
-                                                backgroundImage: AssetImage(
-                                                    selectedItems[index]
-                                                        .itemIcon),
-                                              backgroundColor: Colors.transparent,
+                                              backgroundImage: AssetImage(
+                                                  selectedItems[index]
+                                                      .itemIcon),
+                                              backgroundColor:
+                                                  Colors.transparent,
                                             ),
-
                                             SizedBox(width: 8),
                                             Text(selectedItems[index].title),
                                             SizedBox(width: 16),

@@ -24,7 +24,7 @@ class Cart extends ChangeNotifier {
 
   void remove(Item item) {
     _items.remove(item);
-
+    FileController().writeCart();
     notifyListeners();
   }
 

@@ -4,6 +4,7 @@ import 'package:http/http.dart';
 import 'package:intl/intl.dart';
 import 'package:moshtryate_new/data/category.dart';
 import 'package:moshtryate_new/data/itemscat.dart';
+import 'package:moshtryate_new/data/searchitem.dart';
 import 'package:moshtryate_new/models/category.dart';
 import 'package:moshtryate_new/models/item.dart';
 import 'package:path_provider/path_provider.dart';
@@ -30,6 +31,11 @@ class FileManager {
   Future<File> get _jsonFile async {
     final path = await _directoryPath;
     return File('$path/shoppinglist.json');
+  }
+
+  Future<File> get _searchFile async {
+    final path = await _directoryPath;
+    return File('$path/searchlist.json');
   }
 
   Future<File> get _catFile async {
@@ -61,6 +67,23 @@ class FileManager {
         jsonlist = json.decode(fileContent);
         print(jsonlist);
         return jsonlist;
+      } catch (e) {
+        print(e);
+      }
+    }
+    return null;
+  }
+
+  Future<List> readSearchFile() async {
+    String fileContent = 'Search List';
+    var searchlist = [];
+    File file = await _searchFile;
+    if (await file.exists()) {
+      try {
+        fileContent = await file.readAsString();
+        searchlist = json.decode(fileContent);
+        print(searchlist);
+        return searchlist;
       } catch (e) {
         print(e);
       }
@@ -102,6 +125,16 @@ class FileManager {
     await file.writeAsString(json);
 
     return itemslist;
+  }
+
+  Future<List> writeSearchFile() async {
+    final List<Item> searchlist = searchitems;
+    File file = await _searchFile;
+    var json = jsonEncode(searchlist.map((e) => e.toJson()).toList());
+
+    await file.writeAsString(json);
+
+    return searchlist;
   }
 
   Future<List> writeCategoryFile() async {

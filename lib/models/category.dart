@@ -9,6 +9,7 @@ class Category extends ChangeNotifier {
   void add(Category category) {
     _categorys.add(category);
     FileController().writeCategory();
+    FileController().writeSearch();
     notifyListeners();
   }
 
