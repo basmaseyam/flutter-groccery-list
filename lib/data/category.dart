@@ -28,6 +28,9 @@ List<Category> categories = [
     category: 'المعلبات',
   ),
   Category(
+    category: 'المجمدات',
+  ),
+  Category(
     category: 'التسالي و الحلويات',
   ),
   Category(
