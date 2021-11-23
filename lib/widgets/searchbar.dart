@@ -103,7 +103,7 @@ class Searchbar extends SearchDelegate<Item> {
   Widget buildSuggestions(BuildContext context) {
     List<Item> mylist = context.select((FileController controller) =>
         controller.cartitems != null ? controller.cartitems : items);
-
+    mylist.sort((a, b) => a.title.compareTo(b.title));
     mylist = query.isEmpty
         ? mylist
         : mylist.where((p) => p.title.startsWith(query)).toList();

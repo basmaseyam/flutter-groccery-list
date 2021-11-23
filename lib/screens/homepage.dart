@@ -231,6 +231,8 @@ class _HomePageState extends State<HomePage> {
                             List selectedItems = itemsCats
                                 .where((p) => p.category.contains(cat))
                                 .toList();
+                            selectedItems
+                                .sort((a, b) => a.title.compareTo(b.title));
                             return Slidable(
                                 direction: Axis.horizontal,
                                 actionPane: SlidableScrollActionPane(),

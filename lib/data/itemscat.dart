@@ -953,7 +953,7 @@ List<Item> items = [
       title: 'بامية',
       category: 'المجمدات',
       quantity: 'عبوة',
-      itemIcon: 'images/icons/Frozen/okra.png',
+      itemIcon: 'images/icons/Frozen/Okra.png',
       amount: 0),
 
   Item(
@@ -973,7 +973,7 @@ List<Item> items = [
       title: 'بطاطس',
       category: 'المجمدات',
       quantity: 'عبوة',
-      itemIcon: 'images/icons/Frozen/fries.png',
+      itemIcon: 'images/icons/Frozen/fries2.png',
       amount: 0),
   Item(
       title: 'قلقاس',

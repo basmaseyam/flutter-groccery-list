@@ -69,6 +69,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
                     List selectedItems = cart.basketItems
                         .where((p) => p.category.contains(cat))
                         .toList();
+                    selectedItems.sort((a, b) => a.title.compareTo(b.title));
                     return selectedItems.length != 0
                         ? ExpansionTile(
                             trailing: IconButton(
