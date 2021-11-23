@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:moshtryate_new/controller/file_controller.dart';
 import 'package:moshtryate_new/data/itemscat.dart';
-import 'package:moshtryate_new/data/searchitem.dart';
 import 'package:moshtryate_new/models/cart.dart';
 import 'package:moshtryate_new/models/item.dart';
 import 'package:moshtryate_new/screens/NewItem.dart';
@@ -37,9 +36,8 @@ class Searchbar extends SearchDelegate<Item> {
 
   @override
   Widget buildResults(BuildContext context) {
-    context.read<FileController>().readSearch();
     List<Item> mylist = context.select((FileController controller) =>
-        controller.searchlist != null ? controller.searchlist : searchitems);
+        controller.searchlist != null ? controller.cartitems : items);
     final Item result = mylist.where((p) => p.title.contains(query)).first;
     final _formKey = GlobalKey<FormState>();
     return Consumer<Cart>(builder: (context, cart, child) {
@@ -103,7 +101,8 @@ class Searchbar extends SearchDelegate<Item> {
 
   @override
   Widget buildSuggestions(BuildContext context) {
-    List<Item> mylist = items;
+    List<Item> mylist = context.select((FileController controller) =>
+        controller.cartitems != null ? controller.cartitems : items);
 
     mylist = query.isEmpty
         ? mylist

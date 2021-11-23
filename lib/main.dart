@@ -44,6 +44,7 @@ class MyApp extends StatelessWidget {
     context.read<FileController>().readCart();
     if (FileManager().readJsonFile() != null)
       context.read<FileController>().readCategory();
+
     return Directionality(
         textDirection: TextDirection.rtl,
         child: MaterialApp(

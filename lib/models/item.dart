@@ -6,6 +6,7 @@ class Item extends ChangeNotifier {
   String itemIcon;
   String category;
   String quantity;
+  int keyShow = 1;
   int amount;
 
   List<Item> _items = [];
@@ -13,12 +14,12 @@ class Item extends ChangeNotifier {
   void add(Item item) {
     _items.add(item);
     FileController().writeCart();
-    FileController().writeSearch();
     notifyListeners();
   }
 
   void remove(Item item) {
-    _items.remove(item);
+    // _items.remove(item);
+    keyShow = 0;
     FileController().writeCart();
     notifyListeners();
   }
@@ -30,7 +31,8 @@ class Item extends ChangeNotifier {
   }
 
   void delete(Item selectedItem) {
-    _items.removeWhere((item) => selectedItem.title == item.title);
+    //_items.removeWhere((item) => selectedItem.title == item.title);
+    selectedItem.keyShow = 0;
     FileController().writeCart();
 
     notifyListeners();
@@ -49,13 +51,13 @@ class Item extends ChangeNotifier {
     return false;
   }
 
-  Item({
-    this.title,
-    this.itemIcon,
-    this.category,
-    this.amount,
-    this.quantity,
-  });
+  Item(
+      {this.title,
+      this.itemIcon,
+      this.category,
+      this.amount,
+      this.quantity,
+      this.keyShow = 1});
 
   factory Item.fromJson(Map<String, dynamic> json) {
     return Item(
@@ -63,13 +65,15 @@ class Item extends ChangeNotifier {
         category: json["category"],
         quantity: json["quantity"],
         itemIcon: json["itemIcon"],
-        amount: json["amount"]);
+        amount: json["amount"],
+        keyShow: json["keyShow"]);
   }
   Map<String, dynamic> toJson() => {
         "title": title,
         "category": category,
         "quantity": quantity,
         "itemIcon": itemIcon,
-        "amount": amount
+        "amount": amount,
+        "keyShow": keyShow
       };
 }

@@ -128,7 +128,7 @@ class FileManager {
   }
 
   Future<List> writeSearchFile() async {
-    final List<Item> searchlist = searchitems;
+    final List<Item> searchlist = items;
     File file = await _searchFile;
     var json = jsonEncode(searchlist.map((e) => e.toJson()).toList());
 

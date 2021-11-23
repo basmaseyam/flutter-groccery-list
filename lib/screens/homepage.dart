@@ -86,9 +86,13 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     items = context.select((FileController controller) =>
-        controller.cartitems != null ? controller.cartitems : items);
+        controller.cartitems != null
+            ? controller.cartitems.where((p) => p.keyShow == 1).toList()
+            : items.where((p) => p.keyShow == 1).toList());
     categories = context.select((FileController controller) =>
-        controller.categorylist != null ? controller.categorylist : categories);
+        controller.categorylist != null
+            ? controller.categorylist.where((p) => p.keyShow == 1).toList()
+            : categories.where((p) => p.keyShow == 1).toList());
     List itemsCats = items;
 
     return Consumer<Cart>(builder: (context, cart, child) {
@@ -360,8 +364,9 @@ class _HomePageState extends State<HomePage> {
                                                                             Navigator.pop(context,
                                                                                 'Ok');
                                                                             setState(() {
-                                                                              items.remove(selectedItems[index]);
+                                                                              selectedItems[index].keyShow = 0;
                                                                               cart.delete(selectedItems[index]);
+                                                                              FileController().writeCart();
                                                                             });
                                                                           },
                                                                           child:
