@@ -75,21 +75,7 @@ List<Item> items = [
       title: 'ليمون',
       category: 'الفواكه و الخضار',
       quantity: 'كيلو',
-      itemIcon: 'images/icons/FruitsVegeies/icons8-citrus-48.png',
-      amount: 0,
-      keyShow: 1),
-  Item(
-      title: 'ليمون',
-      category: 'الفواكه و الخضار',
-      quantity: 'كيلو',
       itemIcon: 'images/icons/FruitsVegeies/icons8-lemon-60.png',
-      amount: 0,
-      keyShow: 1),
-  Item(
-      title: 'ليمون',
-      category: 'الفواكه و الخضار',
-      quantity: 'كيلو',
-      itemIcon: 'images/icons/FruitsVegeies/icons8-lemon-64.png',
       amount: 0,
       keyShow: 1),
 
@@ -275,13 +261,6 @@ List<Item> items = [
       amount: 0,
       keyShow: 1),
 
-  Item(
-      title: 'رمان',
-      category: 'الفواكه و الخضار',
-      quantity: 'كيلو',
-      itemIcon: 'images/icons/FruitsVegeies/icons8-pomegranate-64.png',
-      amount: 0,
-      keyShow: 1),
 
   Item(
       title: 'بطاطس',
@@ -953,7 +932,7 @@ List<Item> items = [
       title: 'بامية',
       category: 'المجمدات',
       quantity: 'عبوة',
-      itemIcon: 'images/icons/Frozen/Okra.png',
+      itemIcon: 'images/icons/Frozen/okra.png',
       amount: 0),
 
   Item(
@@ -973,7 +952,7 @@ List<Item> items = [
       title: 'بطاطس',
       category: 'المجمدات',
       quantity: 'عبوة',
-      itemIcon: 'images/icons/Frozen/fries2.png',
+      itemIcon: 'images/icons/Frozen/fries.png',
       amount: 0),
   Item(
       title: 'قلقاس',
@@ -1023,28 +1002,6 @@ List<Item> items = [
       amount: 0,
       keyShow: 1),
 
-  Item(
-      title: 'سفنجة تنضيف',
-      category: 'العناية الشخصية و المنظفات',
-      quantity: 'عبوة',
-      itemIcon: 'images/icons/Clean&PersonalCare/sponge.png',
-      amount: 0,
-      keyShow: 1),
-  Item(
-      title: 'سفنجة تنضيف',
-      category: 'العناية الشخصية و المنظفات',
-      quantity: 'عبوة',
-      itemIcon: 'images/icons/Clean&PersonalCare/sponge (2).png',
-      amount: 0,
-      keyShow: 1),
-
-  Item(
-      title: 'سفنجة تنضيف',
-      category: 'العناية الشخصية و المنظفات',
-      quantity: 'عبوة',
-      itemIcon: 'images/icons/Clean&PersonalCare/sponge (1).png',
-      amount: 0,
-      keyShow: 1),
 
   Item(
       title: 'صابون أطباق',
@@ -1070,13 +1027,6 @@ List<Item> items = [
       amount: 0,
       keyShow: 1),
 
-  Item(
-      title: 'معقم',
-      category: 'العناية الشخصية و المنظفات',
-      quantity: 'عبوة',
-      itemIcon: 'images/icons/Clean&PersonalCare/icons8-hand-sanitizer-64.png',
-      amount: 0,
-      keyShow: 1),
 
   Item(
       title: 'شامبو',
@@ -1156,7 +1106,7 @@ List<Item> items = [
       title: 'كريم شمس',
       category: 'العناية الشخصية و المنظفات',
       quantity: 'عبوة',
-      itemIcon: 'images/icons/Clean&PersonalCare/sun-protection.png',
+      itemIcon: 'images/icons/Clean&PersonalCare/sunscreen.png',
       amount: 0,
       keyShow: 1),
 
@@ -1208,21 +1158,9 @@ List<Item> items = [
       amount: 0,
       keyShow: 1),
 
-  Item(
-      title: 'منظف حمام',
-      category: 'العناية الشخصية و المنظفات',
-      quantity: 'عبوة',
-      itemIcon: 'images/icons/Clean&PersonalCare/detergent (7).png',
-      amount: 0,
-      keyShow: 1),
 
-  Item(
-      title: 'منظف حمام',
-      category: 'العناية الشخصية و المنظفات',
-      quantity: 'عبوة',
-      itemIcon: 'images/icons/Clean&PersonalCare/cleaner.png',
-      amount: 0,
-      keyShow: 1),
+
+
   Item(
       title: 'صابون عسالة أطباق',
       category: 'العناية الشخصية و المنظفات',
@@ -1237,13 +1175,7 @@ List<Item> items = [
       itemIcon: 'images/icons/Clean&PersonalCare/alphabet.png',
       amount: 0,
       keyShow: 1),
-  Item(
-      title: 'ملمع غساله الاطباق',
-      category: 'العناية الشخصية و المنظفات',
-      quantity: 'عبوة',
-      itemIcon: 'images/icons/Clean&PersonalCare/liquid-soap (1).png',
-      amount: 0,
-      keyShow: 1),
+
   Item(
       title: 'معطر هواء',
       category: 'العناية الشخصية و المنظفات',
@@ -1252,13 +1184,7 @@ List<Item> items = [
       amount: 0,
       keyShow: 1),
 
-  Item(
-      title: 'جوانتيات',
-      category: 'العناية الشخصية و المنظفات',
-      quantity: 'عبوة',
-      itemIcon: 'images/icons/Clean&PersonalCare/gloves.png',
-      amount: 0,
-      keyShow: 1),
+
   Item(
       title: 'أكياس قمامة',
       category: 'العناية الشخصية و المنظفات',
@@ -1273,20 +1199,8 @@ List<Item> items = [
       itemIcon: 'images/icons/Clean&PersonalCare/cleaner.png',
       amount: 0,
       keyShow: 1),
-  Item(
-      title: 'صابون عسالة أطباق',
-      category: 'العناية الشخصية و المنظفات',
-      quantity: 'عبوة',
-      itemIcon: 'images/icons/Clean&PersonalCare/dishwasher (3).png',
-      amount: 0,
-      keyShow: 1),
-  Item(
-      title: 'ملح غسالة أطباق',
-      category: 'العناية الشخصية و المنظفات',
-      quantity: 'عبوة',
-      itemIcon: 'images/icons/Clean&PersonalCare/alphabet.png',
-      amount: 0,
-      keyShow: 1),
+
+
   Item(
       title: 'ملمع غساله الاطباق',
       category: 'العناية الشخصية و المنظفات',
@@ -1294,28 +1208,7 @@ List<Item> items = [
       itemIcon: 'images/icons/Clean&PersonalCare/liquid-soap (1).png',
       amount: 0,
       keyShow: 1),
-  Item(
-      title: 'معطر هواء',
-      category: 'العناية الشخصية و المنظفات',
-      quantity: 'عبوة',
-      itemIcon: 'images/icons/Clean&PersonalCare/air-freshener.png',
-      amount: 0,
-      keyShow: 1),
-  Item(
-      title: 'معطر هواء',
-      category: 'العناية الشخصية و المنظفات',
-      quantity: 'عبوة',
-      itemIcon: 'images/icons/Clean&PersonalCare/freshener (1).png',
-      amount: 0,
-      keyShow: 1),
 
-  Item(
-      title: 'فوط صحية',
-      category: 'العناية الشخصية و المنظفات',
-      quantity: 'عبوة',
-      itemIcon: 'images/icons/Clean&PersonalCare/icons8-pad-48.png',
-      amount: 0,
-      keyShow: 1),
 
   Item(
       title: 'فوط صحية',
@@ -1332,6 +1225,8 @@ List<Item> items = [
       itemIcon: 'images/icons/Clean&PersonalCare/sanitary-towel (1).png',
       amount: 0,
       keyShow: 1),
+
+
 
   Item(
       title: 'مرطب شفايف',
