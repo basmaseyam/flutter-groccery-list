@@ -25,8 +25,6 @@ class NewItem extends StatefulWidget {
 }
 
 class _NewItemState extends State<NewItem> {
-  final List<Item> itemsCats = items;
-
   final List<Item> itemsextra = [];
 
   final List<Category> _categories = categories;
@@ -39,6 +37,8 @@ class _NewItemState extends State<NewItem> {
 
   @override
   Widget build(BuildContext context) {
+    final List<Item> itemsCats = context.select((FileController controller) =>
+        controller.cartitems != null ? controller.cartitems : items);
     return Consumer<Cart>(builder: (context, cart, child) {
       return Directionality(
         textDirection: TextDirection.rtl,
@@ -186,11 +186,11 @@ class _NewItemState extends State<NewItem> {
                 newitem.quantity =
                     _formKey.currentState.value['quantity'].toString();
                 print(newitem.title);
+                itemsCats.add(newitem);
                 cart.add(newitem);
-                items.add(newitem);
-
                 setState(() {
                   _formKey.currentState.reset();
+                  newitem.keyShow = 1;
                 });
                 showDialog(
                     context: context,

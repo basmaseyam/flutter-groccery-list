@@ -37,7 +37,7 @@ class Searchbar extends SearchDelegate<Item> {
   @override
   Widget buildResults(BuildContext context) {
     List<Item> mylist = context.select((FileController controller) =>
-        controller.searchlist != null ? controller.cartitems : items);
+        controller.cartitems != null ? controller.cartitems : items);
     final Item result = mylist.where((p) => p.title.contains(query)).first;
     final _formKey = GlobalKey<FormState>();
     return Consumer<Cart>(builder: (context, cart, child) {
@@ -60,8 +60,9 @@ class Searchbar extends SearchDelegate<Item> {
                         color: Colors.blue,
                         onPressed: () {
                           result.incrementCounter();
-
-                          return cart.add(result);
+                          result.keyShow = 1;
+                          cart.add(result);
+                          FileController().writeCart();
                         }),
                     Text('${result.amount}'),
                     IconButton(
