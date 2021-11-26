@@ -756,7 +756,7 @@ List<Item> items = [
       title: 'سمك',
       category: 'اللحوم و الأسماك',
       quantity: 'كيلو',
-      itemIcon: 'images/icons/MeatFish/icons8-fish-food-48.png',
+      itemIcon: 'images/icons/MeatFish/fish.png',
       amount: 0,
       keyShow: 1),
   Item(
@@ -778,7 +778,28 @@ List<Item> items = [
       title: 'دجاج',
       category: 'اللحوم و الأسماك',
       quantity: 'كيلو',
-      itemIcon: 'images/icons/MeatFish/icons8-poultry-leg-48.png',
+      itemIcon: 'images/icons/MeatFish/icons8-chicken-64.png',
+      amount: 0,
+      keyShow: 1),
+  Item(
+      title: 'صدور دجاج',
+      category: 'اللحوم و الأسماك',
+      quantity: 'كيلو',
+      itemIcon: 'images/icons/MeatFish/icons8-chicken-breast-64.png',
+      amount: 0,
+      keyShow: 1),
+  Item(
+      title: 'أجنحة دجاج',
+      category: 'اللحوم و الأسماك',
+      quantity: 'كيلو',
+      itemIcon: 'images/icons/MeatFish/icons8-chicken-wings-64.png',
+      amount: 0,
+      keyShow: 1),
+  Item(
+      title: 'أوراك دجاج',
+      category: 'اللحوم و الأسماك',
+      quantity: 'كيلو',
+      itemIcon: 'images/icons/MeatFish/fried-chicken.png',
       amount: 0,
       keyShow: 1),
   Item(
@@ -792,7 +813,73 @@ List<Item> items = [
       title: 'جمبري',
       category: 'اللحوم و الأسماك',
       quantity: 'كيلو',
-      itemIcon: 'images/icons/MeatFish/icons8-prawn-48.png',
+      itemIcon: 'images/icons/MeatFish/shrimp.png',
+      amount: 0,
+      keyShow: 1),
+
+  Item(
+      title: 'بسطرمة',
+      category: 'اللحوم و الأسماك',
+      quantity: 'كيلو',
+      itemIcon: 'images/icons/MeatFish/bastrami.png',
+      amount: 0,
+      keyShow: 1),
+  Item(
+      title: 'بسطرمة',
+      category: 'اللحوم و الأسماك',
+      quantity: 'كيلو',
+      itemIcon: 'images/icons/MeatFish/meat (5).png',
+      amount: 0,
+      keyShow: 1),
+  Item(
+      title: 'رومي مدخن',
+      category: 'اللحوم و الأسماك',
+      quantity: 'كيلو',
+      itemIcon: 'images/icons/MeatFish/icons8-salami-64 (3).png',
+      amount: 0,
+      keyShow: 1),
+  Item(
+      title: 'رومي مدخن',
+      category: 'اللحوم و الأسماك',
+      quantity: 'كيلو',
+      itemIcon: 'images/icons/MeatFish/icons8-tortilla-64.png',
+      amount: 0,
+      keyShow: 1),
+
+  Item(
+      title: 'لانشون',
+      category: 'اللحوم و الأسماك',
+      quantity: 'كيلو',
+      itemIcon: 'images/icons/MeatFish/pepperoni (4).png',
+      amount: 0,
+      keyShow: 1),
+
+  Item(
+      title: 'لانشون',
+      category: 'اللحوم و الأسماك',
+      quantity: 'كيلو',
+      itemIcon: 'images/icons/MeatFish/salami (8).png',
+      amount: 0,
+      keyShow: 1),
+  Item(
+      title: 'سجق',
+      category: 'اللحوم و الأسماك',
+      quantity: 'كيلو',
+      itemIcon: 'images/icons/MeatFish/icons8-sausage-60.png',
+      amount: 0,
+      keyShow: 1),
+  Item(
+      title: 'رنجة',
+      category: 'اللحوم و الأسماك',
+      quantity: 'كيلو',
+      itemIcon: 'images/icons/MeatFish/fish (3).png',
+      amount: 0,
+      keyShow: 1),
+  Item(
+      title: 'كابوريا',
+      category: 'اللحوم و الأسماك',
+      quantity: 'كيلو',
+      itemIcon: 'images/icons/MeatFish/icons8-crab-96.png',
       amount: 0,
       keyShow: 1),
 
@@ -959,6 +1046,26 @@ List<Item> items = [
       category: 'المجمدات',
       quantity: 'عبوة',
       itemIcon: 'images/icons/Frozen/taro.png',
+      amount: 0),
+
+  Item(
+      title: 'برجر',
+      category: 'المجمدات',
+      quantity: 'عبوة',
+      itemIcon: 'images/icons/Frozen/burger.png',
+      amount: 0),
+  Item(
+      title: 'هوت دوج',
+      category: 'المجمدات',
+      quantity: 'عبوة',
+      itemIcon: 'images/icons/Frozen/susage.png',
+      amount: 0),
+
+  Item(
+      title: 'دجاج مقلي',
+      category: 'المجمدات',
+      quantity: 'عبوة',
+      itemIcon: 'images/icons/Frozen/fried chicken.png',
       amount: 0),
 
 //  ---- العناية الشخصية ------
@@ -1209,14 +1316,6 @@ List<Item> items = [
       amount: 0,
       keyShow: 1),
 
-
-  Item(
-      title: 'فوط صحية',
-      category: 'العناية الشخصية و المنظفات',
-      quantity: 'عبوة',
-      itemIcon: 'images/icons/Clean&PersonalCare/sanitary-pad (1).png',
-      amount: 0,
-      keyShow: 1),
 
   Item(
       title: 'فوط صحية',
