@@ -75,11 +75,13 @@ flutter:
     - images/icons/Grains/
     - images/icons/Ingredients/
     - images/icons/MeatFish/
-    - images/icons/Clean&PersonalCare/
+    - images/icons/Cleaning/
     - images/icons/Snacks/
     - images/icons/Canned/
     - images/icons/Frozen/
-    
+    - images/icons/PersonalCare/
+
+
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

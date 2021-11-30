@@ -7,18 +7,13 @@ List<Category> categories = [
   Category(category: 'المخبوزات و مستلزماتها', keyShow: 1),
   Category(category: 'البيض و منتجات الألبان', keyShow: 1),
   Category(category: 'اللحوم و الأسماك', keyShow: 1),
-  Category(
-      //not used yet
-      category: 'الحبوب و البقول',
-      keyShow: 1),
-  Category(
-      //not used yet
-      category: 'مستلزمات الطبخ',
-      keyShow: 1),
+  Category(category: 'الحبوب و البقول', keyShow: 1),
+  Category(category: 'مستلزمات الطبخ', keyShow: 1),
   Category(category: 'المشروبات', keyShow: 1),
   Category(category: 'المعلبات', keyShow: 1),
   Category(category: 'المجمدات', keyShow: 1),
   Category(category: 'التسالي و الحلويات', keyShow: 1),
-  Category(category: 'العناية الشخصية و المنظفات', keyShow: 1),
+  Category(category: 'المنظفات', keyShow: 1),
+  Category(category: 'العناية الشخصية', keyShow: 1),
   Category(category: 'أخرى', keyShow: 1),
 ];
