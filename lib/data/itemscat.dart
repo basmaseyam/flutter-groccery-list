@@ -10,7 +10,6 @@ List<Item> items = [
       itemIcon: 'images/icons/FruitsVegeies/icons8-apple-60 (1).png',
       amount: 0,
       keyShow: 1),
-
   Item(
       title: 'موز',
       category: 'الفواكه و الخضار',
@@ -18,7 +17,6 @@ List<Item> items = [
       itemIcon: 'images/icons/FruitsVegeies/icons8-bananas-64.png',
       amount: 0,
       keyShow: 1),
-
   Item(
       title: 'عنب',
       category: 'الفواكه و الخضار',
@@ -29,18 +27,17 @@ List<Item> items = [
   Item(
       title: 'كرنب',
       category: 'الفواكه و الخضار',
-      quantity: 'كيلو',
+      quantity: 'وحدة',
       itemIcon: 'images/icons/FruitsVegeies/cabbage.png',
       amount: 0,
       keyShow: 1),
   Item(
       title: 'بروكلي',
       category: 'الفواكه و الخضار',
-      quantity: 'كيلو',
+      quantity: 'وحدة',
       itemIcon: 'images/icons/FruitsVegeies/broccoli.png',
       amount: 0,
       keyShow: 1),
-
   Item(
       title: 'ورق عنب',
       category: 'الفواكه و الخضار',
@@ -70,7 +67,6 @@ List<Item> items = [
           'images/icons/FruitsVegeies/icons8-food-and-restaurant-64 (1).png',
       amount: 0,
       keyShow: 1),
-
   Item(
       title: 'ليمون',
       category: 'الفواكه و الخضار',
@@ -78,7 +74,6 @@ List<Item> items = [
       itemIcon: 'images/icons/FruitsVegeies/icons8-lemon-60.png',
       amount: 0,
       keyShow: 1),
-
   Item(
       title: 'خيار',
       category: 'الفواكه و الخضار',
@@ -86,7 +81,6 @@ List<Item> items = [
       itemIcon: 'images/icons/FruitsVegeies/cucumber (3).png',
       amount: 0,
       keyShow: 1),
-
   Item(
       title: 'بتنجان',
       category: 'الفواكه و الخضار',
@@ -124,7 +118,6 @@ List<Item> items = [
       itemIcon: 'images/icons/FruitsVegeies/icons8-plum-60.png',
       amount: 0,
       keyShow: 1),
-
   Item(
       title: 'خس',
       category: 'الفواكه و الخضار',
@@ -132,13 +125,6 @@ List<Item> items = [
       itemIcon: 'images/icons/FruitsVegeies/lettuce.png',
       amount: 0,
       keyShow: 1),
-
-  /* Item(
-      title: 'مانجو',
-      category: 'الفواكه و الخضار',
-      quantity: 'كيلو',
-      itemIcon: 'images/icons/FruitsVegeies/mango (1).png',
-      amount: 0, keyShow: 1),*/
   Item(
       title: 'مانجو',
       category: 'الفواكه و الخضار',
@@ -160,7 +146,6 @@ List<Item> items = [
       itemIcon: 'images/icons/FruitsVegeies/melon (1).png',
       amount: 0,
       keyShow: 1),
-
   Item(
       title: 'فراولة',
       category: 'الفواكه و الخضار',
@@ -168,7 +153,6 @@ List<Item> items = [
       itemIcon: 'images/icons/FruitsVegeies/strawberry.png',
       amount: 0,
       keyShow: 1),
-
   Item(
       title: 'تين',
       category: 'الفواكه و الخضار',
@@ -183,7 +167,6 @@ List<Item> items = [
       itemIcon: 'images/icons/FruitsVegeies/date.png',
       amount: 0,
       keyShow: 1),
-
   Item(
       title: 'بصل',
       category: 'الفواكه و الخضار',
@@ -191,15 +174,13 @@ List<Item> items = [
       itemIcon: 'images/icons/FruitsVegeies/onion (1).png',
       amount: 0,
       keyShow: 1),
-
   Item(
       title: 'بصل أخضر',
       category: 'الفواكه و الخضار',
-      quantity: 'كيلو',
+      quantity: 'حزمة',
       itemIcon: 'images/icons/FruitsVegeies/green-onion.png',
       amount: 0,
       keyShow: 1),
-
   Item(
       title: 'بابريكا',
       category: 'الفواكه و الخضار',
@@ -207,7 +188,6 @@ List<Item> items = [
       itemIcon: 'images/icons/FruitsVegeies/icons8-paprika-64.png',
       amount: 0,
       keyShow: 1),
-
   Item(
       title: 'كمثرى',
       category: 'الفواكه و الخضار',
@@ -215,7 +195,6 @@ List<Item> items = [
       itemIcon: 'images/icons/FruitsVegeies/icons8-pear-64 (3).png',
       amount: 0,
       keyShow: 1),
-
   Item(
       title: 'أناناس',
       category: 'الفواكه و الخضار',
@@ -223,19 +202,17 @@ List<Item> items = [
       itemIcon: 'images/icons/FruitsVegeies/icons8-pineapple-60.png',
       amount: 0,
       keyShow: 1),
-
-  Item(
-      title: 'جوافة',
+  Item(title: 'جوافة',
       category: 'الفواكه و الخضار',
       quantity: 'كيلو',
       itemIcon: 'images/icons/FruitsVegeies/guava.png',
       amount: 0,
       keyShow: 1),
   Item(
-      title: 'بسله',
+      title: 'بسلة',
       category: 'الفواكه و الخضار',
       quantity: 'كيلو',
-      itemIcon: 'images/icons/FruitsVegeies/icons8-peas-400.png',
+      itemIcon: 'images/icons/FruitsVegeies/green-pea (1).png',
       amount: 0,
       keyShow: 1),
   Item(
@@ -245,16 +222,13 @@ List<Item> items = [
       itemIcon: 'images/icons/FruitsVegeies/icons8-green-beans-64.png',
       amount: 0,
       keyShow: 1),
-
   Item(
       title: 'رمان',
       category: 'الفواكه و الخضار',
       quantity: 'كيلو',
-      itemIcon: 'images/icons/FruitsVegeies/icons8-pomegranate-60.png',
+      itemIcon: 'images/icons/FruitsVegeies/pomegranate.png',
       amount: 0,
       keyShow: 1),
-
-
   Item(
       title: 'بطاطس',
       category: 'الفواكه و الخضار',
@@ -262,7 +236,6 @@ List<Item> items = [
       itemIcon: 'images/icons/FruitsVegeies/icons8-potato-60.png',
       amount: 0,
       keyShow: 1),
-
   Item(
       title: 'بطاطا',
       category: 'الفواكه و الخضار',
@@ -285,15 +258,13 @@ List<Item> items = [
       itemIcon: 'images/icons/FruitsVegeies/icons8-cherry-tomato-64.png',
       amount: 0,
       keyShow: 1),
-
   Item(
       title: 'كيوي',
       category: 'الفواكه و الخضار',
       quantity: 'كيلو',
-      itemIcon: 'images/icons/FruitsVegeies/icons8-kiwi-64.png',
+      itemIcon: 'images/icons/FruitsVegeies/icons8-kiwi-64 (2).png',
       amount: 0,
       keyShow: 1),
-
   Item(
       title: 'بطيخ',
       category: 'الفواكه و الخضار',
@@ -301,62 +272,41 @@ List<Item> items = [
       itemIcon: 'images/icons/FruitsVegeies/icons8-watermelon-60.png',
       amount: 0,
       keyShow: 1),
-
   Item(
-      title: 'كوسه',
+      title: 'كوسة',
       category: 'الفواكه و الخضار',
       quantity: 'كيلو',
       itemIcon: 'images/icons/FruitsVegeies/zucchini (1).png',
       amount: 0,
       keyShow: 1),
   Item(
-      title: 'كوسه',
-      category: 'الفواكه و الخضار',
-      quantity: 'كيلو',
-      itemIcon: 'images/icons/FruitsVegeies/icons8-zucchini-64.png',
-      amount: 0,
-      keyShow: 1),
-
-  Item(
       title: 'ماشروم',
       category: 'الفواكه و الخضار',
-      quantity: 'كيلو',
+      quantity: 'عبوة',
       itemIcon: 'images/icons/FruitsVegeies/mushroom.png',
       amount: 0,
       keyShow: 1),
   Item(
       title: 'كزبرة',
       category: 'الفواكه و الخضار',
-      quantity: 'كيلو',
+      quantity: 'حزمة',
       itemIcon: 'images/icons/FruitsVegeies/coriander.png',
-      amount: 0,
-      keyShow: 1),
-  Item(
-      title: 'بقدونس',
-      category: 'الفواكه و الخضار',
-      quantity: 'كيلو',
-      itemIcon: 'images/icons/FruitsVegeies/parsley (1).png',
-      amount: 0,
-      keyShow: 1),
-  Item(
-      title: 'بقدونس',
-      category: 'الفواكه و الخضار',
-      quantity: 'كيلو',
-      itemIcon: 'images/icons/FruitsVegeies/parsley (4).png',
-      amount: 0,
-      keyShow: 1),
-  Item(
-      title: 'بقدونس',
-      category: 'الفواكه و الخضار',
-      quantity: 'كيلو',
-      itemIcon: 'images/icons/FruitsVegeies/parsley (2).png',
       amount: 0,
       keyShow: 1),
 
   Item(
+      title: 'بقدونس',
+      category: 'الفواكه و الخضار',
+      quantity: 'حزمة',
+      itemIcon: 'images/icons/FruitsVegeies/parsley (1).png',
+      amount: 0,
+      keyShow: 1),
+
+
+  Item(
       title: 'شبت',
       category: 'الفواكه و الخضار',
-      quantity: 'كيلو',
+      quantity: 'حزمة',
       itemIcon: 'images/icons/FruitsVegeies/dill (1).png',
       amount: 0,
       keyShow: 1),
@@ -364,7 +314,7 @@ List<Item> items = [
   Item(
       title: 'جرجير',
       category: 'الفواكه و الخضار',
-      quantity: 'كيلو',
+      quantity: 'حزمة',
       itemIcon: 'images/icons/FruitsVegeies/rucola.png',
       amount: 0,
       keyShow: 1),
@@ -372,8 +322,24 @@ List<Item> items = [
   Item(
       title: 'سبانخ',
       category: 'الفواكه و الخضار',
-      quantity: 'كيلو',
+      quantity: 'حزمة',
       itemIcon: 'images/icons/FruitsVegeies/icons8-spinach-64 (1).png',
+      amount: 0,
+      keyShow: 1),
+
+
+ /* Item(
+      title: 'توت أزرق',
+      category: 'الفواكه و الخضار',
+      quantity: 'كيلو',
+      itemIcon: 'images/icons/FruitsVegeies/icons8-blueberry-64.png',
+      amount: 0,
+      keyShow: 1),*/
+  Item(
+      title: 'توت',
+      category: 'الفواكه و الخضار',
+      quantity: 'كيلو',
+      itemIcon: 'images/icons/FruitsVegeies/blueberry (4).png',
       amount: 0,
       keyShow: 1),
 
@@ -389,6 +355,21 @@ List<Item> items = [
       category: 'الفواكه و الخضار',
       quantity: 'كيلو',
       itemIcon: 'images/icons/FruitsVegeies/taro.png',
+      amount: 0,
+      keyShow: 1),
+
+  Item(
+      title: 'سلق',
+      category: 'الفواكه و الخضار',
+      quantity: 'حزمة',
+      itemIcon: 'images/icons/FruitsVegeies/icons8-chard-100.png',
+      amount: 0,
+      keyShow: 1),
+  Item(
+      title: 'بامية',
+      category: 'الفواكه و الخضار',
+      quantity: 'حزمة',
+      itemIcon: 'images/icons/FruitsVegeies/okra (3).png',
       amount: 0,
       keyShow: 1),
 
@@ -453,7 +434,7 @@ List<Item> items = [
       itemIcon: 'images/icons/DiarayEggs/milk.png',
       amount: 0,
       keyShow: 1),
-
+ 
   Item(
       title: 'زبادي',
       category: 'البيض و منتجات الألبان',
@@ -620,7 +601,13 @@ List<Item> items = [
       itemIcon: 'images/icons/Ingredients/oil.png',
       amount: 0,
       keyShow: 1),
-
+  Item(
+      title: 'بلاستيك تغليف',
+      category: 'مستلزمات الطبخ',
+      quantity: 'لتر',
+      itemIcon: 'images/icons/Ingredients/wrap (2).png',
+      amount: 0,
+      keyShow: 1),
   Item(
       title: 'زيت زيتون',
       category: 'مستلزمات الطبخ',
@@ -711,7 +698,7 @@ List<Item> items = [
       amount: 0,
       keyShow: 1),
   Item(
-      title: 'كزبرة',
+      title: 'كزبرة ناشفة',
       category: 'مستلزمات الطبخ',
       quantity: 'عبوة',
       itemIcon: 'images/icons/Ingredients/coriander.png',
@@ -725,7 +712,7 @@ List<Item> items = [
       amount: 0,
       keyShow: 1),
   Item(
-      title: 'بابريكا',
+      title: 'بابريكا بودرة',
       category: 'مستلزمات الطبخ',
       quantity: 'عبوة',
       itemIcon: 'images/icons/Ingredients/icons8-smoked-paprika-48.png',
@@ -757,7 +744,7 @@ List<Item> items = [
       keyShow: 1),
 
   Item(
-      title: 'جنزبيل',
+      title: 'جنزبيل بودرة',
       category: 'مستلزمات الطبخ',
       quantity: 'عبوة',
       itemIcon: 'images/icons/Ingredients/spices (1).png',
@@ -765,7 +752,7 @@ List<Item> items = [
       keyShow: 1),
 
   Item(
-      title: 'كركم',
+      title: 'كركم بودرة',
       category: 'مستلزمات الطبخ',
       quantity: 'عبوة',
       itemIcon: 'images/icons/Ingredients/icons8-turmeric-48.png',
@@ -846,33 +833,20 @@ List<Item> items = [
       itemIcon: 'images/icons/MeatFish/bastrami.png',
       amount: 0,
       keyShow: 1),
-  Item(
-      title: 'بسطرمة',
-      category: 'اللحوم و الأسماك',
-      quantity: 'كيلو',
-      itemIcon: 'images/icons/MeatFish/meat (5).png',
-      amount: 0,
-      keyShow: 1),
-  Item(
-      title: 'رومي مدخن',
-      category: 'اللحوم و الأسماك',
-      quantity: 'كيلو',
-      itemIcon: 'images/icons/MeatFish/icons8-salami-64 (3).png',
-      amount: 0,
-      keyShow: 1),
-  Item(
-      title: 'رومي مدخن',
-      category: 'اللحوم و الأسماك',
-      quantity: 'كيلو',
-      itemIcon: 'images/icons/MeatFish/icons8-tortilla-64.png',
-      amount: 0,
-      keyShow: 1),
 
   Item(
-      title: 'لانشون',
+      title: 'بيبروني',
       category: 'اللحوم و الأسماك',
       quantity: 'كيلو',
-      itemIcon: 'images/icons/MeatFish/pepperoni (4).png',
+      itemIcon: 'images/icons/MeatFish/pepperoni (6).png',
+      amount: 0,
+      keyShow: 1),
+  
+  Item(
+      title: 'رومي مدخن',
+      category: 'اللحوم و الأسماك',
+      quantity: 'كيلو',
+      itemIcon: 'images/icons/MeatFish/tortilla (2).png',
       amount: 0,
       keyShow: 1),
 
@@ -998,6 +972,31 @@ List<Item> items = [
       amount: 0,
       keyShow: 1),
 
+  Item(
+      title: 'كورن فليكس',
+      category: 'المعلبات',
+      quantity: 'عبوة',
+      itemIcon: 'images/icons/Canned/cornflakes.png',
+      amount: 0,
+      keyShow: 1),
+  Item(
+      title: 'كورن فليكس',
+      category: 'المعلبات',
+      quantity: 'عبوة',
+      itemIcon: 'images/icons/Canned/flocken.png',
+      amount: 0,
+      keyShow: 1),
+
+  Item(
+      title: 'موسلي',
+      category: 'المعلبات',
+      quantity: 'عبوة',
+      itemIcon: 'images/icons/Canned/musli (16).png',
+      amount: 0,
+      keyShow: 1),
+
+
+
   //  ---- التسالي و الحلويات ------
 
   Item(
@@ -1090,6 +1089,13 @@ List<Item> items = [
       itemIcon: 'images/icons/Frozen/fried chicken.png',
       amount: 0),
 
+  Item(
+      title: 'خضار مشكل',
+      category: 'المجمدات',
+      quantity: 'عبوة',
+      itemIcon: 'images/icons/Frozen/frozen-goods (3).png',
+      amount: 0),
+
 //  ---- التنضيف cleaning ------
   Item(
       title: 'صابون',
@@ -1106,6 +1112,7 @@ List<Item> items = [
       itemIcon: 'images/icons/Cleaning/laundry-detergent.png',
       amount: 0,
       keyShow: 1),
+
 
   Item(
       title: 'منعم ملابس',
@@ -1154,14 +1161,6 @@ List<Item> items = [
       itemIcon: 'images/icons/Cleaning/hand-sanitizer.png',
       amount: 0,
       keyShow: 1),
-  Item(
-      title: 'جوانتيات',
-      category: 'المنظفات',
-      quantity: 'عبوة',
-      itemIcon: 'images/icons/Cleaning/gloves (6).png',
-      amount: 0,
-      keyShow: 1),
-
 
   Item(
       title: 'أكياس قمامة',
@@ -1172,15 +1171,6 @@ List<Item> items = [
       keyShow: 1),
 
   Item(
-      title: 'أكياس قمامة',
-      category: 'المنظفات',
-      quantity: 'عبوة',
-      itemIcon: 'images/icons/Cleaning/icons8-garbage-bag-64.png',
-      amount: 0,
-      keyShow: 1),
-
-
-  Item(
       title: 'منظف حمام',
       category: 'المنظفات',
       quantity: 'عبوة',
@@ -1188,13 +1178,11 @@ List<Item> items = [
       amount: 0,
       keyShow: 1),
 
-
-
   Item(
       title: 'جوانتيات',
       category: 'المنظفات',
       quantity: 'عبوة',
-      itemIcon: 'images/icons/Cleaning/gloves (6).png',
+      itemIcon: 'images/icons/Cleaning/gloves (4).png',
       amount: 0,
       keyShow: 1),
 
@@ -1205,6 +1193,23 @@ List<Item> items = [
       itemIcon: 'images/icons/Cleaning/dishwasher (3).png',
       amount: 0,
       keyShow: 1),
+
+  Item(
+      title: 'كلور',
+      category: 'المنظفات',
+      quantity: 'عبوة',
+      itemIcon: 'images/icons/Cleaning/softener (8).png',
+      amount: 0,
+      keyShow: 1),
+
+  Item(
+      title: 'ملمع زجاج',
+      category: 'المنظفات',
+      quantity: 'عبوة',
+      itemIcon: 'images/icons/Cleaning/water-spray.png',
+      amount: 0,
+      keyShow: 1),
+
 
   Item(
       title: 'ملح غسالة أطباق',
