@@ -6,6 +6,7 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flat_icons_flutter/flat_icons_flutter.dart';
 import 'package:moshtryate_new/controller/file_controller.dart';
+import 'package:moshtryate_new/widgets/searchbar.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:moshtryate_new/data/category.dart';
 import 'package:moshtryate_new/models/category.dart';
@@ -28,7 +29,7 @@ class _NewItemState extends State<NewItem> {
   final List<Item> itemsextra = [];
 
   final List<Category> _categories = categories;
-  final List<String> _quantities = ['لتر', 'كيلو', 'عبوة', 'وحدة','حزمة'];
+  final List<String> _quantities = ['لتر', 'كيلو', 'عبوة', 'وحدة', 'حزمة'];
   Category chooseItem;
 
   var newitem = Item();
@@ -55,6 +56,32 @@ class _NewItemState extends State<NewItem> {
                 },
               ),
             ],
+            bottom: PreferredSize(
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(12, 0, 12, 11),
+                child: TextField(
+                  autofocus: false,
+                  decoration: InputDecoration(
+                    contentPadding: const EdgeInsets.symmetric(
+                        vertical: 12.0, horizontal: 10),
+                    //  prefixIcon: Icon(Icons.search),    // to add search icon before text
+                    filled: true,
+                    border: OutlineInputBorder(),
+                    hintText: 'البحث عن منتج',
+                    fillColor: Colors.white,
+                    focusColor: Colors.white,
+                  ),
+                  onTap: () {
+                    showSearch(
+                      context: context,
+                      delegate: Searchbar(),
+                      query: '',
+                    );
+                  },
+                ),
+              ),
+              preferredSize: Size(0, 70.0),
+            ),
           ),
           drawer: MyDrawer(),
           body: Padding(
@@ -186,9 +213,10 @@ class _NewItemState extends State<NewItem> {
                 newitem.quantity =
                     _formKey.currentState.value['quantity'].toString();
                 print(newitem.title);
-                itemsCats.add(newitem);
-                cart.add(newitem);
+
                 setState(() {
+                  itemsCats.add(newitem);
+                  cart.add(newitem);
                   _formKey.currentState.reset();
                   newitem.keyShow = 1;
                 });

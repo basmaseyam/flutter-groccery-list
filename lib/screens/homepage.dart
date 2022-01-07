@@ -44,10 +44,10 @@ class _HomePageState extends State<HomePage> {
   var dropdownvalue = 'item';
   @override
   void initState() {
-    if (FileManager().readJsonFile() != null) {
+    if (FileManager().readJsonFile() == null) {
       context.read<FileController>().writeCart();
     }
-    if (FileManager().readCategoryFile() != null &&
+    if (FileManager().readCategoryFile() == null &&
         FileManager().readJsonFile() != null) {
       context.read<FileController>().writeCategory();
     }
@@ -108,7 +108,7 @@ class _HomePageState extends State<HomePage> {
             textDirection: TextDirection.rtl,
             child: Scaffold(
               appBar: PreferredSize(
-                  child: MainBar(context, cart, child),
+                  child: MainBar(context: context, cart: cart, child: child),
                   preferredSize: Size.fromHeight(120)),
               drawer: MyDrawer(),
               body: FutureBuilder<void>(

@@ -202,7 +202,8 @@ List<Item> items = [
       itemIcon: 'images/icons/FruitsVegeies/icons8-pineapple-60.png',
       amount: 0,
       keyShow: 1),
-  Item(title: 'جوافة',
+  Item(
+      title: 'جوافة',
       category: 'الفواكه و الخضار',
       quantity: 'كيلو',
       itemIcon: 'images/icons/FruitsVegeies/guava.png',
@@ -302,7 +303,6 @@ List<Item> items = [
       amount: 0,
       keyShow: 1),
 
-
   Item(
       title: 'شبت',
       category: 'الفواكه و الخضار',
@@ -327,8 +327,7 @@ List<Item> items = [
       amount: 0,
       keyShow: 1),
 
-
- /* Item(
+  /* Item(
       title: 'توت أزرق',
       category: 'الفواكه و الخضار',
       quantity: 'كيلو',
@@ -434,7 +433,7 @@ List<Item> items = [
       itemIcon: 'images/icons/DiarayEggs/milk.png',
       amount: 0,
       keyShow: 1),
- 
+
   Item(
       title: 'زبادي',
       category: 'البيض و منتجات الألبان',
@@ -841,7 +840,7 @@ List<Item> items = [
       itemIcon: 'images/icons/MeatFish/pepperoni (6).png',
       amount: 0,
       keyShow: 1),
-  
+
   Item(
       title: 'رومي مدخن',
       category: 'اللحوم و الأسماك',
@@ -995,8 +994,6 @@ List<Item> items = [
       amount: 0,
       keyShow: 1),
 
-
-
   //  ---- التسالي و الحلويات ------
 
   Item(
@@ -1113,7 +1110,6 @@ List<Item> items = [
       amount: 0,
       keyShow: 1),
 
-
   Item(
       title: 'منعم ملابس',
       category: 'المنظفات',
@@ -1129,7 +1125,6 @@ List<Item> items = [
       itemIcon: 'images/icons/Cleaning/sponge (4).png',
       amount: 0,
       keyShow: 1),
-
 
   Item(
       title: 'صابون أطباق',
@@ -1210,7 +1205,6 @@ List<Item> items = [
       amount: 0,
       keyShow: 1),
 
-
   Item(
       title: 'ملح غسالة أطباق',
       category: 'المنظفات',
@@ -1235,10 +1229,7 @@ List<Item> items = [
       amount: 0,
       keyShow: 1),
 
-
-
 //  ---- العناية الشخصية ------
-
 
   Item(
       title: 'مزيل عرق',

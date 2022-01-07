@@ -7,6 +7,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flat_icons_flutter/flat_icons_flutter.dart';
 import 'package:moshtryate_new/controller/file_controller.dart';
 import 'package:moshtryate_new/file_manager.dart';
+import 'package:moshtryate_new/widgets/searchbar.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:moshtryate_new/data/category.dart';
 import 'package:moshtryate_new/models/category.dart';
@@ -50,6 +51,32 @@ class _NewCategoryState extends State<NewCategory> {
                 },
               ),
             ],
+            bottom: PreferredSize(
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(12, 0, 12, 11),
+                child: TextField(
+                  autofocus: false,
+                  decoration: InputDecoration(
+                    contentPadding: const EdgeInsets.symmetric(
+                        vertical: 12.0, horizontal: 10),
+                    //  prefixIcon: Icon(Icons.search),    // to add search icon before text
+                    filled: true,
+                    border: OutlineInputBorder(),
+                    hintText: 'البحث عن منتج',
+                    fillColor: Colors.white,
+                    focusColor: Colors.white,
+                  ),
+                  onTap: () {
+                    showSearch(
+                      context: context,
+                      delegate: Searchbar(),
+                      query: '',
+                    );
+                  },
+                ),
+              ),
+              preferredSize: Size(0, 70.0),
+            ),
           ),
           drawer: MyDrawer(),
           body: Padding(
@@ -82,9 +109,9 @@ class _NewCategoryState extends State<NewCategory> {
                 newcat.category =
                     _formKey.currentState.value['category'].toString();
 
-                categories.add(newcat);
-                FileController().writeCategory();
                 setState(() {
+                  categories.add(newcat);
+                  FileController().writeCategory();
                   _formKey.currentState.reset();
                 });
                 showDialog(

@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:moshtryate_new/constants.dart';
 import 'package:moshtryate_new/controller/file_controller.dart';
 import 'package:moshtryate_new/data/category.dart';
+import 'package:moshtryate_new/screens/NewCategory.dart';
+import 'package:moshtryate_new/screens/NewItem.dart';
 import 'package:moshtryate_new/screens/homepage.dart';
+import 'package:moshtryate_new/widgets/searchbar.dart';
 import 'package:provider/provider.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:moshtryate_new/models/item.dart';
@@ -17,7 +21,7 @@ class CheckoutPage extends StatefulWidget {
 
 class _CheckoutPageState extends State<CheckoutPage> {
   bool firstvalue = false;
-
+  var dropdownvalue = 'item';
   @override
   Widget build(BuildContext context) {
     return Consumer<Cart>(builder: (context, cart, child) {
@@ -35,6 +39,46 @@ class _CheckoutPageState extends State<CheckoutPage> {
               ),
             ),
             actions: [
+              DropdownButton(
+                underline: Container(color: Colors.transparent),
+                icon: Icon(
+                  Icons.add,
+                  size: 32,
+                ),
+                iconEnabledColor: Colors.white,
+                iconSize: 32,
+                value: 'item',
+                items: <String>['item', 'category']
+                    .map<DropdownMenuItem<String>>((String value) {
+                  return DropdownMenuItem<String>(
+                      alignment: AlignmentDirectional.centerEnd,
+                      value: value,
+                      child: value == 'item'
+                          ? Text(
+                              'إضافة منتج',
+                              style: TextStyle(color: kMainColor),
+                              textAlign: TextAlign.right,
+                            )
+                          : Text(
+                              'إضافة قائمة',
+                              style: TextStyle(color: kMainColor),
+                              textAlign: TextAlign.right,
+                            ),
+                      onTap: () {
+                        value == 'item'
+                            ? Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => NewItem()))
+                            : Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => NewCategory()));
+                      });
+                }).toList(),
+                onChanged: (String newValue) {
+                  setState(() {
+                    dropdownvalue = newValue;
+                    print(dropdownvalue);
+                  });
+                },
+              ),
               IconButton(
                 icon: Icon(Icons.share),
                 onPressed: () {
@@ -55,6 +99,32 @@ class _CheckoutPageState extends State<CheckoutPage> {
                 },
               ),
             ],
+            bottom: PreferredSize(
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(12, 0, 12, 11),
+                child: TextField(
+                  autofocus: false,
+                  decoration: InputDecoration(
+                    contentPadding: const EdgeInsets.symmetric(
+                        vertical: 12.0, horizontal: 10),
+                    //  prefixIcon: Icon(Icons.search),    // to add search icon before text
+                    filled: true,
+                    border: OutlineInputBorder(),
+                    hintText: 'البحث عن منتج',
+                    fillColor: Colors.white,
+                    focusColor: Colors.white,
+                  ),
+                  onTap: () {
+                    showSearch(
+                      context: context,
+                      delegate: Searchbar(),
+                      query: '',
+                    );
+                  },
+                ),
+              ),
+              preferredSize: Size(0, 70.0),
+            ),
           ),
           drawer: MyDrawer(),
           body: cart.basketItems.length == 0

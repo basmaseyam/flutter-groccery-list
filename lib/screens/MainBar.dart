@@ -8,12 +8,17 @@ import 'package:moshtryate_new/screens/NewCategory.dart';
 import 'package:moshtryate_new/screens/NewItem.dart';
 import 'package:moshtryate_new/screens/checkout.dart';
 import 'package:provider/provider.dart';
+import 'package:path/path.dart';
 import 'NewItem.dart';
 import 'checkout.dart';
 import 'package:moshtryate_new/widgets/searchbar.dart';
 
 class MainBar extends StatefulWidget {
-  MainBar(BuildContext context, Cart cart, Widget child);
+  final BuildContext context;
+  final Cart cart;
+  final Widget child;
+
+  const MainBar({this.context, this.cart, this.child});
 
   @override
   _MainBarState createState() => _MainBarState();
@@ -21,7 +26,7 @@ class MainBar extends StatefulWidget {
 
 class _MainBarState extends State<MainBar> {
   @override
-  Widget build(BuildContext contex) {
+  Widget build(context) {
     var dropdownvalue = 'item';
 
     return AppBar(
@@ -65,9 +70,9 @@ class _MainBarState extends State<MainBar> {
                         ),
                   onTap: () {
                     value == 'item'
-                        ? Navigator.of(context).push(
+                        ? Navigator.of(widget.context).push(
                             MaterialPageRoute(builder: (context) => NewItem()))
-                        : Navigator.of(context).push(MaterialPageRoute(
+                        : Navigator.of(widget.context).push(MaterialPageRoute(
                             builder: (context) => NewCategory()));
                   });
             }).toList(),
@@ -95,7 +100,7 @@ class _MainBarState extends State<MainBar> {
                   },
                 ),
                 Text(
-                  cart.count.toString(),
+                  widget.cart.count.toString(),
                 ),
               ],
             ),
