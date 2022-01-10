@@ -9,6 +9,7 @@ import 'package:moshtryate_new/screens/login.dart';
 import 'package:connectivity/connectivity.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
+import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'models/cart.dart';
 import 'screens/login.dart';
 
@@ -49,7 +50,14 @@ class MyApp extends StatelessWidget {
         textDirection: TextDirection.rtl,
         child: MaterialApp(
           debugShowCheckedModeBanner: false,
-          home: (isloggedin || !isconnected) ? HomePage() : LoginScreen(),
+          home: AnimatedSplashScreen(
+            duration: 3000,
+            splash: 'images/icons/icons8-shopping-cart-60.png',
+            nextScreen:
+                (isloggedin || !isconnected) ? HomePage() : LoginScreen(),
+            splashTransition: SplashTransition.scaleTransition,
+            backgroundColor: kMainColor,
+          ),
           routes: {
             LoginScreen.id: (context) => LoginScreen(),
             HomePage.id: (context) => HomePage(),

@@ -30,7 +30,7 @@ class _MainBarState extends State<MainBar> {
     var dropdownvalue = 'item';
 
     return AppBar(
-      titleSpacing: 0,
+      titleSpacing: -8,
       title: Text(
         "مشترياتي",
         textDirection: TextDirection.rtl,

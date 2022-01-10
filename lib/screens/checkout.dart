@@ -29,6 +29,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
         textDirection: TextDirection.rtl,
         child: Scaffold(
           appBar: AppBar(
+            titleSpacing: -8,
             title: Text(
               'قائمة التسوق',
               textDirection: TextDirection.rtl,
@@ -178,13 +179,14 @@ class _CheckoutPageState extends State<CheckoutPage> {
                                         ),
                                         title: Row(
                                           children: [
-                                            CircleAvatar(
-                                              backgroundImage: AssetImage(
+                                            ClipRect(
+                                                child: Container(
+                                              width: 40,
+                                              height: 40,
+                                              child: Image.asset(
                                                   selectedItems[index]
                                                       .itemIcon),
-                                              backgroundColor:
-                                                  Colors.transparent,
-                                            ),
+                                            )),
                                             SizedBox(width: 8),
                                             Text(selectedItems[index].title),
                                             SizedBox(width: 16),

@@ -40,7 +40,7 @@ class _NewCategoryState extends State<NewCategory> {
         textDirection: TextDirection.rtl,
         child: Scaffold(
           appBar: AppBar(
-            titleSpacing: 0,
+            titleSpacing: -8,
             title: Text('اضف قسم جديد'),
             actions: [
               IconButton(

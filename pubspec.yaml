@@ -46,6 +46,7 @@ dependencies:
   http: ^0.13.3
   flutter_slidable: ^0.6.0
   google_mobile_ads: ^0.13.5
+  animated_splash_screen: ^1.1.0
   
   
 

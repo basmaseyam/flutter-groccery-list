@@ -45,7 +45,7 @@ class _NewItemState extends State<NewItem> {
         textDirection: TextDirection.rtl,
         child: Scaffold(
           appBar: AppBar(
-            titleSpacing: 0,
+            titleSpacing: -8,
             title: Text('اضف جديد'),
             actions: [
               IconButton(
@@ -153,40 +153,64 @@ class _NewItemState extends State<NewItem> {
                     options: [
                       FormBuilderFieldOption(
                         value: 'images/png/groceries.png',
-                        child: CircleAvatar(
-                            backgroundImage:
-                                AssetImage('images/png/groceries.png')),
+                        child: ClipRect(
+                          child: Container(
+                            width: 40,
+                            height: 40,
+                            child: Image.asset('images/png/groceries.png'),
+                          ),
+                        ),
                       ),
                       FormBuilderFieldOption(
                         value: 'images/png/light-bulb.png',
-                        child: CircleAvatar(
-                            backgroundImage:
-                                AssetImage('images/png/light-bulb.png')),
+                        child: ClipRect(
+                          child: Container(
+                            width: 40,
+                            height: 40,
+                            child: Image.asset('images/png/light-bulb.png'),
+                          ),
+                        ),
                       ),
                       FormBuilderFieldOption(
                         value: 'images/png/gingerbread.png',
-                        child: CircleAvatar(
-                            backgroundImage:
-                                AssetImage('images/png/gingerbread.png')),
+                        child: ClipRect(
+                          child: Container(
+                            width: 40,
+                            height: 40,
+                            child: Image.asset('images/png/gingerbread.png'),
+                          ),
+                        ),
                       ),
                       FormBuilderFieldOption(
                         value: 'images/png/hazelnut.png',
-                        child: CircleAvatar(
-                            backgroundImage:
-                                AssetImage('images/png/hazelnut.png')),
+                        child: ClipRect(
+                          child: Container(
+                            width: 40,
+                            height: 40,
+                            child: Image.asset('images/png/hazelnut.png'),
+                          ),
+                        ),
                       ),
                       FormBuilderFieldOption(
                         value: 'images/png/pasta.png',
-                        child: CircleAvatar(
-                            backgroundImage:
-                                AssetImage('images/png/pasta.png')),
+                        child: ClipRect(
+                          child: Container(
+                            width: 40,
+                            height: 40,
+                            child: Image.asset('images/png/pasta.png'),
+                          ),
+                        ),
                       ),
                       FormBuilderFieldOption(
                         value:
                             'images/png/glass-3.png', //Updated by aya, wrong VALUE WAS GIVEN AS PASTA
-                        child: CircleAvatar(
-                            backgroundImage:
-                                AssetImage('images/png/glass-3.png')),
+                        child: ClipRect(
+                          child: Container(
+                            width: 40,
+                            height: 40,
+                            child: Image.asset('images/png/glass-3.png'),
+                          ),
+                        ),
                       ),
                     ],
                   ),
