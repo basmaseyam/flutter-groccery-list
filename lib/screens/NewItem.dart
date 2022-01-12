@@ -46,7 +46,13 @@ class _NewItemState extends State<NewItem> {
         child: Scaffold(
           appBar: AppBar(
             titleSpacing: -8,
-            title: Text('اضف جديد'),
+            title: Text('إضافة منتج',
+              style: TextStyle(
+                //  fontFamily: 'Vibes',
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
             actions: [
               IconButton(
                 icon: Icon(Icons.arrow_forward),
@@ -89,14 +95,17 @@ class _NewItemState extends State<NewItem> {
             child: FormBuilder(
               key: _formKey,
               child: ListView(children: [
-                Text(
-                  'اضف منتج جديد',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
-                ),
+               /* Text(
+                  'إضافة منتج جديد',
+                  textAlign: TextAlign.right,
+                  style: TextStyle(
+                      //fontWeight: FontWeight.bold,
+                      fontSize: 20,
+                  ),
+                ),*/     // commented by aya
                 FormBuilderTextField(
                   name: 'title',
-                  decoration: InputDecoration(hintText: 'اسم المنتج '),
+                  decoration: InputDecoration(hintText: 'اسم المنتج الجديد'),
                   validator: FormBuilderValidators.compose(
                       [FormBuilderValidators.required(context)]),
                 ),
@@ -112,7 +121,7 @@ class _NewItemState extends State<NewItem> {
                     decoration: InputDecoration(
                       filled: true, /* icon: Icon(Icons.category)*/
                     ), //Updated by aya , removed un necessary search icon
-                    hint: Text('اختر القائمه المناسبه'),
+                    hint: Text('إختر القائمه المناسبه'),
                     isExpanded: true,
                     allowClear: true,
                     items: _categories.map((valueItem) {
@@ -131,7 +140,7 @@ class _NewItemState extends State<NewItem> {
                     decoration: InputDecoration(
                       filled: true, /*icon: Icon(Icons.ad_units)*/
                     ), //Updated by aya , removed un necessary icon
-                    hint: Text('اختر الوحدة المناسبة'),
+                    hint: Text('إختر الوحدة المناسبة'),
                     allowClear: true,
                     items: _quantities.map((valueItem) {
                       return DropdownMenuItem(

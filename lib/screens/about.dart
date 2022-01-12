@@ -41,7 +41,7 @@ class _AboutState extends State<About> {
             textDirection: TextDirection.rtl,
             child: Scaffold(
               appBar: AppBar(
-                titleSpacing: 0,
+                titleSpacing: -8,
                 title: Text(
                   "مشترياتي",
                   textDirection: TextDirection.rtl,

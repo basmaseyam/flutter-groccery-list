@@ -41,7 +41,13 @@ class _NewCategoryState extends State<NewCategory> {
         child: Scaffold(
           appBar: AppBar(
             titleSpacing: -8,
-            title: Text('اضف قسم جديد'),
+            title: Text('إضافة قائمة',
+              style: TextStyle(
+                //  fontFamily: 'Vibes',
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
             actions: [
               IconButton(
                 icon: Icon(Icons.arrow_forward),
@@ -84,14 +90,14 @@ class _NewCategoryState extends State<NewCategory> {
             child: FormBuilder(
               key: _formKey,
               child: ListView(children: [
-                Text(
+            /*  Text(
                   'اضف قائمه جديد',
                   textAlign: TextAlign.center,
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
-                ),
+                ),  */  // commented by aya . for better simpler view
                 FormBuilderTextField(
                   name: 'category',
-                  decoration: InputDecoration(hintText: 'اسم القائمه '),
+                  decoration: InputDecoration(hintText: 'اسم القائمه الجديدة'),
                   validator: FormBuilderValidators.compose(
                       [FormBuilderValidators.required(context)]),
                 ),

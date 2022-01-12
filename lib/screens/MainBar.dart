@@ -31,13 +31,17 @@ class _MainBarState extends State<MainBar> {
 
     return AppBar(
       titleSpacing: -8,
+
+
       title: Text(
         "مشترياتي",
         textDirection: TextDirection.rtl,
+
         style: TextStyle(
           fontFamily: 'Vibes',
-          fontSize: 35,
+          fontSize: 32,
           fontWeight: FontWeight.bold,
+
         ),
       ),
       actions: [
@@ -109,7 +113,7 @@ class _MainBarState extends State<MainBar> {
       ],
       bottom: PreferredSize(
         child: Padding(
-          padding: const EdgeInsets.fromLTRB(12, 0, 12, 11),
+          padding: const EdgeInsets.fromLTRB(10, 0, 10, 10),
           child: TextField(
             autofocus: false,
             decoration: InputDecoration(

@@ -45,12 +45,13 @@ class MyDrawer extends StatelessWidget {
         InkWell(
           child: // to make the menu clickable and action happens
               ListTile(
-            title: Text('الصفحة الرئيسية', style: TextStyle(fontSize: 18),),
-            subtitle: Text('جميع المنتجات'),
-            leading: Icon(Icons.home),
-            onTap: () {
-              Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (context) => HomePage()));
+                minLeadingWidth : 10,
+                title: Text('الصفحة الرئيسية', style: TextStyle(fontSize: 18)),
+                subtitle: Text('جميع المنتجات'),
+                leading: Icon(Icons.home),
+                onTap: () {
+                  Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (context) => HomePage()));
             },
           ),
         ),
@@ -59,72 +60,77 @@ class MyDrawer extends StatelessWidget {
           
           child: // to make the menu clickable and action happens
               ListTile(
+                minLeadingWidth : 10,
                 leading: Icon(Icons.shopping_cart),
                  title: Text('قائمة التسوق', style: TextStyle(fontSize: 18),),
-            onTap: () {
-              Navigator.of(context).push(
-                  MaterialPageRoute(builder: (context) => CheckoutPage()));
-            },
+                onTap: () {
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => CheckoutPage()));
+                },
           ),
         ),
         InkWell(
           child: // to make the menu clickable and action happens
               ListTile(
-            title: Text(
-              'بحث و إضافه منتج',
+                minLeadingWidth : 10,
+                title: Text(
+                  'بحث و إضافة منتج',
 
-              style: TextStyle(fontSize: 18),
+                  style: TextStyle(fontSize: 18),
+                ),
+                leading: Icon(Icons.add_shopping_cart_outlined),
+                onTap: () {
+                  Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (context) => NewItem()));
+                },
             ),
-            leading: Icon(Icons.add_shopping_cart_outlined),
-            onTap: () {
-              Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (context) => NewItem()));
-            },
-          ),
         ),
         InkWell(
           child: // to make the menu clickable and action happens
               ListTile(
-            title: Text(
-              'اضافه قائمه',
-   style: TextStyle(fontSize: 18),
-            ),
-            leading: Icon(Icons.add_shopping_cart_outlined),
-            onTap: () {
-              Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (context) => NewCategory()));
-            },
+                minLeadingWidth : 10, //aya
+                title: Text(
+                      'إضافة قائمة',
+                    style: TextStyle(fontSize: 18),
+                    ),
+                leading: Icon(Icons.add_shopping_cart_outlined),
+                    onTap: () {
+                      Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (context) => NewCategory()));
+                    },
           ),
         ),
         InkWell(
           // aya , changed order
           child: // to make the menu clickable and action happens
               ListTile(
-            title: Text(
-              'المواقع',
-     style: TextStyle(fontSize: 18),
-            ),
-            leading: Icon(Icons.link),
-            onTap: () {
-              Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (context) => About()));
-            },
+                minLeadingWidth : 10,
+                  title: Text(
+                    'المواقع',
+                style: TextStyle(fontSize: 18),
+                  ),
+                  leading: Icon(Icons.link),
+                  onTap: () {
+                    Navigator.of(context)
+                        .push(MaterialPageRoute(builder: (context) => About()));
+                  },
           ),
         ),
         InkWell(
           child: // to make the menu clickable and action happens
               ListTile(
-            title: user != null ? Text('خروج', style: TextStyle(fontSize: 18),) : Text('تسجيل دخول', style: TextStyle(fontSize: 18),),
-            leading: Icon(Icons.exit_to_app),
-            onTap: () {
-              if (GoogleSignInAccount != null) {
-                signOutFromGoogle();
-              } else {
-                FirebaseAuth.instance.signOut();
-              }
-              Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (context) => LoginScreen()));
-            },
+                minLeadingWidth : 10,
+                title: user != null ? Text('خروج', style: TextStyle(fontSize: 18),) : Text('تسجيل دخول', style: TextStyle(fontSize: 18),),
+                leading: Icon(Icons.exit_to_app),
+                onTap: () {
+                  if (GoogleSignInAccount != null) {
+                    signOutFromGoogle();
+                  } else {
+                    FirebaseAuth.instance.signOut();
+                  }
+                  Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (context) => LoginScreen()));
+                },
           ),
         ),
       ],
