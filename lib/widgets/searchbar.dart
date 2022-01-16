@@ -4,6 +4,7 @@ import 'package:moshtryate_new/data/itemscat.dart';
 import 'package:moshtryate_new/models/cart.dart';
 import 'package:moshtryate_new/models/item.dart';
 import 'package:moshtryate_new/screens/NewItem.dart';
+import 'package:moshtryate_new/screens/homepage.dart';
 import 'package:provider/provider.dart';
 
 class Searchbar extends SearchDelegate<Item> {
@@ -60,9 +61,32 @@ class Searchbar extends SearchDelegate<Item> {
                         color: Colors.blue,
                         onPressed: () {
                           result.incrementCounter();
-                          result.keyShow = 1;
                           cart.add(result);
-                          FileController().writeCart();
+                          showDialog(
+                              context: context,
+                              builder: (context) {
+                                Future.delayed(Duration(seconds: 2), () {
+                                  Navigator.of(context).push(MaterialPageRoute(
+                                      builder: (context) => HomePage()));
+                                });
+
+                                return AlertDialog(
+                                  // aya , added icon to alertdialog
+                                  title: Row(
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.all(20.0),
+                                      ),
+                                      Text(
+                                        'تمت إضافة المنتج',
+                                        // textAlign: TextAlign.center,
+                                      ),
+                                      Icon(Icons.check,
+                                          color: Colors.blueAccent),
+                                    ],
+                                  ),
+                                );
+                              });
                         }),
                     Text('${result.amount}'),
                     IconButton(

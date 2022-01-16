@@ -41,7 +41,8 @@ class _NewCategoryState extends State<NewCategory> {
         child: Scaffold(
           appBar: AppBar(
             titleSpacing: -8,
-            title: Text('إضافة قائمة',
+            title: Text(
+              'إضافة قائمة',
               style: TextStyle(
                 //  fontFamily: 'Vibes',
                 fontSize: 20,
@@ -90,11 +91,11 @@ class _NewCategoryState extends State<NewCategory> {
             child: FormBuilder(
               key: _formKey,
               child: ListView(children: [
-            /*  Text(
+                /*  Text(
                   'اضف قائمه جديد',
                   textAlign: TextAlign.center,
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
-                ),  */  // commented by aya . for better simpler view
+                ),  */ // commented by aya . for better simpler view
                 FormBuilderTextField(
                   name: 'category',
                   decoration: InputDecoration(hintText: 'اسم القائمه الجديدة'),
@@ -117,6 +118,7 @@ class _NewCategoryState extends State<NewCategory> {
 
                 setState(() {
                   categories.add(newcat);
+                  newcat.keyShow = 1;
                   FileController().writeCategory();
                   _formKey.currentState.reset();
                 });

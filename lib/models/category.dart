@@ -13,7 +13,7 @@ class Category extends ChangeNotifier {
     notifyListeners();
   }
 
-  void remove(Category category) {
+  void remove() {
     //_categorys.remove(category);
     keyShow = 0;
     FileController().writeCategory();

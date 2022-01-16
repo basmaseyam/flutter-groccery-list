@@ -323,9 +323,8 @@ class _HomePageState extends State<HomePage> {
                                                                 .length ==
                                                             0) {
                                                           setState(() {
-                                                            categories.remove(
-                                                                categories[
-                                                                    index]);
+                                                            categories[index]
+                                                                .remove();
                                                             FileController()
                                                                 .writeCategory();
                                                           });

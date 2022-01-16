@@ -24,6 +24,10 @@ class _CheckoutPageState extends State<CheckoutPage> {
   var dropdownvalue = 'item';
   @override
   Widget build(BuildContext context) {
+    categories = context.select((FileController controller) =>
+        controller.categorylist != null
+            ? controller.categorylist.where((p) => p.keyShow == 1).toList()
+            : categories.where((p) => p.keyShow == 1).toList());
     return Consumer<Cart>(builder: (context, cart, child) {
       return Directionality(
         textDirection: TextDirection.rtl,

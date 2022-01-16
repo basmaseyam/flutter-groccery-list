@@ -52,7 +52,13 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           home: AnimatedSplashScreen(
             duration: 3000,
-            splash: 'images/icons/icons8-shopping-cart-60.png',
+            splash: CircleAvatar(
+              backgroundColor: Colors.transparent,
+              child: Image(
+                image: AssetImage('images/icons/icons8-shopping-cart-60.png'),
+                alignment: Alignment.center,
+              ),
+            ),
             nextScreen:
                 (isloggedin || !isconnected) ? HomePage() : LoginScreen(),
             splashTransition: SplashTransition.scaleTransition,

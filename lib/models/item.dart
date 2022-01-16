@@ -25,8 +25,10 @@ class Item extends ChangeNotifier {
   }
 
   void incrementCounter() {
-    amount++;
+    this.amount++;
+    this.keyShow = 1;
     FileController().writeCart();
+
     notifyListeners();
   }
 
