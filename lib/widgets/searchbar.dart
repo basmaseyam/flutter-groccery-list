@@ -62,31 +62,9 @@ class Searchbar extends SearchDelegate<Item> {
                         onPressed: () {
                           result.incrementCounter();
                           cart.add(result);
-                          showDialog(
-                              context: context,
-                              builder: (context) {
-                                Future.delayed(Duration(seconds: 2), () {
-                                  Navigator.of(context).push(MaterialPageRoute(
-                                      builder: (context) => HomePage()));
-                                });
-
-                                return AlertDialog(
-                                  // aya , added icon to alertdialog
-                                  title: Row(
-                                    children: [
-                                      Padding(
-                                        padding: const EdgeInsets.all(20.0),
-                                      ),
-                                      Text(
-                                        'تمت إضافة المنتج',
-                                        // textAlign: TextAlign.center,
-                                      ),
-                                      Icon(Icons.check,
-                                          color: Colors.blueAccent),
-                                    ],
-                                  ),
-                                );
-                              });
+                          result.keyShow = 1;
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => HomePage()));
                         }),
                     Text('${result.amount}'),
                     IconButton(
@@ -94,7 +72,6 @@ class Searchbar extends SearchDelegate<Item> {
                         color: Colors.blue,
                         onPressed: () {
                           result.decrementCounter();
-
                           return cart.remove(result);
                         }),
                     Container(

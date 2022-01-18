@@ -17,16 +17,15 @@ class Item extends ChangeNotifier {
     notifyListeners();
   }
 
-  void remove(Item item) {
+  void remove() {
     // _items.remove(item);
-    keyShow = 0;
+    this.keyShow = 0;
     FileController().writeCart();
     notifyListeners();
   }
 
   void incrementCounter() {
     this.amount++;
-    this.keyShow = 1;
     FileController().writeCart();
 
     notifyListeners();

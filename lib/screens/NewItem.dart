@@ -46,7 +46,8 @@ class _NewItemState extends State<NewItem> {
         child: Scaffold(
           appBar: AppBar(
             titleSpacing: -8,
-            title: Text('إضافة منتج',
+            title: Text(
+              'إضافة منتج',
               style: TextStyle(
                 //  fontFamily: 'Vibes',
                 fontSize: 20,
@@ -57,7 +58,7 @@ class _NewItemState extends State<NewItem> {
               IconButton(
                 icon: Icon(Icons.arrow_forward),
                 onPressed: () {
-                  Navigator.push(context,
+                  Navigator.pop(context,
                       MaterialPageRoute(builder: (context) => HomePage()));
                 },
               ),
@@ -95,14 +96,14 @@ class _NewItemState extends State<NewItem> {
             child: FormBuilder(
               key: _formKey,
               child: ListView(children: [
-               /* Text(
+                /* Text(
                   'إضافة منتج جديد',
                   textAlign: TextAlign.right,
                   style: TextStyle(
                       //fontWeight: FontWeight.bold,
                       fontSize: 20,
                   ),
-                ),*/     // commented by aya
+                ),*/ // commented by aya
                 FormBuilderTextField(
                   name: 'title',
                   decoration: InputDecoration(hintText: 'اسم المنتج الجديد'),

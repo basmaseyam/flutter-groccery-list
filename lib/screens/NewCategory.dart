@@ -53,7 +53,7 @@ class _NewCategoryState extends State<NewCategory> {
               IconButton(
                 icon: Icon(Icons.arrow_forward),
                 onPressed: () {
-                  Navigator.push(context,
+                  Navigator.pop(context,
                       MaterialPageRoute(builder: (context) => HomePage()));
                 },
               ),

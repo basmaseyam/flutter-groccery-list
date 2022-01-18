@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:moshtryate_new/constants.dart';
 import 'package:moshtryate_new/controller/file_controller.dart';
 import 'package:moshtryate_new/data/category.dart';
@@ -22,6 +23,7 @@ class CheckoutPage extends StatefulWidget {
 class _CheckoutPageState extends State<CheckoutPage> {
   bool firstvalue = false;
   var dropdownvalue = 'item';
+  List<Item> boughtgoods = [];
   @override
   Widget build(BuildContext context) {
     categories = context.select((FileController controller) =>
@@ -179,6 +181,8 @@ class _CheckoutPageState extends State<CheckoutPage> {
                                           color: Colors.blue,
                                           onPressed: () {
                                             cart.delete(selectedItems[index]);
+                                            boughtgoods
+                                                .add(selectedItems[index]);
                                           },
                                         ),
                                         title: Row(
