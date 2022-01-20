@@ -7,6 +7,7 @@ class Item extends ChangeNotifier {
   String category;
   String quantity;
   int keyShow = 1;
+  int bought = 0;
   int amount;
 
   List<Item> _items = [];
@@ -58,7 +59,8 @@ class Item extends ChangeNotifier {
       this.category,
       this.amount,
       this.quantity,
-      this.keyShow = 1});
+      this.keyShow = 1,
+      this.bought = 0});
 
   factory Item.fromJson(Map<String, dynamic> json) {
     return Item(
@@ -67,7 +69,8 @@ class Item extends ChangeNotifier {
         quantity: json["quantity"],
         itemIcon: json["itemIcon"],
         amount: json["amount"],
-        keyShow: json["keyShow"]);
+        keyShow: json["keyShow"],
+        bought: json["bought"]);
   }
   Map<String, dynamic> toJson() => {
         "title": title,
@@ -75,6 +78,7 @@ class Item extends ChangeNotifier {
         "quantity": quantity,
         "itemIcon": itemIcon,
         "amount": amount,
-        "keyShow": keyShow
+        "keyShow": keyShow,
+        "bought": bought
       };
 }

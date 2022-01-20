@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:moshtryate_new/constants.dart';
 import 'package:moshtryate_new/controller/file_controller.dart';
 import 'package:moshtryate_new/data/category.dart';
@@ -23,14 +24,20 @@ class CheckoutPage extends StatefulWidget {
 class _CheckoutPageState extends State<CheckoutPage> {
   bool firstvalue = false;
   var dropdownvalue = 'item';
-  List<Item> boughtgoods = [];
+  List<Item> boughtgoods;
+
   @override
   Widget build(BuildContext context) {
+    List allItems = context.select((FileController controller) =>
+        controller.cartitems != null
+            ? controller.cartitems.where((p) => p.keyShow == 1).toList()
+            : items.where((p) => p.keyShow == 1).toList());
     categories = context.select((FileController controller) =>
         controller.categorylist != null
             ? controller.categorylist.where((p) => p.keyShow == 1).toList()
             : categories.where((p) => p.keyShow == 1).toList());
     return Consumer<Cart>(builder: (context, cart, child) {
+      List boughtItems = allItems.where((p) => p.bought == 1).toList();
       return Directionality(
         textDirection: TextDirection.rtl,
         child: Scaffold(
@@ -139,52 +146,123 @@ class _CheckoutPageState extends State<CheckoutPage> {
                   child: Text('لا توجد مشتريات',
                       style:
                           TextStyle(fontSize: 28, fontWeight: FontWeight.bold)))
-              : ListView.builder(
-                  itemCount: categories.length,
-                  itemBuilder: (context, index) {
-                    String cat = categories[index].category;
-                    List selectedItems = cart.basketItems
-                        .where((p) => p.category.contains(cat))
-                        .toList();
-                    selectedItems.sort((a, b) => a.title.compareTo(b.title));
-                    return selectedItems.length != 0
-                        ? ExpansionTile(
-                            trailing: IconButton(
-                              onPressed: () {},
-                              icon: Icon(
-                                Icons.arrow_drop_down,
-                                color: Colors.transparent,
-                              ),
-                            ),
-                            title: Text(
-                              cat,
-                              style: TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                            initiallyExpanded: true,
-                            children: [
-                                ListView.builder(
-                                  shrinkWrap: true,
-                                  physics: NeverScrollableScrollPhysics(),
-                                  scrollDirection: Axis.vertical,
-                                  itemCount: selectedItems.length,
-                                  itemBuilder: (context, index) {
-                                    return Card(
-                                      color: Colors.grey[100],
+              : Column(
+                  children: [
+                    Expanded(
+                      child: ListView.builder(
+                        itemCount: categories.length,
+                        itemBuilder: (context, index) {
+                          String cat = categories[index].category;
+                          List selectedItems = cart.basketItems
+                              .where((p) => p.category.contains(cat))
+                              .toList();
+                          selectedItems
+                              .sort((a, b) => a.title.compareTo(b.title));
+                          return selectedItems.length != 0
+                              ? ExpansionTile(
+                                  backgroundColor: Colors.grey[300],
+                                  trailing: IconButton(
+                                    onPressed: () {},
+                                    icon: Icon(
+                                      Icons.arrow_drop_down,
+                                      color: Colors.transparent,
+                                    ),
+                                  ),
+                                  title: Text(
+                                    cat,
+                                    style: TextStyle(
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  initiallyExpanded: true,
+                                  children: [
+                                      ListView.builder(
+                                        shrinkWrap: true,
+                                        physics: NeverScrollableScrollPhysics(),
+                                        scrollDirection: Axis.vertical,
+                                        itemCount: selectedItems.length,
+                                        itemBuilder: (context, index) {
+                                          return Card(
+                                            color: Colors.grey[100],
+                                            child: ListTile(
+                                              leading: IconButton(
+                                                icon: Icon(
+                                                  Icons.check_box,
+                                                  size: 32,
+                                                ),
+                                                color: Colors.blue,
+                                                onPressed: () {
+                                                  setState(() {
+                                                    cart.delete(
+                                                        selectedItems[index]);
+                                                  });
+                                                },
+                                              ),
+                                              title: Row(
+                                                children: [
+                                                  ClipRect(
+                                                      child: Container(
+                                                    width: 40,
+                                                    height: 40,
+                                                    child: Image.asset(
+                                                        selectedItems[index]
+                                                            .itemIcon),
+                                                  )),
+                                                  SizedBox(width: 8),
+                                                  Text(selectedItems[index]
+                                                      .title),
+                                                  SizedBox(width: 16),
+                                                  Text(
+                                                      '${selectedItems[index].amount}'
+                                                      '   '
+                                                      '${selectedItems[index].quantity}'),
+                                                ],
+                                              ),
+                                            ),
+                                          );
+                                        },
+                                      ),
+                                    ])
+                              : SizedBox(
+                                  width: 20,
+                                );
+                        },
+                      ),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Divider(),
+                    boughtItems.length != 0
+                        ? Center(
+                            child: Text(
+                            'تم الشراء',
+                            style: TextStyle(
+                                fontSize: 30, fontWeight: FontWeight.bold),
+                          ))
+                        : Text(''),
+                    boughtItems.length != 0
+                        ? Expanded(
+                            child: ListView.builder(
+                                shrinkWrap: true,
+                                physics: NeverScrollableScrollPhysics(),
+                                scrollDirection: Axis.vertical,
+                                itemCount: boughtItems.length,
+                                itemBuilder: (context, index) {
+                                  return Dismissible(
+                                    background: Container(
+                                      color: Colors.red,
+                                    ),
+                                    key: ValueKey<Item>(boughtItems[index]),
+                                    direction: DismissDirection.startToEnd,
+                                    onDismissed: (direction) {
+                                      setState(() {
+                                        boughtItems[index].bought = 0;
+                                      });
+                                    },
+                                    child: Card(
+                                      color: Colors.black45,
                                       child: ListTile(
-                                        leading: IconButton(
-                                          icon: Icon(
-                                            Icons.check_box,
-                                            size: 32,
-                                          ),
-                                          color: Colors.blue,
-                                          onPressed: () {
-                                            cart.delete(selectedItems[index]);
-                                            boughtgoods
-                                                .add(selectedItems[index]);
-                                          },
-                                        ),
                                         title: Row(
                                           children: [
                                             ClipRect(
@@ -192,27 +270,23 @@ class _CheckoutPageState extends State<CheckoutPage> {
                                               width: 40,
                                               height: 40,
                                               child: Image.asset(
-                                                  selectedItems[index]
-                                                      .itemIcon),
+                                                  boughtItems[index].itemIcon),
                                             )),
                                             SizedBox(width: 8),
-                                            Text(selectedItems[index].title),
+                                            Text(boughtItems[index].title,
+                                                style: TextStyle(
+                                                    decoration: TextDecoration
+                                                        .lineThrough)),
                                             SizedBox(width: 16),
-                                            Text(
-                                                '${selectedItems[index].amount}'
-                                                '   '
-                                                '${selectedItems[index].quantity}'),
                                           ],
                                         ),
                                       ),
-                                    );
-                                  },
-                                ),
-                              ])
-                        : SizedBox(
-                            width: 12,
-                          );
-                  },
+                                    ),
+                                  );
+                                }),
+                          )
+                        : Text(''),
+                  ],
                 ),
         ),
       );

@@ -41,7 +41,8 @@ class _HomePageState extends State<HomePage> {
   final List<Item> itemsothers = [];
 
   int amount = 0;
-  var dropdownvalue = 'item';
+  final List<String> quantities = ['لتر', 'كيلو', 'عبوة', 'وحدة', 'حزمة'];
+  var dropdownvalue = 'وحدة';
   @override
   void initState() {
     if (FileManager().readJsonFile() == null) {
@@ -127,6 +128,7 @@ class _HomePageState extends State<HomePage> {
                                 .toList();
                             selectedItems
                                 .sort((a, b) => a.title.compareTo(b.title));
+
                             return Slidable(
                                 direction: Axis.horizontal,
                                 actionPane: SlidableScrollActionPane(),
@@ -139,6 +141,8 @@ class _HomePageState extends State<HomePage> {
                                         scrollDirection: Axis.vertical,
                                         itemCount: selectedItems.length,
                                         itemBuilder: (context, index) {
+                                          var dropdownvalue =
+                                              selectedItems[index].quantity;
                                           return Card(
                                             color: Colors.grey[100],
                                             child: Slidable(
@@ -199,9 +203,37 @@ class _HomePageState extends State<HomePage> {
                                                       constraints:
                                                           BoxConstraints.tight(
                                                               Size.fromWidth(
-                                                                  32)),
-                                                      child: Text(
-                                                        '${selectedItems[index].quantity}',
+                                                                  60)),
+                                                      child: DropdownButton(
+                                                        underline: Container(
+                                                            color: Colors
+                                                                .transparent),
+                                                        value: dropdownvalue,
+                                                        items: quantities.map<
+                                                            DropdownMenuItem<
+                                                                String>>((String
+                                                            value) {
+                                                          return DropdownMenuItem<
+                                                                  String>(
+                                                              alignment:
+                                                                  AlignmentDirectional
+                                                                      .centerEnd,
+                                                              value: value,
+                                                              child:
+                                                                  Text(value),
+                                                              onTap: () {
+                                                                selectedItems[
+                                                                            index]
+                                                                        .quantity =
+                                                                    value;
+                                                              });
+                                                        }).toList(),
+                                                        onChanged: (newValue) {
+                                                          setState(() {
+                                                            dropdownvalue =
+                                                                newValue;
+                                                          });
+                                                        },
                                                       ),
                                                     ),
                                                   ],
