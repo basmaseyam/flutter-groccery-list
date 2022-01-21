@@ -417,7 +417,7 @@ List<Item> items = [
       title: 'بامية',
       category: 'الفواكه و الخضار',
       quantity: 'حزمة',
-      itemIcon: 'images/icons/FruitsVegeies/Okra.png',
+      itemIcon: 'images/icons/FruitsVegeies/okra (3).png',
       amount: 0,
       keyShow: 1,
       bought: 0),
@@ -1173,7 +1173,7 @@ List<Item> items = [
       title: 'بامية مجمدة',
       category: 'المجمدات',
       quantity: 'عبوة',
-      itemIcon: 'images/icons/Frozen/okra.png',
+      itemIcon: 'images/icons/Frozen/Okra.png',
       amount: 0,
       bought: 0),
 
