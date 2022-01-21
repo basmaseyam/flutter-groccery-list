@@ -158,6 +158,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
                               .toList();
                           selectedItems
                               .sort((a, b) => a.title.compareTo(b.title));
+
                           return selectedItems.length != 0
                               ? ExpansionTile(
                                   backgroundColor: Colors.grey[300],
@@ -195,6 +196,17 @@ class _CheckoutPageState extends State<CheckoutPage> {
                                                   setState(() {
                                                     cart.delete(
                                                         selectedItems[index]);
+                                                    if (cart.basketItems
+                                                            .length ==
+                                                        0) {
+                                                      for (int i = 0;
+                                                          i <
+                                                              boughtItems
+                                                                  .length;
+                                                          i++)
+                                                        boughtItems[i].bought =
+                                                            0;
+                                                    }
                                                   });
                                                 },
                                               ),
@@ -245,13 +257,12 @@ class _CheckoutPageState extends State<CheckoutPage> {
                         ? Expanded(
                             child: ListView.builder(
                                 shrinkWrap: true,
-                                physics: NeverScrollableScrollPhysics(),
                                 scrollDirection: Axis.vertical,
                                 itemCount: boughtItems.length,
                                 itemBuilder: (context, index) {
                                   return Dismissible(
                                     background: Container(
-                                      color: Colors.red,
+                                      color: Colors.grey[200],
                                     ),
                                     key: ValueKey<Item>(boughtItems[index]),
                                     direction: DismissDirection.startToEnd,

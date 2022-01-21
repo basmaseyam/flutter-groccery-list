@@ -29,7 +29,14 @@ class _NewItemState extends State<NewItem> {
   final List<Item> itemsextra = [];
 
   final List<Category> _categories = categories;
-  final List<String> _quantities = ['لتر', 'كيلو', 'عبوة', 'وحدة', 'حزمة'];
+  final List<String> _quantities = [
+    'جرام',
+    'لتر',
+    'كيلو',
+    'عبوة',
+    'وحدة',
+    'حزمة'
+  ];
   Category chooseItem;
 
   var newitem = Item();

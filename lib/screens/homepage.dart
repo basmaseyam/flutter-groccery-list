@@ -41,8 +41,15 @@ class _HomePageState extends State<HomePage> {
   final List<Item> itemsothers = [];
 
   int amount = 0;
-  final List<String> quantities = ['لتر', 'كيلو', 'عبوة', 'وحدة', 'حزمة'];
-  var dropdownvalue = 'وحدة';
+  final List<String> quantities = [
+    'جرام',
+    'لتر',
+    'كيلو',
+    'عبوة',
+    'وحدة',
+    'حزمة'
+  ];
+
   @override
   void initState() {
     if (FileManager().readJsonFile() == null) {

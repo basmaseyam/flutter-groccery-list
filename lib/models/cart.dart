@@ -32,6 +32,7 @@ class Cart extends ChangeNotifier {
     _items.removeWhere((item) => selectedItem.title == item.title);
     selectedItem.amount = 0;
     selectedItem.bought = 1;
+
     FileController().writeCart();
     notifyListeners();
   }
