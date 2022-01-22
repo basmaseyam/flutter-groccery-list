@@ -55,7 +55,7 @@ class MyApp extends StatelessWidget {
             splash: CircleAvatar(
               backgroundColor: Colors.transparent,
               child: Image(
-                image: AssetImage('images/icons/icons8-shopping-cart-60.png'),
+                image: AssetImage('images/icons/basket2.png'),
                 alignment: Alignment.center,
               ),
             ),

@@ -161,12 +161,11 @@ class _CheckoutPageState extends State<CheckoutPage> {
 
                           return selectedItems.length != 0
                               ? ExpansionTile(
-                                  backgroundColor: Colors.grey[300],
+                                  backgroundColor: Colors.grey[200],
                                   trailing: IconButton(
                                     onPressed: () {},
                                     icon: Icon(
                                       Icons.arrow_drop_down,
-                                      color: Colors.transparent,
                                     ),
                                   ),
                                   title: Text(
@@ -200,7 +199,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
                                                             .length ==
                                                         0) {
                                                       for (int i = 0;
-                                                          i <
+                                                          i <=
                                                               boughtItems
                                                                   .length;
                                                           i++)
@@ -272,7 +271,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
                                       });
                                     },
                                     child: Card(
-                                      color: Colors.black45,
+                                      color: Colors.grey[300],
                                       child: ListTile(
                                         title: Row(
                                           children: [
