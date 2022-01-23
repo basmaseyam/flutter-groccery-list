@@ -36,7 +36,13 @@ class Item extends ChangeNotifier {
     //_items.removeWhere((item) => selectedItem.title == item.title);
     selectedItem.keyShow = 0;
     FileController().writeCart();
+    notifyListeners();
+  }
 
+  void hide() {
+    //_items.removeWhere((item) => selectedItem.title == item.title);
+    this.keyShow = 0;
+    FileController().writeCart();
     notifyListeners();
   }
 

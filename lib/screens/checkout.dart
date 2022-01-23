@@ -195,17 +195,6 @@ class _CheckoutPageState extends State<CheckoutPage> {
                                                   setState(() {
                                                     cart.delete(
                                                         selectedItems[index]);
-                                                    if (cart.basketItems
-                                                            .length ==
-                                                        0) {
-                                                      for (int i = 0;
-                                                          i <=
-                                                              boughtItems
-                                                                  .length;
-                                                          i++)
-                                                        boughtItems[i].bought =
-                                                            0;
-                                                    }
                                                   });
                                                 },
                                               ),
