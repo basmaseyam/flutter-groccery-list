@@ -39,13 +39,6 @@ class Item extends ChangeNotifier {
     notifyListeners();
   }
 
-  void hide() {
-    //_items.removeWhere((item) => selectedItem.title == item.title);
-    this.keyShow = 0;
-    FileController().writeCart();
-    notifyListeners();
-  }
-
   void decrementCounter() {
     if (amount != 0) {
       amount--;

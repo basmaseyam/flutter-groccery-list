@@ -31,17 +31,13 @@ class _MainBarState extends State<MainBar> {
 
     return AppBar(
       titleSpacing: -8,
-
-
       title: Text(
         "مشترياتي",
         textDirection: TextDirection.rtl,
-
         style: TextStyle(
           fontFamily: 'Vibes',
           fontSize: 32,
           fontWeight: FontWeight.bold,
-
         ),
       ),
       actions: [

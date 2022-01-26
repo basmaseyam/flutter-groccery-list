@@ -299,9 +299,8 @@ class _HomePageState extends State<HomePage> {
                                                                             Navigator.pop(context,
                                                                                 'Ok');
                                                                             setState(() {
-                                                                              selectedItems[index].hide();
-                                                                              if (selectedItems[index].amount > 0)
-                                                                                cart.delete(selectedItems[index]);
+                                                                              selectedItems[index].keyShow = 0;
+                                                                              selectedItems[index].amount > 0 ? cart.delete(selectedItems[index]) : selectedItems[index].remove();
                                                                               FileController().writeCart();
                                                                             });
                                                                           },

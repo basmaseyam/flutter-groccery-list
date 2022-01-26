@@ -120,6 +120,7 @@ class _NewCategoryState extends State<NewCategory> {
                   categories.add(newcat);
                   newcat.keyShow = 1;
                   FileController().writeCategory();
+                  FileController().writeCart();
                   _formKey.currentState.reset();
                 });
                 showDialog(

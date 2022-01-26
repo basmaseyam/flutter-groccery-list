@@ -32,7 +32,7 @@ class _LoginScreenState extends State<LoginScreen> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Image(
-              image: AssetImage('images/icons/icons8-shopping-cart-60.png'),
+              image: AssetImage('images/icons/basket2.png'),
             ),
             Text(
               'مشترياتي',
