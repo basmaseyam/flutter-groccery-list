@@ -108,8 +108,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
               IconButton(
                 icon: Icon(Icons.arrow_forward),
                 onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => HomePage()));
+                  Navigator.of(context).popUntil((route) => route.isFirst);
                 },
               ),
             ],
@@ -141,14 +140,14 @@ class _CheckoutPageState extends State<CheckoutPage> {
             ),
           ),
           drawer: MyDrawer(),
-          body: cart.basketItems.length == 0
-              ? Center(
-                  child: Text('لا توجد مشتريات',
-                      style:
-                          TextStyle(fontSize: 28, fontWeight: FontWeight.bold)))
-              : Column(
-                  children: [
-                    Expanded(
+          body: Column(
+            children: [
+              cart.basketItems.length == 0
+                  ? Center(
+                      child: Text('لا توجد مشتريات',
+                          style: TextStyle(
+                              fontSize: 28, fontWeight: FontWeight.bold)))
+                  : Expanded(
                       child: ListView.builder(
                         itemCount: categories.length,
                         itemBuilder: (context, index) {
@@ -229,64 +228,76 @@ class _CheckoutPageState extends State<CheckoutPage> {
                         },
                       ),
                     ),
-                    SizedBox(
-                      height: 20,
+              SizedBox(
+                height: 20,
+              ),
+              Divider(),
+              Expanded(
+                child: ExpansionTile(
+                  backgroundColor: Colors.grey[200],
+                  leading: Icon(
+                    Icons.shopping_basket,
+                    color: kMainColor,
+                    size: 32,
+                  ),
+                  trailing: IconButton(
+                    onPressed: () {},
+                    icon: Icon(
+                      Icons.arrow_forward,
+                      color: kMainColor,
                     ),
-                    Divider(),
-                    boughtItems.length != 0
-                        ? Center(
-                            child: Text(
-                            'تم الشراء',
-                            style: TextStyle(
-                                fontSize: 30, fontWeight: FontWeight.bold),
-                          ))
-                        : Text(''),
-                    boughtItems.length != 0
-                        ? Expanded(
-                            child: ListView.builder(
-                                shrinkWrap: true,
-                                scrollDirection: Axis.vertical,
-                                itemCount: boughtItems.length,
-                                itemBuilder: (context, index) {
-                                  return Dismissible(
-                                    background: Container(
-                                      color: Colors.grey[200],
-                                    ),
-                                    key: ValueKey<Item>(boughtItems[index]),
-                                    direction: DismissDirection.startToEnd,
-                                    onDismissed: (direction) {
-                                      setState(() {
-                                        boughtItems[index].bought = 0;
-                                      });
-                                    },
-                                    child: Card(
-                                      color: Colors.grey[300],
-                                      child: ListTile(
-                                        title: Row(
-                                          children: [
-                                            ClipRect(
-                                                child: Container(
-                                              width: 40,
-                                              height: 40,
-                                              child: Image.asset(
-                                                  boughtItems[index].itemIcon),
-                                            )),
-                                            SizedBox(width: 8),
-                                            Text(boughtItems[index].title,
-                                                style: TextStyle(
-                                                    decoration: TextDecoration
-                                                        .lineThrough)),
-                                            SizedBox(width: 16),
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                  );
-                                }),
-                          )
-                        : Text(''),
+                  ),
+                  title: Text(
+                    "ما تم شراؤه",
+                    style: TextStyle(
+                        color: Colors.black, fontWeight: FontWeight.bold),
+                  ),
+                  children: [
+                    ListView.builder(
+                        shrinkWrap: true,
+                        scrollDirection: Axis.vertical,
+                        itemCount: boughtItems.length,
+                        itemBuilder: (context, index) {
+                          return Dismissible(
+                            background: Container(
+                              color: Colors.grey[200],
+                            ),
+                            key: ValueKey<Item>(boughtItems[index]),
+                            direction: DismissDirection.startToEnd,
+                            onDismissed: (direction) {
+                              setState(() {
+                                boughtItems[index].bought = 0;
+                              });
+                            },
+                            child: Card(
+                              color: Colors.grey[300],
+                              child: ListTile(
+                                title: Row(
+                                  children: [
+                                    ClipRect(
+                                        child: Container(
+                                      width: 40,
+                                      height: 40,
+                                      child: Image.asset(
+                                          boughtItems[index].itemIcon),
+                                    )),
+                                    SizedBox(width: 8),
+                                    Text(boughtItems[index].title,
+                                        style: TextStyle(
+                                            decoration:
+                                                TextDecoration.lineThrough)),
+                                    SizedBox(width: 16),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          );
+                        }),
                   ],
                 ),
+              ),
+            ],
+          ),
         ),
       );
     });

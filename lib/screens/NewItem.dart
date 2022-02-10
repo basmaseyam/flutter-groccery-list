@@ -265,8 +265,8 @@ class _NewItemState extends State<NewItem> {
                     context: context,
                     builder: (context) {
                       Future.delayed(Duration(seconds: 2), () {
-                        Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => HomePage()));
+                        Navigator.of(context)
+                            .popUntil((route) => route.isFirst);
                       });
 
                       return AlertDialog(

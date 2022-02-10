@@ -8,6 +8,7 @@ class Item extends ChangeNotifier {
   String quantity;
   int keyShow = 1;
   int bought = 0;
+  int search = 1;
   int amount;
 
   List<Item> _items = [];
@@ -19,6 +20,13 @@ class Item extends ChangeNotifier {
   }
 
   void remove() {
+    // _items.remove(item);
+    this.keyShow = 0;
+    FileController().writeCart();
+    notifyListeners();
+  }
+
+  void hide() {
     // _items.remove(item);
     this.keyShow = 0;
     FileController().writeCart();
@@ -59,7 +67,8 @@ class Item extends ChangeNotifier {
       this.amount,
       this.quantity,
       this.keyShow = 1,
-      this.bought = 0});
+      this.bought = 0,
+      this.search});
 
   factory Item.fromJson(Map<String, dynamic> json) {
     return Item(
@@ -69,7 +78,8 @@ class Item extends ChangeNotifier {
         itemIcon: json["itemIcon"],
         amount: json["amount"],
         keyShow: json["keyShow"],
-        bought: json["bought"]);
+        bought: json["bought"],
+        search: json["search"]);
   }
   Map<String, dynamic> toJson() => {
         "title": title,
@@ -78,6 +88,7 @@ class Item extends ChangeNotifier {
         "itemIcon": itemIcon,
         "amount": amount,
         "keyShow": keyShow,
-        "bought": bought
+        "bought": bought,
+        "search": search
       };
 }

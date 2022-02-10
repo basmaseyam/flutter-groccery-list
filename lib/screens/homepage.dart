@@ -253,66 +253,11 @@ class _HomePageState extends State<HomePage> {
                                                   color: Colors.black45,
                                                   icon: Icons.delete,
                                                   onTap: () {
-                                                    showDialog(
-                                                      context: context,
-                                                      builder: (BuildContext
-                                                              context) =>
-                                                          Padding(
-                                                        padding:
-                                                            const EdgeInsets
-                                                                    .fromLTRB(
-                                                                3, 0, 3, 0),
-                                                        child: AlertDialog(
-                                                            // aya , translated buttons text
-                                                            title: const Text(
-                                                              'هل تريد حذف المنتج ؟',
-                                                              textAlign:
-                                                                  TextAlign
-                                                                      .center,
-                                                            ),
-                                                            actions: <Widget>[
-                                                              Padding(
-                                                                padding:
-                                                                    const EdgeInsets
-                                                                            .fromLTRB(
-                                                                        3,
-                                                                        0,
-                                                                        3,
-                                                                        0),
-                                                                child: Row(
-                                                                    children: [
-                                                                      Expanded(
-                                                                        child:
-                                                                            TextButton(
-                                                                          onPressed: () => Navigator.pop(
-                                                                              context,
-                                                                              'Cancel'),
-                                                                          child:
-                                                                              const Text('لا'),
-                                                                        ),
-                                                                      ),
-                                                                      Expanded(
-                                                                        child:
-                                                                            TextButton(
-                                                                          onPressed:
-                                                                              () {
-                                                                            Navigator.pop(context,
-                                                                                'Ok');
-                                                                            setState(() {
-                                                                              selectedItems[index].keyShow = 0;
-                                                                              selectedItems[index].amount > 0 ? cart.delete(selectedItems[index]) : selectedItems[index].remove();
-                                                                              FileController().writeCart();
-                                                                            });
-                                                                          },
-                                                                          child:
-                                                                              const Text('نعم'),
-                                                                        ),
-                                                                      ),
-                                                                    ]),
-                                                              ),
-                                                            ]),
-                                                      ),
-                                                    );
+                                                    hideProduct(
+                                                        context,
+                                                        selectedItems,
+                                                        index,
+                                                        cart);
                                                   },
                                                 )
                                               ],
@@ -433,5 +378,49 @@ class _HomePageState extends State<HomePage> {
         ),
       );
     });
+  }
+
+  void hideProduct(
+      BuildContext context, List<dynamic> selectedItems, int index, Cart cart) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) => Padding(
+        padding: const EdgeInsets.fromLTRB(3, 0, 3, 0),
+        child: AlertDialog(
+            // aya , translated buttons text
+            title: const Text(
+              'هل تريد حذف المنتج ؟',
+              textAlign: TextAlign.center,
+            ),
+            actions: <Widget>[
+              Padding(
+                padding: const EdgeInsets.fromLTRB(3, 0, 3, 0),
+                child: Row(children: [
+                  Expanded(
+                    child: TextButton(
+                      onPressed: () => Navigator.pop(context, 'Cancel'),
+                      child: const Text('لا'),
+                    ),
+                  ),
+                  Expanded(
+                    child: TextButton(
+                      onPressed: () {
+                        Navigator.pop(context, 'Ok');
+                        setState(() {
+                          selectedItems[index].keyShow = 0;
+                          selectedItems[index].amount > 0
+                              ? cart.delete(selectedItems[index])
+                              : selectedItems[index].remove();
+                          FileController().writeCart();
+                        });
+                      },
+                      child: const Text('نعم'),
+                    ),
+                  ),
+                ]),
+              ),
+            ]),
+      ),
+    );
   }
 }

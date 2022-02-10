@@ -38,7 +38,9 @@ class Searchbar extends SearchDelegate<Item> {
   @override
   Widget buildResults(BuildContext context) {
     items = context.select((FileController controller) =>
-        controller.cartitems != null ? controller.cartitems : items);
+        controller.cartitems != null
+            ? controller.cartitems.where((p) => p.search == 1).toList()
+            : items.where((p) => p.search == 1).toList());
     List<Item> mylist = items;
     final Item result = mylist.where((p) => p.title.contains(query)).first;
     final _formKey = GlobalKey<FormState>();
@@ -105,9 +107,11 @@ class Searchbar extends SearchDelegate<Item> {
   @override
   Widget buildSuggestions(BuildContext context) {
     items = context.select((FileController controller) =>
-        controller.cartitems != null ? controller.cartitems : items);
+        controller.cartitems != null
+            ? controller.cartitems.where((p) => p.search == 1).toList()
+            : items.where((p) => p.search == 1).toList());
     List<Item> mylist = items;
-    print(mylist.where((p) => p.keyShow == 0).toList());
+
     mylist.sort((a, b) => a.title.compareTo(b.title));
     mylist = query.isEmpty
         ? mylist
