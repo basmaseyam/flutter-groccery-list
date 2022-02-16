@@ -13,7 +13,8 @@ import 'package:moshtryate_new/models/category.dart';
 import 'package:provider/provider.dart';
 import 'package:moshtryate_new/models/item.dart';
 import 'package:moshtryate_new/models/cart.dart';
-import '../data/itemscat.dart';
+import 'package:moshtryate_new/data/itemscat.dart';
+import '../data/units.dart';
 import '../models/cart.dart';
 import '../models/category.dart';
 import 'drawer.dart';
@@ -27,16 +28,9 @@ class NewItem extends StatefulWidget {
 
 class _NewItemState extends State<NewItem> {
   final List<Item> itemsextra = [];
-
+  final List<String> _quantities = quantities;
   final List<Category> _categories = categories;
-  final List<String> _quantities = [
-    'جرام',
-    'لتر',
-    'كيلو',
-    'عبوة',
-    'وحدة',
-    'حزمة'
-  ];
+
   Category chooseItem;
 
   var newitem = Item();
@@ -45,8 +39,9 @@ class _NewItemState extends State<NewItem> {
 
   @override
   Widget build(BuildContext context) {
-    final List<Item> itemsCats = context.select((FileController controller) =>
+    final List<Item> itemsCat = context.select((FileController controller) =>
         controller.cartitems != null ? controller.cartitems : items);
+    items = itemsCat;
     return Consumer<Cart>(builder: (context, cart, child) {
       return Directionality(
         textDirection: TextDirection.rtl,
@@ -256,10 +251,11 @@ class _NewItemState extends State<NewItem> {
                 print(newitem.title);
 
                 setState(() {
-                  itemsCats.add(newitem);
-                  cart.add(newitem);
-                  _formKey.currentState.reset();
+                  items.add(newitem);
                   newitem.keyShow = 1;
+                  cart.add(newitem);
+                  FileController().writeCart();
+                  _formKey.currentState.reset();
                 });
                 showDialog(
                     context: context,

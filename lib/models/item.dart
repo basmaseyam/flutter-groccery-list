@@ -19,6 +19,12 @@ class Item extends ChangeNotifier {
     notifyListeners();
   }
 
+  void show(Item item) {
+    item.keyShow = 1;
+    FileController().writeCart();
+    notifyListeners();
+  }
+
   void remove() {
     // _items.remove(item);
     this.keyShow = 0;
