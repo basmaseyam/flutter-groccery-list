@@ -141,6 +141,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
           ),
           drawer: MyDrawer(),
           body: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               cart.basketItems.length == 0
                   ? Center(
@@ -232,68 +233,71 @@ class _CheckoutPageState extends State<CheckoutPage> {
                 height: 20,
               ),
               Divider(),
-              Expanded(
-                child: ExpansionTile(
-                  backgroundColor: Colors.grey[200],
-                  leading: Icon(
-                    Icons.shopping_basket,
-                    color: kMainColor,
-                    size: 32,
-                  ),
-                  trailing: IconButton(
-                    onPressed: () {},
-                    icon: Icon(
-                      Icons.arrow_forward,
+              Container(
+                alignment: Alignment.bottomCenter,
+                child: Expanded(
+                  child: ExpansionTile(
+                    backgroundColor: Colors.grey[200],
+                    leading: Icon(
+                      Icons.shopping_basket,
                       color: kMainColor,
+                      size: 32,
                     ),
-                  ),
-                  title: Text(
-                    "ما تم شراؤه",
-                    style: TextStyle(
-                        color: Colors.black, fontWeight: FontWeight.bold),
-                  ),
-                  children: [
-                    ListView.builder(
-                        shrinkWrap: true,
-                        scrollDirection: Axis.vertical,
-                        itemCount: boughtItems.length,
-                        itemBuilder: (context, index) {
-                          return Dismissible(
-                            background: Container(
-                              color: Colors.grey[200],
-                            ),
-                            key: ValueKey<Item>(boughtItems[index]),
-                            direction: DismissDirection.startToEnd,
-                            onDismissed: (direction) {
-                              setState(() {
-                                boughtItems[index].bought = 0;
-                              });
-                            },
-                            child: Card(
-                              color: Colors.grey[300],
-                              child: ListTile(
-                                title: Row(
-                                  children: [
-                                    ClipRect(
-                                        child: Container(
-                                      width: 40,
-                                      height: 40,
-                                      child: Image.asset(
-                                          boughtItems[index].itemIcon),
-                                    )),
-                                    SizedBox(width: 8),
-                                    Text(boughtItems[index].title,
-                                        style: TextStyle(
-                                            decoration:
-                                                TextDecoration.lineThrough)),
-                                    SizedBox(width: 16),
-                                  ],
+                    trailing: IconButton(
+                      onPressed: () {},
+                      icon: Icon(
+                        Icons.arrow_forward,
+                        color: kMainColor,
+                      ),
+                    ),
+                    title: Text(
+                      "ما تم شراؤه",
+                      style: TextStyle(
+                          color: Colors.black, fontWeight: FontWeight.bold),
+                    ),
+                    children: [
+                      ListView.builder(
+                          shrinkWrap: true,
+                          scrollDirection: Axis.vertical,
+                          itemCount: boughtItems.length,
+                          itemBuilder: (context, index) {
+                            return Dismissible(
+                              background: Container(
+                                color: Colors.grey[200],
+                              ),
+                              key: ValueKey<Item>(boughtItems[index]),
+                              direction: DismissDirection.startToEnd,
+                              onDismissed: (direction) {
+                                setState(() {
+                                  boughtItems[index].bought = 0;
+                                });
+                              },
+                              child: Card(
+                                color: Colors.grey[300],
+                                child: ListTile(
+                                  title: Row(
+                                    children: [
+                                      ClipRect(
+                                          child: Container(
+                                        width: 40,
+                                        height: 40,
+                                        child: Image.asset(
+                                            boughtItems[index].itemIcon),
+                                      )),
+                                      SizedBox(width: 8),
+                                      Text(boughtItems[index].title,
+                                          style: TextStyle(
+                                              decoration:
+                                                  TextDecoration.lineThrough)),
+                                      SizedBox(width: 16),
+                                    ],
+                                  ),
                                 ),
                               ),
-                            ),
-                          );
-                        }),
-                  ],
+                            );
+                          }),
+                    ],
+                  ),
                 ),
               ),
             ],
