@@ -259,6 +259,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
                       ListView.builder(
                           shrinkWrap: true,
                           scrollDirection: Axis.vertical,
+                          physics: NeverScrollableScrollPhysics(),
                           itemCount: boughtItems.length,
                           itemBuilder: (context, index) {
                             return Dismissible(
