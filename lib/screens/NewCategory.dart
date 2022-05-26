@@ -127,7 +127,9 @@ class _NewCategoryState extends State<NewCategory> {
                     context: context,
                     builder: (context) {
                       Future.delayed(Duration(seconds: 2), () {
-                        Navigator.of(context).pop(HomePage());
+                        Navigator.pop(context);
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => HomePage()));
                       });
 
                       return AlertDialog(
