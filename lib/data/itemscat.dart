@@ -69,7 +69,7 @@ List<Item> items = [
   Item(
       title: 'قرنبيط',
       category: 'الفواكه و الخضار',
-      quantity: 'كيلو',
+      quantity: 'وحدة',
       itemIcon: 'images/icons/FruitsVegeies/cauliflower.png',
       amount: 0,
       keyShow: 1,
@@ -252,7 +252,7 @@ List<Item> items = [
   Item(
       title: 'أناناس',
       category: 'الفواكه و الخضار',
-      quantity: 'كيلو',
+      quantity: 'وحدة',
       itemIcon: 'images/icons/FruitsVegeies/icons8-pineapple-60.png',
       amount: 0,
       keyShow: 1,
@@ -465,7 +465,7 @@ List<Item> items = [
   Item(
       title: 'بامية',
       category: 'الفواكه و الخضار',
-      quantity: 'حزمة',
+      quantity: 'كيلو',
       itemIcon: 'images/icons/FruitsVegeies/okra (3).png',
       amount: 0,
       keyShow: 1,
@@ -476,7 +476,7 @@ List<Item> items = [
   Item(
       title: 'عيش',
       category: 'المخبوزات و مستلزماتها',
-      quantity: 'وحدة',
+      quantity: 'عبوة',
       itemIcon: 'images/icons/Bread&Bakeing/icons8-bread-48.png',
       amount: 0,
       keyShow: 1,
@@ -629,7 +629,7 @@ List<Item> items = [
   Item(
       title: 'شاي',
       category: 'المشروبات',
-      quantity: 'وحدة',
+      quantity: 'عبوة',
       itemIcon: 'images/icons/Drinkes/icons8-tea-64.png',
       amount: 0,
       keyShow: 1,
@@ -638,7 +638,7 @@ List<Item> items = [
   /*Item(
       title: 'مشروبات غازية',
       category: 'المشروبات',
-      quantity: 'وحدة',
+      quantity: 'لتر',
       itemIcon: 'images/icons/Drinkes/icons8-tea-64.png',
       amount: 0, keyShow: 1, bought: 0, search: 1),*/
 
@@ -647,7 +647,7 @@ List<Item> items = [
   Item(
       title: 'مكرونة',
       category: 'الحبوب و البقول',
-      quantity: 'كيلو',
+      quantity: 'عبوة',
       itemIcon: 'images/icons/Grains/icons8-pasta-64.png',
       amount: 0,
       keyShow: 1,
@@ -761,7 +761,7 @@ List<Item> items = [
   Item(
       title: 'بلاستيك تغليف',
       category: 'مستلزمات الطبخ',
-      quantity: 'لتر',
+      quantity: 'عبوة',
       itemIcon: 'images/icons/Ingredients/wrap (2).png',
       amount: 0,
       keyShow: 1,
@@ -770,7 +770,7 @@ List<Item> items = [
   Item(
       title: 'زيت زيتون',
       category: 'مستلزمات الطبخ',
-      quantity: 'لتر',
+      quantity: 'عبوة',
       itemIcon: 'images/icons/Ingredients/icons8-olive-oil-64.png',
       amount: 0,
       keyShow: 1,
@@ -796,7 +796,7 @@ List<Item> items = [
       bought: 0,
       search: 1),
   Item(
-      title: 'فلفل',
+      title: 'فلفل أسود',
       category: 'مستلزمات الطبخ',
       quantity: 'عبوة',
       itemIcon: 'images/icons/Ingredients/salt (1).png',
@@ -807,7 +807,7 @@ List<Item> items = [
   Item(
       title: 'سكر',
       category: 'مستلزمات الطبخ',
-      quantity: 'لتر',
+      quantity: 'كيلو',
       itemIcon: 'images/icons/Ingredients/icons8-sugar-cubes-40.png',
       amount: 0,
       keyShow: 1,
@@ -826,7 +826,7 @@ List<Item> items = [
   Item(
       title: 'نشا',
       category: 'مستلزمات الطبخ',
-      quantity: 'لتر',
+      quantity: 'عبوة',
       itemIcon: 'images/icons/Ingredients/semolina.png',
       amount: 0,
       keyShow: 1,
@@ -836,7 +836,7 @@ List<Item> items = [
   Item(
       title: 'سميد',
       category: 'مستلزمات الطبخ',
-      quantity: 'لتر',
+      quantity: 'كيلو',
       itemIcon: 'images/icons/Ingredients/oatmeal.png',
       amount: 0,
       keyShow: 1,
@@ -1149,7 +1149,7 @@ List<Item> items = [
       bought: 0,
       search: 1),
   Item(
-      title: 'فول',
+      title: 'فول معلب',
       category: 'المعلبات',
       quantity: 'عبوة',
       itemIcon: 'images/icons/Canned/beans.png',
