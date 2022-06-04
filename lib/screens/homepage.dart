@@ -11,6 +11,8 @@ import 'package:moshtryate_new/file_manager.dart';
 import 'package:moshtryate_new/models/cart.dart';
 import 'package:moshtryate_new/models/category.dart';
 import 'package:moshtryate_new/models/item.dart';
+import 'package:moshtryate_new/models/quantity.dart';
+import 'package:moshtryate_new/data/quantity.dart';
 import 'package:moshtryate_new/screens/NewCategory.dart';
 import 'package:provider/provider.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
@@ -41,14 +43,6 @@ class _HomePageState extends State<HomePage> {
   final List<Item> itemsothers = [];
 
   int amount = 0;
-  final List<String> quantities = [
-    'جرام',
-    'لتر',
-    'كيلو',
-    'عبوة',
-    'وحدة',
-    'حزمة'
-  ];
 
   @override
   void initState() {
@@ -130,6 +124,7 @@ class _HomePageState extends State<HomePage> {
                           itemCount: categories.length,
                           itemBuilder: (context, index) {
                             String cat = categories[index].category;
+
                             List selectedItems = itemsCats
                                 .where((p) => p.category.contains(cat))
                                 .toList();
@@ -150,6 +145,11 @@ class _HomePageState extends State<HomePage> {
                                         itemBuilder: (context, index) {
                                           var dropdownvalue =
                                               selectedItems[index].quantity;
+                                          Iterable<Quantity> selectedquantity =
+                                              quantities.where((e) =>
+                                                  e.category ==
+                                                  selectedItems[index]
+                                                      .category);
                                           return Card(
                                             color: Colors.grey[100],
                                             child: Slidable(
@@ -210,16 +210,18 @@ class _HomePageState extends State<HomePage> {
                                                       constraints:
                                                           BoxConstraints.tight(
                                                               Size.fromWidth(
-                                                                  60)),
+                                                                  90)),
                                                       child: DropdownButton(
                                                         underline: Container(
                                                             color: Colors
                                                                 .transparent),
                                                         value: dropdownvalue,
-                                                        items: quantities.map<
-                                                            DropdownMenuItem<
-                                                                String>>((String
-                                                            value) {
+                                                        items: selectedquantity
+                                                            .first.quantity
+                                                            .map<
+                                                                DropdownMenuItem<
+                                                                    String>>((String
+                                                                value) {
                                                           return DropdownMenuItem<
                                                                   String>(
                                                               alignment:
