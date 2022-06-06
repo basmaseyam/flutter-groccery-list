@@ -141,163 +141,161 @@ class _CheckoutPageState extends State<CheckoutPage> {
             ),
           ),
           drawer: MyDrawer(),
-          body: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
+          body: Stack(
             children: [
               cart.basketItems.length == 0
                   ? Center(
                       child: Text('لا توجد مشتريات',
                           style: TextStyle(
                               fontSize: 28, fontWeight: FontWeight.bold)))
-                  : Expanded(
-                      child: ListView.builder(
-                        itemCount: categories.length,
-                        itemBuilder: (context, index) {
-                          String cat = categories[index].category;
-                          List selectedItems = cart.basketItems
-                              .where((p) => p.category.contains(cat))
-                              .toList();
-                          selectedItems
-                              .sort((a, b) => a.title.compareTo(b.title));
+                  : ListView.builder(
+                      itemCount: categories.length,
+                      itemBuilder: (context, index) {
+                        String cat = categories[index].category;
+                        List selectedItems = cart.basketItems
+                            .where((p) => p.category.contains(cat))
+                            .toList();
+                        selectedItems
+                            .sort((a, b) => a.title.compareTo(b.title));
 
-                          return selectedItems.length != 0
-                              ? ExpansionTile(
-                                  backgroundColor: Colors.grey[200],
-                                  trailing: IconButton(
-                                    onPressed: () {},
-                                    icon: Icon(
-                                      Icons.arrow_drop_down,
-                                    ),
+                        return selectedItems.length != 0
+                            ? ExpansionTile(
+                                backgroundColor: Colors.grey[200],
+                                trailing: IconButton(
+                                  onPressed: () {},
+                                  icon: Icon(
+                                    Icons.arrow_drop_down,
                                   ),
-                                  title: Text(
-                                    cat,
-                                    style: TextStyle(
-                                        color: Colors.black,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                  initiallyExpanded: true,
-                                  children: [
-                                      ListView.builder(
-                                        shrinkWrap: true,
-                                        physics: NeverScrollableScrollPhysics(),
-                                        scrollDirection: Axis.vertical,
-                                        itemCount: selectedItems.length,
-                                        itemBuilder: (context, index) {
-                                          return Card(
-                                            color: Colors.grey[100],
-                                            child: ListTile(
-                                              leading: IconButton(
-                                                icon: Icon(
-                                                  Icons.check_box,
-                                                  size: 32,
-                                                ),
-                                                color: Colors.blue,
-                                                onPressed: () {
-                                                  setState(() {
-                                                    cart.delete(
-                                                        selectedItems[index]);
-                                                  });
-                                                },
+                                ),
+                                title: Text(
+                                  cat,
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                initiallyExpanded: true,
+                                children: [
+                                    ListView.builder(
+                                      shrinkWrap: true,
+                                      physics: NeverScrollableScrollPhysics(),
+                                      scrollDirection: Axis.vertical,
+                                      itemCount: selectedItems.length,
+                                      itemBuilder: (context, index) {
+                                        return Card(
+                                          color: Colors.grey[100],
+                                          child: ListTile(
+                                            leading: IconButton(
+                                              icon: Icon(
+                                                Icons.check_box,
+                                                size: 32,
                                               ),
-                                              title: Row(
-                                                children: [
-                                                  ClipRect(
-                                                      child: Container(
-                                                    width: 40,
-                                                    height: 40,
-                                                    child: Image.asset(
-                                                        selectedItems[index]
-                                                            .itemIcon),
-                                                  )),
-                                                  SizedBox(width: 8),
-                                                  Text(selectedItems[index]
-                                                      .title),
-                                                  SizedBox(width: 16),
-                                                  Text(
-                                                      '${selectedItems[index].amount}'
-                                                      '   '
-                                                      '${selectedItems[index].quantity}'),
-                                                ],
-                                              ),
+                                              color: Colors.blue,
+                                              onPressed: () {
+                                                setState(() {
+                                                  cart.delete(
+                                                      selectedItems[index]);
+                                                });
+                                              },
                                             ),
-                                          );
-                                        },
-                                      ),
-                                    ])
-                              : SizedBox(
-                                  width: 20,
-                                );
-                        },
-                      ),
+                                            title: Row(
+                                              children: [
+                                                ClipRect(
+                                                    child: Container(
+                                                  width: 40,
+                                                  height: 40,
+                                                  child: Image.asset(
+                                                      selectedItems[index]
+                                                          .itemIcon),
+                                                )),
+                                                SizedBox(width: 8),
+                                                Text(
+                                                    selectedItems[index].title),
+                                                SizedBox(width: 16),
+                                                Text(
+                                                    '${selectedItems[index].amount}'
+                                                    '   '
+                                                    '${selectedItems[index].quantity}'),
+                                              ],
+                                            ),
+                                          ),
+                                        );
+                                      },
+                                    ),
+                                  ])
+                            : SizedBox(
+                                width: 20,
+                              );
+                      },
                     ),
-              SizedBox(
-                height: 20,
-              ),
-              Divider(),
-              Expanded(
-                child: Container(
-                  alignment: Alignment.bottomCenter,
-                  child: SingleChildScrollView(
-                    physics: NeverScrollableScrollPhysics(),
-                    scrollDirection: Axis.vertical,
-                    controller: _controller,
-                    child: ExpansionTile(
-                      backgroundColor: Colors.grey[200],
-                      leading: Icon(
-                        Icons.shopping_basket,
-                        color: kMainColor,
-                        size: 32,
-                      ),
-                      title: Text(
-                        "ما تم شراؤه",
-                        style: TextStyle(
-                            color: Colors.black, fontWeight: FontWeight.bold),
-                      ),
-                      children: [
-                        ListView.builder(
-                            shrinkWrap: true,
-                            physics: NeverScrollableScrollPhysics(),
-                            scrollDirection: Axis.vertical,
-                            itemCount: boughtItems.length,
-                            itemBuilder: (context, index) {
-                              return Dismissible(
-                                background: Container(
-                                  color: Colors.grey[200],
-                                ),
-                                key: ValueKey<Item>(boughtItems[index]),
-                                direction: DismissDirection.startToEnd,
-                                onDismissed: (direction) {
-                                  setState(() {
-                                    boughtItems[index].bought = 0;
-                                  });
-                                },
-                                child: Card(
-                                  color: Colors.grey[300],
-                                  child: ListTile(
-                                    title: Row(
-                                      children: [
-                                        ClipRect(
-                                            child: Container(
-                                          width: 40,
-                                          height: 40,
-                                          child: Image.asset(
-                                              boughtItems[index].itemIcon),
-                                        )),
-                                        SizedBox(width: 8),
-                                        Text(boughtItems[index].title,
-                                            style: TextStyle(
-                                                decoration: TextDecoration
-                                                    .lineThrough)),
-                                        SizedBox(width: 16),
-                                      ],
+              Container(
+                alignment: Alignment.bottomCenter,
+                child: SingleChildScrollView(
+                  physics: NeverScrollableScrollPhysics(),
+                  scrollDirection: Axis.vertical,
+                  controller: _controller,
+                  child: ExpansionTile(
+                    collapsedBackgroundColor: Colors.white,
+                    backgroundColor: Colors.white,
+                    leading: Icon(
+                      Icons.shopping_basket,
+                      color: kMainColor,
+                      size: 32,
+                    ),
+                    title: Text(
+                      "ما تم شراؤه",
+                      style: TextStyle(
+                          color: Colors.black, fontWeight: FontWeight.bold),
+                    ),
+                    children: [
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height,
+                        child: SingleChildScrollView(
+                          physics: NeverScrollableScrollPhysics(),
+                          scrollDirection: Axis.vertical,
+                          child: ListView.builder(
+                              physics: NeverScrollableScrollPhysics(),
+                              scrollDirection: Axis.vertical,
+                              shrinkWrap: true,
+                              itemCount: boughtItems.length,
+                              itemBuilder: (context, index) {
+                                return Dismissible(
+                                  background: Container(
+                                    color: Colors.grey[200],
+                                  ),
+                                  key: ValueKey<Item>(boughtItems[index]),
+                                  direction: DismissDirection.startToEnd,
+                                  onDismissed: (direction) {
+                                    setState(() {
+                                      boughtItems[index].bought = 0;
+                                    });
+                                  },
+                                  child: Card(
+                                    color: Colors.grey[300],
+                                    child: ListTile(
+                                      title: Row(
+                                        children: [
+                                          ClipRect(
+                                              child: Container(
+                                            width: 40,
+                                            height: 40,
+                                            child: Image.asset(
+                                                boughtItems[index].itemIcon),
+                                          )),
+                                          SizedBox(width: 8),
+                                          Text(boughtItems[index].title,
+                                              style: TextStyle(
+                                                  decoration: TextDecoration
+                                                      .lineThrough)),
+                                          SizedBox(width: 16),
+                                        ],
+                                      ),
                                     ),
                                   ),
-                                ),
-                              );
-                            }),
-                      ],
-                    ),
+                                );
+                              }),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ),
