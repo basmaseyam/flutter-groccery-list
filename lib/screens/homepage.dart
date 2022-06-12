@@ -93,7 +93,7 @@ class _HomePageState extends State<HomePage> {
             ? controller.categorylist.where((p) => p.keyShow == 1).toList()
             : categories.where((p) => p.keyShow == 1).toList());
     List itemsCats = items;
-
+    List<String> quantitieslist = [];
     return Consumer<Cart>(builder: (context, cart, child) {
       if (cart.count == 0)
         cart.addAll(context
@@ -145,11 +145,43 @@ class _HomePageState extends State<HomePage> {
                                         itemBuilder: (context, index) {
                                           var dropdownvalue =
                                               selectedItems[index].quantity;
-                                          Iterable<Quantity> selectedquantity =
-                                              quantities.where((e) =>
-                                                  e.category ==
-                                                  selectedItems[index]
-                                                      .category);
+
+                                          List<String> selectedquantity = [];
+
+                                          if (selectedItems[index].category ==
+                                              'الفواكه و الخضار') {
+                                            selectedquantity = [
+                                              'كيلو1/4',
+                                              '1/2كيلو',
+                                              'كيلو',
+                                              'وحدة',
+                                              'حزمة',
+                                              'عبوة'
+                                            ];
+                                          } else if (selectedItems[index]
+                                                  .category ==
+                                              'مستلزمات الطبخ') {
+                                            selectedquantity = [
+                                              '100جرام',
+                                              '250جرام',
+                                              '500جرام',
+                                              'كيلو',
+                                              'لتر',
+                                              'عبوة',
+                                              'وحدة',
+                                              'حزمة'
+                                            ];
+                                          } else {
+                                            selectedquantity = [
+                                              'جرام',
+                                              'لتر',
+                                              'كيلو',
+                                              'عبوة',
+                                              'وحدة',
+                                              'حزمة'
+                                            ];
+                                          }
+
                                           return Card(
                                             color: Colors.grey[100],
                                             child: Slidable(
@@ -216,12 +248,10 @@ class _HomePageState extends State<HomePage> {
                                                             color: Colors
                                                                 .transparent),
                                                         value: dropdownvalue,
-                                                        items: selectedquantity
-                                                            .first.quantity
-                                                            .map<
-                                                                DropdownMenuItem<
-                                                                    String>>((String
-                                                                value) {
+                                                        items: selectedquantity.map<
+                                                            DropdownMenuItem<
+                                                                String>>((String
+                                                            value) {
                                                           return DropdownMenuItem<
                                                                   String>(
                                                               alignment:

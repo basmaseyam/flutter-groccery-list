@@ -6,7 +6,9 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flat_icons_flutter/flat_icons_flutter.dart';
 import 'package:moshtryate_new/controller/file_controller.dart';
+import 'package:moshtryate_new/data/quantity.dart';
 import 'package:moshtryate_new/file_manager.dart';
+import 'package:moshtryate_new/models/quantity.dart';
 import 'package:moshtryate_new/widgets/searchbar.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:moshtryate_new/data/category.dart';
@@ -118,6 +120,7 @@ class _NewCategoryState extends State<NewCategory> {
 
                 setState(() {
                   categories.add(newcat);
+
                   newcat.keyShow = 1;
                   FileController().writeCategory();
                   FileController().writeCart();

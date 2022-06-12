@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 
 class Quantity extends ChangeNotifier {
-  List<String> quantity;
+  List<String> quantity = ['جرام', 'لتر', 'كيلو', 'عبوة', 'وحدة', 'حزمة'];
   String category;
 
   List<Quantity> _quantities = [];
