@@ -149,6 +149,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
                           style: TextStyle(
                               fontSize: 28, fontWeight: FontWeight.bold)))
                   : ListView.builder(
+                      padding: EdgeInsets.only(bottom: 75),
                       itemCount: categories.length,
                       itemBuilder: (context, index) {
                         String cat = categories[index].category;
@@ -223,7 +224,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
                                     ),
                                   ])
                             : SizedBox(
-                                width: 20,
+                                width: 60,
                               );
                       },
                     ),

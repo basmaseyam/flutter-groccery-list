@@ -93,7 +93,7 @@ class _HomePageState extends State<HomePage> {
             ? controller.categorylist.where((p) => p.keyShow == 1).toList()
             : categories.where((p) => p.keyShow == 1).toList());
     List itemsCats = items;
-    List<String> quantitieslist = [];
+
     return Consumer<Cart>(builder: (context, cart, child) {
       if (cart.count == 0)
         cart.addAll(context
