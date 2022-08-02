@@ -54,7 +54,7 @@ List<Item> items = [
       quantity: 'كيلو',
       itemIcon: 'images/icons/FruitsVegeies/icons8-grape-64.png',
       amount: 0,
-      keyShow: 1,
+      keyShow: 0,
       bought: 0,
       search: 1),
   Item(
@@ -72,7 +72,7 @@ List<Item> items = [
       quantity: 'وحدة',
       itemIcon: 'images/icons/FruitsVegeies/cauliflower.png',
       amount: 0,
-      keyShow: 1,
+      keyShow: 0,
       bought: 0,
       search: 1),
   Item(
@@ -174,7 +174,7 @@ List<Item> items = [
       quantity: 'كيلو',
       itemIcon: 'images/icons/FruitsVegeies/icons8-apricot-60.png',
       amount: 0,
-      keyShow: 1,
+      keyShow: 0,
       bought: 0,
       search: 1),
   Item(
@@ -183,7 +183,7 @@ List<Item> items = [
       quantity: 'كيلو',
       itemIcon: 'images/icons/FruitsVegeies/melon (1).png',
       amount: 0,
-      keyShow: 1,
+      keyShow: 0,
       bought: 0,
       search: 1),
   Item(
@@ -228,7 +228,7 @@ List<Item> items = [
       quantity: 'حزمة',
       itemIcon: 'images/icons/FruitsVegeies/green-onion.png',
       amount: 0,
-      keyShow: 1,
+      keyShow: 0,
       bought: 0,
       search: 1),
   Item(

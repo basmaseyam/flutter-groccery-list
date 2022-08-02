@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:moshtryate_new/controller/file_controller.dart';
 import 'package:moshtryate_new/data/itemscat.dart';
+import 'package:moshtryate_new/main.dart';
 import 'package:moshtryate_new/models/cart.dart';
 import 'package:moshtryate_new/models/item.dart';
 import 'package:moshtryate_new/screens/NewItem.dart';
@@ -37,10 +37,7 @@ class Searchbar extends SearchDelegate<Item> {
 
   @override
   Widget buildResults(BuildContext context) {
-    items = context.select((FileController controller) =>
-        controller.cartitems != null
-            ? controller.cartitems.where((p) => p.search == 1).toList()
-            : items.where((p) => p.search == 1).toList());
+    items = itemsBox.values.toList().cast<Item>();
     List<Item> mylist = items;
     final Item result = mylist.where((p) => p.title.contains(query)).first;
     final _formKey = GlobalKey<FormState>();
@@ -66,6 +63,8 @@ class Searchbar extends SearchDelegate<Item> {
                           result.incrementCounter();
                           cart.add(result);
                           result.keyShow = 1;
+                          result.save();
+
                           Navigator.of(context).push(MaterialPageRoute(
                               builder: (context) => HomePage()));
                         }),
@@ -75,7 +74,8 @@ class Searchbar extends SearchDelegate<Item> {
                         color: Colors.blue,
                         onPressed: () {
                           result.decrementCounter();
-                          return cart.remove(result);
+                          cart.remove(result);
+                          result.save();
                         }),
                     Container(
                       alignment: Alignment.center,
@@ -106,11 +106,7 @@ class Searchbar extends SearchDelegate<Item> {
 
   @override
   Widget buildSuggestions(BuildContext context) {
-    items = context.select((FileController controller) =>
-        controller.cartitems != null
-            ? controller.cartitems.where((p) => p.search == 1).toList()
-            : items.where((p) => p.search == 1).toList());
-    List<Item> mylist = items;
+    List<Item> mylist = itemsBox.values.toList().cast<Item>();
 
     mylist.sort((a, b) => a.title.compareTo(b.title));
     mylist = query.isEmpty

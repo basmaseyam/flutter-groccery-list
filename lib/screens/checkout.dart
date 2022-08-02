@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:moshtryate_new/constants.dart';
-import 'package:moshtryate_new/controller/file_controller.dart';
 import 'package:moshtryate_new/data/category.dart';
 import 'package:moshtryate_new/screens/NewCategory.dart';
 import 'package:moshtryate_new/screens/NewItem.dart';
@@ -13,6 +12,7 @@ import 'package:share_plus/share_plus.dart';
 import 'package:moshtryate_new/models/item.dart';
 import 'package:moshtryate_new/models/cart.dart';
 import 'package:moshtryate_new/data/itemscat.dart';
+import 'package:moshtryate_new/main.dart';
 
 import 'drawer.dart';
 
@@ -28,14 +28,8 @@ class _CheckoutPageState extends State<CheckoutPage> {
 
   @override
   Widget build(BuildContext context) {
-    List allItems = context.select((FileController controller) =>
-        controller.cartitems != null
-            ? controller.cartitems.where((p) => p.keyShow == 1).toList()
-            : items.where((p) => p.keyShow == 1).toList());
-    categories = context.select((FileController controller) =>
-        controller.categorylist != null
-            ? controller.categorylist.where((p) => p.keyShow == 1).toList()
-            : categories.where((p) => p.keyShow == 1).toList());
+    List allItems = itemsBox.values.where((p) => p.keyShow == 1).toList();
+    categories = categoriesBox.values.where((p) => p.keyShow == 1).toList();
     return Consumer<Cart>(builder: (context, cart, child) {
       List boughtItems = allItems.where((p) => p.bought == 1).toList();
       ScrollController _controller = new ScrollController();
@@ -195,6 +189,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
                                                 setState(() {
                                                   cart.delete(
                                                       selectedItems[index]);
+                                                  selectedItems[index].save();
                                                 });
                                               },
                                             ),
@@ -268,6 +263,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
                                   onDismissed: (direction) {
                                     setState(() {
                                       boughtItems[index].bought = 0;
+                                      boughtItems[index].save();
                                     });
                                   },
                                   child: Card(

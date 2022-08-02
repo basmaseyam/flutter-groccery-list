@@ -1,10 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/widgets.dart';
-import 'package:moshtryate_new/data/category.dart';
 import 'package:moshtryate_new/models/item.dart';
-import 'package:moshtryate_new/controller/file_controller.dart';
-import 'package:moshtryate_new/data/itemscat.dart';
 
 class Cart extends ChangeNotifier {
   List<Item> _items = [];
@@ -14,7 +11,7 @@ class Cart extends ChangeNotifier {
 
   void add(Item item) {
     _items.add(item);
-    FileController().writeCart();
+    // FileController().writeCart();
     notifyListeners();
   }
 
@@ -24,7 +21,7 @@ class Cart extends ChangeNotifier {
 
   void remove(Item item) {
     _items.remove(item);
-    FileController().writeCart();
+    // FileController().writeCart();
     notifyListeners();
   }
 
@@ -33,7 +30,7 @@ class Cart extends ChangeNotifier {
     selectedItem.amount = 0;
     selectedItem.bought = 1;
 
-    FileController().writeCart();
+    //FileController().writeCart();
     notifyListeners();
   }
 
@@ -45,7 +42,7 @@ class Cart extends ChangeNotifier {
   List<Item> get basketItems {
     _organizedItems = _items.toSet().toList();
     _organizedItems.sort((a, b) => b.category.compareTo(a.category));
-    FileController().writeCart();
+    // FileController().writeCart();
 
     return _organizedItems;
   }

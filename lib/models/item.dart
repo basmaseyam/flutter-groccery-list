@@ -1,62 +1,64 @@
 import 'package:flutter/widgets.dart';
-import 'package:moshtryate_new/controller/file_controller.dart';
+import 'package:hive/hive.dart';
+part 'item.g.dart';
 
-class Item extends ChangeNotifier {
+@HiveType(typeId: 0)
+class Item extends HiveObject with ChangeNotifier {
+  @HiveField(0)
   String title;
+  @HiveField(1)
   String itemIcon;
+  @HiveField(2)
   String category;
+  @HiveField(3)
   String quantity;
+  @HiveField(4)
   int keyShow = 1;
+  @HiveField(5)
   int bought = 0;
+  @HiveField(6)
   int search = 1;
+  @HiveField(7)
   int amount;
 
   List<Item> _items = [];
 
   void add(Item item) {
     _items.add(item);
-    FileController().writeCart();
+    //FileController().writeCart();
     notifyListeners();
   }
 
   void show(Item item) {
     item.keyShow = 1;
-    FileController().writeCart();
+    // FileController().writeCart();
     notifyListeners();
   }
 
   void remove() {
     // _items.remove(item);
     this.keyShow = 0;
-    FileController().writeCart();
     notifyListeners();
   }
 
   void hide() {
     // _items.remove(item);
     this.keyShow = 0;
-    FileController().writeCart();
+    //FileController().writeCart();
     notifyListeners();
   }
 
   void incrementCounter() {
     this.amount++;
-    FileController().writeCart();
+    //FileController().writeCart();
 
-    notifyListeners();
-  }
-
-  void delete(Item selectedItem) {
-    //_items.removeWhere((item) => selectedItem.title == item.title);
-    selectedItem.keyShow = 0;
-    FileController().writeCart();
     notifyListeners();
   }
 
   void decrementCounter() {
     if (amount != 0) {
       amount--;
-      FileController().writeCart();
+      // FileController().writeCart();
     }
 
     notifyListeners();
@@ -82,19 +84,13 @@ class Item extends ChangeNotifier {
         category: json["category"],
         quantity: json["quantity"],
         itemIcon: json["itemIcon"],
-        amount: json["amount"],
-        keyShow: json["keyShow"],
-        bought: json["bought"],
-        search: json["search"]);
+        amount: json["amount"]);
   }
   Map<String, dynamic> toJson() => {
         "title": title,
         "category": category,
         "quantity": quantity,
         "itemIcon": itemIcon,
-        "amount": amount,
-        "keyShow": keyShow,
-        "bought": bought,
-        "search": search
+        "amount": amount
       };
 }

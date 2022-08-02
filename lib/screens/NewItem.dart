@@ -6,6 +6,7 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flat_icons_flutter/flat_icons_flutter.dart';
 import 'package:moshtryate_new/controller/file_controller.dart';
+import 'package:moshtryate_new/main.dart';
 import 'package:moshtryate_new/widgets/searchbar.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:moshtryate_new/data/category.dart';
@@ -29,7 +30,6 @@ class NewItem extends StatefulWidget {
 class _NewItemState extends State<NewItem> {
   final List<Item> itemsextra = [];
   final List<String> _quantities = quantities;
-  final List<Category> _categories = categories;
 
   Category chooseItem;
 
@@ -39,8 +39,9 @@ class _NewItemState extends State<NewItem> {
 
   @override
   Widget build(BuildContext context) {
-    final List<Item> itemsCat = context.select((FileController controller) =>
-        controller.cartitems != null ? controller.cartitems : items);
+    final List<Item> itemsCat = itemsBox.values.toList();
+    final List<Category> _categories =
+        categoriesBox.values.where((c) => c.keyShow == 1).toList();
     items = itemsCat;
     return Consumer<Cart>(builder: (context, cart, child) {
       return Directionality(
@@ -127,6 +128,7 @@ class _NewItemState extends State<NewItem> {
                     hint: Text('إختر القائمه المناسبه'),
                     isExpanded: true,
                     allowClear: true,
+                    initialValue: _categories[0].category,
                     items: _categories.map((valueItem) {
                       return DropdownMenuItem(
                           value: valueItem.category,
@@ -251,10 +253,10 @@ class _NewItemState extends State<NewItem> {
                 print(newitem.title);
 
                 setState(() {
-                  items.add(newitem);
                   newitem.keyShow = 1;
+                  itemsBox.add(newitem);
                   cart.add(newitem);
-                  FileController().writeCart();
+                  newitem.save();
                   _formKey.currentState.reset();
                 });
                 showDialog(

@@ -4,10 +4,10 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
-import 'package:moshtryate_new/controller/file_controller.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:moshtryate_new/data/category.dart';
 import 'package:moshtryate_new/data/itemscat.dart';
-import 'package:moshtryate_new/file_manager.dart';
+import 'package:moshtryate_new/main.dart';
 import 'package:moshtryate_new/models/cart.dart';
 import 'package:moshtryate_new/models/category.dart';
 import 'package:moshtryate_new/models/item.dart';
@@ -32,7 +32,7 @@ class HomePage extends StatefulWidget {
   _HomePageState createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
   BannerAd _bannerAd;
   bool _isBannerAdReady = false;
 
@@ -40,18 +40,19 @@ class _HomePageState extends State<HomePage> {
     return MobileAds.instance.initialize();
   }
 
-  final List<Item> itemsothers = [];
-
   int amount = 0;
 
   @override
   void initState() {
-    if (FileManager().readJsonFile() == null) {
-      context.read<FileController>().writeCart();
+    super.initState();
+    WidgetsBinding.instance.addObserver(this);
+
+    if (itemsBox.isEmpty) {
+      itemsBox.addAll(items);
     }
-    if (FileManager().readCategoryFile() == null &&
-        FileManager().readJsonFile() != null) {
-      context.read<FileController>().writeCategory();
+
+    if (categoriesBox.isEmpty) {
+      categoriesBox.addAll(categories);
     }
 
     _bannerAd = BannerAd(
@@ -73,34 +74,30 @@ class _HomePageState extends State<HomePage> {
     );
 
     _bannerAd.load();
-    super.initState();
   }
 
   @override
   void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
     _bannerAd.dispose();
+    Hive.close();
+
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    items = context.select((FileController controller) =>
-        controller.cartitems != null
-            ? controller.cartitems.where((p) => p.keyShow == 1).toList()
-            : items.where((p) => p.keyShow == 1).toList());
-    categories = context.select((FileController controller) =>
-        controller.categorylist != null
-            ? controller.categorylist.where((p) => p.keyShow == 1).toList()
-            : categories.where((p) => p.keyShow == 1).toList());
-    List itemsCats = items;
-
+    List itemsCats =
+        itemsBox.values.where((i) => i.keyShow == 1).toList().cast<Item>();
+    List categories = categoriesBox.values
+        .where((i) => i.keyShow == 1)
+        .toList()
+        .cast<Category>();
     return Consumer<Cart>(builder: (context, cart, child) {
-      if (cart.count == 0)
-        cart.addAll(context
-            .select(
-                (FileController controller) => items.where((p) => p.amount > 0))
-            .toList());
-
+      if (cart.count == 0) {
+        final cartItems = itemsCats.where((i) => i.amount != 0).toList();
+        cart.addAll(cartItems.cast<Item>());
+      }
       return Directionality(
         textDirection: TextDirection.rtl,
         child: MaterialApp(
@@ -126,7 +123,7 @@ class _HomePageState extends State<HomePage> {
                             String cat = categories[index].category;
 
                             List selectedItems = itemsCats
-                                .where((p) => p.category.contains(cat))
+                                .where((p) => p.category == cat)
                                 .toList();
                             selectedItems
                                 .sort((a, b) => a.title.compareTo(b.title));
@@ -217,9 +214,11 @@ class _HomePageState extends State<HomePage> {
                                                           selectedItems[index]
                                                               .incrementCounter();
 
-                                                          return cart.add(
+                                                          cart.add(
                                                               selectedItems[
                                                                   index]);
+                                                          selectedItems[index]
+                                                              .save();
                                                         }),
                                                     Text(
                                                         '${selectedItems[index].amount}'),
@@ -231,7 +230,8 @@ class _HomePageState extends State<HomePage> {
                                                         onPressed: () {
                                                           selectedItems[index]
                                                               .decrementCounter();
-
+                                                          selectedItems[index]
+                                                              .save();
                                                           return cart.remove(
                                                               selectedItems[
                                                                   index]);
@@ -271,6 +271,8 @@ class _HomePageState extends State<HomePage> {
                                                           setState(() {
                                                             dropdownvalue =
                                                                 newValue;
+                                                            selectedItems[index]
+                                                                .save();
                                                           });
                                                         },
                                                       ),
@@ -341,8 +343,8 @@ class _HomePageState extends State<HomePage> {
                                                           setState(() {
                                                             categories[index]
                                                                 .remove();
-                                                            FileController()
-                                                                .writeCategory();
+                                                            categories[index]
+                                                                .save();
                                                           });
                                                         } else {
                                                           return showDialog(
@@ -442,8 +444,8 @@ class _HomePageState extends State<HomePage> {
                           selectedItems[index].keyShow = 0;
                           selectedItems[index].amount > 0
                               ? cart.delete(selectedItems[index])
-                              : selectedItems[index].remove();
-                          FileController().writeCart();
+                              : selectedItems[index].hide();
+                          selectedItems[index].save();
                         });
                       },
                       child: const Text('نعم'),
