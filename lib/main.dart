@@ -3,8 +3,6 @@ import 'dart:io';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:moshtryate_new/constants.dart';
-import 'package:moshtryate_new/controller/file_controller.dart';
-import 'package:moshtryate_new/file_manager.dart';
 import 'package:moshtryate_new/models/category.dart';
 import 'package:moshtryate_new/models/item.dart';
 import 'package:moshtryate_new/screens/homepage.dart';
