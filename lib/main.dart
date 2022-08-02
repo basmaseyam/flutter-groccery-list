@@ -23,6 +23,8 @@ import 'package:hive_flutter/hive_flutter.dart';
 bool isloggedin = false;
 bool isconnected = false;
 Box itemsBox, categoriesBox;
+var preferences;
+File newImage;
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -35,9 +37,15 @@ Future<void> main() async {
 
   await Firebase.initializeApp();
 
-  final preferences = await SharedPreferences.getInstance();
+  preferences = await SharedPreferences.getInstance();
   final connectivity = await Connectivity().checkConnectivity();
   var email = preferences.getString('email');
+  /*var imageURL = await preferences.getString('photoURL');
+  // using your method of getting an image
+  final File image = File(imageURL);
+// copy the file to a new path
+  newImage = await image.copy('$dir/image1.png');*/
+
   isconnected = connectivity == null ? false : true;
   isloggedin = email == null ? false : true;
   runApp(

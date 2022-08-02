@@ -17,6 +17,7 @@ import 'package:moshtryate_new/screens/NewCategory.dart';
 import 'package:provider/provider.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:moshtryate_new/ad_helper.dart';
+import 'package:intro_slider/intro_slider.dart';
 
 //import 'package:moshtryate_new/screens/About.dart';
 

@@ -269,6 +269,21 @@ class _CheckoutPageState extends State<CheckoutPage> {
                                   child: Card(
                                     color: Colors.grey[300],
                                     child: ListTile(
+                                      leading: IconButton(
+                                        icon: Icon(
+                                          Icons.restore,
+                                          size: 32,
+                                        ),
+                                        color: Colors.blue,
+                                        onPressed: () {
+                                          setState(() {
+                                            cart.add(boughtItems[index]);
+                                            boughtItems[index].bought = 0;
+                                            boughtItems[index].amount = 1;
+                                            boughtItems[index].save();
+                                          });
+                                        },
+                                      ),
                                       title: Row(
                                         children: [
                                           ClipRect(

@@ -111,7 +111,8 @@ class Searchbar extends SearchDelegate<Item> {
     mylist.sort((a, b) => a.title.compareTo(b.title));
     mylist = query.isEmpty
         ? mylist
-        : mylist.where((p) => p.title.contains(query)).toList();
+        : mylist.where((p) => p.title.startsWith(query)).toList() +
+            mylist.where((p) => p.title.contains(query)).toList();
 
     return mylist.isEmpty
         ? Center(
