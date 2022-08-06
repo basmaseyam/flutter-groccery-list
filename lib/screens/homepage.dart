@@ -17,7 +17,7 @@ import 'package:moshtryate_new/screens/NewCategory.dart';
 import 'package:provider/provider.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:moshtryate_new/ad_helper.dart';
-import 'package:intro_slider/intro_slider.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 //import 'package:moshtryate_new/screens/About.dart';
 
@@ -34,6 +34,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
+  DateTime timeBackPressed = DateTime.now();
   BannerAd _bannerAd;
   bool _isBannerAdReady = false;
 
@@ -94,325 +95,348 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
         .where((i) => i.keyShow == 1)
         .toList()
         .cast<Category>();
-    return Consumer<Cart>(builder: (context, cart, child) {
-      if (cart.count == 0) {
-        final cartItems = itemsCats.where((i) => i.amount != 0).toList();
-        cart.addAll(cartItems.cast<Item>());
-      }
-      return Directionality(
-        textDirection: TextDirection.rtl,
-        child: MaterialApp(
-          debugShowCheckedModeBanner: false,
-          title: "مشترياتي",
-          home: Directionality(
-            textDirection: TextDirection.rtl,
-            child: Scaffold(
-              appBar: PreferredSize(
-                  child: MainBar(context: context, cart: cart, child: child),
-                  preferredSize: Size.fromHeight(120)),
-              drawer: MyDrawer(),
-              body: FutureBuilder<void>(
-                  future: _initGoogleMobileAds(),
-                  builder:
-                      (BuildContext context, AsyncSnapshot<void> snapshot) {
-                    return Stack(children: [
-                      ListView.builder(
-                          padding:
-                              EdgeInsets.only(top: _isBannerAdReady ? 75 : 0),
-                          itemCount: categories.length,
-                          itemBuilder: (context, index) {
-                            String cat = categories[index].category;
+    return WillPopScope(
+      onWillPop: () async {
+        final difference = DateTime.now().difference(timeBackPressed);
+        final isExisting = difference >= Duration(seconds: 2);
 
-                            List selectedItems = itemsCats
-                                .where((p) => p.category == cat)
-                                .toList();
-                            selectedItems
-                                .sort((a, b) => a.title.compareTo(b.title));
+        timeBackPressed = DateTime.now();
+        if (isExisting) {
+          final message = 'Press back again to exit';
+          Fluttertoast.showToast(msg: message, fontSize: 18);
+          return false;
+        } else {
+          Fluttertoast.cancel();
+          return true;
+        }
+      },
+      child: Consumer<Cart>(builder: (context, cart, child) {
+        if (cart.count == 0) {
+          final cartItems = itemsCats.where((i) => i.amount != 0).toList();
+          cart.addAll(cartItems.cast<Item>());
+        }
+        return Directionality(
+          textDirection: TextDirection.rtl,
+          child: MaterialApp(
+            debugShowCheckedModeBanner: false,
+            title: "مشترياتي",
+            home: Directionality(
+              textDirection: TextDirection.rtl,
+              child: Scaffold(
+                appBar: PreferredSize(
+                    child: MainBar(context: context, cart: cart, child: child),
+                    preferredSize: Size.fromHeight(120)),
+                drawer: MyDrawer(),
+                body: FutureBuilder<void>(
+                    future: _initGoogleMobileAds(),
+                    builder:
+                        (BuildContext context, AsyncSnapshot<void> snapshot) {
+                      return Stack(children: [
+                        ListView.builder(
+                            padding:
+                                EdgeInsets.only(top: _isBannerAdReady ? 75 : 0),
+                            itemCount: categories.length,
+                            itemBuilder: (context, index) {
+                              String cat = categories[index].category;
 
-                            return Slidable(
-                                direction: Axis.horizontal,
-                                actionPane: SlidableScrollActionPane(),
-                                child: ExpansionTile(title: Text(cat),
-                                    //    trailing: Icon(Icons.keyboard_arrow_left),
-                                    children: [
-                                      ListView.builder(
-                                        shrinkWrap: true,
-                                        physics: NeverScrollableScrollPhysics(),
-                                        scrollDirection: Axis.vertical,
-                                        itemCount: selectedItems.length,
-                                        itemBuilder: (context, index) {
-                                          var dropdownvalue =
-                                              selectedItems[index].quantity;
+                              List selectedItems = itemsCats
+                                  .where((p) => p.category == cat)
+                                  .toList();
+                              selectedItems
+                                  .sort((a, b) => a.title.compareTo(b.title));
 
-                                          List<String> selectedquantity = [];
+                              return Slidable(
+                                  direction: Axis.horizontal,
+                                  actionPane: SlidableScrollActionPane(),
+                                  child: ExpansionTile(title: Text(cat),
+                                      //    trailing: Icon(Icons.keyboard_arrow_left),
+                                      children: [
+                                        ListView.builder(
+                                          shrinkWrap: true,
+                                          physics:
+                                              NeverScrollableScrollPhysics(),
+                                          scrollDirection: Axis.vertical,
+                                          itemCount: selectedItems.length,
+                                          itemBuilder: (context, index) {
+                                            var dropdownvalue =
+                                                selectedItems[index].quantity;
 
-                                          if (selectedItems[index].category ==
-                                              'الفواكه و الخضار') {
-                                            selectedquantity = [
-                                              'كيلو1/4',
-                                              '1/2كيلو',
-                                              'كيلو',
-                                              'وحدة',
-                                              'حزمة',
-                                              'عبوة'
-                                            ];
-                                          } else if (selectedItems[index]
-                                                  .category ==
-                                              'مستلزمات الطبخ') {
-                                            selectedquantity = [
-                                              '100جرام',
-                                              '250جرام',
-                                              '500جرام',
-                                              'كيلو',
-                                              'لتر',
-                                              'عبوة',
-                                              'وحدة',
-                                              'حزمة'
-                                            ];
-                                          } else {
-                                            selectedquantity = [
-                                              'جرام',
-                                              'لتر',
-                                              'كيلو',
-                                              'عبوة',
-                                              'وحدة',
-                                              'حزمة'
-                                            ];
-                                          }
+                                            List<String> selectedquantity = [];
 
-                                          return Card(
-                                            color: Colors.grey[100],
-                                            child: Slidable(
-                                              direction: Axis.horizontal,
-                                              actionPane:
-                                                  SlidableScrollActionPane(),
-                                              child: ListTile(
-                                                title: Text(
-                                                    selectedItems[index].title),
-                                                leading: ClipRect(
-                                                    //   backgroundColor: Colors.transparent,
+                                            if (selectedItems[index].category ==
+                                                'الفواكه و الخضار') {
+                                              selectedquantity = [
+                                                'كيلو1/4',
+                                                '1/2كيلو',
+                                                'كيلو',
+                                                'وحدة',
+                                                'حزمة',
+                                                'عبوة'
+                                              ];
+                                            } else if (selectedItems[index]
+                                                    .category ==
+                                                'مستلزمات الطبخ') {
+                                              selectedquantity = [
+                                                '100جرام',
+                                                '250جرام',
+                                                '500جرام',
+                                                'كيلو',
+                                                'لتر',
+                                                'عبوة',
+                                                'وحدة',
+                                                'حزمة'
+                                              ];
+                                            } else {
+                                              selectedquantity = [
+                                                'جرام',
+                                                'لتر',
+                                                'كيلو',
+                                                'عبوة',
+                                                'وحدة',
+                                                'حزمة'
+                                              ];
+                                            }
 
-                                                    child: Container(
-                                                  width: 40,
-                                                  height: 40,
-                                                  child: Image.asset(
+                                            return Card(
+                                              color: Colors.grey[100],
+                                              child: Slidable(
+                                                direction: Axis.horizontal,
+                                                actionPane:
+                                                    SlidableScrollActionPane(),
+                                                child: ListTile(
+                                                  title: Text(
                                                       selectedItems[index]
-                                                          .itemIcon),
-                                                )),
-                                                trailing: Flex(
-                                                  direction: Axis.horizontal,
-                                                  mainAxisSize:
-                                                      MainAxisSize.min,
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.end,
-                                                  children: [
-                                                    IconButton(
-                                                        icon:
-                                                            Icon(Icons.add_box),
-                                                        iconSize: 32,
-                                                        color: Colors.blue,
-                                                        onPressed: () {
-                                                          selectedItems[index]
-                                                              .incrementCounter();
+                                                          .title),
+                                                  leading: ClipRect(
+                                                      //   backgroundColor: Colors.transparent,
 
-                                                          cart.add(
-                                                              selectedItems[
-                                                                  index]);
-                                                          selectedItems[index]
-                                                              .save();
-                                                        }),
-                                                    Text(
-                                                        '${selectedItems[index].amount}'),
-                                                    IconButton(
-                                                        icon: Image(
-                                                          image: AssetImage(
-                                                              'images/icons/2-.png'),
-                                                        ),
-                                                        onPressed: () {
-                                                          selectedItems[index]
-                                                              .decrementCounter();
-                                                          selectedItems[index]
-                                                              .save();
-                                                          return cart.remove(
-                                                              selectedItems[
-                                                                  index]);
-                                                        }),
-                                                    Container(
-                                                      alignment:
-                                                          Alignment.center,
-                                                      constraints:
-                                                          BoxConstraints.tight(
-                                                              Size.fromWidth(
-                                                                  90)),
-                                                      child: DropdownButton(
-                                                        underline: Container(
-                                                            color: Colors
-                                                                .transparent),
-                                                        value: dropdownvalue,
-                                                        items: selectedquantity.map<
-                                                            DropdownMenuItem<
-                                                                String>>((String
-                                                            value) {
-                                                          return DropdownMenuItem<
-                                                                  String>(
-                                                              alignment:
-                                                                  AlignmentDirectional
-                                                                      .centerEnd,
-                                                              value: value,
-                                                              child:
-                                                                  Text(value),
-                                                              onTap: () {
+                                                      child: Container(
+                                                    width: 40,
+                                                    height: 40,
+                                                    child: Image.asset(
+                                                        selectedItems[index]
+                                                            .itemIcon),
+                                                  )),
+                                                  trailing: Flex(
+                                                    direction: Axis.horizontal,
+                                                    mainAxisSize:
+                                                        MainAxisSize.min,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment.end,
+                                                    children: [
+                                                      IconButton(
+                                                          icon: Icon(
+                                                              Icons.add_box),
+                                                          iconSize: 32,
+                                                          color: Colors.blue,
+                                                          onPressed: () {
+                                                            selectedItems[index]
+                                                                .incrementCounter();
+
+                                                            cart.add(
                                                                 selectedItems[
-                                                                            index]
-                                                                        .quantity =
-                                                                    value;
-                                                              });
-                                                        }).toList(),
-                                                        onChanged: (newValue) {
-                                                          setState(() {
-                                                            dropdownvalue =
-                                                                newValue;
+                                                                    index]);
                                                             selectedItems[index]
                                                                 .save();
-                                                          });
-                                                        },
+                                                          }),
+                                                      Text(
+                                                          '${selectedItems[index].amount}'),
+                                                      IconButton(
+                                                          icon: Image(
+                                                            image: AssetImage(
+                                                                'images/icons/2-.png'),
+                                                          ),
+                                                          onPressed: () {
+                                                            selectedItems[index]
+                                                                .decrementCounter();
+                                                            selectedItems[index]
+                                                                .save();
+                                                            return cart.remove(
+                                                                selectedItems[
+                                                                    index]);
+                                                          }),
+                                                      Container(
+                                                        alignment:
+                                                            Alignment.center,
+                                                        constraints:
+                                                            BoxConstraints
+                                                                .tight(Size
+                                                                    .fromWidth(
+                                                                        90)),
+                                                        child: DropdownButton(
+                                                          underline: Container(
+                                                              color: Colors
+                                                                  .transparent),
+                                                          value: dropdownvalue,
+                                                          items: selectedquantity.map<
+                                                              DropdownMenuItem<
+                                                                  String>>((String
+                                                              value) {
+                                                            return DropdownMenuItem<
+                                                                    String>(
+                                                                alignment:
+                                                                    AlignmentDirectional
+                                                                        .centerEnd,
+                                                                value: value,
+                                                                child:
+                                                                    Text(value),
+                                                                onTap: () {
+                                                                  selectedItems[
+                                                                          index]
+                                                                      .quantity = value;
+                                                                });
+                                                          }).toList(),
+                                                          onChanged:
+                                                              (newValue) {
+                                                            setState(() {
+                                                              dropdownvalue =
+                                                                  newValue;
+                                                              selectedItems[
+                                                                      index]
+                                                                  .save();
+                                                            });
+                                                          },
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                  onTap: () {},
+                                                ),
+                                                secondaryActions: [
+                                                  IconSlideAction(
+                                                    caption: 'حذف',
+                                                    color: Colors.black45,
+                                                    icon: Icons.delete,
+                                                    onTap: () {
+                                                      hideProduct(
+                                                          context,
+                                                          selectedItems,
+                                                          index,
+                                                          cart);
+                                                    },
+                                                  )
+                                                ],
+                                              ),
+                                            );
+                                          },
+                                        ),
+                                      ]),
+                                  secondaryActions: [
+                                    IconSlideAction(
+                                      caption: 'حذف',
+                                      color: Colors.black45,
+                                      icon: Icons.delete,
+                                      onTap: () {
+                                        showDialog(
+                                          context: context,
+                                          builder: (BuildContext context) =>
+                                              Padding(
+                                            padding: const EdgeInsets.fromLTRB(
+                                                3, 0, 3, 0),
+                                            child: AlertDialog(
+                                              // aya , translated buttons text
+                                              title: const Text(
+                                                'هل تريد حذف القائمه ؟',
+                                                textAlign: TextAlign.center,
+                                              ),
+                                              actions: <Widget>[
+                                                Padding(
+                                                  padding:
+                                                      const EdgeInsets.fromLTRB(
+                                                          3, 0, 3, 0),
+                                                  child: Row(children: [
+                                                    Expanded(
+                                                      child: TextButton(
+                                                        onPressed: () =>
+                                                            Navigator.pop(
+                                                                context,
+                                                                'Cancel'),
+                                                        child: const Text('لا'),
                                                       ),
                                                     ),
-                                                  ],
+                                                    Expanded(
+                                                      child: TextButton(
+                                                        onPressed: () {
+                                                          Navigator.pop(
+                                                              context, 'Ok');
+                                                          if (selectedItems
+                                                                  .length ==
+                                                              0) {
+                                                            setState(() {
+                                                              categories[index]
+                                                                  .remove();
+                                                              categories[index]
+                                                                  .save();
+                                                            });
+                                                          } else {
+                                                            return showDialog(
+                                                                context:
+                                                                    context,
+                                                                builder:
+                                                                    (context) {
+                                                                  Future.delayed(
+                                                                      Duration(
+                                                                          seconds:
+                                                                              2),
+                                                                      () {
+                                                                    Navigator.of(
+                                                                            context)
+                                                                        .push(MaterialPageRoute(
+                                                                            builder: (context) =>
+                                                                                HomePage()));
+                                                                  });
+
+                                                                  return AlertDialog(
+                                                                    // aya , added icon to alertdialog
+                                                                    title: Row(
+                                                                      mainAxisAlignment:
+                                                                          MainAxisAlignment
+                                                                              .spaceBetween,
+                                                                      crossAxisAlignment:
+                                                                          CrossAxisAlignment
+                                                                              .center,
+                                                                      children: [
+                                                                        Text(
+                                                                          'برجاء حذف محتويات القائمه اولا',
+                                                                          // textAlign: TextAlign.center,
+                                                                        ),
+                                                                      ],
+                                                                    ),
+                                                                  );
+                                                                });
+                                                          }
+                                                        },
+                                                        child:
+                                                            const Text('نعم'),
+                                                      ),
+                                                    ),
+                                                  ]),
                                                 ),
-                                                onTap: () {},
-                                              ),
-                                              secondaryActions: [
-                                                IconSlideAction(
-                                                  caption: 'حذف',
-                                                  color: Colors.black45,
-                                                  icon: Icons.delete,
-                                                  onTap: () {
-                                                    hideProduct(
-                                                        context,
-                                                        selectedItems,
-                                                        index,
-                                                        cart);
-                                                  },
-                                                )
                                               ],
                                             ),
-                                          );
-                                        },
-                                      ),
-                                    ]),
-                                secondaryActions: [
-                                  IconSlideAction(
-                                    caption: 'حذف',
-                                    color: Colors.black45,
-                                    icon: Icons.delete,
-                                    onTap: () {
-                                      showDialog(
-                                        context: context,
-                                        builder: (BuildContext context) =>
-                                            Padding(
-                                          padding: const EdgeInsets.fromLTRB(
-                                              3, 0, 3, 0),
-                                          child: AlertDialog(
-                                            // aya , translated buttons text
-                                            title: const Text(
-                                              'هل تريد حذف القائمه ؟',
-                                              textAlign: TextAlign.center,
-                                            ),
-                                            actions: <Widget>[
-                                              Padding(
-                                                padding:
-                                                    const EdgeInsets.fromLTRB(
-                                                        3, 0, 3, 0),
-                                                child: Row(children: [
-                                                  Expanded(
-                                                    child: TextButton(
-                                                      onPressed: () =>
-                                                          Navigator.pop(context,
-                                                              'Cancel'),
-                                                      child: const Text('لا'),
-                                                    ),
-                                                  ),
-                                                  Expanded(
-                                                    child: TextButton(
-                                                      onPressed: () {
-                                                        Navigator.pop(
-                                                            context, 'Ok');
-                                                        if (selectedItems
-                                                                .length ==
-                                                            0) {
-                                                          setState(() {
-                                                            categories[index]
-                                                                .remove();
-                                                            categories[index]
-                                                                .save();
-                                                          });
-                                                        } else {
-                                                          return showDialog(
-                                                              context: context,
-                                                              builder:
-                                                                  (context) {
-                                                                Future.delayed(
-                                                                    Duration(
-                                                                        seconds:
-                                                                            2),
-                                                                    () {
-                                                                  Navigator.of(
-                                                                          context)
-                                                                      .push(MaterialPageRoute(
-                                                                          builder: (context) =>
-                                                                              HomePage()));
-                                                                });
-
-                                                                return AlertDialog(
-                                                                  // aya , added icon to alertdialog
-                                                                  title: Row(
-                                                                    mainAxisAlignment:
-                                                                        MainAxisAlignment
-                                                                            .spaceBetween,
-                                                                    crossAxisAlignment:
-                                                                        CrossAxisAlignment
-                                                                            .center,
-                                                                    children: [
-                                                                      Text(
-                                                                        'برجاء حذف محتويات القائمه اولا',
-                                                                        // textAlign: TextAlign.center,
-                                                                      ),
-                                                                    ],
-                                                                  ),
-                                                                );
-                                                              });
-                                                        }
-                                                      },
-                                                      child: const Text('نعم'),
-                                                    ),
-                                                  ),
-                                                ]),
-                                              ),
-                                            ],
                                           ),
-                                        ),
-                                      );
-                                    },
-                                  ),
-                                ]);
-                          }),
-                      if (_isBannerAdReady)
-                        Align(
-                          alignment: Alignment.topCenter,
-                          child: Container(
-                            color: Colors.white,
-                            height: _bannerAd.size.height.toDouble(),
-                            child: AdWidget(ad: _bannerAd),
+                                        );
+                                      },
+                                    ),
+                                  ]);
+                            }),
+                        if (_isBannerAdReady)
+                          Align(
+                            alignment: Alignment.topCenter,
+                            child: Container(
+                              color: Colors.white,
+                              height: _bannerAd.size.height.toDouble(),
+                              child: AdWidget(ad: _bannerAd),
+                            ),
                           ),
-                        ),
-                    ]);
-                  }),
+                      ]);
+                    }),
+              ),
             ),
           ),
-        ),
-      );
-    });
+        );
+      }),
+    );
   }
 
   void hideProduct(

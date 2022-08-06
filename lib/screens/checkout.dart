@@ -226,9 +226,6 @@ class _CheckoutPageState extends State<CheckoutPage> {
               Container(
                 alignment: Alignment.bottomCenter,
                 child: SingleChildScrollView(
-                  physics: NeverScrollableScrollPhysics(),
-                  scrollDirection: Axis.vertical,
-                  controller: _controller,
                   child: ExpansionTile(
                     collapsedBackgroundColor: Colors.white,
                     backgroundColor: Colors.white,
@@ -245,67 +242,63 @@ class _CheckoutPageState extends State<CheckoutPage> {
                     children: [
                       SizedBox(
                         height: MediaQuery.of(context).size.height,
-                        child: SingleChildScrollView(
-                          physics: NeverScrollableScrollPhysics(),
-                          scrollDirection: Axis.vertical,
-                          child: ListView.builder(
-                              physics: NeverScrollableScrollPhysics(),
-                              scrollDirection: Axis.vertical,
-                              shrinkWrap: true,
-                              itemCount: boughtItems.length,
-                              itemBuilder: (context, index) {
-                                return Dismissible(
-                                  background: Container(
-                                    color: Colors.grey[200],
-                                  ),
-                                  key: ValueKey<Item>(boughtItems[index]),
-                                  direction: DismissDirection.startToEnd,
-                                  onDismissed: (direction) {
-                                    setState(() {
-                                      boughtItems[index].bought = 0;
-                                      boughtItems[index].save();
-                                    });
-                                  },
-                                  child: Card(
-                                    color: Colors.grey[300],
-                                    child: ListTile(
-                                      leading: IconButton(
-                                        icon: Icon(
-                                          Icons.restore,
-                                          size: 32,
-                                        ),
-                                        color: Colors.blue,
-                                        onPressed: () {
-                                          setState(() {
-                                            cart.add(boughtItems[index]);
-                                            boughtItems[index].bought = 0;
-                                            boughtItems[index].amount = 1;
-                                            boughtItems[index].save();
-                                          });
-                                        },
+                        child: ListView.builder(
+                            padding: EdgeInsets.all(12),
+                            shrinkWrap: true,
+                            primary: false,
+                            itemCount: boughtItems.length,
+                            itemBuilder: (context, index) {
+                              return Dismissible(
+                                background: Container(
+                                  color: Colors.grey[200],
+                                ),
+                                key: ValueKey<Item>(boughtItems[index]),
+                                direction: DismissDirection.startToEnd,
+                                onDismissed: (direction) {
+                                  setState(() {
+                                    boughtItems[index].bought = 0;
+                                    boughtItems[index].save();
+                                  });
+                                },
+                                child: Card(
+                                  color: Colors.grey[300],
+                                  child: ListTile(
+                                    leading: IconButton(
+                                      icon: Icon(
+                                        Icons.restore,
+                                        size: 32,
                                       ),
-                                      title: Row(
-                                        children: [
-                                          ClipRect(
-                                              child: Container(
-                                            width: 40,
-                                            height: 40,
-                                            child: Image.asset(
-                                                boughtItems[index].itemIcon),
-                                          )),
-                                          SizedBox(width: 8),
-                                          Text(boughtItems[index].title,
-                                              style: TextStyle(
-                                                  decoration: TextDecoration
-                                                      .lineThrough)),
-                                          SizedBox(width: 16),
-                                        ],
-                                      ),
+                                      color: Colors.blue,
+                                      onPressed: () {
+                                        setState(() {
+                                          cart.add(boughtItems[index]);
+                                          boughtItems[index].bought = 0;
+                                          boughtItems[index].amount = 1;
+                                          boughtItems[index].save();
+                                        });
+                                      },
+                                    ),
+                                    title: Row(
+                                      children: [
+                                        ClipRect(
+                                            child: Container(
+                                          width: 40,
+                                          height: 40,
+                                          child: Image.asset(
+                                              boughtItems[index].itemIcon),
+                                        )),
+                                        SizedBox(width: 8),
+                                        Text(boughtItems[index].title,
+                                            style: TextStyle(
+                                                decoration: TextDecoration
+                                                    .lineThrough)),
+                                        SizedBox(width: 16),
+                                      ],
                                     ),
                                   ),
-                                );
-                              }),
-                        ),
+                                ),
+                              );
+                            }),
                       ),
                     ],
                   ),

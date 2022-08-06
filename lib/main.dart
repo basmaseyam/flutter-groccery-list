@@ -11,13 +11,10 @@ import 'package:provider/provider.dart';
 import 'package:moshtryate_new/screens/login.dart';
 import 'package:connectivity/connectivity.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'models/cart.dart';
 import 'screens/login.dart';
 import 'package:hive/hive.dart';
-import 'package:moshtryate_new/models/item.dart';
-import 'package:moshtryate_new/data/itemscat.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 bool isloggedin = false;
