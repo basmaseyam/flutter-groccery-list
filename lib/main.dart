@@ -60,26 +60,119 @@ Future<void> main() async {
   );
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  PageController pageController = PageController(initialPage: 0);
+  int currentPos = 0;
   @override
   Widget build(BuildContext context) {
     return Directionality(
         textDirection: TextDirection.rtl,
         child: MaterialApp(
           debugShowCheckedModeBanner: false,
-          home: AnimatedSplashScreen(
-            duration: 3000,
-            splash: CircleAvatar(
-              backgroundColor: Colors.transparent,
-              child: Image(
-                image: AssetImage('images/icons/basket2.png'),
-                alignment: Alignment.center,
-              ),
+          home: Builder(
+            builder: (context) => Scaffold(
+              body: (isloggedin || !isconnected)
+                  ? HomePage()
+                  : Column(
+                      children: [
+                        Expanded(
+                          child: PageView(
+                            controller: pageController,
+                            onPageChanged: (index) {
+                              setState(() {
+                                currentPos = index;
+                              });
+                            },
+                            scrollDirection: Axis.horizontal,
+                            children: [
+                              Container(
+                                child: Column(
+                                  children: [
+                                    Padding(
+                                      padding: EdgeInsets.all(30),
+                                      child: Image(
+                                          image: AssetImage(
+                                              "images/slider/slider2.png")),
+                                    ),
+                                    SizedBox(height: 30),
+                                    Center(
+                                      child: Text(
+                                        'اضافه منتج لقائمه الشراء',
+                                        style: TextStyle(
+                                            fontSize: 35,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              Container(
+                                child: Column(
+                                  children: [
+                                    Padding(
+                                      padding: EdgeInsets.all(30),
+                                      child: Image(
+                                          image: AssetImage(
+                                              "images/slider/slider1.png")),
+                                    ),
+                                    SizedBox(height: 30),
+                                    Center(
+                                      child: Text(
+                                        'البحث عن منتج',
+                                        style: TextStyle(
+                                            fontSize: 35,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.all(20),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              TextButton(
+                                  onPressed: () {
+                                    pageController.previousPage(
+                                        duration:
+                                            const Duration(milliseconds: 500),
+                                        curve: Curves.linear);
+                                  },
+                                  child: currentPos == 0
+                                      ? Container()
+                                      : Text("< السابق")),
+                              currentPos == 1
+                                  ? TextButton(
+                                      onPressed: () {
+                                        return Navigator.of(context).push(
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    LoginScreen()));
+                                      },
+                                      child: Text("انتهاء"))
+                                  : TextButton(
+                                      onPressed: () {
+                                        pageController.nextPage(
+                                            duration: const Duration(
+                                                milliseconds: 500),
+                                            curve: Curves.ease);
+                                      },
+                                      child: Text("التالي >")),
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
             ),
-            nextScreen:
-                (isloggedin || !isconnected) ? HomePage() : LoginScreen(),
-            splashTransition: SplashTransition.scaleTransition,
-            backgroundColor: kMainColor,
           ),
           routes: {
             LoginScreen.id: (context) => LoginScreen(),

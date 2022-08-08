@@ -37,7 +37,9 @@ class MyDrawer extends StatelessWidget {
                   ),
                 )
               : Text(
-                  preferences.getString('displayName'),
+                  preferences.getString('displayName')
+                      ? preferences.getString('displayName')
+                      : 'No internet connection!',
                   style: TextStyle(
                     fontFamily: 'Pacifico',
                     fontSize: 25,
