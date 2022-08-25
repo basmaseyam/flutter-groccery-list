@@ -54,6 +54,7 @@ dependencies:
   hive_generator: ^1.1.3
   fluttertoast: ^8.0.9
   smooth_page_indicator: ^1.0.0+2
+  showcaseview: ^1.1.8
 
   
 flutter_icons:

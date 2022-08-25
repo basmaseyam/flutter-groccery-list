@@ -18,6 +18,7 @@ import 'package:provider/provider.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:moshtryate_new/ad_helper.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:showcaseview/showcaseview.dart';
 
 //import 'package:moshtryate_new/screens/About.dart';
 
@@ -34,6 +35,9 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
+  final keyOne = GlobalKey();
+  final keyTwo = GlobalKey();
+  final keyThree = GlobalKey();
   DateTime timeBackPressed = DateTime.now();
   BannerAd _bannerAd;
   bool _isBannerAdReady = false;
@@ -48,7 +52,13 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addObserver(this);
-
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      ShowCaseWidget.of(context).startShowCase([
+        keyOne,
+        keyTwo,
+        keyThree,
+      ]);
+    });
     if (itemsBox.isEmpty) {
       itemsBox.addAll(items);
     }
@@ -124,7 +134,13 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
               textDirection: TextDirection.rtl,
               child: Scaffold(
                 appBar: PreferredSize(
-                    child: MainBar(context: context, cart: cart, child: child),
+                    child: MainBar(
+                        context: context,
+                        cart: cart,
+                        child: child,
+                        keyOne: keyOne,
+                        keyTwo: keyTwo,
+                        keyThree: keyThree),
                     preferredSize: Size.fromHeight(120)),
                 drawer: MyDrawer(),
                 body: FutureBuilder<void>(

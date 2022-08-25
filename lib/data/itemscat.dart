@@ -36,7 +36,7 @@ List<Item> items = [
       quantity: 'وحدة',
       itemIcon: 'images/icons/FruitsVegeies/cabbage.png',
       amount: 0,
-      keyShow: 1,
+      keyShow: 0,
       bought: 0,
       search: 1),
   Item(
@@ -45,7 +45,7 @@ List<Item> items = [
       quantity: 'وحدة',
       itemIcon: 'images/icons/FruitsVegeies/broccoli.png',
       amount: 0,
-      keyShow: 1,
+      keyShow: 0,
       bought: 0,
       search: 1),
   Item(
@@ -109,7 +109,7 @@ List<Item> items = [
       quantity: 'كيلو',
       itemIcon: 'images/icons/FruitsVegeies/icons8-aubergine-60.png',
       amount: 0,
-      keyShow: 1,
+      keyShow: 0,
       bought: 0,
       search: 1),
   Item(
@@ -138,7 +138,7 @@ List<Item> items = [
       quantity: 'كيلو',
       itemIcon: 'images/icons/FruitsVegeies/icons8-mandarin-60.png',
       amount: 0,
-      keyShow: 1,
+      keyShow: 0,
       bought: 0,
       search: 1),
   Item(
@@ -147,7 +147,7 @@ List<Item> items = [
       quantity: 'كيلو',
       itemIcon: 'images/icons/FruitsVegeies/icons8-plum-60.png',
       amount: 0,
-      keyShow: 1,
+      keyShow: 0,
       bought: 0,
       search: 1),
   Item(
@@ -192,7 +192,7 @@ List<Item> items = [
       quantity: 'كيلو',
       itemIcon: 'images/icons/FruitsVegeies/strawberry.png',
       amount: 0,
-      keyShow: 1,
+      keyShow: 0,
       bought: 0,
       search: 1),
   Item(
@@ -246,7 +246,7 @@ List<Item> items = [
       quantity: 'كيلو',
       itemIcon: 'images/icons/FruitsVegeies/icons8-pear-64 (3).png',
       amount: 0,
-      keyShow: 1,
+      keyShow: 0,
       bought: 0,
       search: 1),
   Item(
@@ -255,7 +255,7 @@ List<Item> items = [
       quantity: 'وحدة',
       itemIcon: 'images/icons/FruitsVegeies/icons8-pineapple-60.png',
       amount: 0,
-      keyShow: 1,
+      keyShow: 0,
       bought: 0,
       search: 1),
   Item(
@@ -264,7 +264,7 @@ List<Item> items = [
       quantity: 'كيلو',
       itemIcon: 'images/icons/FruitsVegeies/guava.png',
       amount: 0,
-      keyShow: 1,
+      keyShow: 0,
       bought: 0,
       search: 1),
   Item(
@@ -291,7 +291,7 @@ List<Item> items = [
       quantity: 'كيلو',
       itemIcon: 'images/icons/FruitsVegeies/pomegranate.png',
       amount: 0,
-      keyShow: 1,
+      keyShow: 0,
       bought: 0,
       search: 1),
   Item(
@@ -328,7 +328,7 @@ List<Item> items = [
       quantity: 'كيلو',
       itemIcon: 'images/icons/FruitsVegeies/icons8-cherry-tomato-64.png',
       amount: 0,
-      keyShow: 1,
+      keyShow: 0,
       bought: 0,
       search: 1),
   Item(
@@ -337,7 +337,7 @@ List<Item> items = [
       quantity: 'كيلو',
       itemIcon: 'images/icons/FruitsVegeies/icons8-kiwi-64 (2).png',
       amount: 0,
-      keyShow: 1,
+      keyShow: 0,
       bought: 0,
       search: 1),
   Item(
@@ -346,7 +346,7 @@ List<Item> items = [
       quantity: 'كيلو',
       itemIcon: 'images/icons/FruitsVegeies/icons8-watermelon-60.png',
       amount: 0,
-      keyShow: 1,
+      keyShow: 0,
       bought: 0,
       search: 1),
   Item(
@@ -364,7 +364,7 @@ List<Item> items = [
       quantity: 'عبوة',
       itemIcon: 'images/icons/FruitsVegeies/mushroom.png',
       amount: 0,
-      keyShow: 1,
+      keyShow: 0,
       bought: 0,
       search: 1),
   Item(
@@ -403,7 +403,7 @@ List<Item> items = [
       quantity: 'حزمة',
       itemIcon: 'images/icons/FruitsVegeies/rucola.png',
       amount: 0,
-      keyShow: 1,
+      keyShow: 0,
       bought: 0,
       search: 1),
 
@@ -413,7 +413,7 @@ List<Item> items = [
       quantity: 'حزمة',
       itemIcon: 'images/icons/FruitsVegeies/icons8-spinach-64 (1).png',
       amount: 0,
-      keyShow: 1,
+      keyShow: 0,
       bought: 0,
       search: 1),
 
@@ -430,7 +430,7 @@ List<Item> items = [
       quantity: 'كيلو',
       itemIcon: 'images/icons/FruitsVegeies/blueberry (4).png',
       amount: 0,
-      keyShow: 1,
+      keyShow: 0,
       bought: 0,
       search: 1),
 
@@ -440,7 +440,7 @@ List<Item> items = [
       quantity: 'كيلو',
       itemIcon: 'images/icons/FruitsVegeies/corn (4).png',
       amount: 0,
-      keyShow: 1,
+      keyShow: 0,
       bought: 0,
       search: 1),
   Item(
@@ -449,7 +449,7 @@ List<Item> items = [
       quantity: 'كيلو',
       itemIcon: 'images/icons/FruitsVegeies/taro.png',
       amount: 0,
-      keyShow: 1,
+      keyShow: 0,
       bought: 0,
       search: 1),
 
@@ -459,7 +459,7 @@ List<Item> items = [
       quantity: 'حزمة',
       itemIcon: 'images/icons/FruitsVegeies/icons8-chard-100.png',
       amount: 0,
-      keyShow: 1,
+      keyShow: 0,
       bought: 0,
       search: 1),
   Item(
@@ -468,7 +468,7 @@ List<Item> items = [
       quantity: 'كيلو',
       itemIcon: 'images/icons/FruitsVegeies/okra (3).png',
       amount: 0,
-      keyShow: 1,
+      keyShow: 0,
       bought: 0,
       search: 1),
 
@@ -488,7 +488,7 @@ List<Item> items = [
       quantity: 'عبوة',
       itemIcon: 'images/icons/Bread&Bakeing/baking-powder.png',
       amount: 0,
-      keyShow: 1,
+      keyShow: 0,
       bought: 0,
       search: 1),
   Item(
@@ -497,7 +497,7 @@ List<Item> items = [
       quantity: 'عبوة',
       itemIcon: 'images/icons/Bread&Bakeing/yeast.png',
       amount: 0,
-      keyShow: 1,
+      keyShow: 0,
       bought: 0,
       search: 1),
   Item(
@@ -506,7 +506,7 @@ List<Item> items = [
       quantity: 'عبوة',
       itemIcon: 'images/icons/Bread&Bakeing/icons8-vanilla-64.png',
       amount: 0,
-      keyShow: 1,
+      keyShow: 0,
       bought: 0,
       search: 1),
 
@@ -516,7 +516,7 @@ List<Item> items = [
       quantity: 'عبوة',
       itemIcon: 'images/icons/Bread&Bakeing/aluminium-paper.png',
       amount: 0,
-      keyShow: 1,
+      keyShow: 0,
       bought: 0,
       search: 1),
   Item(
@@ -525,7 +525,7 @@ List<Item> items = [
       quantity: 'عبوة',
       itemIcon: 'images/icons/Bread&Bakeing/aluminium-paper (2).png',
       amount: 0,
-      keyShow: 1,
+      keyShow: 0,
       bought: 0,
       search: 1),
 
@@ -566,7 +566,7 @@ List<Item> items = [
       quantity: 'عبوة',
       itemIcon: 'images/icons/DiarayEggs/cream.png',
       amount: 0,
-      keyShow: 1,
+      keyShow: 0,
       bought: 0,
       search: 1),
   Item(
@@ -602,7 +602,7 @@ List<Item> items = [
       quantity: 'كيلو',
       itemIcon: 'images/icons/DiarayEggs/slices.png',
       amount: 0,
-      keyShow: 1,
+      keyShow: 0,
       bought: 0,
       search: 1),
   Item(
@@ -611,7 +611,7 @@ List<Item> items = [
       quantity: 'كيلو',
       itemIcon: 'images/icons/DiarayEggs/mozzarella.png',
       amount: 0,
-      keyShow: 1,
+      keyShow: 0,
       bought: 0,
       search: 1),
 
@@ -635,12 +635,15 @@ List<Item> items = [
       keyShow: 1,
       bought: 0,
       search: 1),
-  /*Item(
+  Item(
       title: 'مشروبات غازية',
       category: 'المشروبات',
       quantity: 'لتر',
       itemIcon: 'images/icons/Drinkes/icons8-tea-64.png',
-      amount: 0, keyShow: 1, bought: 0, search: 1),*/
+      amount: 0,
+      keyShow: 1,
+      bought: 0,
+      search: 1),
 
   //  ---- الحبوب و البقول ------
 
@@ -679,7 +682,7 @@ List<Item> items = [
       quantity: 'كيلو',
       itemIcon: 'images/icons/Grains/icons8-rolled-oats-481.png',
       amount: 0,
-      keyShow: 1,
+      keyShow: 0,
       bought: 0,
       search: 1),
 
@@ -698,7 +701,7 @@ List<Item> items = [
       quantity: 'كيلو',
       itemIcon: 'images/icons/Grains/icons8-lentil-100.png',
       amount: 0,
-      keyShow: 1,
+      keyShow: 0,
       bought: 0,
       search: 1),
   Item(
@@ -707,7 +710,7 @@ List<Item> items = [
       quantity: 'كيلو',
       itemIcon: 'images/icons/Grains/icons8-bean-60.png',
       amount: 0,
-      keyShow: 1,
+      keyShow: 0,
       bought: 0,
       search: 1),
   Item(
@@ -716,7 +719,7 @@ List<Item> items = [
       quantity: 'كيلو',
       itemIcon: 'images/icons/Grains/icons8-white-beans-80.png',
       amount: 0,
-      keyShow: 1,
+      keyShow: 0,
       bought: 0,
       search: 1),
   Item(
@@ -734,7 +737,7 @@ List<Item> items = [
       quantity: 'كيلو',
       itemIcon: 'images/icons/Grains/oat.png',
       amount: 0,
-      keyShow: 1,
+      keyShow: 0,
       bought: 0,
       search: 1),
   Item(
@@ -743,7 +746,7 @@ List<Item> items = [
       quantity: 'كيلو',
       itemIcon: 'images/icons/Grains/icons8-rolled-oats-48.png',
       amount: 0,
-      keyShow: 1,
+      keyShow: 0,
       bought: 0,
       search: 1),
 
@@ -764,7 +767,7 @@ List<Item> items = [
       quantity: 'عبوة',
       itemIcon: 'images/icons/Ingredients/wrap (2).png',
       amount: 0,
-      keyShow: 1,
+      keyShow: 0,
       bought: 0,
       search: 1),
   Item(
@@ -839,7 +842,7 @@ List<Item> items = [
       quantity: 'كيلو',
       itemIcon: 'images/icons/Ingredients/oatmeal.png',
       amount: 0,
-      keyShow: 1,
+      keyShow: 0,
       bought: 0,
       search: 1),
 
@@ -849,7 +852,7 @@ List<Item> items = [
       quantity: 'عبوة',
       itemIcon: 'images/icons/Ingredients/cardamom.png',
       amount: 0,
-      keyShow: 1,
+      keyShow: 0,
       bought: 0,
       search: 1),
 
@@ -859,7 +862,7 @@ List<Item> items = [
       quantity: 'عبوة',
       itemIcon: 'images/icons/Ingredients/icons8-bay-leaf-48.png',
       amount: 0,
-      keyShow: 1,
+      keyShow: 0,
       bought: 0,
       search: 1),
   Item(
@@ -868,7 +871,7 @@ List<Item> items = [
       quantity: 'عبوة',
       itemIcon: 'images/icons/Ingredients/clove.png',
       amount: 0,
-      keyShow: 1,
+      keyShow: 0,
       bought: 0,
       search: 1),
   Item(
@@ -944,7 +947,7 @@ List<Item> items = [
       quantity: 'عبوة',
       itemIcon: 'images/icons/Ingredients/spices (1).png',
       amount: 0,
-      keyShow: 1,
+      keyShow: 0,
       bought: 0,
       search: 1),
 
@@ -954,7 +957,7 @@ List<Item> items = [
       quantity: 'عبوة',
       itemIcon: 'images/icons/Ingredients/icons8-turmeric-48.png',
       amount: 0,
-      keyShow: 1,
+      keyShow: 0,
       bought: 0,
       search: 1),
 
@@ -984,7 +987,7 @@ List<Item> items = [
       quantity: 'كيلو',
       itemIcon: 'images/icons/MeatFish/icons8-ground-beef-100.png',
       amount: 0,
-      keyShow: 1,
+      keyShow: 0,
       bought: 0,
       search: 1),
 
@@ -1012,7 +1015,7 @@ List<Item> items = [
       quantity: 'كيلو',
       itemIcon: 'images/icons/MeatFish/icons8-chicken-wings-64.png',
       amount: 0,
-      keyShow: 1,
+      keyShow: 0,
       bought: 0,
       search: 1),
   Item(
@@ -1021,7 +1024,7 @@ List<Item> items = [
       quantity: 'كيلو',
       itemIcon: 'images/icons/MeatFish/fried-chicken.png',
       amount: 0,
-      keyShow: 1,
+      keyShow: 0,
       bought: 0,
       search: 1),
   Item(
@@ -1030,7 +1033,7 @@ List<Item> items = [
       quantity: 'كيلو',
       itemIcon: 'images/icons/MeatFish/icons8-thanksgiving-turkey-64.png',
       amount: 0,
-      keyShow: 1,
+      keyShow: 0,
       bought: 0,
       search: 1),
   Item(
@@ -1049,7 +1052,7 @@ List<Item> items = [
       quantity: 'كيلو',
       itemIcon: 'images/icons/MeatFish/bastrami.png',
       amount: 0,
-      keyShow: 1,
+      keyShow: 0,
       bought: 0,
       search: 1),
 
@@ -1059,7 +1062,7 @@ List<Item> items = [
       quantity: 'كيلو',
       itemIcon: 'images/icons/MeatFish/pepperoni (6).png',
       amount: 0,
-      keyShow: 1,
+      keyShow: 0,
       bought: 0,
       search: 1),
 
@@ -1069,7 +1072,7 @@ List<Item> items = [
       quantity: 'كيلو',
       itemIcon: 'images/icons/MeatFish/tortilla (2).png',
       amount: 0,
-      keyShow: 1,
+      keyShow: 0,
       bought: 0,
       search: 1),
 
@@ -1079,7 +1082,7 @@ List<Item> items = [
       quantity: 'كيلو',
       itemIcon: 'images/icons/MeatFish/salami (8).png',
       amount: 0,
-      keyShow: 1,
+      keyShow: 0,
       bought: 0,
       search: 1),
   Item(
@@ -1088,7 +1091,7 @@ List<Item> items = [
       quantity: 'كيلو',
       itemIcon: 'images/icons/MeatFish/icons8-sausage-60.png',
       amount: 0,
-      keyShow: 1,
+      keyShow: 0,
       bought: 0,
       search: 1),
   Item(
@@ -1097,7 +1100,7 @@ List<Item> items = [
       quantity: 'كيلو',
       itemIcon: 'images/icons/MeatFish/fish (3).png',
       amount: 0,
-      keyShow: 1,
+      keyShow: 0,
       bought: 0,
       search: 1),
   Item(
@@ -1106,7 +1109,7 @@ List<Item> items = [
       quantity: 'كيلو',
       itemIcon: 'images/icons/MeatFish/icons8-crab-96.png',
       amount: 0,
-      keyShow: 1,
+      keyShow: 0,
       bought: 0,
       search: 1),
 
@@ -1136,7 +1139,7 @@ List<Item> items = [
       quantity: 'عبوة',
       itemIcon: 'images/icons/Canned/chocolate (4).png',
       amount: 0,
-      keyShow: 1,
+      keyShow: 0,
       bought: 0,
       search: 1),
   Item(
@@ -1145,7 +1148,7 @@ List<Item> items = [
       quantity: 'عبوة',
       itemIcon: 'images/icons/Canned/icons8-peanut-butter-64 (1).png',
       amount: 0,
-      keyShow: 1,
+      keyShow: 0,
       bought: 0,
       search: 1),
   Item(
@@ -1164,7 +1167,7 @@ List<Item> items = [
       quantity: 'عبوة',
       itemIcon: 'images/icons/Canned/icons8-canned-food-64.png',
       amount: 0,
-      keyShow: 1,
+      keyShow: 0,
       bought: 0,
       search: 1),
   Item(
@@ -1193,7 +1196,7 @@ List<Item> items = [
       quantity: 'عبوة',
       itemIcon: 'images/icons/Canned/mustard.png',
       amount: 0,
-      keyShow: 1,
+      keyShow: 0,
       bought: 0,
       search: 1),
 
@@ -1203,7 +1206,7 @@ List<Item> items = [
       quantity: 'عبوة',
       itemIcon: 'images/icons/Canned/bbq-sauce.png',
       amount: 0,
-      keyShow: 1,
+      keyShow: 0,
       bought: 0,
       search: 1),
 
@@ -1213,7 +1216,7 @@ List<Item> items = [
       quantity: 'عبوة',
       itemIcon: 'images/icons/Canned/icons8-sauce-256.png',
       amount: 0,
-      keyShow: 1,
+      keyShow: 0,
       bought: 0,
       search: 1),
 
@@ -1223,7 +1226,7 @@ List<Item> items = [
       quantity: 'عبوة',
       itemIcon: 'images/icons/Canned/soy-sauce (1).png',
       amount: 0,
-      keyShow: 1,
+      keyShow: 0,
       bought: 0,
       search: 1),
 
@@ -1252,7 +1255,7 @@ List<Item> items = [
       quantity: 'عبوة',
       itemIcon: 'images/icons/Canned/musli (16).png',
       amount: 0,
-      keyShow: 1,
+      keyShow: 0,
       bought: 0,
       search: 1),
 
@@ -1273,7 +1276,7 @@ List<Item> items = [
       quantity: 'عبوة',
       itemIcon: 'images/icons/Snacks/icons8-nachos-80.png',
       amount: 0,
-      keyShow: 1,
+      keyShow: 0,
       bought: 0,
       search: 1),
   Item(
@@ -1301,6 +1304,7 @@ List<Item> items = [
       category: 'المجمدات',
       quantity: 'عبوة',
       itemIcon: 'images/icons/Frozen/molokheya.png',
+      keyShow: 1,
       amount: 0,
       bought: 0,
       search: 1),
@@ -1310,6 +1314,7 @@ List<Item> items = [
       category: 'المجمدات',
       quantity: 'عبوة',
       itemIcon: 'images/icons/Frozen/Okra.png',
+      keyShow: 0,
       amount: 0,
       bought: 0,
       search: 1),
@@ -1319,6 +1324,7 @@ List<Item> items = [
       category: 'المجمدات',
       quantity: 'عبوة',
       itemIcon: 'images/icons/Frozen/PeasCarrot2.png',
+      keyShow: 1,
       amount: 0,
       bought: 0,
       search: 1),
@@ -1329,6 +1335,7 @@ List<Item> items = [
       quantity: 'عبوة',
       itemIcon: 'images/icons/Frozen/grapeleaf.png',
       amount: 0,
+      keyShow: 0,
       bought: 0,
       search: 1),
   Item(
@@ -1337,6 +1344,7 @@ List<Item> items = [
       quantity: 'عبوة',
       itemIcon: 'images/icons/Frozen/fries.png',
       amount: 0,
+      keyShow: 1,
       bought: 0,
       search: 1),
   Item(
@@ -1345,6 +1353,7 @@ List<Item> items = [
       quantity: 'عبوة',
       itemIcon: 'images/icons/Frozen/taro.png',
       amount: 0,
+      keyShow: 0,
       bought: 0,
       search: 1),
 
@@ -1354,6 +1363,7 @@ List<Item> items = [
       quantity: 'عبوة',
       itemIcon: 'images/icons/Frozen/burger.png',
       amount: 0,
+      keyShow: 1,
       bought: 0,
       search: 1),
   Item(
@@ -1362,6 +1372,7 @@ List<Item> items = [
       quantity: 'عبوة',
       itemIcon: 'images/icons/Frozen/susage.png',
       amount: 0,
+      keyShow: 0,
       bought: 0,
       search: 1),
 
@@ -1371,6 +1382,7 @@ List<Item> items = [
       quantity: 'عبوة',
       itemIcon: 'images/icons/Frozen/fried chicken.png',
       amount: 0,
+      keyShow: 1,
       bought: 0,
       search: 1),
 
@@ -1380,6 +1392,7 @@ List<Item> items = [
       quantity: 'عبوة',
       itemIcon: 'images/icons/Frozen/frozen-goods (3).png',
       amount: 0,
+      keyShow: 1,
       bought: 0,
       search: 1),
 
@@ -1410,7 +1423,7 @@ List<Item> items = [
       quantity: 'عبوة',
       itemIcon: 'images/icons/Cleaning/softener (9).png',
       amount: 0,
-      keyShow: 1,
+      keyShow: 0,
       bought: 0,
       search: 1),
 
@@ -1489,7 +1502,7 @@ List<Item> items = [
       quantity: 'عبوة',
       itemIcon: 'images/icons/Cleaning/gloves (4).png',
       amount: 0,
-      keyShow: 1,
+      keyShow: 0,
       bought: 0,
       search: 1),
 
@@ -1499,7 +1512,7 @@ List<Item> items = [
       quantity: 'عبوة',
       itemIcon: 'images/icons/Cleaning/dishwasher (3).png',
       amount: 0,
-      keyShow: 1,
+      keyShow: 0,
       bought: 0,
       search: 1),
 
@@ -1529,7 +1542,7 @@ List<Item> items = [
       quantity: 'عبوة',
       itemIcon: 'images/icons/Cleaning/alphabet.png',
       amount: 0,
-      keyShow: 1,
+      keyShow: 0,
       bought: 0,
       search: 1),
 
@@ -1539,7 +1552,7 @@ List<Item> items = [
       quantity: 'عبوة',
       itemIcon: 'images/icons/Cleaning/liquid-soap (1).png',
       amount: 0,
-      keyShow: 1,
+      keyShow: 0,
       bought: 0,
       search: 1),
 
@@ -1609,7 +1622,7 @@ List<Item> items = [
       quantity: 'عبوة',
       itemIcon: 'images/icons/PersonalCare/dental-floss.png',
       amount: 0,
-      keyShow: 1,
+      keyShow: 0,
       bought: 0,
       search: 1),
   Item(
@@ -1618,7 +1631,7 @@ List<Item> items = [
       quantity: 'عبوة',
       itemIcon: 'images/icons/PersonalCare/diaper.png',
       amount: 0,
-      keyShow: 1,
+      keyShow: 0,
       bought: 0,
       search: 1),
   Item(
@@ -1655,7 +1668,7 @@ List<Item> items = [
       quantity: 'عبوة',
       itemIcon: 'images/icons/PersonalCare/sunscreen.png',
       amount: 0,
-      keyShow: 1,
+      keyShow: 0,
       bought: 0,
       search: 1),
   Item(

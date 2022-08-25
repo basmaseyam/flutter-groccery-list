@@ -17,6 +17,7 @@ import 'models/cart.dart';
 import 'screens/login.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:showcaseview/showcaseview.dart';
 
 bool isloggedin = false;
 bool isconnected = false;

@@ -8,6 +8,7 @@ import 'package:flutter_signin_button/button_list.dart';
 import 'package:flutter_signin_button/button_view.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:moshtryate_new/constants.dart';
+import 'package:showcaseview/showcaseview.dart';
 
 import 'homepage.dart';
 
@@ -93,16 +94,18 @@ class _LoginScreenState extends State<LoginScreen> {
       SharedPreferences preferences = await SharedPreferences.getInstance();
       preferences.setString('email', user.email);
       if (user != null) {
-        Navigator.of(context)
-            .push(MaterialPageRoute(builder: (context) => HomePage()));
+        Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) =>
+                ShowCaseWidget(builder: Builder(builder: (_) => HomePage()))));
       }
     } catch (error) {
       return showDialog(
           context: context,
           builder: (context) {
             Future.delayed(Duration(seconds: 3), () {
-              Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (context) => HomePage()));
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => ShowCaseWidget(
+                      builder: Builder(builder: (_) => HomePage()))));
             });
 
             return AlertDialog(
@@ -136,8 +139,9 @@ class _LoginScreenState extends State<LoginScreen> {
               FacebookAuthProvider.credential(result.accessToken.token);
           final userCredential =
               await _auth.signInWithCredential(facebookCredential);
-          return Navigator.of(context)
-              .push(MaterialPageRoute(builder: (context) => HomePage()));
+          return Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => ShowCaseWidget(
+                  builder: Builder(builder: (_) => HomePage()))));
         case LoginStatus.cancelled:
           return Resource(status: Status.Cancelled);
         case LoginStatus.failed:
