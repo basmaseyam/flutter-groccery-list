@@ -135,14 +135,17 @@ class MyDrawer extends StatelessWidget {
                     style: TextStyle(fontSize: 18),
                   ),
             leading: Icon(Icons.exit_to_app),
-            onTap: () {
+            onTap: () async {
               if (GoogleSignInAccount != null) {
                 signOutFromGoogle();
               } else {
                 FirebaseAuth.instance.signOut();
               }
-              Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (context) => LoginScreen()));
+              final prefs = await SharedPreferences.getInstance();
+              prefs.setBool('showHome', false);
+
+              Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(builder: ((context) => OnBoardingPage())));
             },
           ),
         ),
